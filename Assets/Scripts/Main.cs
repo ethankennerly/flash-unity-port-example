@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AnagramController : MonoBehaviour {
-	private AnagramModel model;
+public class Main : MonoBehaviour {
+	private Model model;
 
 	public void Start() {
-		model = new AnagramModel();
+		model = new Model();
 		model.Start();
 	}
 

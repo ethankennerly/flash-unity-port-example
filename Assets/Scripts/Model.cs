@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class AnagramModel {
+public class Model {
 	public ArrayList word;
 
 	public void Start() {

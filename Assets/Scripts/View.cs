@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AnagramView {
-	private AnagramModel model;
+public class View {
+	private Model model;
 	private GameObject main;
 
-	public void Start(AnagramModel theModel, GameObject theMainScene) {
+	public void Start(Model theModel, GameObject theMainScene) {
 		model = theModel;
 		main = theMainScene;
 	}
