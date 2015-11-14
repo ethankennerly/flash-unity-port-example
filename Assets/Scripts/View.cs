@@ -27,7 +27,6 @@ public class View {
 			GameObject letter = GameObject.Find(name);
 			if (null != letter)
 			{
-				Debug.Log("View.updateLetters: <" + letters[i] + ">");
 				bool visible = i < letters.Count;
 				letter.SetActive(visible);
 				if (visible) {
