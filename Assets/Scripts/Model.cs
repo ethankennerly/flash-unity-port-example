@@ -7,6 +7,7 @@ public class Model {
 	public Levels levels = new Levels();
 	public string text;
 	public ArrayList word;
+	public ArrayList outputs = new ArrayList();
 	public float wordPosition;
 	public float wordWidthPerSecond;
 

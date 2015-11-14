@@ -12,7 +12,8 @@ public class View {
 	}
 
 	public void Update() {
-		updateLetters(main, model.word);
+		updateLetters(GameObject.Find("word"), model.word);
+		updateLetters(GameObject.Find("output"), model.outputs);
 	}
 
 	/**
@@ -24,7 +25,7 @@ public class View {
 		for (int i = 0; i < max; i++)
 		{
 			string name = "Letter_" + i;
-			GameObject letter = GameObject.Find(name);
+			GameObject letter = parent.transform.Find(name).gameObject;
 			if (null != letter)
 			{
 				bool visible = i < letters.Count;
