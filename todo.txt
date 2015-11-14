@@ -13,4 +13,15 @@ TODO
 	Read levels
 	Animate letter tiles in Unity
 	Animate input in Unity
-	
+
+Converting ActionScript to C#
+	params --> parameters (params is reserved keyword in C#)
+	Array --> ArrayList
+	Object --> Hashtable
+		https://msdn.microsoft.com/en-us/library/bb384062.aspx
+		Need .NET 4.5 for ExpandoObject.
+		http://stackoverflow.com/questions/29413942/c-sharp-anonymous-object-with-properties-from-dictionary
+	Literal constructor --> Collection initializer.
+		https://msdn.microsoft.com/en-us/library/bb384062.aspx
+	Single-quoted string --> Double-quoted string.
+		Escape enclosed double-quoted strings.

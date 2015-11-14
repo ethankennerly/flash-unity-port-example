@@ -1,12 +1,12 @@
-using System.Collections.Generic;
+using System.Collections;
 
 public class AnagramModel {
-	public List<string> word;
+	public ArrayList word;
 
 	public void Start() {
 	}
 
-	private void trial(Dictionary<string, string> parameters) {
+	private void trial(object parameters) {
 	}
 
 	public void Update(float deltaSeconds) {
