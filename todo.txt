@@ -25,3 +25,23 @@ Converting ActionScript to C#
 		https://msdn.microsoft.com/en-us/library/bb384062.aspx
 	Single-quoted string --> Double-quoted string.
 		Escape enclosed double-quoted strings.
+	Float literal 0.125 --> 0.125f
+	Hashtable iteration
+		for(var key:String i params)
+		-->
+		foreach(DictionaryEntry entry in parameters)
+	Avoid
+                this[key] = params[key];
+		It's verbose in C#
+		http://stackoverflow.com/questions/8113570/c-set-a-member-object-value-using-reflection
+	if (a in b) --> if (b.containsKey(a))
+	ArrayList constructor from split to ToCharArray.
+	Function from camelCase --> CapitalCase.
+	Not supported:
+	ArrayList to string[] if certain will contain fixed length string.
+		word = new ArrayList();
+		char [] letters = text.ToCharArray();
+		for (int i = 0; i < letters.Length; i++) {
+			word.Add(letters[i].ToString());
+		}
+		http://stackoverflow.com/questions/2024995/convert-string-to-array-in-without-using-split-function

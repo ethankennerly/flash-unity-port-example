@@ -11,11 +11,11 @@ public class Levels {
          */
 	public ArrayList parameters = new ArrayList{
             new Hashtable(){{"text", "START"}, {"help", "ANAGRAM ATTACK\n\nCLICK HERE. TYPE \"START\".  PRESS THE SPACE KEY OR ENTER KEY."},
-             {"wordWidthPerSecond", 0.0},
-             {"wordPosition", 0.0}}
+             {"wordWidthPerSecond", 0.0f},
+             {"wordPosition", 0.0f}}
 	};
 
-	public object getParams() {
-		return parameters[index];
+	public Hashtable getParams() {
+		return (Hashtable) parameters[index];
 	}
 }
