@@ -6,9 +6,9 @@ FEATURES
 	Layout input letter tiles in Unity
 	Press enter or space to submit word.
 	If word in word list, next trial.
+	Backspace removes letter.
 
 TODO
-	Backspace removes letter.
 	Highlight selected letters.
 	Structure HUD
 	Layout HUD
@@ -99,7 +99,12 @@ Converting ActionScript to C#
 		main.transform.Find("word").gameObject
 		Could cache result.
 	Function from camelCase --> CapitalCase
-	Not supported:
+	Animation
+                movieClip.gotoAndPlay(state);
+		-->
+		gameObject.GetComponent<Animator>().SetTrigger(state);
+			https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/animate-anything
+Not supported:
 	4-spaces to tabs.
 	Explicit boolean conversion
 		if (state)

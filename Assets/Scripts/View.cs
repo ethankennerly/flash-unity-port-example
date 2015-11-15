@@ -50,6 +50,11 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 string name = "Letter_" + index;
                 string state = selected ? "selected" : "none";
                 // TODO parent[name].gotoAndPlay(state);
+		Animator animator = parent.transform.Find(name).gameObject.GetComponent<Animator>();
+		if (null != animator)
+		{
+			animator.SetTrigger(state);
+		}
                 // TODO selectSound.play();
             }
         }
