@@ -19,8 +19,8 @@ public class View {
 	public void Update() {
 		ArrayList presses = model.getPresses(IsLetterKeyDown);
 		model.press(presses);
-		updateLetters(main.transform.Find("word").gameObject, model.word);
-		updateLetters(main.transform.Find("output").gameObject, model.outputs);
+		updateLetters(main.transform.Find("word").gameObject.transform.Find("state").gameObject, model.word);
+		updateLetters(main.transform.Find("input").gameObject.transform.Find("state").gameObject, model.inputs);
 	}
 
 	/**
