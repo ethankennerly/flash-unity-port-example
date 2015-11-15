@@ -18,4 +18,14 @@ public class Levels {
 	public Hashtable getParams() {
 		return (Hashtable) parameters[index];
 	}
+
+	public Hashtable up(int add = 1)
+	{
+		index = (index + add) % parameters.Count;
+		while (index < 0)
+		{
+			index += parameters.Count;
+		}
+		return getParams();
+	}
 }

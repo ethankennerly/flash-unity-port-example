@@ -2,23 +2,33 @@ using UnityEngine;
 using System.Collections;
 
 public class Model {
+	public ArrayList completes = new ArrayList();
 	public string help;
+	public string helpState;
 	public int letterMax = 10;
 	public ArrayList inputs = new ArrayList();
+	public delegate void ActionDelegate();
+	public ActionDelegate onComplete;
 	public Levels levels = new Levels();
+	public ArrayList outputs = new ArrayList();
+	public int points = 0;
+	public int score = 0;
+	public string state;
 	public string text;
 	public ArrayList word;
-	public ArrayList outputs = new ArrayList();
 	public float wordPosition;
 	public float wordWidthPerSecond;
 
 	private ArrayList available;
 	private ArrayList selects;
+	private Hashtable repeat = new Hashtable();
+	private Hashtable wordHash;
 
 	public delegate bool IsJustPressed(string letter);
 
 	public Model()
 	{
+		wordHash = new Words().init();
 		trial(levels.getParams());
 	}
 
@@ -40,11 +50,12 @@ public class Model {
 		available = Toolkit.splitString(text);
 		word = (ArrayList) available.Clone();
 		selects = (ArrayList) word.Clone();
-		Debug.Log("Model.trial: <" + word[0] + ">");
+		repeat = new Hashtable();
+		// Debug.Log("Model.trial: word[0]: <" + word[0] + ">");
 	}
 
 	/**
-	 * @param   justPressed     Filter signature justPressed(letter):Boolean.
+	 * @param   justPressed	 Filter signature justPressed(letter):Boolean.
 	 */
 	public ArrayList getPresses(IsJustPressed justPressed) 
 	{
@@ -102,6 +113,73 @@ public class Model {
 		}
 		return selectsNow;
 	}
+
+	/**
+	 * @return animation state.
+	 *	  "submit" or "complete":  Word shoots. Test case:  2015-04-18 Anders sees word is a weapon.
+	 *	  "submit":  Shuffle letters.  Test case:  2015-04-18 Jennifer wants to shuffle.  Irregular arrangement of letters.  Jennifer feels uncomfortable.
+	 * Test case:  2015-04-19 Backspace. Deselect. Submit. Type. Select.
+	 */
+	public string submit()
+	{
+		string submission = string.Join("", ((string []) inputs.ToArray(typeof(string))));
+		bool accepted = false;
+		if (1 <= submission.Length)
+		{
+			if (wordHash.ContainsKey(submission))
+			{
+				if (repeat.ContainsKey(submission))
+				{
+					state = "repeat";
+					if (levels.index <= 50 && "" == help)
+					{
+						help = "YOU CAN ONLY ENTER EACH SHORTER WORD ONCE.";
+						helpState = "repeat";
+					}
+				}
+				else
+				{
+					if ("repeat" == helpState)
+					{
+						helpState = "";
+						help = "";
+					}
+					repeat[submission] = true;
+					accepted = true;
+                        		// TODO scoreUp(submission);
+					bool complete = text.Length == submission.Length;
+                        		// TODO prepareKnockback(submission.length, complete);
+					if (complete)
+					{
+						completes = (ArrayList) word.Clone();
+						trial(levels.up());
+						state = "complete";
+						if (null != onComplete)
+						{
+							onComplete();
+						}
+					}
+					else
+					{
+						state = "submit";
+					}
+				}
+			}
+			outputs = (ArrayList) inputs.Clone();
+		}
+		// Debug.Log("Model.submit: " + submission + ". Accepted " + accepted);
+		inputs.RemoveRange(0, inputs.Count);
+		available = (ArrayList) word.Clone();
+		selects = (ArrayList) word.Clone();
+		return state;
+	}
+
+        private void scoreUp(string submission)
+        {
+            points = submission.Length;
+            score += points;
+	    Debug.Log("Model.scoreUp: points " + points + " increase score to " + score);
+        }
 
 	public void Update(float deltaSeconds) {
 	}
