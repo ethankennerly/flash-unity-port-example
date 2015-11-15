@@ -4,21 +4,21 @@ FEATURES
 	Controller sets a letter in view from model.
 	Structure input letter tile in Unity
 	Layout input letter tiles in Unity
+	Press enter or space to submit word.
+	If word in word list, next trial.
 
 TODO
-	Pres enter or space to submit word.
-	If word in word list, next trial.
-	Play one trial in editor.
 	Backspace removes letter.
 	Highlight selected letters.
-	On submit play animation.
-	On submit hear sound.
 	Structure HUD
 	Layout HUD
-	Replace text
-	Read levels
+	On submit play animation.
+	On submit hear sound.
 	Animate letter tiles in Unity
 	Animate input in Unity
+	Word approaches over time.
+	If word collides, game over.
+	Cheat to level up.
 
 Converting ActionScript to C#
 	Hopefully an algorithm that could be automated.  This sacrifices optimal runtime performance to speed up porting.
