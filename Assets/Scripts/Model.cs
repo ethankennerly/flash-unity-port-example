@@ -114,6 +114,24 @@ public class Model {
 		return selectsNow;
 	}
 
+        public ArrayList backspace()
+        {
+            ArrayList selectsNow = new ArrayList();
+            if (1 <= inputs.Count)
+            {
+                string letter = (string) inputs[inputs.Count - 1];
+                inputs.RemoveAt(inputs.Count - 1);
+                available.Add(letter);
+                int selected = selects.LastIndexOf(letter.ToLower());
+                if (0 <= selected)
+                {
+                    selectsNow.Add(selected);
+                    selects[selected] = letter;
+                }
+            }
+            return selectsNow;
+        }
+
 	/**
 	 * @return animation state.
 	 *	  "submit" or "complete":  Word shoots. Test case:  2015-04-18 Anders sees word is a weapon.

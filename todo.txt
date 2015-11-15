@@ -44,6 +44,11 @@ Converting ActionScript to C#
 		-->
 		string submission = String.Join("", ((string []) inputs.ToArray(typeof(string))));
 		or use List<string> if certain always a string, or string[] if certain of length.
+
+		a = inputs.pop();
+		-->
+                a = inputs[inputs.Count - 1];
+                inputs.RemoveAt(inputs.Count - 1);
 	String --> string
 		s.toLowerCase() --> s.ToLower()
 	Explictly cast:
@@ -94,8 +99,8 @@ Converting ActionScript to C#
 		main.transform.Find("word").gameObject
 		Could cache result.
 	Function from camelCase --> CapitalCase
-	.
 	Not supported:
+	4-spaces to tabs.
 	Explicit boolean conversion
 		if (state)
 		-->
