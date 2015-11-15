@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class View {
+	public int[] selects;
 	private Model model;
 	private GameObject main;
 
@@ -43,18 +44,17 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
          */
         private void updateSelect(ArrayList selects, bool selected)
         {
+	    if (1 <= selects.Count)
+	    {
+		    this.selects = (int[]) selects.ToArray(typeof(int));
+	    }
             GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
+	string state = selected ? "selected" : "none";
             for (int s = 0; s < selects.Count; s++)
             {
                 int index = (int) selects[s];
                 string name = "Letter_" + index;
-                string state = selected ? "selected" : "none";
-                // TODO parent[name].gotoAndPlay(state);
-		Animator animator = parent.transform.Find(name).gameObject.GetComponent<Animator>();
-		if (null != animator)
-		{
-			animator.SetTrigger(state);
-		}
+		Toolkit.setState(parent.transform.Find(name).gameObject, state);
                 // TODO selectSound.play();
             }
         }
@@ -93,8 +93,8 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
             int max = model.letterMax;
             for (int index = 0; index < max; index++)
             {
-                string name = "letter_" + index;
-                // TODO parent.transform.Find(name).gameObject.gotoAndPlay("none");
+                string name = "Letter_" + index;
+		Toolkit.setState(parent.transform.Find(name).gameObject, "none");
             }
         }
 

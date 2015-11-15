@@ -1,7 +1,9 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class Main : MonoBehaviour {
+	public int[] selects;
 	private Model model;
 	private View view;
 
@@ -13,5 +15,6 @@ public class Main : MonoBehaviour {
 	public void Update() {
 		model.Update(Time.deltaTime);
 		view.Update();
+		selects = view.selects;
 	}
 }
