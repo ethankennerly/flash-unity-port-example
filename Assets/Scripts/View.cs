@@ -17,12 +17,43 @@ public class View {
 	}
 
 	public void Update() {
+		updateBackspace();
 		ArrayList presses = model.getPresses(IsLetterKeyDown);
-		model.press(presses);
+		updateSelect(model.press(presses), true);
 		updateSubmit();
 		updateLetters(main.transform.Find("word").gameObject.transform.Find("state").gameObject, model.word);
 		updateLetters(main.transform.Find("input").gameObject.transform.Find("state").gameObject, model.inputs);
 	}
+
+        /**
+         * Delete or backspace:  Remove last letter.
+         */
+        private void updateBackspace()
+        {
+            if (Input.GetKeyDown("delete")
+            || Input.GetKeyDown("backspace"))
+            {
+                updateSelect(model.backspace(), false);
+            }
+        }
+
+        /**
+         * Each selected letter in word plays animation "selected".
+Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
+         */
+        private void updateSelect(ArrayList selects, bool selected)
+        {
+            GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
+            for (int s = 0; s < selects.Count; s++)
+            {
+                int index = (int) selects[s];
+                string name = "Letter_" + index;
+                string state = selected ? "selected" : "none";
+                // TODO parent[name].gotoAndPlay(state);
+                // TODO selectSound.play();
+            }
+        }
+
 
         /**
          * Press space or enter.  Input word.
