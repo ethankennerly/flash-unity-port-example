@@ -7,9 +7,9 @@ FEATURES
 	Press enter or space to submit word.
 	If word in word list, next trial.
 	Backspace removes letter.
+	Highlight selected letters.
 
 TODO
-	Highlight selected letters.
 	Structure HUD
 	Layout HUD
 	On submit play animation.
@@ -97,7 +97,14 @@ Converting ActionScript to C#
 		main.word
 		-->
 		main.transform.Find("word").gameObject
+		main.word.state
+		main.transform.Find("word/state").gameObject
 		Could cache result.
+	Use canvas in hierarchy:
+		main.help.text = "help"
+		-->
+		Text help = main.transform.Find("hud/help").GetComponent<Text>();
+		help.text = "help"
 	Function from camelCase --> CapitalCase
 	Animation
                 movieClip.gotoAndPlay(state);

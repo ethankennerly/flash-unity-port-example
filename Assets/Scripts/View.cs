@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,8 +23,9 @@ public class View {
 		ArrayList presses = model.getPresses(IsLetterKeyDown);
 		updateSelect(model.press(presses), true);
 		updateSubmit();
-		updateLetters(main.transform.Find("word").gameObject.transform.Find("state").gameObject, model.word);
-		updateLetters(main.transform.Find("input").gameObject.transform.Find("state").gameObject, model.inputs);
+		updateLetters(main.transform.Find("word/state").gameObject, model.word);
+		updateLetters(main.transform.Find("input/state").gameObject, model.inputs);
+		updateHud();
 	}
 
         /**
@@ -48,7 +50,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	    {
 		    this.selects = (int[]) selects.ToArray(typeof(int));
 	    }
-            GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
+            GameObject parent = main.transform.Find("word/state").gameObject;
 	string state = selected ? "selected" : "none";
             for (int s = 0; s < selects.Count; s++)
             {
@@ -58,6 +60,12 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 // TODO selectSound.play();
             }
         }
+
+	private void updateHud()
+	{
+		Text help = main.transform.Find("hud/help").GetComponent<Text>();
+		help.text = model.help;
+	}
 
 
         /**
