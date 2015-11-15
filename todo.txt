@@ -16,8 +16,23 @@ TODO
 
 Converting ActionScript to C#
 	params --> parameters (params is reserved keyword in C#)
+	namespace internal --> public?
 	Array --> ArrayList
+		.length --> .Count
+		a.concat() --> (ArrayList) a.Clone()
+		internal inputs:Array = [];
+		-->
+		public ArrayList inputs = new ArrayList();
+		inputs.length = 0; --> inputs.RemoveRange(0, inputs.Count);
+			https://msdn.microsoft.com/en-us/library/system.collections.arraylist.removerange.aspx
+	Explictly cast:
+		var letter:String = avaiable[i];
+		-->
+		string letter = (string) available[i];
 	Object --> Hashtable
+                if (letter in letters)
+		-->
+		if (letters.ContainsKey(letter))
 		https://msdn.microsoft.com/en-us/library/bb384062.aspx
 		Need .NET 4.5 for ExpandoObject.
 		http://stackoverflow.com/questions/29413942/c-sharp-anonymous-object-with-properties-from-dictionary
@@ -39,9 +54,18 @@ Converting ActionScript to C#
 	Function from camelCase --> CapitalCase.
 	Not supported:
 	ArrayList to string[] if certain will contain fixed length string.
+		available = text.split("");
+		-->
+		available = Toolkit.splitString(text);
+
 		word = new ArrayList();
 		char [] letters = text.ToCharArray();
 		for (int i = 0; i < letters.Length; i++) {
 			word.Add(letters[i].ToString());
 		}
 		http://stackoverflow.com/questions/2024995/convert-string-to-array-in-without-using-split-function
+	Patterns
+		Global reference without wiring in inspector.
+		Callback.
+		Script disables itself.
+		http://www.gamasutra.com/blogs/JohnWarner/20130910/194559/The_top_5_things_Ive_learned_as_a_Unity_developer.php?print=1
