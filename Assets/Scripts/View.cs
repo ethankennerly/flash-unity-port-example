@@ -11,9 +11,16 @@ public class View {
 		main = theMainScene;
 	}
 
+	public bool IsLetterKeyDown(string letter)
+	{
+		return Input.GetKeyDown(letter.ToLower());
+	}
+
 	public void Update() {
-		updateLetters(GameObject.Find("word"), model.word);
-		updateLetters(GameObject.Find("output"), model.outputs);
+		ArrayList presses = model.getPresses(IsLetterKeyDown);
+		model.press(presses);
+		updateLetters(main.transform.Find("word").gameObject, model.word);
+		updateLetters(main.transform.Find("output").gameObject, model.outputs);
 	}
 
 	/**

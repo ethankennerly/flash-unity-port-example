@@ -15,6 +15,7 @@ TODO
 	Animate input in Unity
 
 Converting ActionScript to C#
+	Hopefully an algorithm that could be automated.  This sacrifices optimal runtime performance to speed up porting.
 	params --> parameters (params is reserved keyword in C#)
 	namespace internal --> public?
 	Array --> ArrayList
@@ -25,11 +26,21 @@ Converting ActionScript to C#
 		public ArrayList inputs = new ArrayList();
 		inputs.length = 0; --> inputs.RemoveRange(0, inputs.Count);
 			https://msdn.microsoft.com/en-us/library/system.collections.arraylist.removerange.aspx
+
+		available.splice(index, 1);
+		-->
+		available.RemoveRange(index, 1);
+		This is different if the splice were also inserting items.
+		inputs.push(letter); --> inputs.Add(letter);
+	String --> string
+		s.toLowerCase() --> s.ToLower()
 	Explictly cast:
 		var letter:String = avaiable[i];
 		-->
 		string letter = (string) available[i];
 	Object --> Hashtable
+		var letters:Object = {};
+		Hashtable letters = new Hashtable();
                 if (letter in letters)
 		-->
 		if (letters.ContainsKey(letter))
@@ -51,7 +62,13 @@ Converting ActionScript to C#
 		http://stackoverflow.com/questions/8113570/c-set-a-member-object-value-using-reflection
 	if (a in b) --> if (b.containsKey(a))
 	ArrayList constructor from split to ToCharArray.
-	Function from camelCase --> CapitalCase.
+	Hierarchy in scene graph:
+		main.word
+		-->
+		main.transform.Find("word").gameObject
+		Could cache result.
+	Function from camelCase --> CapitalCase
+	.
 	Not supported:
 	ArrayList to string[] if certain will contain fixed length string.
 		available = text.split("");

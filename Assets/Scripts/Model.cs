@@ -74,7 +74,33 @@ public class Model {
 	 */
 	public ArrayList press(ArrayList presses)
 	{
-		return presses;
+		Hashtable letters = new Hashtable();
+		ArrayList selectsNow = new ArrayList();
+		for (int i = 0; i < presses.Count; i++)
+		{
+			string letter = (string) presses[i];
+			if (letters.ContainsKey(letter))
+			{
+				continue;
+			}
+			else
+			{
+				letters[letter] = true;
+			}
+			int index = available.IndexOf(letter);
+			if (0 <= index)
+			{
+				available.RemoveRange(index, 1);
+				inputs.Add(letter);
+				int selected = selects.IndexOf(letter);
+				if (0 <= selected)
+				{
+					selectsNow.Add(selected);
+					selects[selected] = letter.ToLower();
+				}
+			}
+		}
+		return selectsNow;
 	}
 
 	public void Update(float deltaSeconds) {
