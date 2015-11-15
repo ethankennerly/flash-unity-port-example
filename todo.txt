@@ -96,6 +96,11 @@ Converting ActionScript to C#
 	Function from camelCase --> CapitalCase
 	.
 	Not supported:
+	Explicit boolean conversion
+		if (state)
+		-->
+		if (null != state)
+
 	ArrayList to string[] if certain will contain fixed length string.
 		available = text.split("");
 		-->

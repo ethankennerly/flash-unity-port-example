@@ -146,7 +146,7 @@ public class Model {
 					}
 					repeat[submission] = true;
 					accepted = true;
-                        		// TODO scoreUp(submission);
+                        		scoreUp(submission);
 					bool complete = text.Length == submission.Length;
                         		// TODO prepareKnockback(submission.length, complete);
 					if (complete)
