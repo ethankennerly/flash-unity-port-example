@@ -10,9 +10,9 @@ FEATURES
 	Highlight selected letters.
 	Read help.
 	Read letters.
+	Read word 1 of 100.
 
 TODO
-	Read word 1 of 100.
 	On submit play animation.
 	On submit hear sound.
 	Animate letter tiles in Unity

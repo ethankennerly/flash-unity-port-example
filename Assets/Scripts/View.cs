@@ -67,6 +67,10 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 		help.text = model.help.ToString();
 		Text score = main.transform.Find("hud/score").GetComponent<Text>();
 		score.text = model.score.ToString();
+		Text level = main.transform.Find("hud/level").GetComponent<Text>();
+		level.text = model.levels.current().ToString();
+		Text levelMax = main.transform.Find("hud/levelMax").GetComponent<Text>();
+		levelMax.text = model.levels.count().ToString();
 	}
 
 

@@ -127,4 +127,14 @@ public class Levels {
 		}
 		return getParams();
 	}
+
+	public int current()
+	{
+		return index + 1;
+	}
+
+	public int count()
+	{
+		return parameters.Count;
+	}
 }
