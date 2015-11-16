@@ -4,13 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class View {
-	public int[] selects;
+	private AudioSource audio;
 	private Model model;
-	private GameObject main;
+	private Main main;
 
-	public View(Model theModel, GameObject theMainScene) {
+	public View(Model theModel, Main theMainScene) {
 		model = theModel;
 		main = theMainScene;
+		audio = main.gameObject.GetComponent<AudioSource>();
 	}
 
 	public bool IsLetterKeyDown(string letter)
@@ -46,10 +47,6 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
          */
         private void updateSelect(ArrayList selects, bool selected)
         {
-	    if (1 <= selects.Count)
-	    {
-		    this.selects = (int[]) selects.ToArray(typeof(int));
-	    }
             GameObject parent = main.transform.Find("word/state").gameObject;
 	string state = selected ? "selected" : "none";
             for (int s = 0; s < selects.Count; s++)
@@ -57,7 +54,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 int index = (int) selects[s];
                 string name = "Letter_" + index;
 		Toolkit.setState(parent.transform.Find(name).gameObject, state);
-                // TODO selectSound.play();
+                audio.PlayOneShot(main.selectSound);
             }
         }
 
@@ -95,7 +92,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 {
                     // TODO main.word.gotoAndPlay(state);
                     // TODO main.input.gotoAndPlay(state);
-                    // TODO shootSound.play();
+		    audio.PlayOneShot(main.shootSound);
                 }
                 resetSelect();
             }

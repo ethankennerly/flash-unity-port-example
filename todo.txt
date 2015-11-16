@@ -11,10 +11,10 @@ FEATURES
 	Read help.
 	Read letters.
 	Read word 1 of 100.
+	On type and submit, hear sound.
 
 TODO
 	On submit play animation.
-	On submit hear sound.
 	Animate letter tiles in Unity
 	Animate input in Unity
 	Word approaches over time.
@@ -112,6 +112,13 @@ Converting ActionScript to C#
 		-->
 		gameObject.GetComponent<Animator>().SetTrigger(state);
 			https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/animate-anything
+	Sound
+		private var shootSound:ShootSound = new ShootSound();
+		selectSound.play();
+		-->
+		public AudioClip selectSound;
+		audio = main.gameObject.GetComponent<AudioSource>();
+                audio.PlayOneShot(main.selectSound);
 Not supported:
 	4-spaces to tabs.
 	Explicit boolean conversion

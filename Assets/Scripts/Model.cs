@@ -196,7 +196,7 @@ public class Model {
         {
             points = submission.Length;
             score += points;
-	    Debug.Log("Model.scoreUp: points " + points + " increase score to " + score);
+	    // Debug.Log("Model.scoreUp: points " + points + " increase score to " + score);
         }
 
 	public void Update(float deltaSeconds) {
