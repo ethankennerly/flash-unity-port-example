@@ -8,10 +8,11 @@ FEATURES
 	If word in word list, next trial.
 	Backspace removes letter.
 	Highlight selected letters.
+	Read help.
+	Read letters.
 
 TODO
-	Structure HUD
-	Layout HUD
+	Read word 1 of 100.
 	On submit play animation.
 	On submit hear sound.
 	Animate letter tiles in Unity

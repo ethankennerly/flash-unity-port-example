@@ -64,7 +64,9 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	private void updateHud()
 	{
 		Text help = main.transform.Find("hud/help").GetComponent<Text>();
-		help.text = model.help;
+		help.text = model.help.ToString();
+		Text score = main.transform.Find("hud/score").GetComponent<Text>();
+		score.text = model.score.ToString();
 	}
 
 
