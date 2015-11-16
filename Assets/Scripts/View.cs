@@ -26,6 +26,7 @@ public class View {
 		updateSubmit();
 		updateLetters(main.transform.Find("word/state").gameObject, model.word);
 		updateLetters(main.transform.Find("input/state").gameObject, model.inputs);
+		updateLetters(main.transform.Find("input/output").gameObject, model.outputs);
 		updateHud();
 	}
 
@@ -92,6 +93,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 {
                     // TODO main.word.gotoAndPlay(state);
                     // TODO main.input.gotoAndPlay(state);
+		    Toolkit.setState(main.transform.Find("input").gameObject, "submit");
 		    audio.PlayOneShot(main.shootSound);
                 }
                 resetSelect();

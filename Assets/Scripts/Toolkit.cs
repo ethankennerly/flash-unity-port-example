@@ -28,13 +28,20 @@ public class Toolkit
 	 * In editor, deleted and recreated animator state transition.  Test case:  2015-11-15 Got error "Transition '' in state 'selcted' uses parameter 'none' which is not compatible with condition type"
 	 * http://answers.unity3d.com/questions/1070010/transition-x-in-state-y-uses-parameter-z-which-is.html
 	 */
-	public static void setState(GameObject gameObject, string state)
+	public static void setState(GameObject gameObject, string state, bool isRestart = true)
 	{
 		Animator animator = gameObject.GetComponent<Animator>();
 		if (null != animator && animator.isInitialized)
 		{
 			// Debug.Log("Toolkit.setState: " + gameObject + ": " + state);
-			animator.Play(state);
+			if (isRestart)
+			{
+				animator.Play(state);
+			}
+			else
+			{
+				animator.Play(state, -1, 0f);
+			}
 		}
 	}
 }
