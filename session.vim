@@ -79,27 +79,33 @@ badd +55 \archive\unity\race\Assets\RaceController.cs
 badd +2 \archive\unity\anagram\AnagramController.cs
 badd +10 AnagramController.cs
 badd +1 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Controller.as
-badd +183 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Model.as
+badd +190 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Model.as
 badd +42 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Main.as
-badd +19 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Levels.as
-badd +24 Model.cs
+badd +133 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Levels.as
+badd +18 Model.cs
 badd +9 AnagramModel.cs
-badd +19 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Words.as
-badd +20 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\View.as
+badd +14 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Words.as
+badd +111 ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\View.as
 badd +2 AnagramView.cs
-badd +21 Levels.cs
+badd +138 Levels.cs
 badd +13 Controller.cs
-badd +23 View.cs
-badd +9 Main.cs
-badd +18 Toolkit.cs
-badd +0 Words.cs
+badd +57 View.cs
+badd +12 Main.cs
+badd +24 Toolkit.cs
+badd +8 Words.cs
 args AnagramController.cs AnagramModel.cs AnagramView.cs Levels.cs
 edit \archive\unity\anagram\todo.txt
 set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
 argglobal
 edit \archive\unity\anagram\todo.txt
 setlocal keymap=
@@ -203,268 +209,144 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 29 - ((0 * winheight(0) + 16) / 32)
+let s:l = 17 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-29
-normal! 031l
-tabedit ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Levels.as
+17
+normal! 025l
+wincmd w
+argglobal
+edit \archive\unity\anagram\todo.txt
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != ''
+setlocal filetype=
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=8
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 120 - ((12 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+120
+normal! 025l
+wincmd w
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
+tabedit ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\View.as
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
-wincmd _ | wincmd |
-split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
-wincmd w
 wincmd w
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
+1wincmd k
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 10 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 66 + 66) / 133)
-exe '2resize ' . ((&lines * 10 + 16) / 33)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 66 + 66) / 133)
-exe '3resize ' . ((&lines * 9 + 16) / 33)
+exe '3resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 66 + 66) / 133)
-exe '4resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 66 + 66) / 133)
-exe '5resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 5resize ' . ((&columns * 66 + 66) / 133)
-exe '6resize ' . ((&lines * 9 + 16) / 33)
-exe 'vert 6resize ' . ((&columns * 66 + 66) / 133)
-argglobal
-edit ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Levels.as
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'actionscript'
-setlocal filetype=actionscript
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=mxmlc\ -compiler.debug\ -compiler.incremental
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'actionscript'
-setlocal syntax=actionscript
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 125 - ((4 * winheight(0) + 5) / 10)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-125
-normal! 0
-wincmd w
-argglobal
-edit ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\Model.as
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'actionscript'
-setlocal filetype=actionscript
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=mxmlc\ -compiler.debug\ -compiler.incremental
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'actionscript'
-setlocal syntax=actionscript
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 158 - ((3 * winheight(0) + 5) / 10)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-158
-normal! 010l
-wincmd w
 argglobal
 edit ..\..\..\..\flash\anagram-attack\src\com\finegamedesign\anagram\View.as
 setlocal keymap=
@@ -568,15 +450,16 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 77 - ((8 * winheight(0) + 4) / 9)
+let s:l = 39 - ((25 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-77
+39
 normal! 08l
 wincmd w
 argglobal
 4argu
+edit Toolkit.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -678,16 +561,16 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 28 - ((7 * winheight(0) + 5) / 10)
+let s:l = 43 - ((9 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-28
-normal! 02l
+43
+normal! 04l
 wincmd w
 argglobal
 4argu
-edit Model.cs
+edit View.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -789,137 +672,19 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 152 - ((3 * winheight(0) + 5) / 10)
+let s:l = 96 - ((6 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-152
-normal! 029l
+96
+normal! 071l
 wincmd w
-argglobal
-4argu
-edit Words.cs
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cs'
-setlocal filetype=cs
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=8
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cs'
-setlocal syntax=cs
-endif
-setlocal tabstop=8
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 13 - ((1 * winheight(0) + 4) / 9)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-13
-normal! 026l
-wincmd w
-5wincmd w
-exe '1resize ' . ((&lines * 10 + 16) / 33)
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 66 + 66) / 133)
-exe '2resize ' . ((&lines * 10 + 16) / 33)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 66 + 66) / 133)
-exe '3resize ' . ((&lines * 9 + 16) / 33)
+exe '3resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 66 + 66) / 133)
-exe '4resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 66 + 66) / 133)
-exe '5resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 5resize ' . ((&columns * 66 + 66) / 133)
-exe '6resize ' . ((&lines * 9 + 16) / 33)
-exe 'vert 6resize ' . ((&columns * 66 + 66) / 133)
 tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

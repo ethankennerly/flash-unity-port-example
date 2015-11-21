@@ -19,11 +19,12 @@ public class View {
 		return Input.GetKeyDown(letter.ToLower());
 	}
 
-	public void Update() {
+	public void update() {
 		updateBackspace();
 		ArrayList presses = model.getPresses(IsLetterKeyDown);
 		updateSelect(model.press(presses), true);
 		updateSubmit();
+		updatePosition();
 		updateLetters(main.transform.Find("word/state").gameObject, model.word);
 		updateLetters(main.transform.Find("input/state").gameObject, model.inputs);
 		updateLetters(main.transform.Find("input/output").gameObject, model.outputs);
@@ -110,6 +111,17 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 		Toolkit.setState(parent.transform.Find(name).gameObject, "none");
             }
         }
+
+	/**
+	 * Unity prohibits editing a property of position.
+	 */
+	private void updatePosition()
+	{
+		Transform transform = main.transform.Find("word");
+		Vector3 position = transform.position;
+		position.y = model.wordPosition * 0.1f;
+		transform.position = position;
+	}
 
 	/**
 	 * Find could be cached.

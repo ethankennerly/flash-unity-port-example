@@ -1,4 +1,4 @@
-using UnityEngine;
+using UnityEngine;  // Mathf
 using System.Collections;
 
 public class Model {
@@ -33,6 +33,7 @@ public class Model {
 	}
 
 	private void trial(Hashtable parameters) {
+		wordPosition = 0.0f;
 		help = "";
 		wordWidthPerSecond = -0.01f;
 		if (null != parameters["text"]) {
@@ -199,6 +200,29 @@ public class Model {
 	    // Debug.Log("Model.scoreUp: points " + points + " increase score to " + score);
         }
 
-	public void Update(float deltaSeconds) {
+	public void update(float deltaSeconds) 
+	{
+		updatePosition(deltaSeconds);	
 	}
+
+        public float width = 720f;
+
+        private void clampWordPosition()
+        {
+            float wordWidth = 160f;
+            float min = wordWidth - width;
+            if (wordPosition <= min)
+            {
+                help = "GAME OVER!"; //  TO SKIP ANY WORD, PRESS THE PAGEUP KEY.  TO GO BACK A WORD, PRESS THE PAGEDOWN KEY.";
+                helpState = "gameOver";
+            }
+            wordPosition = Mathf.Max(min, Mathf.Min(0f, wordPosition));
+        }
+
+        private void updatePosition(float seconds)
+        {
+            wordPosition += (seconds * width * wordWidthPerSecond);
+            clampWordPosition();
+            //- Debug.Log("Model.updatePosition: " + wordPosition);
+        }
 }

@@ -15,7 +15,7 @@ public class Main : MonoBehaviour {
 	}
 
 	public void Update() {
-		model.Update(Time.deltaTime);
-		view.Update();
+		model.update(Time.deltaTime);
+		view.update();
 	}
 }

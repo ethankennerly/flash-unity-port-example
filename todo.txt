@@ -12,13 +12,13 @@ FEATURES
 	Read letters.
 	Read word 1 of 100.
 	On type and submit, hear sound.
+	On submit play animation.
 
 TODO
-	On submit play animation.
-	Animate letter tiles in Unity
-	Animate input in Unity
 	Word approaches over time.
 	If word collides, game over.
+	Animate letter tiles in Unity
+	If enter twice, help.
 	Cheat to level up.
 
 Converting ActionScript to C#
