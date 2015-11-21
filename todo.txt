@@ -13,10 +13,10 @@ FEATURES
 	Read word 1 of 100.
 	On type and submit, hear sound.
 	On submit play animation.
+	Word approaches over time.
+	If word gets to bottom of screen, game over.
 
 TODO
-	Word approaches over time.
-	If word collides, game over.
 	Animate letter tiles in Unity
 	If enter twice, help.
 	Cheat to level up.

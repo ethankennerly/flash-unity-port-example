@@ -131,7 +131,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 		{
 			updateOutputHitsWord();
 		}
-		setPositionY(main.transform.Find("word"), model.wordPosition * 0.0325f);
+		setPositionY(main.transform.Find("word"), model.wordPositionScaled);
 	}
 
 	private void updateOutputHitsWord()

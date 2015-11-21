@@ -36,6 +36,7 @@ public class Model {
 	public string text;
 	public ArrayList word;
 	public float wordPosition;
+	public float wordPositionScaled;
 	public float wordWidthPerSecond;
 
 	private ArrayList available;
@@ -225,6 +226,12 @@ public class Model {
 	}
 
         public float width = 720f;
+        public float scale = 1.0f;
+
+        public void scaleToScreen(float screenWidth)
+        {
+            scale = screenWidth / width;
+        }
 
         private void clampWordPosition()
         {
@@ -242,6 +249,7 @@ public class Model {
         {
             wordPosition += (seconds * width * wordWidthPerSecond);
             clampWordPosition();
+            wordPositionScaled = wordPosition * scale;
             //- Debug.Log("Model.updatePosition: " + wordPosition);
         }
 
