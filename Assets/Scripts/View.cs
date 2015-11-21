@@ -115,12 +115,31 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	/**
 	 * Unity prohibits editing a property of position.
 	 */
+	private void setPositionY(Transform transform, float y)
+	{
+		Vector3 position = transform.position;
+		position.y = y;
+		transform.position = position;
+	}
+
+	/**
+	 * Unity prohibits editing a property of position.
+	 */
 	private void updatePosition()
 	{
-		Transform transform = main.transform.Find("word");
-		Vector3 position = transform.position;
-		position.y = model.wordPosition * 0.1f;
-		transform.position = position;
+		if (model.mayKnockback())
+		{
+			updateOutputHitsWord();
+		}
+		setPositionY(main.transform.Find("word"), model.wordPosition * 0.0325f);
+	}
+
+	private void updateOutputHitsWord()
+	{
+                if (model.onOutputHitsWord())
+		{
+			audio.PlayOneShot(main.explosionBigSound);
+		}
 	}
 
 	/**

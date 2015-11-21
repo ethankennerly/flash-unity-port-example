@@ -1,7 +1,26 @@
 using UnityEngine;  // Mathf
 using System.Collections;
+using System;  // Random;
 
 public class Model {
+
+	private static System.Random rng = new System.Random();
+
+	/**
+	 * Unity Random() includes 0.0 and 1.0 which would be out of index range.
+	 * http://docs.unity3d.com/ScriptReference/Random-value.html
+	 */
+        private static void shuffle(ArrayList cards)
+        {
+            for (int i = cards.Count - 1; 1 <= i; i--)
+            {
+                int r = (int) (rng.NextDouble() * (i + 1f));
+                object swap = cards[r];
+                cards[r] = cards[i];
+                cards[i] = swap;
+            }
+        }
+
 	public ArrayList completes = new ArrayList();
 	public string help;
 	public string helpState;
@@ -167,7 +186,7 @@ public class Model {
 					accepted = true;
                         		scoreUp(submission);
 					bool complete = text.Length == submission.Length;
-                        		// TODO prepareKnockback(submission.length, complete);
+                        		prepareKnockback(submission.Length, complete);
 					if (complete)
 					{
 						completes = (ArrayList) word.Clone();
@@ -224,5 +243,50 @@ public class Model {
             wordPosition += (seconds * width * wordWidthPerSecond);
             clampWordPosition();
             //- Debug.Log("Model.updatePosition: " + wordPosition);
+        }
+
+        private float outputKnockback = 0.0f;
+
+        public bool mayKnockback()
+        {
+            return 0 < outputKnockback && 1 <= outputs.Count;
+        }
+
+        /**
+         * Clamp word to appear on screen.  Test case:  2015-04-18 Complete word.  See next word slide in.
+         */
+        private void prepareKnockback(int length, bool complete)
+        {
+            float perLength = 
+                                   0.03f;
+                                   // 0.05f;
+                                   // 0.1f;
+            outputKnockback = perLength * width * length;
+            if (complete) {
+                outputKnockback *= 3f;
+            }
+            clampWordPosition();
+        }
+
+        public bool onOutputHitsWord()
+        {
+            bool enabled = mayKnockback();
+            if (enabled)
+            {
+                wordPosition += outputKnockback;
+                shuffle(word);
+                selects = (ArrayList) word.Clone();
+                for (int i = 0; i < inputs.Count; i++)
+                {
+                    string letter = (string) inputs[i];
+                    int selected = selects.IndexOf(letter);
+                    if (0 <= selected)
+                    {
+                        selects[selected] = letter.ToLower();
+                    }
+                }
+                outputKnockback = 0;
+            }
+            return enabled;
         }
 }

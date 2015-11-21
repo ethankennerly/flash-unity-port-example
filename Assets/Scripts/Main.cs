@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Main : MonoBehaviour {
+	public AudioClip explosionBigSound;
 	public AudioClip selectSound;
 	public AudioClip shootSound;
 
