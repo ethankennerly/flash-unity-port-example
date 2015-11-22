@@ -26,8 +26,8 @@ public class View {
 		updateSubmit();
 		updatePosition();
 		updateLetters(main.transform.Find("word/state").gameObject, model.word);
-		updateLetters(main.transform.Find("input/state").gameObject, model.inputs);
-		updateLetters(main.transform.Find("input/output").gameObject, model.outputs);
+		updateLetters(main.transform.Find("input/state").gameObject, model.inputs, "Letter_{0}");
+		updateLetters(main.transform.Find("input/output").gameObject, model.outputs, "Letter_{0}");
 		updateHud();
 	}
 
@@ -54,7 +54,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
             for (int s = 0; s < selects.Count; s++)
             {
                 int index = (int) selects[s];
-                string name = "Letter_" + index;
+                string name = "bone_" + index + "/letter";
 		Toolkit.setState(parent.transform.Find(name).gameObject, state);
                 audio.PlayOneShot(main.selectSound);
             }
@@ -107,7 +107,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
             int max = model.letterMax;
             for (int index = 0; index < max; index++)
             {
-                string name = "Letter_" + index;
+                string name = "bone_" + index + "/letter";
 		Toolkit.setState(parent.transform.Find(name).gameObject, "none");
             }
         }
@@ -146,11 +146,11 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	 * Find could be cached.
 	 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 	 */
-        private void updateLetters(GameObject parent, ArrayList letters) {
+        private void updateLetters(GameObject parent, ArrayList letters, string namePattern = "bone_{0}/letter") {
 		int max = model.letterMax;
 		for (int i = 0; i < max; i++)
 		{
-			string name = "Letter_" + i;
+			string name = namePattern.Replace("{0}", i.ToString());
 			GameObject letter = parent.transform.Find(name).gameObject;
 			if (null != letter)
 			{
