@@ -82,9 +82,11 @@ public class View {
         private void updateBackspace()
         {
             if (Input.GetKeyDown("delete")
-            || Input.GetKeyDown("backspace"))
+            || Input.GetKeyDown("backspace")
+	    || "delete" == letterMouseDown)
             {
                 updateSelect(model.backspace(), false);
+		letterMouseDown = null;
             }
         }
 

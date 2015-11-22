@@ -19,9 +19,9 @@ FEATURES
 	If repeat word, read help and shake sword.
 	Cheat to level up.
 	Mouse down to select a letter.
+	Button to delete last letter.
 
 TODO
-	Mouse down on sword tip to delete last letter.
 	Mouse down on sword hilt to submit.
 	Mouse down to select that letter when there are 2 copies.
 
