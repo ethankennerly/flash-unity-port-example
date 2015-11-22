@@ -25,7 +25,7 @@ public class View {
 		updateSelect(model.press(presses), true);
 		updateSubmit();
 		updatePosition();
-		updateLetters(main.transform.Find("word/state").gameObject, model.word);
+		updateLetters(main.transform.Find("word/state").gameObject, model.word, "bone_{0}/letter");
 		updateLetters(main.transform.Find("input/state").gameObject, model.inputs, "Letter_{0}");
 		updateLetters(main.transform.Find("input/output").gameObject, model.outputs, "Letter_{0}");
 		updateHud();
@@ -93,7 +93,6 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 if (null != state) 
                 {
                     // TODO main.word.gotoAndPlay(state);
-                    // TODO main.input.gotoAndPlay(state);
 		    Toolkit.setState(main.transform.Find("input").gameObject, "submit");
 		    audio.PlayOneShot(main.shootSound);
                 }
@@ -136,8 +135,11 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 
 	private void updateOutputHitsWord()
 	{
+		GameObject target = main.transform.Find("word/state").gameObject;
                 if (model.onOutputHitsWord())
 		{
+			Toolkit.setState(target, "hit");
+
 			audio.PlayOneShot(main.explosionBigSound);
 		}
 	}
@@ -146,7 +148,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	 * Find could be cached.
 	 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 	 */
-        private void updateLetters(GameObject parent, ArrayList letters, string namePattern = "bone_{0}/letter") {
+        private void updateLetters(GameObject parent, ArrayList letters, string namePattern) {
 		int max = model.letterMax;
 		for (int i = 0; i < max; i++)
 		{
