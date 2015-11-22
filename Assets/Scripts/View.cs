@@ -14,14 +14,41 @@ public class View {
 		audio = main.gameObject.GetComponent<AudioSource>();
 	}
 
+	private string letterMouseDown;
+
+	/**
+	 * Remember which letter was just clicked on this update.
+	 *
+	 * http://answers.unity3d.com/questions/20328/onmousedown-to-return-object-name.html
+	 */
+	private void updateMouseDown()
+	{
+		letterMouseDown = null;
+		if (Input.GetMouseButtonDown(0)) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit)) {
+				letterMouseDown = hit.transform.Find("text3d").GetComponent<TextMesh>().text.ToLower();
+				Debug.Log("View.updateMouseDown: " + letterMouseDown);
+			}
+		}
+	}
+
+	private bool IsLetterMouseDown(string letter)
+	{
+		return letter == letterMouseDown;
+	}
+
 	public bool IsLetterKeyDown(string letter)
 	{
-		return Input.GetKeyDown(letter.ToLower());
+		return Input.GetKeyDown(letter.ToLower())
+			|| IsLetterMouseDown(letter.ToLower());
 	}
 
 	public void update() {
 		updateCheat();
 		updateBackspace();
+		updateMouseDown();
 		ArrayList presses = model.getPresses(IsLetterKeyDown);
 		updateSelect(model.press(presses), true);
 		updateSubmit();

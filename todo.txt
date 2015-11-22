@@ -18,9 +18,12 @@ FEATURES
 	Letters scatter on submit and then crawl.
 	If repeat word, read help and shake sword.
 	Cheat to level up.
+	Mouse down to select a letter.
 
 TODO
-	Touch to toggle selection of a letter.
+	Mouse down on sword tip to delete last letter.
+	Mouse down on sword hilt to submit.
+	Mouse down to select that letter when there are 2 copies.
 
 Converting ActionScript to C#
 	Hopefully an algorithm that could be automated.  This sacrifices optimal runtime performance to speed up porting.
