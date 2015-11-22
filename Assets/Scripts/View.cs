@@ -29,7 +29,7 @@ public class View {
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {
 				letterMouseDown = hit.transform.Find("text3d").GetComponent<TextMesh>().text.ToLower();
-				Debug.Log("View.updateMouseDown: " + letterMouseDown);
+				// Debug.Log("View.updateMouseDown: " + letterMouseDown);
 			}
 		}
 	}
@@ -134,8 +134,10 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
         private void updateSubmit()
         {
             if (Input.GetKeyDown("space")
-            || Input.GetKeyDown("return"))
+            || Input.GetKeyDown("return")
+	    || "submit" == letterMouseDown)
             {
+	    	letterMouseDown = null;
                 string state = model.submit();
                 if (null != state) 
                 {

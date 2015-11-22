@@ -20,9 +20,9 @@ FEATURES
 	Cheat to level up.
 	Mouse down to select a letter.
 	Button to delete last letter.
+	Button to submit.
 
 TODO
-	Mouse down on sword hilt to submit.
 	Mouse down to select that letter when there are 2 copies.
 
 Converting ActionScript to C#
