@@ -15,11 +15,12 @@ FEATURES
 	On submit play animation.
 	Word approaches over time.
 	If word gets to bottom of screen, game over.
+	Letters scatter on submit and then crawl.
+	If repeat word, read help and shake sword.
 
 TODO
-	Animate letter tiles in Unity
-	If enter twice, help.
 	Cheat to level up.
+	Touch to toggle selection of a letter.
 
 Converting ActionScript to C#
 	Hopefully an algorithm that could be automated.  This sacrifices optimal runtime performance to speed up porting.

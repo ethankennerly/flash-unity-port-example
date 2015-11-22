@@ -93,7 +93,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 if (null != state) 
                 {
                     // TODO main.word.gotoAndPlay(state);
-		    Toolkit.setState(main.transform.Find("input").gameObject, "submit");
+		    Toolkit.setState(main.transform.Find("input").gameObject, state);
 		    audio.PlayOneShot(main.shootSound);
                 }
                 resetSelect();
