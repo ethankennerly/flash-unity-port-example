@@ -20,6 +20,7 @@ public class View {
 	}
 
 	public void update() {
+		updateCheat();
 		updateBackspace();
 		ArrayList presses = model.getPresses(IsLetterKeyDown);
 		updateSelect(model.press(presses), true);
@@ -29,6 +30,23 @@ public class View {
 		updateLetters(main.transform.Find("input/state").gameObject, model.inputs, "Letter_{0}");
 		updateLetters(main.transform.Find("input/output").gameObject, model.outputs, "Letter_{0}");
 		updateHud();
+	}
+
+	/**
+	 * http://answers.unity3d.com/questions/762073/c-list-of-string-name-for-inputgetkeystring-name.html
+	 */
+	private void updateCheat()
+	{
+		if (Input.GetKeyDown("page up"))
+		{
+			model.cheatLevelUp(1);
+			audio.PlayOneShot(main.selectSound);
+		}
+		else if (Input.GetKeyDown("page down"))
+		{
+			model.cheatLevelUp(-1);
+			audio.PlayOneShot(main.selectSound);
+		}
 	}
 
         /**

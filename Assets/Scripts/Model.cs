@@ -163,6 +163,7 @@ public class Model {
 	{
 		string submission = string.Join("", ((string []) inputs.ToArray(typeof(string))));
 		bool accepted = false;
+		state = "wrong";
 		if (1 <= submission.Length)
 		{
 			if (wordHash.ContainsKey(submission))
@@ -220,6 +221,13 @@ public class Model {
 	    // Debug.Log("Model.scoreUp: points " + points + " increase score to " + score);
         }
 
+	public void cheatLevelUp(int add)
+	{
+		score = 0;
+		trial(levels.up(add));
+		wordPosition = 0.0f;
+	}
+
 	public void update(float deltaSeconds) 
 	{
 		updatePosition(deltaSeconds);	
@@ -233,13 +241,16 @@ public class Model {
             scale = screenWidth / width;
         }
 
+        /**
+         * Test case:  2015-03 Use Mac. Rosa Zedek expects to read key to change level.
+         */
         private void clampWordPosition()
         {
             float wordWidth = 160f;
             float min = wordWidth - width;
             if (wordPosition <= min)
             {
-                help = "GAME OVER!"; //  TO SKIP ANY WORD, PRESS THE PAGEUP KEY.  TO GO BACK A WORD, PRESS THE PAGEDOWN KEY.";
+                help = "GAME OVER! TO SKIP ANY WORD, PRESS THE PAGEUP KEY (MAC: FN+UP).  TO GO BACK A WORD, PRESS THE PAGEDOWN KEY (MAC: FN+DOWN).";
                 helpState = "gameOver";
             }
             wordPosition = Mathf.Max(min, Mathf.Min(0f, wordPosition));

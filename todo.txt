@@ -17,9 +17,9 @@ FEATURES
 	If word gets to bottom of screen, game over.
 	Letters scatter on submit and then crawl.
 	If repeat word, read help and shake sword.
+	Cheat to level up.
 
 TODO
-	Cheat to level up.
 	Touch to toggle selection of a letter.
 
 Converting ActionScript to C#
