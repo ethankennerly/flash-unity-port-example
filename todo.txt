@@ -23,6 +23,9 @@ FEATURES
 	Button to submit.
 
 TODO
+	Play in WebGL or WebPlayer.
+		WebGL says "NotSupportedException: Collection is read-only"
+		http://stackoverflow.com/questions/21471593/why-is-my-ilist-read-only
 	Mouse down to select that letter when there are 2 copies.
 
 Converting ActionScript to C#
