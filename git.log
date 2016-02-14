@@ -1,0 +1,40 @@
+Sun Feb 14 10:01:17 2016 Play on Android phone, Nexus 5.
+Thu Jan 28 21:44:18 2016 Update TODO.
+Sun Nov 22 11:54:48 2015 Button to submit.
+Sun Nov 22 11:43:47 2015 Button to delete last letter.
+Sun Nov 22 11:34:10 2015 Mouse down to select a letter.
+Sun Nov 22 10:37:54 2015 Page Up/Down to cheat level.  (Mac: Fn Up/Down)
+Sun Nov 22 10:19:26 2015 If repeat word, shake sword.
+Sun Nov 22 09:50:24 2015 Letters scatter on submit and then crawl.
+Sun Nov 22 09:23:49 2015 One letter is hit and moves.
+Sun Nov 22 09:11:45 2015 Parent bone to each letter to prepare to move.
+Sat Nov 21 14:05:55 2015 If word gets to bottom of screen, game over.
+Sat Nov 21 10:58:56 2015 Type sub-word.  Knockback letters.
+Sat Nov 21 10:22:00 2015 Word moves down screen.
+Sun Nov 15 21:01:40 2015 On submit, input rotates upward.
+Sun Nov 15 20:24:11 2015 Input letters on blue background.
+Sun Nov 15 20:14:35 2015 On type and submit, hear sound.
+Sun Nov 15 16:07:14 2015 Read word level.
+Sun Nov 15 16:01:03 2015 Read number of letters entered.
+Sun Nov 15 15:51:56 2015 At each level, read help in UI text.
+Sun Nov 15 14:58:38 2015 Animate selecting letters in multiple words.
+Sun Nov 15 12:32:47 2015 Animate select any letter.
+Sun Nov 15 12:31:14 2015 Animate select first letter.
+Sun Nov 15 11:32:23 2015 Line port backspace to delete last letter.
+Sun Nov 15 11:26:34 2015 Line port model of backspace.
+Sun Nov 15 11:18:55 2015 Port 100 levels.
+Sun Nov 15 10:42:32 2015 Submit a word.  Log score.
+Sun Nov 15 10:28:20 2015 Port model of word submission from AS3 to C#.
+Sun Nov 15 09:06:48 2015 Press letter key, input letter appears.
+Sun Nov 15 09:00:55 2015 Port model of keypress from ActionScript to C#.
+Sun Nov 15 08:32:47 2015 Extract splitString to Toolkit.
+Sat Nov 14 12:48:06 2015 Structure animation of output.
+Sat Nov 14 12:16:35 2015 Hide invisible letters.
+Sat Nov 14 11:56:50 2015 Read letters of "START".
+Sat Nov 14 09:21:08 2015 Match file base names from ActionScript version.
+Sat Nov 14 09:11:40 2015 Convert level 0 data from ActionScript to C#.
+Sun Nov 8 15:37:05 2015 Stub word and level parameters variable.
+Sun Nov 8 15:27:37 2015 Stub model and view.
+Sun Nov 8 14:48:19 2015 Read letters 0 to 9.
+Sun Nov 8 13:50:05 2015 Structure text of one letter tile.
+Sun Nov 8 13:48:26 2015 Initial commit
