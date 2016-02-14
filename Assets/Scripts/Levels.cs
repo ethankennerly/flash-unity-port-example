@@ -10,10 +10,10 @@ public class Levels {
          * http://www.cse.unr.edu/~cohen/text.php
          */
 	public ArrayList parameters = new ArrayList{
-            new Hashtable(){{"text", "START"}, {"help", "ANAGRAM ATTACK\n\nCLICK HERE. TYPE \"START\".  PRESS THE SPACE KEY OR ENTER KEY."},
+            new Hashtable(){{"text", "START"}, {"help", "ANAGRAM ATTACK\n\nTAP THE LETTERS \"START.\"  TAP SUBMIT."},
              {"wordWidthPerSecond", 0.0f},
              {"wordPosition", 0.0f}},
-            new Hashtable(){{"text", "LSEPL"}, {"help", "TO ADVANCE, USE ALL THE LETTERS.  HINT:  \"SPELL\".  THEN PRESS THE SPACE KEY OR ENTER KEY."}},
+            new Hashtable(){{"text", "LSEPL"}, {"help", "TO ADVANCE, USE ALL THE LETTERS.  HINT:  \"SPELL\".  THEN TAP SUBMIT."}},
             new Hashtable(){{"text", "DWORS"}, {"help", "SHORTER WORDS SHUFFLE SAME LETTERS. EXAMPLES: \"ROD\", \"RODS\", \"WORD\", \"SWORD\"."}},
             new Hashtable(){{"text", "STARE"}, {"help", "SHORTER WORDS KNOCKBACK.  YOU CAN USE EACH SHORT WORD ONCE. EXAMPLE:  \"EAT\", \"TEAR\", \"STARE\""}},
             new Hashtable(){{"text", "FOR"}, {"help", "WORDS WITH FEW LETTERS MOVE FAST!"}},
@@ -66,7 +66,7 @@ public class Levels {
             new Hashtable(){{"text", "SUBTLE"}},
             new Hashtable(){{"text", "SPARSE"}},
             new Hashtable(){{"text", "REWARD"}},
-            new Hashtable(){{"text", "REPLAYS"}, {"help", "NEXT SESSION, TO SKIP WORDS, PRESS PAGEUP."}},
+            new Hashtable(){{"text", "REPLAYS"}}, // , {"help", "NEXT SESSION, TO SKIP WORDS, PRESS PAGEUP."}},
             new Hashtable(){{"text", "MANTEL"}},
             new Hashtable(){{"text", "DESIGN"}},
             new Hashtable(){{"text", "LASTED"}},

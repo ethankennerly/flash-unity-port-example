@@ -21,8 +21,16 @@ FEATURES
 	Mouse down to select a letter.
 	Button to delete last letter.
 	Button to submit.
+	Play on Android phone.
 
 TODO
+	When tap a letter that is duplicated, select that letter tapped.
+	Cheat to go up and down levels.
+	Slow sliding moving letters to tap conveniently.
+	More responsive.
+	Spider Word.  Looks like a spider on a thread.
+	Analytics.
+	Google Play Store.
 	Play in WebGL or WebPlayer.
 		WebGL says "NotSupportedException: Collection is read-only"
 		http://stackoverflow.com/questions/21471593/why-is-my-ilist-read-only

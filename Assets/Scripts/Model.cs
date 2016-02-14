@@ -68,7 +68,7 @@ public class Model {
 		if (null != parameters["wordPosition"]) {
 			wordPosition = (float) parameters["wordPosition"];
 		}
-		available = Toolkit.splitString(text);
+		available = Toolkit.SplitString(text);
 		word = (ArrayList) available.Clone();
 		selects = (ArrayList) word.Clone();
 		repeat = new Hashtable();
