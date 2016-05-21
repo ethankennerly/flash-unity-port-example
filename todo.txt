@@ -29,6 +29,8 @@ FEATURES
 TODO
 
 	Calibrate level up.  
+	Sword goes off to the right.
+		Repeat word.  Jennifer Russ expects to see the word was repeated.
 	Partially sort anagrams by word frequency.  (example:  stoure)
 	When tap a letter that is duplicated, select that letter tapped.
 	Cheat to go up and down levels.
