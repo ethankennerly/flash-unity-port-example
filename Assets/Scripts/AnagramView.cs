@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using com.finegamedesign.anagram;
 
-public class View {
+public class AnagramView {
 	private AudioSource audio;
 	private Model model;
 	private Main main;
 
-	public View(Model theModel, Main theMainScene) {
+	public AnagramView(Model theModel, Main theMainScene) {
 		model = theModel;
 		main = theMainScene;
 		audio = main.gameObject.GetComponent<AudioSource>();
@@ -49,7 +50,7 @@ public class View {
 		updateCheat();
 		updateBackspace();
 		updateMouseDown();
-		ArrayList presses = model.getPresses(IsLetterKeyDown);
+		List<string> presses = model.getPresses(IsLetterKeyDown);
 		updateSelect(model.press(presses), true);
 		updateSubmit();
 		updatePosition();
@@ -94,7 +95,7 @@ public class View {
          * Each selected letter in word plays animation "selected".
 Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
          */
-        private void updateSelect(ArrayList selects, bool selected)
+        private void updateSelect(List<int> selects, bool selected)
         {
             GameObject parent = main.transform.Find("word/state").gameObject;
 	string state = selected ? "selected" : "none";
@@ -102,7 +103,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
             {
                 int index = (int) selects[s];
                 string name = "bone_" + index + "/letter";
-		Toolkit.setState(parent.transform.Find(name).gameObject, state);
+		ViewUtil.SetState(parent.transform.Find(name).gameObject, state);
                 audio.PlayOneShot(main.selectSound);
             }
         }
@@ -142,7 +143,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
                 if (null != state) 
                 {
                     // TODO main.word.gotoAndPlay(state);
-		    Toolkit.setState(main.transform.Find("input").gameObject, state);
+		    ViewUtil.SetState(main.transform.Find("input").gameObject, state);
 		    audio.PlayOneShot(main.shootSound);
                 }
                 resetSelect();
@@ -156,7 +157,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
             for (int index = 0; index < max; index++)
             {
                 string name = "bone_" + index + "/letter";
-		Toolkit.setState(parent.transform.Find(name).gameObject, "none");
+		ViewUtil.SetState(parent.transform.Find(name).gameObject, "none");
             }
         }
 
@@ -187,7 +188,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 		GameObject target = main.transform.Find("word/state").gameObject;
                 if (model.onOutputHitsWord())
 		{
-			Toolkit.setState(target, "hit");
+			ViewUtil.SetState(target, "hit");
 
 			audio.PlayOneShot(main.explosionBigSound);
 		}
@@ -197,7 +198,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	 * Find could be cached.
 	 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 	 */
-        private void updateLetters(GameObject parent, ArrayList letters, string namePattern) {
+        private void updateLetters(GameObject parent, List<string> letters, string namePattern) {
 		int max = model.letterMax;
 		for (int i = 0; i < max; i++)
 		{

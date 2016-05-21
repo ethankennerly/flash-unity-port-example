@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using com.finegamedesign.anagram;
 
 public class Main : MonoBehaviour {
 	public AudioClip explosionBigSound;
@@ -11,12 +12,31 @@ public class Main : MonoBehaviour {
 	public float wordPositionScaled;
 
 	private Model model;
-	private View view;
+	private AnagramView view;
 
 	public void Start() {
 		model = new Model();
+		pushWords();
+		model.wordHash = new Words().init();
 		model.scaleToScreen(9.5f);
-		view = new View(model, this);
+		view = new AnagramView(model, this);
+	}
+
+	private void pushWords()
+	{
+		string text = Toolkit.Read("text/anagram_words.txt");
+		string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
+		pushWords(model.levels.parameters, words);
+	}
+
+	private static void pushWords(ArrayList parameters, string[] words)
+	{
+		for (int w = 0; w < words.Length; w++) {
+			Dictionary<string, dynamic> 
+			parameter = new Dictionary<string, dynamic>(){
+				{"text", words[w]}};
+			parameters.Add(parameter);
+		}
 	}
 
 	public void Update() {
