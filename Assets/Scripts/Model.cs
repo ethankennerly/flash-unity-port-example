@@ -314,8 +314,8 @@ namespace com.finegamedesign.anagram
 			    }
 			    else {
 				    float normal = (float)(((width + wordPosition) / width) - 0.5f) * 2.0f;
-				    float normal = Mathf.Max(-1.0f, Mathf.Min(1.0f, normal));
-				    progress *= radius;
+				    normal = Mathf.Max(-1.0f, Mathf.Min(1.0f, normal));
+				    float progress = normal * radius;
 				    Debug.Log("Model.submit: progress " + progress + " normal " + normal + " wordPosition " + wordPosition);
 				    trial(levels.progress(progress));
 			    }
