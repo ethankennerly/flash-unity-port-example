@@ -22,12 +22,14 @@ FEATURES
 	Button to delete last letter.
 	Button to submit.
 	Play on Android phone.
+	Append word list levels from text asset.
+	Prerequisite levels with messages.
+	Adjust level by relative speed.
 
 TODO
-	Append word list levels from text asset.
-	Optionally splice in 2000 unique anagrams.
-	Prerequisite levels with messages.
-	Adjust level by relative performance.
+
+	Observe Jennifer play.
+	Partially sort anagrams by word frequency.
 	When tap a letter that is duplicated, select that letter tapped.
 	Cheat to go up and down levels.
 	Slow sliding moving letters to tap conveniently.

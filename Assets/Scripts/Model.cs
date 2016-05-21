@@ -24,6 +24,7 @@ namespace com.finegamedesign.anagram
          * From letter graphic.
          */
         internal float letterWidth = 42.0f;
+        internal float wordWidth = 160.0f;
         internal delegate /*<dynamic>*/void ActionDelegate();
         internal /*<Function>*/ActionDelegate onComplete;
         internal delegate bool IsJustPressed(string letter);
@@ -36,6 +37,7 @@ namespace com.finegamedesign.anagram
         internal float wordPositionScaled = 0.0f;
         internal int points = 0;
         internal int score = 0;
+        internal int tutorLevel = 0;
         internal string state;
         internal Levels levels = new Levels();
         private List<string> available;
@@ -48,6 +50,7 @@ namespace com.finegamedesign.anagram
         
         public Model()
         {
+	    tutorLevel = levels.parameters.Count;
             trial(levels.getParams());
         }
         
@@ -122,11 +125,10 @@ namespace com.finegamedesign.anagram
          */
         private void clampWordPosition()
         {
-            float wordWidth = 160;
             float min = wordWidth - width;
             if (wordPosition <= min)
             {
-                help = "GAME OVER! TO SKIP ANY WORD, PRESS THE PAGEUP KEY (MAC: FN+UP).  TO GO BACK A WORD, PRESS THE PAGEDOWN KEY (MAC: FN+DOWN).";
+                help = "GAME OVER!";
                 helpState = "gameOver";
             }
             wordPosition = Mathf.Max(min, Mathf.Min(0, wordPosition));
@@ -306,7 +308,15 @@ namespace com.finegamedesign.anagram
                         if (complete)
                         {
                             completes = DataUtil.CloneList(word);
-                            trial(levels.up());
+			    if (levels.current() < tutorLevel) {
+				    trial(levels.up());
+			    }
+			    else {
+				    float progress = (float)(wordPosition / 5 * wordWidth) - 1.0f;
+				    float radius = -0.0625f;
+				    progress = Mathf.Max(-radius, Mathf.Min(radius, progress));
+				    trial(levels.progress(progress));
+			    }
                             state = "complete";
                             if (null != onComplete)
                             {

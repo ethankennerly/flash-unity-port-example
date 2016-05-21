@@ -55,7 +55,6 @@ namespace com.finegamedesign.anagram
                 , {
                     "help", "WORDS WITH FEW LETTERS MOVE FAST!"}
             }
-	    /*
             ,
             new Dictionary<string, dynamic>(){
                 {
@@ -116,7 +115,6 @@ namespace com.finegamedesign.anagram
                 {
                     "text", "LEAD"}
             }
-	    */
             ,
             new Dictionary<string, dynamic>(){
                 {
@@ -124,7 +122,6 @@ namespace com.finegamedesign.anagram
                 , {
                     "help", "FOR BONUS POINTS, FIRST ENTER SHORT WORDS.  EXAMPLES: 'BE', 'BATS', 'AT'."}
             }
-	    /*
             ,
             new Dictionary<string, dynamic>(){
                 {
@@ -543,7 +540,6 @@ namespace com.finegamedesign.anagram
                 {
                     "text", "WIN"}
             }
-	    */
         }
         ;
         
@@ -552,12 +548,6 @@ namespace com.finegamedesign.anagram
             return (Dictionary<string, dynamic>)parameters[index];
         }
         
-        internal Dictionary<string, dynamic> progress(float fraction)
-	{
-		int add = (int)(fraction * DataUtil.Length(parameters));
-		return up(add);
-	}
-
         internal Dictionary<string, dynamic> up(int add = 1)
         {
             index = (index + add) % DataUtil.Length(parameters);
