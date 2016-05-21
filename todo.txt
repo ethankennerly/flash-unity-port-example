@@ -28,8 +28,8 @@ FEATURES
 
 TODO
 
-	Observe Jennifer play.
-	Partially sort anagrams by word frequency.
+	Calibrate level up.  
+	Partially sort anagrams by word frequency.  (example:  stoure)
 	When tap a letter that is duplicated, select that letter tapped.
 	Cheat to go up and down levels.
 	Slow sliding moving letters to tap conveniently.

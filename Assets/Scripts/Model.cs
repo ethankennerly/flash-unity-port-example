@@ -47,6 +47,7 @@ namespace com.finegamedesign.anagram
         private List<string> selects;
         internal Dictionary<string, dynamic> wordHash;
         private bool isVerbose = false;
+    	private float radius = 0.0625f;
         
         public Model()
         {
@@ -312,9 +313,10 @@ namespace com.finegamedesign.anagram
 				    trial(levels.up());
 			    }
 			    else {
-				    float progress = (float)(wordPosition / 5 * wordWidth) - 1.0f;
-				    float radius = -0.0625f;
-				    progress = Mathf.Max(-radius, Mathf.Min(radius, progress));
+				    float normal = (float)(((width + wordPosition) / width) - 0.5f) * 2.0f;
+				    float normal = Mathf.Max(-1.0f, Mathf.Min(1.0f, normal));
+				    progress *= radius;
+				    Debug.Log("Model.submit: progress " + progress + " normal " + normal + " wordPosition " + wordPosition);
 				    trial(levels.progress(progress));
 			    }
                             state = "complete";
