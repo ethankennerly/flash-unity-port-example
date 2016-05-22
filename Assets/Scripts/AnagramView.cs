@@ -67,46 +67,46 @@ public class AnagramView {
 	{
 		if (Input.GetKeyDown("page up"))
 		{
-			model.cheatLevelUp(1);
+			model.levelUp();
 			audio.PlayOneShot(main.selectSound);
 		}
 		else if (Input.GetKeyDown("page down"))
 		{
-			model.cheatLevelUp(-1);
+			model.levelDownMax();
 			audio.PlayOneShot(main.selectSound);
 		}
 	}
 
-        /**
-         * Delete or backspace:  Remove last letter.
-         */
-        private void updateBackspace()
-        {
-            if (Input.GetKeyDown("delete")
-            || Input.GetKeyDown("backspace")
-	    || "delete" == letterMouseDown)
-            {
-                updateSelect(model.backspace(), false);
+		/**
+		 * Delete or backspace:  Remove last letter.
+		 */
+		private void updateBackspace()
+		{
+			if (Input.GetKeyDown("delete")
+			|| Input.GetKeyDown("backspace")
+		|| "delete" == letterMouseDown)
+			{
+				updateSelect(model.backspace(), false);
 		letterMouseDown = null;
-            }
-        }
+			}
+		}
 
-        /**
-         * Each selected letter in word plays animation "selected".
+		/**
+		 * Each selected letter in word plays animation "selected".
 Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
-         */
-        private void updateSelect(List<int> selects, bool selected)
-        {
-            GameObject parent = main.transform.Find("word/state").gameObject;
+		 */
+		private void updateSelect(List<int> selects, bool selected)
+		{
+			GameObject parent = main.transform.Find("word/state").gameObject;
 	string state = selected ? "selected" : "none";
-            for (int s = 0; s < selects.Count; s++)
-            {
-                int index = (int) selects[s];
-                string name = "bone_" + index + "/letter";
+			for (int s = 0; s < selects.Count; s++)
+			{
+				int index = (int) selects[s];
+				string name = "bone_" + index + "/letter";
 		ViewUtil.SetState(parent.transform.Find(name).gameObject, state);
-                audio.PlayOneShot(main.selectSound);
-            }
-        }
+				audio.PlayOneShot(main.selectSound);
+			}
+		}
 
 	private void updateHud()
 	{
@@ -121,45 +121,45 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	}
 
 
-        /**
-         * Press space or enter.  Input word.
-         * Word robot approaches.
-         *     restructure synchronized animations:
-         *         word
-         *             complete
-         *             state
-         *         input
-         *             output
-         *             state
-         */
-        private void updateSubmit()
-        {
-            if (Input.GetKeyDown("space")
-            || Input.GetKeyDown("return")
-	    || "submit" == letterMouseDown)
-            {
-	    	letterMouseDown = null;
-                string state = model.submit();
-                if (null != state) 
-                {
-                    // TODO main.word.gotoAndPlay(state);
-		    ViewUtil.SetState(main.transform.Find("input").gameObject, state);
-		    audio.PlayOneShot(main.shootSound);
-                }
-                resetSelect();
-            }
-        }
+		/**
+		 * Press space or enter.  Input word.
+		 * Word robot approaches.
+		 *	 restructure synchronized animations:
+		 *		 word
+		 *			 complete
+		 *			 state
+		 *		 input
+		 *			 output
+		 *			 state
+		 */
+		private void updateSubmit()
+		{
+			if (Input.GetKeyDown("space")
+			|| Input.GetKeyDown("return")
+		|| "submit" == letterMouseDown)
+			{
+			letterMouseDown = null;
+				string state = model.submit();
+				if (null != state) 
+				{
+					// TODO main.word.gotoAndPlay(state);
+			ViewUtil.SetState(main.transform.Find("input").gameObject, state);
+			audio.PlayOneShot(main.shootSound);
+				}
+				resetSelect();
+			}
+		}
 
-        private void resetSelect()
-        {
-            GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
-            int max = model.letterMax;
-            for (int index = 0; index < max; index++)
-            {
-                string name = "bone_" + index + "/letter";
+		private void resetSelect()
+		{
+			GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
+			int max = model.letterMax;
+			for (int index = 0; index < max; index++)
+			{
+				string name = "bone_" + index + "/letter";
 		ViewUtil.SetState(parent.transform.Find(name).gameObject, "none");
-            }
-        }
+			}
+		}
 
 	/**
 	 * Unity prohibits editing a property of position.
@@ -186,7 +186,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	private void updateOutputHitsWord()
 	{
 		GameObject target = main.transform.Find("word/state").gameObject;
-                if (model.onOutputHitsWord())
+				if (model.onOutputHitsWord())
 		{
 			ViewUtil.SetState(target, "hit");
 
@@ -198,7 +198,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	 * Find could be cached.
 	 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 	 */
-        private void updateLetters(GameObject parent, List<string> letters, string namePattern) {
+		private void updateLetters(GameObject parent, List<string> letters, string namePattern) {
 		int max = model.letterMax;
 		for (int i = 0; i < max; i++)
 		{

@@ -27,6 +27,8 @@ public class Main : MonoBehaviour {
 		string text = Toolkit.Read("text/anagram_words.txt");
 		string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
 		pushWords(model.levels.parameters, words);
+		string[] win = new string[]{"YOU", "WIN"};
+		pushWords(model.levels.parameters, win);
 	}
 
 	private static void pushWords(ArrayList parameters, string[] words)

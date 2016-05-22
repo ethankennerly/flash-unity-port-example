@@ -1,0 +1,24 @@
+
+
+PLAYTEST JOURNAL
+
+Sat 05/21/2016 
+
+Jennifer Russ played on Nexus 5 through 529 letters getting stuck, and again through 778 letters before wrapping around.
+
+Word 2002.  O my god, so many letters.
+Word 2126.  Level up slower?
+Word 2356 of 2368.  Next word.  Wrap to other side.
+
+To level up slower could consider:
+	how many levels from the top
+	lowest point of the word
+	time on a word
+Expected letter tapped was the letter selected.
+Beats the game.  Expects to see she won.
+Game over.  Likes that can continue to enter.  Hard to enter when overlapping delete or submit button.
+Expected to not select a different letter by accident.
+Expects fair word.  
+	Partially sort anagrams by word frequency.  (example:  stoure)
+Once a word was repeated.
+

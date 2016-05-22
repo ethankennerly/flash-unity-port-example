@@ -1,0 +1,14 @@
+How many levels from top:
+
+Compress level up when nearing top:
+
+2368 total  1/16 = 148.
+2002 85%
+2126 90%
+2356 99.5%
+
+To:
+
+10%  times range remaining from top.
+always go up by at least 1.
+

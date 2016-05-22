@@ -25,17 +25,31 @@ FEATURES
 	Append word list levels from text asset.
 	Prerequisite levels with messages.
 	Adjust level by relative speed.
+	Convert syntax of model and levels by my repo:  as2cs.
+	Standardize indent to tabs.
+	To level up slower could consider:
+		how many levels from the top
 
 TODO
 
-	Calibrate level up.  
-	Sword goes off to the right.
-		Repeat word.  Jennifer Russ expects to see the word was repeated.
+	To level up slower could consider:
+		lowest point of the word
+		time on a word
 	Partially sort anagrams by word frequency.  (example:  stoure)
+	Expected letter tapped was the letter selected.
+	Beats the game.  Expects to see she won.
+	Game over.  Likes that can continue to enter.  Hard to enter when overlapping delete or submit button.
+	Expected to not select a different letter by accident.
+	Once a word was repeated.
+	Sword goes off to the right if repeating word.
+		Monster dodges if repeating word.
+		Repeat word.  Jennifer Russ expects to see the word was repeated.
 	When tap a letter that is duplicated, select that letter tapped.
+	Data type for list of levels.
 	Cheat to go up and down levels.
 	Slow sliding moving letters to tap conveniently.
 	More responsive.
+	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
 	Spider Word.  Looks like a spider on a thread.
 	Analytics.
 	Google Play Store.
@@ -43,125 +57,8 @@ TODO
 		WebGL says "NotSupportedException: Collection is read-only"
 		http://stackoverflow.com/questions/21471593/why-is-my-ilist-read-only
 	Mouse down to select that letter when there are 2 copies.
-
-Converting ActionScript to C#
-	Hopefully an algorithm that could be automated.  This sacrifices optimal runtime performance to speed up porting.
-	trace --> Debug.Log
-	params --> parameters (params is reserved keyword in C#)
-	namespace internal --> public?
-	Array --> ArrayList
-		.length --> .Count
-		a.concat() --> (ArrayList) a.Clone()
-		internal inputs:Array = [];
-		-->
-		public ArrayList inputs = new ArrayList();
-		inputs.length = 0; --> inputs.RemoveRange(0, inputs.Count);
-			https://msdn.microsoft.com/en-us/library/system.collections.arraylist.removerange.aspx
-
-		available.splice(index, 1);
-		-->
-		available.RemoveRange(index, 1);
-		This is different if the splice were also inserting items.
-		inputs.push(letter); --> inputs.Add(letter);
-
-		var submission:String = inputs.join("");
-		-->
-		string submission = String.Join("", ((string []) inputs.ToArray(typeof(string))));
-		or use List<string> if certain always a string, or string[] if certain of length.
-
-		a = inputs.pop();
-		-->
-                a = inputs[inputs.Count - 1];
-                inputs.RemoveAt(inputs.Count - 1);
-	String --> string
-		s.toLowerCase() --> s.ToLower()
-	Explictly cast:
-		var letter:String = avaiable[i];
-		-->
-		string letter = (string) available[i];
-	Object --> Hashtable
-		var letters:Object = {};
-		Hashtable letters = new Hashtable();
-                if (letter in letters)
-		-->
-		if (letters.ContainsKey(letter))
-		https://msdn.microsoft.com/en-us/library/bb384062.aspx
-		Need .NET 4.5 for ExpandoObject.
-		http://stackoverflow.com/questions/29413942/c-sharp-anonymous-object-with-properties-from-dictionary
-	Function object --> delegate
-		/**
-		 * @param   justPressed     Filter signature justPressed(letter):Boolean.
-		 */
-		internal function getPresses(justPressed:Function):Array
-		-->
-		public delegate bool IsJustPressed(string letter);
-		public ArrayList getPresses(IsJustPressed justPressed) 
-
-		// signature onComplete()
-		internal var onComplete:Function;
-		-->
-		public delegate void ActionDelegate();
-		public ActionDelegate onComplete;
-	Literal constructor --> Collection initializer.
-		https://msdn.microsoft.com/en-us/library/bb384062.aspx
-	Single-quoted string --> Double-quoted string.
-		Escape enclosed double-quoted strings.
-	Float literal 0.125 --> 0.125f
-	Hashtable iteration
-		for(var key:String i params)
-		-->
-		foreach(DictionaryEntry entry in parameters)
-	Avoid
-                this[key] = params[key];
-		It's verbose in C#
-		http://stackoverflow.com/questions/8113570/c-set-a-member-object-value-using-reflection
-	if (a in b) --> if (b.containsKey(a))
-	ArrayList constructor from split to ToCharArray.
-	Hierarchy in scene graph:
-		main.word
-		-->
-		main.transform.Find("word").gameObject
-		main.word.state
-		main.transform.Find("word/state").gameObject
-		Could cache result.
-	Use canvas in hierarchy:
-		main.help.text = "help"
-		-->
-		Text help = main.transform.Find("hud/help").GetComponent<Text>();
-		help.text = "help"
-	Function from camelCase --> CapitalCase
-	Animation
-                movieClip.gotoAndPlay(state);
-		-->
-		gameObject.GetComponent<Animator>().SetTrigger(state);
-			https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/animate-anything
-	Sound
-		private var shootSound:ShootSound = new ShootSound();
-		selectSound.play();
-		-->
-		public AudioClip selectSound;
-		audio = main.gameObject.GetComponent<AudioSource>();
-                audio.PlayOneShot(main.selectSound);
-Not supported:
-	4-spaces to tabs.
-	Explicit boolean conversion
-		if (state)
-		-->
-		if (null != state)
-
-	ArrayList to string[] if certain will contain fixed length string.
-		available = text.split("");
-		-->
-		available = Toolkit.splitString(text);
-
-		word = new ArrayList();
-		char [] letters = text.ToCharArray();
-		for (int i = 0; i < letters.Length; i++) {
-			word.Add(letters[i].ToString());
-		}
-		http://stackoverflow.com/questions/2024995/convert-string-to-array-in-without-using-split-function
-	Patterns
-		Global reference without wiring in inspector.
-		Callback.
-		Script disables itself.
-		http://www.gamasutra.com/blogs/JohnWarner/20130910/194559/The_top_5_things_Ive_learned_as_a_Unity_developer.php?print=1
+	Animate various outcomes:  many subwords.  fast.  barely survive.
+	Theme:  
+		Word Smart
+		Word Bowling
+		Word Ball
