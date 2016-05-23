@@ -30,10 +30,13 @@ FEATURES
 	To level up slower could consider:
 		how many levels from the top
 	Cheat to go up and down levels.
+	Partially sort anagrams by word frequency.  (example:  stoure)
 
 TODO
-
-	Partially sort anagrams by word frequency.  (example:  stoure)
+	Animate 11th and 12th letters.
+	Level up slower if taking several seconds.
+	May go down in level.
+	Do not repeat words.
 	Words with 2 anagrams.
 	Expected letter tapped was the letter selected.
 	Beats the game.  Expects to see she won.

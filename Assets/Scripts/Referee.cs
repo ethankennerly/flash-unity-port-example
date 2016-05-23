@@ -6,8 +6,10 @@ namespace com.finegamedesign.anagram
 	{
 		public int level = 0;
 		public int levelMax = 0;
-		public float radius = 0.1f;
+		public float radius = 
+				0.03125f;
 				// 0.0625f;
+				// 0.1f;
 
 		public int up(float performance, float performanceMax)
 		{
