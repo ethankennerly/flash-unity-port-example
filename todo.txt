@@ -29,13 +29,12 @@ FEATURES
 	Standardize indent to tabs.
 	To level up slower could consider:
 		how many levels from the top
+	Cheat to go up and down levels.
 
 TODO
 
-	To level up slower could consider:
-		lowest point of the word
-		time on a word
 	Partially sort anagrams by word frequency.  (example:  stoure)
+	Words with 2 anagrams.
 	Expected letter tapped was the letter selected.
 	Beats the game.  Expects to see she won.
 	Game over.  Likes that can continue to enter.  Hard to enter when overlapping delete or submit button.
@@ -45,8 +44,10 @@ TODO
 		Monster dodges if repeating word.
 		Repeat word.  Jennifer Russ expects to see the word was repeated.
 	When tap a letter that is duplicated, select that letter tapped.
+	To level up slower could consider:
+		lowest point of the word
+		time on a word
 	Data type for list of levels.
-	Cheat to go up and down levels.
 	Slow sliding moving letters to tap conveniently.
 	More responsive.
 	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.

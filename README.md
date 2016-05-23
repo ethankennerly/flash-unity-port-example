@@ -1,6 +1,10 @@
 Line port Anagram Attack from Flash ActionScript 3 to Unity 5.
 
-A literal port of data types, so used ArrayList and Hashtable, instead of List and Dictionary.
+A literal port of data types, so used ArrayList and Hashtable, instead of List and Dictionary.  Then used my repo as2cs to convert model and levels.
+
+TWL06.txt
+Text files of words from tournament word list cited at 
+Peter Norvig:   http://norvig.com/ngrams/
 
 Original weekend game jam in Flash:
 https://github.com/ethankennerly/unconventional-weapon
