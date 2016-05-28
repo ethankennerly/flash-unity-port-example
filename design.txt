@@ -12,3 +12,21 @@ To:
 10%  times range remaining from top.
 always go up by at least 1.
 
+
+Goals:
+
+	Level up slower if taking several seconds.
+		To level up slower could consider:
+			lowest point of the word
+			time on a word
+	May go down in level.
+	Do not repeat words.  Once a word was repeated.
+
+System:
+
+	Adjust normalized level range.
+	Deck of words.
+		Draw from deck at normalized position.
+			Original index.
+			Closest index in remaining.
+		Identify original index.

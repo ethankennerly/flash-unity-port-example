@@ -22,3 +22,16 @@ Expects fair word.
 	Partially sort anagrams by word frequency.  (example:  stoure)
 Once a word was repeated.
 
+
+Revised that day.  Jennifer played again:
+
+Why does sword sometimes go left or right?
+Inconsistent space between a couple of letters.
+Always goes up by 1 level, even if low.
+word 2298 letters 332
+word 2360 "COMPARES"
+word 2360 "OSSLNSEIG" hard one.
+word 2411 "RELISAEOG" Help!  Look up anagram on my computer!!  seraglio
+word 2581 "BURMAS".  Game over.
+word 2635
+word 2666

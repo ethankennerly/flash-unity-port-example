@@ -33,25 +33,26 @@ FEATURES
 	Partially sort anagrams by word frequency.  (example:  stoure)
 
 TODO
-	Animate 11th and 12th letters.
+
 	Level up slower if taking several seconds.
+		To level up slower could consider:
+			lowest point of the word
+			time on a word
 	May go down in level.
-	Do not repeat words.
-	Words with 2 anagrams.
-	Expected letter tapped was the letter selected.
+	Do not repeat words.  Once a word was repeated.
+	When tap a letter that is duplicated, select that letter tapped.
+	Jennifer feels clear when repeating a word.
+	Jennifer feels clear when submitting a word successfully.
+	Consistent letter spacing.
 	Beats the game.  Expects to see she won.
 	Game over.  Likes that can continue to enter.  Hard to enter when overlapping delete or submit button.
 	Expected to not select a different letter by accident.
-	Once a word was repeated.
+	Slow sliding moving letters to tap conveniently.
 	Sword goes off to the right if repeating word.
 		Monster dodges if repeating word.
 		Repeat word.  Jennifer Russ expects to see the word was repeated.
-	When tap a letter that is duplicated, select that letter tapped.
-	To level up slower could consider:
-		lowest point of the word
-		time on a word
+	Words with 2 anagrams.
 	Data type for list of levels.
-	Slow sliding moving letters to tap conveniently.
 	More responsive.
 	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
 	Spider Word.  Looks like a spider on a thread.
@@ -66,3 +67,7 @@ TODO
 		Word Smart
 		Word Bowling
 		Word Ball
+		Word War
+	Namespace.
+	CapitalCase.
+	Animate 11th and 12th letters.
