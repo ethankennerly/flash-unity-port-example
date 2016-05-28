@@ -40,6 +40,7 @@ namespace com.finegamedesign.anagram
 		internal int tutorLevel = 0;
 		internal string state;
 		internal Levels levels = new Levels();
+		internal Progress progress = new Progress();
 		private List<string> available;
 		private Dictionary<string, dynamic> repeat = new Dictionary<string, dynamic>(){
 		}
@@ -47,7 +48,6 @@ namespace com.finegamedesign.anagram
 		private List<string> selects;
 		internal Dictionary<string, dynamic> wordHash;
 		private bool isVerbose = false;
-		private Referee referee = new Referee();
 		
 		public Model()
 		{
@@ -344,16 +344,24 @@ namespace com.finegamedesign.anagram
 	
 		internal void levelUp()
 		{
-			referee.levelMax = DataUtil.Length(levels.parameters);
-			referee.level = levels.current();
-			int add = referee.up(width + wordPosition, width);
-			trial(levels.up(add));
+			bool isRepeat = false;
+			if (isRepeat) {
+				progress.levelMax = DataUtil.Length(levels.parameters);
+				progress.level = levels.current();
+				int add = progress.up(width + wordPosition, width);
+				trial(levels.up(add));
+			}
+			else {
+				progress.Creep(width + wordPosition, width);
+				Dictionary<string, dynamic> level = progress.Pop(levels.parameters);
+				trial(level);
+			}
 		}
 
 		internal void levelDownMax()
 		{
 			score = 0;
-			trial(levels.progress(-referee.radius));
+			trial(levels.progress(-progress.radius));
 			wordPosition = 0.0f;
 		}
 	}

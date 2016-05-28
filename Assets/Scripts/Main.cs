@@ -31,7 +31,9 @@ public class Main : MonoBehaviour {
 		pushWords(model.levels.parameters, win);
 	}
 
-	private static void pushWords(ArrayList parameters, string[] words)
+	private static void pushWords(
+			List<Dictionary<string, dynamic>> parameters, 
+			string[] words)
 	{
 		for (int w = 0; w < words.Length; w++) {
 			Dictionary<string, dynamic> 

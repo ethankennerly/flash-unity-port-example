@@ -6,7 +6,6 @@ namespace com.finegamedesign.anagram
 {
 	public class Levels
 	{
-		
 		internal int index = 0;
 		/**
 		 * Some anagrams copied from:
@@ -14,7 +13,7 @@ namespace com.finegamedesign.anagram
 		 * Test case:  2015-04-18 Redbeard at The MADE types word.  Got stumped by anagram "ERISIOUS" and "NIOMTENTPO"
 		 * http://www.cse.unr.edu/~cohen/text.php
 		 */
-		internal ArrayList parameters = new ArrayList(){
+		internal List<Dictionary<string, dynamic>> parameters = new List<Dictionary<string, dynamic>>(){
 			new Dictionary<string, dynamic>(){
 				{
 					"text", "START"}
@@ -553,10 +552,10 @@ namespace com.finegamedesign.anagram
 		}
 		
 		internal Dictionary<string, dynamic> progress(float fraction)
-	{
-		int add = (int)(fraction * DataUtil.Length(parameters));
-		return up(add);
-	}
+		{
+			int add = (int)(fraction * DataUtil.Length(parameters));
+			return up(add);
+		}
 
 		internal Dictionary<string, dynamic> up(int add = 1)
 		{
