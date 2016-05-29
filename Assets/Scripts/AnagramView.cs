@@ -122,7 +122,7 @@ string state = selected ? "selected" : "none";
 	private void updateHud()
 	{
 		GameObject hud = main.transform.Find("canvas/hud").gameObject;
-		Toolkit.SetVisible(hud, model.isHudVisible);
+		ViewUtil.SetVisible(hud, model.isHudVisible);
 		
 		Text help = main.transform.Find("canvas/help").GetComponent<Text>();
 		help.text = model.help.ToString();
@@ -165,12 +165,15 @@ string state = selected ? "selected" : "none";
 
 	private void updateHint()
 	{
-		if (Input.GetKeyDown("h")
+		if (Input.GetKeyDown(KeyCode.Question)
+		|| Input.GetKeyDown(KeyCode.Slash)
 		|| "hint" == letterMouseDown)
 		{
 			model.hint();
 			resetSelect();
 		}
+		ViewUtil.SetVisible(main.transform.Find("input/hint").gameObject, model.isHintVisible);
+
 	}
 
 	private void resetSelect()
@@ -231,7 +234,7 @@ string state = selected ? "selected" : "none";
 			if (null != letter)
 			{
 				bool visible = i < letters.Count;
-				Toolkit.SetVisible(letter, visible);
+				ViewUtil.SetVisible(letter, visible);
 				if (visible) {
 					GameObject text3d = letter.transform.Find("text3d").gameObject;
 					TextMesh mesh = text3d.GetComponent<TextMesh>();

@@ -32,6 +32,9 @@ namespace com.finegamedesign.anagram
 		internal List<string> outputs = new List<string>();
 		internal List<string> hints = new List<string>();
 		private string hintWord;
+		internal bool isHintVisible = false;
+		internal int submitsUntilHint = 3;
+		internal int submitsUntilHintNow;
 		internal List<string> completes = new List<string>();
 		internal string text;
 		internal List<string> word;
@@ -66,7 +69,6 @@ namespace com.finegamedesign.anagram
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
 			help = "";
-			hints.Clear();
 			wordWidthPerSecond = -0.01f;
 			if (parameters.ContainsKey("text")) {
 				text = (string)parameters["text"];
@@ -82,7 +84,7 @@ namespace com.finegamedesign.anagram
 			}
 			available = DataUtil.Split(text, "");
 			word = DataUtil.CloneList(available);
-			hintWord = text;
+			populateHint(text);
 			if ("" == help)
 			{
 				shuffle(word);
@@ -120,8 +122,9 @@ namespace com.finegamedesign.anagram
 		{
 			responseSeconds += deltaSeconds;
 			updatePosition(deltaSeconds);
+			updateHintVisible();
 		}
-		
+
 		internal float width = 720;
 		internal float scale = 1.0f;
 		private float wordWidthPerSecond;
@@ -296,10 +299,32 @@ namespace com.finegamedesign.anagram
 			}
 			return selectsNow;
 		}
+	
+		private void populateHint(string text)
+		{
+			hints.Clear();
+			isHintVisible = false;
+			submitsUntilHintNow = 0;
+			hintWord = text;
+		}
 		
+		private void updateHintVisible()
+		{
+			float hintPerformanceMax = // 0.25f;
+										0.375f;
+			if (performance() <= hintPerformanceMax) {
+				isHintVisible = submitsUntilHintNow <= 0;
+			}
+			else {
+				isHintVisible = false;
+			}
+		}
+
 		internal void hint()
 		{
-			if (hints.Count < word.Count) {
+			if (isHintVisible && hints.Count < word.Count) {
+				submitsUntilHintNow = submitsUntilHint;
+				isHintVisible = false;
 				string letter = hintWord.Substring(hints.Count, 1);
 				hints.Add(letter);
 			}
@@ -344,13 +369,13 @@ namespace com.finegamedesign.anagram
 						if (complete)
 						{
 							completes = DataUtil.CloneList(word);
-				if (levels.current() < tutorLevel) {
-					trial(levels.up());
-				}
-				else {
-					isHudVisible = true;
-					levelUp();
-				}
+							if (levels.current() < tutorLevel) {
+								trial(levels.up());
+							}
+							else {
+								isHudVisible = true;
+								levelUp();
+							}
 							state = "complete";
 							if (null != onComplete)
 							{
@@ -360,6 +385,7 @@ namespace com.finegamedesign.anagram
 						else
 						{
 							state = "submit";
+							submitsUntilHintNow--;
 						}
 					}
 				}
@@ -378,26 +404,22 @@ namespace com.finegamedesign.anagram
 			score += points;
 		}
 
+		private float performance()
+		{
+			float bestResponseSeconds = 0.5f * word.Count;
+			float positionNormal = (width + wordPositionMin) / width;
+			float responseRate = bestResponseSeconds / responseSeconds;
+			float performanceNormal = positionNormal * responseRate;
+			return performanceNormal;
+		}
+
 		// Level up by response time and worst word position.
 		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
 		internal void levelUp()
 		{
-			bool isRepeat = false;
-			if (isRepeat) {
-				progress.levelMax = DataUtil.Length(levels.parameters);
-				progress.level = levels.current();
-				int add = progress.up(width + wordPosition, width);
-				trial(levels.up(add));
-			}
-			else {
-				float bestResponseSeconds = 0.5f * word.Count;
-				float positionNormal = (width + wordPositionMin) / width;
-				float responseRate = bestResponseSeconds / responseSeconds;
-				float performanceNormal = positionNormal * responseRate;
-				progress.Creep(performanceNormal);
-				Dictionary<string, dynamic> level = progress.Pop(levels.parameters);
-				trial(level);
-			}
+			progress.Creep(performance());
+			Dictionary<string, dynamic> level = progress.Pop(levels.parameters, tutorLevel);
+			trial(level);
 		}
 
 		internal void levelDownMax()
