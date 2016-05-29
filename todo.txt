@@ -41,11 +41,11 @@ FEATURES
 	Jennifer feels clear when repeating a word.
 	When tap a letter that is duplicated, select that letter tapped.
 	Jennifer feels clear when submitting a word successfully.
+	Jennifer reads equal letter spacing.
+	Game over.  Likes that can continue to enter.  Letters not overlapping delete or submit button.
 
 TODO
 
-	Consistent letter spacing.
-	Game over.  Likes that can continue to enter.  Hard to enter when overlapping delete or submit button.
 	Expected to not select a different letter by accident.
 	Slow sliding moving letters to tap conveniently.
 	Hint button.  Outline next letter behind input area.

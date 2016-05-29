@@ -38,6 +38,7 @@ namespace com.finegamedesign.anagram
 		internal int points = 0;
 		internal int score = 0;
 		internal int tutorLevel = 0;
+		internal bool isHudVisible = false;
 		internal string state;
 		internal Levels levels = new Levels();
 		internal Progress progress = new Progress();
@@ -53,7 +54,7 @@ namespace com.finegamedesign.anagram
 		
 		public Model()
 		{
-		tutorLevel = levels.parameters.Count;
+			tutorLevel = levels.parameters.Count;
 			trial(levels.getParams());
 		}
 		
@@ -335,6 +336,7 @@ namespace com.finegamedesign.anagram
 					trial(levels.up());
 				}
 				else {
+					isHudVisible = true;
 					levelUp();
 				}
 							state = "complete";

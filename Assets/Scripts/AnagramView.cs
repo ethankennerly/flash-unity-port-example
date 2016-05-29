@@ -119,13 +119,16 @@ string state = selected ? "selected" : "none";
 
 	private void updateHud()
 	{
-		Text help = main.transform.Find("hud/help").GetComponent<Text>();
+		GameObject hud = main.transform.Find("canvas/hud").gameObject;
+		Toolkit.SetVisible(hud, model.isHudVisible);
+		
+		Text help = main.transform.Find("canvas/help").GetComponent<Text>();
 		help.text = model.help.ToString();
-		Text score = main.transform.Find("hud/score").GetComponent<Text>();
+		Text score = main.transform.Find("canvas/hud/score").GetComponent<Text>();
 		score.text = model.score.ToString();
-		Text level = main.transform.Find("hud/level").GetComponent<Text>();
+		Text level = main.transform.Find("canvas/hud/level").GetComponent<Text>();
 		level.text = model.progress.level.ToString();
-		Text levelMax = main.transform.Find("hud/levelMax").GetComponent<Text>();
+		Text levelMax = main.transform.Find("canvas/hud/levelMax").GetComponent<Text>();
 		levelMax.text = model.progress.levelMax.ToString();
 	}
 
@@ -216,7 +219,7 @@ string state = selected ? "selected" : "none";
 			if (null != letter)
 			{
 				bool visible = i < letters.Count;
-				letter.SetActive(visible);
+				Toolkit.SetVisible(letter, visible);
 				if (visible) {
 					GameObject text3d = letter.transform.Find("text3d").gameObject;
 					TextMesh mesh = text3d.GetComponent<TextMesh>();
