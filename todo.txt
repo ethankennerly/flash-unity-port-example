@@ -37,26 +37,32 @@ FEATURES
 		To level up slower could consider:
 			lowest point of the word
 			time on a word
+	Beats the game.  Expects to see she won.
+	Jennifer feels clear when repeating a word.
+	When tap a letter that is duplicated, select that letter tapped.
+	Jennifer feels clear when submitting a word successfully.
 
 TODO
 
-	When tap a letter that is duplicated, select that letter tapped.
-	Jennifer feels clear when repeating a word.
-	Jennifer feels clear when submitting a word successfully.
 	Consistent letter spacing.
-	Beats the game.  Expects to see she won.
 	Game over.  Likes that can continue to enter.  Hard to enter when overlapping delete or submit button.
 	Expected to not select a different letter by accident.
 	Slow sliding moving letters to tap conveniently.
+	Hint button.  Outline next letter behind input area.
+		Test case:  2016-05-21 Jennifer Russ demands a hint (+2016-05-22, 2016-05-28)
+	Background scrolls indicating time and next word.
 	Sword goes off to the right if repeating word.
 		Monster dodges if repeating word.
 		Repeat word.  Jennifer Russ expects to see the word was repeated.
 	Words with 2 anagrams.
+	Tutor.  Hide HUD except help.
 	Data type for list of levels.
 	More responsive.
 	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
 	Spider Word.  Looks like a spider on a thread.
 	Analytics.
+	Profile
+		Optimize view update of letters.
 	Google Play Store.
 	Play in WebGL or WebPlayer.
 		WebGL says "NotSupportedException: Collection is read-only"

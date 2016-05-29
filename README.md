@@ -22,10 +22,10 @@ Unity:  3D.
 
 Unity:
 
-+ Free.
++ Free for non-commercial use.
 + 3D.
 + A lot of people make games in Unity.
-+ Optimized graphics rendering.
++ Faster graphics rendering.
 + Inspect and edit during play.
 + Powerfully animate nested objects.
 

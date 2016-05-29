@@ -4,18 +4,21 @@ using System.Collections;
 using System.Collections.Generic;
 using com.finegamedesign.anagram;
 
-public class AnagramView {
+public class AnagramView 
+{
 	private AudioSource audio;
 	private Model model;
 	private Main main;
 
-	public AnagramView(Model theModel, Main theMainScene) {
+	public AnagramView(Model theModel, Main theMainScene) 
+	{
 		model = theModel;
 		main = theMainScene;
 		audio = main.gameObject.GetComponent<AudioSource>();
 	}
 
 	private string letterMouseDown;
+	private int letterIndexMouseDown;
 
 	/**
 	 * Remember which letter was just clicked on this update.
@@ -25,11 +28,15 @@ public class AnagramView {
 	private void updateMouseDown()
 	{
 		letterMouseDown = null;
+		letterIndexMouseDown = -1;
 		if (Input.GetMouseButtonDown(0)) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {
-				letterMouseDown = hit.transform.Find("text3d").GetComponent<TextMesh>().text.ToLower();
+				Transform transform = hit.transform.Find("text3d");
+				letterMouseDown = transform.GetComponent<TextMesh>().text.ToLower();
+				string name = transform.parent.parent.gameObject.name;
+				letterIndexMouseDown = Toolkit.ParseIndex(name);
 				// Debug.Log("View.updateMouseDown: " + letterMouseDown);
 			}
 		}
@@ -42,8 +49,8 @@ public class AnagramView {
 
 	public bool IsLetterKeyDown(string letter)
 	{
-		return Input.GetKeyDown(letter.ToLower())
-			|| IsLetterMouseDown(letter.ToLower());
+		return Input.GetKeyDown(letter.ToLower());
+			// || IsLetterMouseDown(letter.ToLower());
 	}
 
 	public void update() {
@@ -52,6 +59,7 @@ public class AnagramView {
 		updateMouseDown();
 		List<string> presses = model.getPresses(IsLetterKeyDown);
 		updateSelect(model.press(presses), true);
+		updateSelect(model.mouseDown(letterIndexMouseDown), true);
 		updateSubmit();
 		updatePosition();
 		updateLetters(main.transform.Find("word/state").gameObject, model.word, "bone_{0}/letter");
@@ -77,36 +85,37 @@ public class AnagramView {
 		}
 	}
 
-		/**
-		 * Delete or backspace:  Remove last letter.
-		 */
-		private void updateBackspace()
-		{
-			if (Input.GetKeyDown("delete")
-			|| Input.GetKeyDown("backspace")
+	/**
+	 * Delete or backspace:  Remove last letter.
+	 */
+	private void updateBackspace()
+	{
+		if (Input.GetKeyDown("delete")
+		|| Input.GetKeyDown("backspace")
 		|| "delete" == letterMouseDown)
-			{
-				updateSelect(model.backspace(), false);
-		letterMouseDown = null;
-			}
-		}
-
-		/**
-		 * Each selected letter in word plays animation "selected".
-Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
-		 */
-		private void updateSelect(List<int> selects, bool selected)
 		{
-			GameObject parent = main.transform.Find("word/state").gameObject;
-	string state = selected ? "selected" : "none";
-			for (int s = 0; s < selects.Count; s++)
-			{
-				int index = (int) selects[s];
-				string name = "bone_" + index + "/letter";
-		ViewUtil.SetState(parent.transform.Find(name).gameObject, state);
-				audio.PlayOneShot(main.selectSound);
-			}
+			updateSelect(model.backspace(), false);
+			letterMouseDown = null;
 		}
+	}
+
+	/**
+	 * Each selected letter in word plays animation "selected".
+	 * Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
+	 * Could cache finds.
+	 */
+	private void updateSelect(List<int> selects, bool selected)
+	{
+		GameObject parent = main.transform.Find("word/state").gameObject;
+string state = selected ? "selected" : "none";
+		for (int s = 0; s < selects.Count; s++)
+		{
+			int index = (int) selects[s];
+			string name = "bone_" + index + "/letter";
+	ViewUtil.SetState(parent.transform.Find(name).gameObject, state);
+			audio.PlayOneShot(main.selectSound);
+		}
+	}
 
 	private void updateHud()
 	{
@@ -120,46 +129,45 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 		levelMax.text = model.progress.levelMax.ToString();
 	}
 
-
-		/**
-		 * Press space or enter.  Input word.
-		 * Word robot approaches.
-		 *	 restructure synchronized animations:
-		 *		 word
-		 *			 complete
-		 *			 state
-		 *		 input
-		 *			 output
-		 *			 state
-		 */
-		private void updateSubmit()
+	/**
+	 * Press space or enter.  Input word.
+	 * Word robot approaches.
+	 *	 restructure synchronized animations:
+	 *		 word
+	 *			 complete
+	 *			 state
+	 *		 input
+	 *			 output
+	 *			 state
+	 */
+	private void updateSubmit()
+	{
+		if (Input.GetKeyDown("space")
+		|| Input.GetKeyDown("return")
+	|| "submit" == letterMouseDown)
 		{
-			if (Input.GetKeyDown("space")
-			|| Input.GetKeyDown("return")
-		|| "submit" == letterMouseDown)
+		letterMouseDown = null;
+			string state = model.submit();
+			if (null != state) 
 			{
-			letterMouseDown = null;
-				string state = model.submit();
-				if (null != state) 
-				{
-					// TODO main.word.gotoAndPlay(state);
-			ViewUtil.SetState(main.transform.Find("input").gameObject, state);
-			audio.PlayOneShot(main.shootSound);
-				}
-				resetSelect();
+				// TODO main.word.gotoAndPlay(state);
+		ViewUtil.SetState(main.transform.Find("input").gameObject, state);
+		audio.PlayOneShot(main.shootSound);
 			}
+			resetSelect();
 		}
+	}
 
-		private void resetSelect()
+	private void resetSelect()
+	{
+		GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
+		int max = model.letterMax;
+		for (int index = 0; index < max; index++)
 		{
-			GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
-			int max = model.letterMax;
-			for (int index = 0; index < max; index++)
-			{
-				string name = "bone_" + index + "/letter";
-		ViewUtil.SetState(parent.transform.Find(name).gameObject, "none");
-			}
+			string name = "bone_" + index + "/letter";
+	ViewUtil.SetState(parent.transform.Find(name).gameObject, "none");
 		}
+	}
 
 	/**
 	 * Unity prohibits editing a property of position.
@@ -198,7 +206,8 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 	 * Find could be cached.
 	 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 	 */
-		private void updateLetters(GameObject parent, List<string> letters, string namePattern) {
+	private void updateLetters(GameObject parent, List<string> letters, string namePattern) 
+	{
 		int max = model.letterMax;
 		for (int i = 0; i < max; i++)
 		{
@@ -211,7 +220,7 @@ Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders see
 				if (visible) {
 					GameObject text3d = letter.transform.Find("text3d").gameObject;
 					TextMesh mesh = text3d.GetComponent<TextMesh>();
-					mesh.text = (string) letters[i];
+					mesh.text = letters[i];
 				}
 
 			}

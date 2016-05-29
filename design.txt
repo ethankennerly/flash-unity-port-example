@@ -30,3 +30,38 @@ System:
 			Original index.
 			Closest index in remaining.
 		Identify original index.
+
+
+TOYS
+
+	Buttons
+	Bubble wrap
+	Balloons
+	Whack-a-mole
+
+ENVIRONMENTS
+
+	Flowers
+	Dogs
+	Jewels
+	Chocolate
+	Bugs
+	Candy
+	Asteroids
+	Mountain
+	Edge of chaos
+
+NAMES
+	Word Saga
+	Pet Words
+	Word Candy
+	Word Chocolate
+	Word Flower
+	Word Salad
+	Word Doctor
+	Wordsmith
+	Word Garden (already used)
+	Brain Candy
+	Word Bugs
+	Word Star
+	Word Smart

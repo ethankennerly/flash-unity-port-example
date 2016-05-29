@@ -258,6 +258,22 @@ namespace com.finegamedesign.anagram
 			}
 			return selectsNow;
 		}
+
+		internal List<int> mouseDown(int selected)
+		{
+			List<int> selectsNow = new List<int>();
+			if (0 <= selected) {
+				string letter = word[selected];
+				int index = available.IndexOf(letter);
+				if (0 <= index) {
+					available.RemoveRange(index, 1);
+					inputs.Add(letter);
+					selectsNow.Add(selected);
+					selects[selected] = letter.ToLower();
+				}
+			}
+			return selectsNow;
+		}
 		
 		internal List<int> backspace()
 		{
