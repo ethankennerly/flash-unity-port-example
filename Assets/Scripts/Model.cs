@@ -48,6 +48,8 @@ namespace com.finegamedesign.anagram
 		private List<string> selects;
 		internal Dictionary<string, dynamic> wordHash;
 		private bool isVerbose = false;
+		private float responseSeconds;
+		private float wordPositionMin;
 		
 		public Model()
 		{
@@ -57,7 +59,9 @@ namespace com.finegamedesign.anagram
 		
 		internal void trial(Dictionary<string, dynamic> parameters)
 		{
+			responseSeconds = 0.0f;
 			wordPosition = 0.0f;
+			wordPositionMin = 0.0f;
 			help = "";
 			wordWidthPerSecond = -0.01f;
 			if (parameters.ContainsKey("text")) {
@@ -109,6 +113,7 @@ namespace com.finegamedesign.anagram
 		
 		internal void update(float deltaSeconds)
 		{
+			responseSeconds += deltaSeconds;
 			updatePosition(deltaSeconds);
 		}
 		
@@ -139,6 +144,7 @@ namespace com.finegamedesign.anagram
 		{
 			wordPosition += (seconds * width * wordWidthPerSecond);
 			clampWordPosition();
+			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
 			wordPositionScaled = wordPosition * scale;
 			if (isVerbose) Debug.Log("Model.updatePosition: " + wordPosition);
 		}
@@ -341,7 +347,9 @@ namespace com.finegamedesign.anagram
 			points = DataUtil.Length(submission);
 			score += points;
 		}
-	
+
+		// Level up by response time and worst word position.
+		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
 		internal void levelUp()
 		{
 			bool isRepeat = false;
@@ -352,7 +360,11 @@ namespace com.finegamedesign.anagram
 				trial(levels.up(add));
 			}
 			else {
-				progress.Creep(width + wordPosition, width);
+				float bestResponseSeconds = 0.5f * word.Count;
+				float positionNormal = (width + wordPositionMin) / width;
+				float responseRate = bestResponseSeconds / responseSeconds;
+				float performanceNormal = positionNormal * responseRate;
+				progress.Creep(performanceNormal);
 				Dictionary<string, dynamic> level = progress.Pop(levels.parameters);
 				trial(level);
 			}
