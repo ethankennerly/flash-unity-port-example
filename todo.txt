@@ -47,20 +47,23 @@ FEATURES
 		Repeat word.  Jennifer Russ expects to see the word was repeated.
 	Slow sliding moving letters at 0.125 speed to tap conveniently.
 		Jennifer expected to not select a different letter by accident.
+	Tutor.  Hide HUD except help.
 
 TODO
 
-	Hint button.  Outline next letter behind input area.
+	Hint button.  Outline next letter of most popular word behind input area.
 		Test case:  2016-05-21 Jennifer Russ demands a hint (+2016-05-22, 2016-05-28)
+		Hint button after next level would be lower.
+		Hide hint button until tried to submit 5 words.  Then each 2 words after.  
 	Background scrolls indicating time and next word.
+		Test case:  2016-05-28 Jennifer expects to realize time lowers next word.
 	Monster dodges if repeating word.
 	Words with 2 anagrams.
-	Tutor.  Hide HUD except help.
-	Data type for list of levels.
+	Word not in order.
 	More responsive.
 	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
 	Spider Word.  Looks like a spider on a thread.
-	Analytics.
+	Performance analytics.
 	Profile
 		Optimize view update of letters.
 	Google Play Store.

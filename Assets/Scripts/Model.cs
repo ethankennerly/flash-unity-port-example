@@ -30,6 +30,8 @@ namespace com.finegamedesign.anagram
 		internal delegate bool IsJustPressed(string letter);
 		internal string help;
 		internal List<string> outputs = new List<string>();
+		internal List<string> hints = new List<string>();
+		private string hintWord;
 		internal List<string> completes = new List<string>();
 		internal string text;
 		internal List<string> word;
@@ -64,6 +66,7 @@ namespace com.finegamedesign.anagram
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
 			help = "";
+			hints.Clear();
 			wordWidthPerSecond = -0.01f;
 			if (parameters.ContainsKey("text")) {
 				text = (string)parameters["text"];
@@ -79,6 +82,7 @@ namespace com.finegamedesign.anagram
 			}
 			available = DataUtil.Split(text, "");
 			word = DataUtil.CloneList(available);
+			hintWord = text;
 			if ("" == help)
 			{
 				shuffle(word);
@@ -293,6 +297,14 @@ namespace com.finegamedesign.anagram
 			return selectsNow;
 		}
 		
+		internal void hint()
+		{
+			if (hints.Count < word.Count) {
+				string letter = hintWord.Substring(hints.Count, 1);
+				hints.Add(letter);
+			}
+		}
+
 		/**
 		 * @return animation state.
 		 *	  "submit" or "complete":  Word shoots. Test case:  2015-04-18 Anders sees word is a weapon.

@@ -61,10 +61,12 @@ public class AnagramView
 		updateSelect(model.press(presses), true);
 		updateSelect(model.mouseDown(letterIndexMouseDown), true);
 		updateSubmit();
+		updateHint();
 		updatePosition();
 		updateLetters(main.transform.Find("word/state").gameObject, model.word, "bone_{0}/letter");
 		updateLetters(main.transform.Find("input/state").gameObject, model.inputs, "Letter_{0}");
 		updateLetters(main.transform.Find("input/output").gameObject, model.outputs, "Letter_{0}");
+		updateLetters(main.transform.Find("input/hints").gameObject, model.hints, "Letter_{0}");
 		updateHud();
 	}
 
@@ -147,16 +149,26 @@ string state = selected ? "selected" : "none";
 	{
 		if (Input.GetKeyDown("space")
 		|| Input.GetKeyDown("return")
-	|| "submit" == letterMouseDown)
+		|| "submit" == letterMouseDown)
 		{
 		letterMouseDown = null;
 			string state = model.submit();
 			if (null != state) 
 			{
 				// TODO main.word.gotoAndPlay(state);
-		ViewUtil.SetState(main.transform.Find("input").gameObject, state);
-		audio.PlayOneShot(main.shootSound);
+				ViewUtil.SetState(main.transform.Find("input").gameObject, state);
+				audio.PlayOneShot(main.shootSound);
 			}
+			resetSelect();
+		}
+	}
+
+	private void updateHint()
+	{
+		if (Input.GetKeyDown("h")
+		|| "hint" == letterMouseDown)
+		{
+			model.hint();
 			resetSelect();
 		}
 	}

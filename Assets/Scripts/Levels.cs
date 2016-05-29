@@ -29,14 +29,14 @@ namespace com.finegamedesign.anagram
 			,
 			new Dictionary<string, dynamic>(){
 				{
-					"text", "LSEPL"}
+					"text", "SPELL"}
 				, {
 					"help", "TO ADVANCE, USE ALL THE LETTERS.  FOR EXAMPLE:  'SPELL.'  THEN TAP 'SUBMIT.'"}
 			}
 			,
 			new Dictionary<string, dynamic>(){
 				{
-					"text", "DWORS"}
+					"text", "WORDS"}
 				, {
 					"help", "SHORTER WORDS SHUFFLE LETTERS. EXAMPLES: 'ROD', 'RODS', 'WORD', 'SWORD'."}
 			}
