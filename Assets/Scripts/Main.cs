@@ -47,6 +47,10 @@ public class Main : MonoBehaviour {
 
 	public void Update() {
 		model.update(Time.deltaTime);
+        if ("complete" == model.state) {
+            storage.SetKeyValue("level", model.progress.GetLevelNormal());
+            storage.Save(storage.data);
+        }
 		wordPosition = model.wordPosition;
 		wordPositionScaled = model.wordPositionScaled;
 		view.update();
