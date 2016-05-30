@@ -207,6 +207,7 @@ string state = selected ? "selected" : "none";
 			updateOutputHitsWord();
 		}
 		setPositionY(main.transform.Find("word"), model.wordPositionScaled);
+		setPositionY(main.transform.Find("progress"), model.progressPositionTweened);
 	}
 
 	private void updateOutputHitsWord()

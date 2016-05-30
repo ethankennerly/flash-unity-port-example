@@ -38,6 +38,8 @@ namespace com.finegamedesign.anagram
 		internal List<string> completes = new List<string>();
 		internal string text;
 		internal List<string> word;
+		internal float progressPositionScaled = 0.0f;
+		internal float progressPositionTweened = 0.0f;
 		internal float wordPosition = 0.0f;
 		internal float wordPositionScaled = 0.0f;
 		internal int points = 0;
@@ -148,13 +150,25 @@ namespace com.finegamedesign.anagram
 			wordPosition = Mathf.Max(min, Mathf.Min(0, wordPosition));
 		}
 		
-		private void updatePosition(float seconds)
+		private void updatePosition(float deltaSeconds)
 		{
-			wordPosition += (seconds * width * wordWidthPerSecond);
+			wordPosition += (deltaSeconds * width * wordWidthPerSecond);
 			clampWordPosition();
 			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
 			wordPositionScaled = wordPosition * scale;
 			if (isVerbose) Debug.Log("Model.updatePosition: " + wordPosition);
+			updateProgress(deltaSeconds);
+		}
+
+		private void updateProgress(float deltaSeconds)
+		{
+			float progressScale = 
+									-1.0f / 16.0f;
+									// -0.25f;
+
+			progressPositionScaled = progressScale * width 
+				* progress.NextCreep(performance());
+			progressPositionTweened += (progressPositionScaled - progressPositionTweened) * deltaSeconds;
 		}
 		
 		private float outputKnockback = 0.0f;

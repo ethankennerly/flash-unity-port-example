@@ -52,14 +52,14 @@ FEATURES
 		Test case:  2016-05-21 Jennifer Russ demands a hint (+2016-05-22, 2016-05-28)
 		Hint button appears after next level would be lower.
 		Then each 2 subwords after.  
-
-TODO
-
 	Background scrolls indicating time and next word.
 		Tall image.
 		Show next position if completing word now.
 		Tween.
 		Test case:  2016-05-28 Jennifer expects to realize time lowers next word.
+
+TODO
+
 	Monster dodges if repeating word.
 	Words with 2 anagrams.
 	Word not in order.
