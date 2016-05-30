@@ -1,0 +1,19 @@
+
+Mon 05/30/2016 
+08:44
+
+
+	Save last level minus one.
+	Load last level minus one.
+		http://gamedevelopment.tutsplus.com/tutorials/how-to-save-and-load-your-players-progress-in-unity--cms-20934
+
+Extensible
+Dictionary<string, dynamic>
+So if modified, backward-compatible with previous saved games.
+
+normalized level would be compatible with rearranging levels.
+0 to 1000.
+
+user name variable to load.
+If file does not exist, do not load.
+

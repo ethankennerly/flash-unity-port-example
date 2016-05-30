@@ -35,7 +35,7 @@ namespace com.finegamedesign.anagram
 		internal List<string> hints = new List<string>();
 		private string hintWord;
 		internal bool isHintVisible = false;
-		internal int submitsUntilHint = 3;
+		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
 		internal List<string> completes = new List<string>();
 		internal string text;
@@ -432,19 +432,33 @@ namespace com.finegamedesign.anagram
 			return performanceNormal;
 		}
 
+		private void nextTrial()
+		{
+			Dictionary<string, dynamic> level = progress.Pop(levels.parameters, tutorLevel);
+			trial(level);
+		}
+
 		// Level up by response time and worst word position.
 		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
 		internal void levelUp()
 		{
 			progress.Creep(performance());
-			Dictionary<string, dynamic> level = progress.Pop(levels.parameters, tutorLevel);
-			trial(level);
+			nextTrial();
+		}
+
+		internal void load(Dictionary<string, dynamic> data)
+		{
+			if (null != data) {
+				progress.SetLevelNormal((int)data["level"]);
+				nextTrial();
+			}
 		}
 
 		internal void levelDownMax()
 		{
 			score = 0;
-			trial(levels.progress(-progress.radius));
+			progress.Creep(0.0f);
+			nextTrial();
 			wordPosition = 0.0f;
 		}
 	}

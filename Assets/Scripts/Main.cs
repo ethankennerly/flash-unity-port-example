@@ -13,9 +13,11 @@ public class Main : MonoBehaviour {
 
 	private Model model;
 	private AnagramView view;
+	private Storage storage = new Storage();
 
 	public void Start() {
 		model = new Model();
+        model.load(storage.Load());
 		pushWords();
 		model.wordHash = new Words().init();
 		model.scaleToScreen(9.5f);
