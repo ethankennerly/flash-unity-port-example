@@ -56,6 +56,9 @@ FEATURES
 TODO
 
 	Background scrolls indicating time and next word.
+		Tall image.
+		Show next position if completing word now.
+		Tween.
 		Test case:  2016-05-28 Jennifer expects to realize time lowers next word.
 	Monster dodges if repeating word.
 	Words with 2 anagrams.
