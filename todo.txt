@@ -60,15 +60,12 @@ FEATURES
 
 TODO
 
-	Monster dodges if repeating word.
-	Words with 2 anagrams.
+	Large letter buttons to tap quickly.
 	Word not in order.
-	More responsive.
-	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
-	Spider Word.  Looks like a spider on a thread.
 	Performance analytics.
 	Profile
 		Optimize view update of letters.
+	Monster dodges if repeating word.
 	Google Play Store.
 	Play in WebGL or WebPlayer.
 		WebGL says "NotSupportedException: Collection is read-only"
@@ -80,6 +77,10 @@ TODO
 		Word Bowling
 		Word Ball
 		Word War
+	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
+	Spider Word.  Looks like a spider on a thread.
+	Words with 2 anagrams.
+	More responsive.
 	Namespace.
 	CapitalCase.
 	Animate 11th and 12th letters.

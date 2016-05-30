@@ -420,7 +420,7 @@ namespace com.finegamedesign.anagram
 
 		private float performance()
 		{
-			float bestResponseSeconds = 0.5f * word.Count;
+			float bestResponseSeconds = 0.75f * word.Count;
 			float positionNormal = (width + wordPositionMin) / width;
 			float responseRate = bestResponseSeconds / responseSeconds;
 			float performanceNormal = positionNormal * responseRate;
