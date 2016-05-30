@@ -24,7 +24,9 @@ namespace com.finegamedesign.anagram
 		 * From letter graphic.
 		 */
 		internal float letterWidth = 42.0f;
-		internal float wordWidth = 160.0f;
+		internal float wordWidth = 
+									// 160.0f;
+									420.0f; 
 		internal delegate /*<dynamic>*/void ActionDelegate();
 		internal /*<Function>*/ActionDelegate onComplete;
 		internal delegate bool IsJustPressed(string letter);
@@ -94,8 +96,9 @@ namespace com.finegamedesign.anagram
 				// -0.02;
 				// -0.01;
 				// -0.005;
-				-0.002f;
+				// -0.002f;
 				// -0.001;
+				-0.002f * (width - wordWidth) / width;
 				float power =
 				// 1.5;
 				// 1.75;
@@ -421,9 +424,11 @@ namespace com.finegamedesign.anagram
 		private float performance()
 		{
 			float bestResponseSeconds = 0.75f * word.Count;
+			float worstResponseSeconds = 4.0f * bestResponseSeconds;
 			float positionNormal = (width + wordPositionMin) / width;
-			float responseRate = bestResponseSeconds / responseSeconds;
-			float performanceNormal = positionNormal * responseRate;
+			float responseRate = (responseSeconds - worstResponseSeconds) / (bestResponseSeconds - worstResponseSeconds);
+			responseRate = Mathf.Max(0.0f, Mathf.Min(1.0f, responseRate));
+			float performanceNormal = 0.5f * positionNormal + 0.5f * responseRate;
 			return performanceNormal;
 		}
 

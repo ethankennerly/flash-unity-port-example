@@ -57,10 +57,14 @@ FEATURES
 		Show next position if completing word now.
 		Tween.
 		Test case:  2016-05-28 Jennifer expects to realize time lowers next word.
+	Large letter buttons to tap quickly:  4x3.
 
 TODO
 
-	Large letter buttons to tap quickly.
+	Checkpoint at each flower.
+	Save words achieved.
+	Load words achieved.
+	Game over.  Continue button.
 	Word not in order.
 	Performance analytics.
 	Profile
