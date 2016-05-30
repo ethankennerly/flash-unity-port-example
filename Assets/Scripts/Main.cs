@@ -17,10 +17,10 @@ public class Main : MonoBehaviour {
 
 	public void Start() {
 		model = new Model();
-        model.load(storage.Load());
 		pushWords();
 		model.wordHash = new Words().init();
 		model.scaleToScreen(9.5f);
+        model.load(storage.Load());
 		view = new AnagramView(model, this);
 	}
 

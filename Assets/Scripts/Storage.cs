@@ -37,9 +37,9 @@ public class Storage
 	public Dictionary<string, dynamic> Load()
 	{
 		if (File.Exists(FormatPath())) {
-			BinaryFormatter bf = new BinaryFormatter();
+			BinaryFormatter formatter = new BinaryFormatter();
 			FileStream file = File.Open(FormatPath(), FileMode.Open);
-			data = (Dictionary<string, dynamic>)bf.Deserialize(file);
+			data = (Dictionary<string, dynamic>)formatter.Deserialize(file);
 			file.Close();
 		}
 		return data;
