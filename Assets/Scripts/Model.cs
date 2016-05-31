@@ -47,6 +47,8 @@ namespace com.finegamedesign.anagram
 		internal float progressPositionTweened = 0.0f;
 		internal float wordPosition = 0.0f;
 		internal float wordPositionScaled = 0.0f;
+		internal float checkpoint = -1.0f;
+		internal float checkpointStep = 0.1f;
 		internal int points = 0;
 		internal int score = 0;
 		internal int tutorLevel = 0;
@@ -349,7 +351,8 @@ namespace com.finegamedesign.anagram
 			}
 			else {
 				float hintPerformanceMax = // 0.25f;
-											0.375f;
+											// 0.375f;
+											0.5f;
 				if (performance() <= hintPerformanceMax) {
 					isHintVisible = submitsUntilHintNow <= 0;
 				}
@@ -373,6 +376,7 @@ namespace com.finegamedesign.anagram
 		{
 			if (isNewGameVisible) {
 				Debug.Log("Model.newGame");
+				previousSessionLevel = 0;
 				trial(levels.parameters[0]);
 			}
 		}
@@ -426,6 +430,7 @@ namespace com.finegamedesign.anagram
 						{
 							completes = DataUtil.CloneList(word);
 							if (progress.level < tutorLevel) {
+								progress.level++;
 								trial(levels.up());
 							}
 							else {
@@ -470,11 +475,30 @@ namespace com.finegamedesign.anagram
 			return performanceNormal;
 		}
 
+		private bool updateCheckpoint()
+		{
+			if (checkpoint <= progress.normal) {
+				if (checkpointStep <= checkpoint) {
+					isGamePlaying = false;
+					isContinueVisible = true;
+					populateWord("");
+					Debug.Log("Model.updateCheckpoint: " + checkpoint + " progress " + progress.normal);
+					return true;
+				}
+				checkpoint = Mathf.Floor(progress.normal / checkpointStep + 1) * checkpointStep;
+			}
+			return false;
+		}
+
 		private void nextTrial()
 		{
-			isHudVisible = true;
-			Dictionary<string, dynamic> level = progress.Pop(levels.parameters, tutorLevel);
-			trial(level);
+			if (updateCheckpoint()) {
+			}
+			else {
+				isHudVisible = true;
+				Dictionary<string, dynamic> level = progress.Pop(levels.parameters, tutorLevel);
+				trial(level);
+			}
 		}
 
 		// Level up by response time and worst word position.
