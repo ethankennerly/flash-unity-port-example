@@ -186,7 +186,8 @@ namespace com.finegamedesign.anagram
 		private void updateProgress(float deltaSeconds)
 		{
 			float progressScale = 
-									-1.0f / 16.0f;
+									// -1.0f / 16.0f;
+									-1.0f / 10.0f;
 									// -0.25f;
 
 			progressPositionScaled = progressScale * width 
@@ -478,17 +479,18 @@ namespace com.finegamedesign.anagram
 
 		private bool updateCheckpoint()
 		{
+			bool isNow = false;
 			if (checkpoint <= progress.normal) {
 				if (checkpointStep <= checkpoint) {
 					isGamePlaying = false;
 					isContinueVisible = true;
 					populateWord("");
 					Debug.Log("Model.updateCheckpoint: " + checkpoint + " progress " + progress.normal);
-					return true;
+					isNow = true;
 				}
 				checkpoint = Mathf.Floor(progress.normal / checkpointStep + 1) * checkpointStep;
 			}
-			return false;
+			return isNow;
 		}
 
 		private void nextTrial()
