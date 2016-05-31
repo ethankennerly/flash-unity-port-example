@@ -61,19 +61,12 @@ FEATURES
 	Save last level.  Load last level.
 		http://gamedevelopment.tutsplus.com/tutorials/how-to-save-and-load-your-players-progress-in-unity--cms-20934
 		http://answers.unity3d.com/questions/8480/how-to-scrip-a-saveload-game-option.html
+	Press button to Continue from last level.
 
 TODO
 
-	Press button to Continue from last level.
-	Developer controls:
-		Type user name.
-			http://docs.unity3d.com/Manual/script-InputField.html
-			http://docs.unity3d.com/ScriptReference/TouchScreenKeyboard.Open.html
-		Reset user level.
-	Game over.  Continue button.
-	Select user name from menu.
 	Checkpoint at each big flower.
-	Limit hints.
+	Read limit hints.
 	Hints at each checkpoint.
 	Word creep animation.
 	Word not in order.
@@ -81,6 +74,13 @@ TODO
 	Profile
 		Optimize view update of letters.
 	Monster dodges if repeating word.
+	Developer controls:
+		Type user name.
+			http://docs.unity3d.com/Manual/script-InputField.html
+			http://docs.unity3d.com/ScriptReference/TouchScreenKeyboard.Open.html
+		Reset user level.
+	Game over.  Continue button.
+	Select user name from menu.
 	Google Play Store.
 	Play in WebGL or WebPlayer.
 		WebGL says "NotSupportedException: Collection is read-only"

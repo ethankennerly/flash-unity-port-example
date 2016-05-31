@@ -380,7 +380,7 @@ namespace com.finegamedesign.anagram
 		internal void doContinue()
 		{
 			if (isContinueVisible) {
-				int level = Mathf.Max(progress.level, previousSessionLevel);
+				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
 				progress.SetLevelNormal(level);
 				nextTrial();
 			}
@@ -425,7 +425,7 @@ namespace com.finegamedesign.anagram
 						if (complete)
 						{
 							completes = DataUtil.CloneList(word);
-							if (levels.current() < tutorLevel) {
+							if (progress.level < tutorLevel) {
 								trial(levels.up());
 							}
 							else {
@@ -472,6 +472,7 @@ namespace com.finegamedesign.anagram
 
 		private void nextTrial()
 		{
+			isHudVisible = true;
 			Dictionary<string, dynamic> level = progress.Pop(levels.parameters, tutorLevel);
 			trial(level);
 		}
@@ -480,7 +481,6 @@ namespace com.finegamedesign.anagram
 		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
 		internal void levelUp()
 		{
-			isHudVisible = true;
 			progress.Creep(performance());
 			nextTrial();
 		}
