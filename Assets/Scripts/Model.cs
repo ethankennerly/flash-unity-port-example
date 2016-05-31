@@ -30,13 +30,16 @@ namespace com.finegamedesign.anagram
 		internal delegate /*<dynamic>*/void ActionDelegate();
 		internal /*<Function>*/ActionDelegate onComplete;
 		internal delegate bool IsJustPressed(string letter);
-		internal string help;
+		internal string help = "";
 		internal List<string> outputs = new List<string>();
 		internal List<string> hints = new List<string>();
 		private string hintWord;
 		internal bool isHintVisible = false;
 		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
+		internal bool isContinueVisible = false;
+		internal bool isGamePlaying = false;
+		internal bool isNewGameVisible = false;
 		internal List<string> completes = new List<string>();
 		internal string text;
 		internal List<string> word;
@@ -64,11 +67,22 @@ namespace com.finegamedesign.anagram
 		public Model()
 		{
 			tutorLevel = levels.parameters.Count;
-			trial(levels.getParams());
+			populateWord("");
 		}
 		
+		private void populateWord(string text)
+		{
+			this.text = text;
+			available = DataUtil.Split(text, "");
+			word = DataUtil.CloneList(available);
+			populateHint(text);
+		}
+
 		internal void trial(Dictionary<string, dynamic> parameters)
 		{
+			isGamePlaying = true;
+			isContinueVisible = false;
+			isNewGameVisible = false;
 			responseSeconds = 0.0f;
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
@@ -86,9 +100,7 @@ namespace com.finegamedesign.anagram
 			if (parameters.ContainsKey("wordPosition")) {
 				wordPosition = (float)parameters["wordPosition"];
 			}
-			available = DataUtil.Split(text, "");
-			word = DataUtil.CloneList(available);
-			populateHint(text);
+			populateWord(text);
 			if ("" == help)
 			{
 				shuffle(word);
@@ -125,8 +137,10 @@ namespace com.finegamedesign.anagram
 		
 		internal void update(float deltaSeconds)
 		{
-			responseSeconds += deltaSeconds;
-			updatePosition(deltaSeconds);
+			if (isGamePlaying) {
+				responseSeconds += deltaSeconds;
+				updatePosition(deltaSeconds);
+			}
 			updateHintVisible();
 		}
 
@@ -149,6 +163,9 @@ namespace com.finegamedesign.anagram
 			{
 				help = "GAME OVER!";
 				helpState = "gameOver";
+				isGamePlaying = false;
+				isContinueVisible = true;
+				isNewGameVisible = true;
 			}
 			wordPosition = Mathf.Max(min, Mathf.Min(0, wordPosition));
 		}
@@ -327,13 +344,18 @@ namespace com.finegamedesign.anagram
 		
 		private void updateHintVisible()
 		{
-			float hintPerformanceMax = // 0.25f;
-										0.375f;
-			if (performance() <= hintPerformanceMax) {
-				isHintVisible = submitsUntilHintNow <= 0;
+			if (!isGamePlaying) {
+				isHintVisible = false;
 			}
 			else {
-				isHintVisible = false;
+				float hintPerformanceMax = // 0.25f;
+											0.375f;
+				if (performance() <= hintPerformanceMax) {
+					isHintVisible = submitsUntilHintNow <= 0;
+				}
+				else {
+					isHintVisible = false;
+				}
 			}
 		}
 
@@ -344,6 +366,23 @@ namespace com.finegamedesign.anagram
 				isHintVisible = false;
 				string letter = hintWord.Substring(hints.Count, 1);
 				hints.Add(letter);
+			}
+		}
+
+		internal void newGame()
+		{
+			if (isNewGameVisible) {
+				Debug.Log("Model.newGame");
+				trial(levels.parameters[0]);
+			}
+		}
+
+		internal void doContinue()
+		{
+			if (isContinueVisible) {
+				int level = Mathf.Max(progress.level, previousSessionLevel);
+				progress.SetLevelNormal(level);
+				nextTrial();
 			}
 		}
 
@@ -446,14 +485,16 @@ namespace com.finegamedesign.anagram
 			nextTrial();
 		}
 
+		private int previousSessionLevel;
+
 		internal void load(Dictionary<string, dynamic> data)
 		{
 			if (null != data) {
 				if (data.ContainsKey("level")) {
-					int level = (int)(data["level"]);
-					progress.SetLevelNormal(level);
-					Debug.Log("Load level " + level);
-					nextTrial();
+					previousSessionLevel = (int)(data["level"]);
+					isNewGameVisible = true;
+					isContinueVisible = true;
+					Debug.Log("Load level " + previousSessionLevel);
 				}
 				else {
 					Debug.Log("Data does not contain level.");

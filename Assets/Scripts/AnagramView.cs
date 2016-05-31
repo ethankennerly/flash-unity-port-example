@@ -53,21 +53,31 @@ public class AnagramView
 			// || IsLetterMouseDown(letter.ToLower());
 	}
 
-	public void update() {
+	public void update()
+	{
 		updateCheat();
-		updateBackspace();
 		updateMouseDown();
-		List<string> presses = model.getPresses(IsLetterKeyDown);
-		updateSelect(model.press(presses), true);
-		updateSelect(model.mouseDown(letterIndexMouseDown), true);
-		updateSubmit();
-		updateHint();
-		updatePosition();
+		updateBackspace();
+		if (model.isGamePlaying) {
+			updatePlay();
+		}
 		updateLetters(main.transform.Find("word/state").gameObject, model.word, "bone_{0}/letter");
 		updateLetters(main.transform.Find("input/state").gameObject, model.inputs, "Letter_{0}");
 		updateLetters(main.transform.Find("input/output").gameObject, model.outputs, "Letter_{0}");
 		updateLetters(main.transform.Find("input/hints").gameObject, model.hints, "Letter_{0}");
 		updateHud();
+		updateHint();
+		updateContinue();
+		updateNewGame();
+	}
+
+	private void updatePlay()
+	{
+		List<string> presses = model.getPresses(IsLetterKeyDown);
+		updateSelect(model.press(presses), true);
+		updateSelect(model.mouseDown(letterIndexMouseDown), true);
+		updateSubmit();
+		updatePosition();
 	}
 
 	/**
@@ -173,6 +183,28 @@ string state = selected ? "selected" : "none";
 			resetSelect();
 		}
 		ViewUtil.SetVisible(main.transform.Find("input/hint").gameObject, model.isHintVisible);
+
+	}
+
+	private void updateNewGame()
+	{
+		if (Input.GetKeyDown(KeyCode.Home)
+		|| "new game" == letterMouseDown)
+		{
+			model.newGame();
+		}
+		ViewUtil.SetVisible(main.transform.Find("input/newGame").gameObject, model.isNewGameVisible);
+
+	}
+
+	private void updateContinue()
+	{
+		if (Input.GetKeyDown(KeyCode.End)
+		|| "continue" == letterMouseDown)
+		{
+			model.doContinue();
+		}
+		ViewUtil.SetVisible(main.transform.Find("input/continue").gameObject, model.isContinueVisible);
 
 	}
 
