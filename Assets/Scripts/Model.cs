@@ -69,6 +69,7 @@ namespace com.finegamedesign.anagram
 		public Model()
 		{
 			tutorLevel = levels.parameters.Count;
+			isNewGameVisible = true;
 			populateWord("");
 		}
 		
@@ -516,7 +517,6 @@ namespace com.finegamedesign.anagram
 			if (null != data) {
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
-					isNewGameVisible = true;
 					isContinueVisible = true;
 					Debug.Log("Load level " + previousSessionLevel);
 				}
