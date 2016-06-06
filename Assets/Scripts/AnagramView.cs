@@ -211,11 +211,11 @@ string state = selected ? "selected" : "none";
 	private void resetSelect()
 	{
 		GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
-		int max = model.letterMax;
+		int max = model.word.Count;
 		for (int index = 0; index < max; index++)
 		{
 			string name = "bone_" + index + "/letter";
-	ViewUtil.SetState(parent.transform.Find(name).gameObject, "none");
+			ViewUtil.SetState(parent.transform.Find(name).gameObject, "none");
 		}
 	}
 
