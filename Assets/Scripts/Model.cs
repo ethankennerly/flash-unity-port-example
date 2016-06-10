@@ -47,7 +47,6 @@ namespace com.finegamedesign.anagram
 		internal float progressPositionTweened = 0.0f;
 		internal float wordPosition = 0.0f;
 		internal float wordPositionScaled = 0.0f;
-		internal float checkpoint = -1.0f;
 		internal float checkpointStep = 0.1f;
 		internal int points = 0;
 		internal int score = 0;
@@ -68,6 +67,7 @@ namespace com.finegamedesign.anagram
 		
 		public Model()
 		{
+			progress.SetCheckpointStep(checkpointStep);
 			tutorLevel = levels.parameters.Count;
 			isNewGameVisible = true;
 			populateWord("");
@@ -187,7 +187,8 @@ namespace com.finegamedesign.anagram
 		{
 			float progressScale = 
 									// -1.0f / 16.0f;
-									-1.0f / 10.0f;
+									// -1.0f / 10.0f;
+									-0.2f;
 									// -0.25f;
 
 			progressPositionScaled = progressScale * width 
@@ -379,6 +380,7 @@ namespace com.finegamedesign.anagram
 			if (isNewGameVisible) {
 				Debug.Log("Model.newGame");
 				previousSessionLevel = 0;
+				progress.SetLevelNormal(previousSessionLevel);
 				trial(levels.parameters[0]);
 			}
 		}
@@ -387,6 +389,7 @@ namespace com.finegamedesign.anagram
 		{
 			if (isContinueVisible) {
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
+				Debug.Log("Model.doContinue: level " + level);
 				progress.SetLevelNormal(level);
 				nextTrial();
 			}
@@ -479,18 +482,14 @@ namespace com.finegamedesign.anagram
 
 		private bool updateCheckpoint()
 		{
-			bool isNow = false;
-			if (checkpoint <= progress.normal) {
-				if (checkpointStep <= checkpoint) {
-					isGamePlaying = false;
-					isContinueVisible = true;
-					populateWord("");
-					Debug.Log("Model.updateCheckpoint: " + checkpoint + " progress " + progress.normal);
-					isNow = true;
-				}
-				checkpoint = Mathf.Floor(progress.normal / checkpointStep + 1) * checkpointStep;
+			progress.UpdateCheckpoint();
+			if (progress.isCheckpoint) {
+				isGamePlaying = false;
+				isContinueVisible = true;
+				populateWord("");
+				Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled);
 			}
-			return isNow;
+			return progress.isCheckpoint;
 		}
 
 		private void nextTrial()

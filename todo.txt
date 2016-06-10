@@ -71,6 +71,7 @@ TODO
 	Word creep animation.
 	Word not in order.
 	Performance analytics.
+	Update Unity version.
 	Profile
 		Optimize view update of letters.
 	Monster dodges if repeating word.
@@ -81,6 +82,7 @@ TODO
 		Reset user level.
 	Game over.  Continue button.
 	Select user name from menu.
+	Letter graphic.
 	Google Play Store.
 	Play in WebGL or WebPlayer.
 		WebGL says "NotSupportedException: Collection is read-only"
