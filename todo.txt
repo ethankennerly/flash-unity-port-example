@@ -62,16 +62,27 @@ FEATURES
 		http://gamedevelopment.tutsplus.com/tutorials/how-to-save-and-load-your-players-progress-in-unity--cms-20934
 		http://answers.unity3d.com/questions/8480/how-to-scrip-a-saveload-game-option.html
 	Press button to Continue from last level.
+	Game over.  Continue button.
+	Checkpoint at each big flower.
 
 TODO
 
-	Checkpoint at each big flower.
+	Performance analytics:  
+		Scatter plot:
+			start level vs response time.  
+			start level vs level up.  
+			start level vs hint count.  
+			start level vs game over.  
+			Pivot table.
+		Log TSV:  response time, start level, level up, hint count, game over, word.
+		Re-sort words by performance.
+		Email
+	Creep up to challenging word.
+	Letter creep animation.
 	Read limit hints.
 	Hints at each checkpoint.
-	Word creep animation.
-	Word not in order.
-	Performance analytics.
 	Update Unity version.
+	Word never in order of a word in dictionary.
 	Profile
 		Optimize view update of letters.
 	Monster dodges if repeating word.
@@ -80,9 +91,11 @@ TODO
 			http://docs.unity3d.com/Manual/script-InputField.html
 			http://docs.unity3d.com/ScriptReference/TouchScreenKeyboard.Open.html
 		Reset user level.
-	Game over.  Continue button.
 	Select user name from menu.
 	Letter graphic.
+	Menu to select any word.  Example:  WordBrain.
+	Animate word bug damaging plant and ground that it covers.
+		Animate repairing after defeating a bug.
 	Google Play Store.
 	Play in WebGL or WebPlayer.
 		WebGL says "NotSupportedException: Collection is read-only"

@@ -64,10 +64,13 @@ namespace com.finegamedesign.anagram
 		private bool isVerbose = false;
 		private float responseSeconds;
 		private float wordPositionMin;
+		private float checkpointInterval = -16.0f; 
+		private float progressScale;
+
 		
 		public Model()
 		{
-			progress.SetCheckpointStep(checkpointStep);
+			setupProgress();
 			tutorLevel = levels.parameters.Count;
 			isNewGameVisible = true;
 			populateWord("");
@@ -183,14 +186,15 @@ namespace com.finegamedesign.anagram
 			updateProgress(deltaSeconds);
 		}
 
+		// Scale scrolling to arrive at each checkpoint in the world on each step of normalized progress.
+		private void setupProgress()
+		{
+			progressScale = checkpointInterval / checkpointStep / width;
+			progress.SetCheckpointStep(checkpointStep);
+		}
+
 		private void updateProgress(float deltaSeconds)
 		{
-			float progressScale = 
-									// -1.0f / 16.0f;
-									// -1.0f / 10.0f;
-									-0.2f;
-									// -0.25f;
-
 			progressPositionScaled = progressScale * width 
 				* progress.NextCreep(performance());
 			progressPositionTweened += (progressPositionScaled - progressPositionTweened) * deltaSeconds;
@@ -487,7 +491,8 @@ namespace com.finegamedesign.anagram
 				isGamePlaying = false;
 				isContinueVisible = true;
 				populateWord("");
-				Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled);
+				float checkpoint = progressScale * width * progress.normal;
+				Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
 			}
 			return progress.isCheckpoint;
 		}
