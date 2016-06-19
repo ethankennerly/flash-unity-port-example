@@ -64,10 +64,6 @@ FEATURES
 	Press button to Continue from last level.
 	Game over.  Continue button.
 	Checkpoint at each big flower.
-
-TODO
-
-	Continue.  Do not repeat.
 	Performance analytics:  
 		Scatter plot:
 			start level vs level up.  
@@ -76,14 +72,18 @@ TODO
 			start level vs game over.  
 			Pivot table.
 		Log TSV:  response time, start level, level up, hint count, game over, word.
-		Re-sort words by performance.
-		Email
+
+TODO
+
+	Continue.  Do not repeat tutorial.
+	Continue.  No letters selected or partially typed.
+	Hint.  No letters selected or partially typed.
+	Update Unity version.
+	Word never in order of a word in dictionary.
 	Creep up to challenging word.
 	Letter creep animation.
 	Read limit hints.
 	Hints at each checkpoint.
-	Update Unity version.
-	Word never in order of a word in dictionary.
 	Profile
 		Optimize view update of letters.
 	Monster dodges if repeating word.

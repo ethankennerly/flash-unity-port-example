@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nmap <S-Insert> "+gP
-nnoremap <C-Tab> w
 nnoremap <C-F4> c
+nnoremap <C-Tab> w
+nmap <S-Insert> "+gP
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -87,7 +87,7 @@ badd +1 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Controller.
 badd +190 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Model.as
 badd +42 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Main.as
 badd +133 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Levels.as
-badd +41 Model.cs
+badd +140 Model.cs
 badd +9 AnagramModel.cs
 badd +14 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Words.as
 badd +39 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\View.as
@@ -95,7 +95,7 @@ badd +92 AnagramView.cs
 badd +68 Levels.cs
 badd +13 Controller.cs
 badd +1 View.cs
-badd +23 Main.cs
+badd +41 Main.cs
 badd +1 Toolkit.cs
 badd +9 Words.cs
 badd +91 DataUtil.cs
@@ -142,9 +142,10 @@ badd +1 UnityToykit\toolkit\MouseView.cs
 badd +16 UnityToykit\toolkit\Toolkit.cs
 badd +86 UnityToykit\Editor\Tests\TestProgress.cs
 badd +26 UnityToykit\Editor\Tests\TestToolkit.cs
-badd +42 UnityToykit\Toolkit\Progress.cs
-badd +0 \archive\unity\anagram\engineering.txt
+badd +140 UnityToykit\Toolkit\Progress.cs
+badd +1 \archive\unity\anagram\engineering.txt
 badd +21 Storage.cs
+badd +30 Metrics.cs
 args AnagramView.cs DataUtil.cs Levels.cs Main.cs Model.cs Referee.cs UnityToykit\framework\Controller.cs UnityToykit\framework\Examples\MainExample.cs UnityToykit\framework\Examples\ModelExample.cs UnityToykit\framework\IModel.cs UnityToykit\framework\MainView.cs UnityToykit\framework\View.cs UnityToykit\framework\ViewModel.cs UnityToykit\toolkit\ButtonView.cs UnityToykit\toolkit\ControllerUtil.cs UnityToykit\toolkit\Deck.cs UnityToykit\toolkit\GameObjectTree.cs UnityToykit\toolkit\MouseView.cs UnityToykit\toolkit\Toolkit.cs UnityToykit\toolkit\ViewUtil.cs Words.cs
 edit \archive\unity\anagram\todo.txt
 set splitbelow splitright
@@ -160,11 +161,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 17 + 15) / 30)
-exe '2resize ' . ((&lines * 10 + 15) / 30)
-exe 'vert 2resize ' . ((&columns * 67 + 66) / 132)
-exe '3resize ' . ((&lines * 10 + 15) / 30)
-exe 'vert 3resize ' . ((&columns * 64 + 66) / 132)
+exe '1resize ' . ((&lines * 20 + 16) / 33)
+exe '2resize ' . ((&lines * 10 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 68 + 66) / 133)
+exe '3resize ' . ((&lines * 10 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
 argglobal
 edit \archive\unity\anagram\todo.txt
 setlocal keymap=
@@ -268,12 +269,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 68 - ((2 * winheight(0) + 8) / 17)
+let s:l = 75 - ((10 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-68
-normal! 01l
+75
+normal! 030l
 wincmd w
 argglobal
 edit \archive\unity\anagram\engineering.txt
@@ -378,7 +379,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((9 * winheight(0) + 5) / 10)
+let s:l = 19 - ((0 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -488,7 +489,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 83 - ((8 * winheight(0) + 5) / 10)
+let s:l = 83 - ((0 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -496,26 +497,33 @@ normal! zt
 normal! 0
 lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
-exe '1resize ' . ((&lines * 17 + 15) / 30)
-exe '2resize ' . ((&lines * 10 + 15) / 30)
-exe 'vert 2resize ' . ((&columns * 67 + 66) / 132)
-exe '3resize ' . ((&lines * 10 + 15) / 30)
-exe 'vert 3resize ' . ((&columns * 64 + 66) / 132)
-tabedit C:\archive\unity\anagram\Assets\Scripts\Model.cs
+exe '1resize ' . ((&lines * 20 + 16) / 33)
+exe '2resize ' . ((&lines * 10 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 68 + 66) / 133)
+exe '3resize ' . ((&lines * 10 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
+tabedit C:\archive\unity\anagram\Assets\Scripts\Metrics.cs
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
 wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 132)
-exe 'vert 2resize ' . ((&columns * 64 + 66) / 132)
+exe 'vert 1resize ' . ((&columns * 68 + 66) / 133)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 64 + 66) / 133)
+exe '3resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
 argglobal
 7argu
-edit C:\archive\unity\anagram\Assets\Scripts\Model.cs
+edit C:\archive\unity\anagram\Assets\Scripts\Metrics.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -617,13 +625,124 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 72 - ((20 * winheight(0) + 14) / 28)
+let s:l = 51 - ((17 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-72
-normal! 03l
+51
+normal! 02l
 lcd C:\archive\unity\anagram\Assets\Scripts
+wincmd w
+argglobal
+edit C:\archive\unity\anagram\Assets\Scripts\Model.cs
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'cs'
+setlocal filetype=cs
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'cs'
+setlocal syntax=cs
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 193 - ((7 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+193
+normal! 012l
 wincmd w
 argglobal
 edit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\Progress.cs
@@ -729,15 +848,18 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 49 - ((27 * winheight(0) + 14) / 28)
+let s:l = 80 - ((0 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-49
-normal! 02l
+80
+normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 132)
-exe 'vert 2resize ' . ((&columns * 64 + 66) / 132)
+exe 'vert 1resize ' . ((&columns * 68 + 66) / 133)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 64 + 66) / 133)
+exe '3resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
 tabedit C:\archive\python\as2cs\test\TestSyntaxModel.as
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -748,9 +870,10 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 132)
-exe 'vert 2resize ' . ((&columns * 65 + 66) / 132)
+exe 'vert 1resize ' . ((&columns * 67 + 66) / 133)
+exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
 argglobal
+7argu
 edit C:\archive\python\as2cs\test\TestSyntaxModel.as
 setlocal keymap=
 setlocal noarabic
@@ -862,6 +985,7 @@ normal! 012l
 lcd C:\archive\unity\anagram
 wincmd w
 argglobal
+7argu
 edit C:\archive\python\as2cs\README.md
 setlocal keymap=
 setlocal noarabic
@@ -972,8 +1096,8 @@ normal! zt
 normal! 015l
 lcd C:\archive\unity\anagram
 wincmd w
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 132)
-exe 'vert 2resize ' . ((&columns * 65 + 66) / 132)
+exe 'vert 1resize ' . ((&columns * 67 + 66) / 133)
+exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
 tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
