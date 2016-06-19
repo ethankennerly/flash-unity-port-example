@@ -67,10 +67,11 @@ FEATURES
 
 TODO
 
+	Continue.  Do not repeat.
 	Performance analytics:  
 		Scatter plot:
-			start level vs response time.  
 			start level vs level up.  
+			start level vs response time.  
 			start level vs hint count.  
 			start level vs game over.  
 			Pivot table.

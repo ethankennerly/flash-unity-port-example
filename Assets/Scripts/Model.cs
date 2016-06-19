@@ -66,6 +66,7 @@ namespace com.finegamedesign.anagram
 		private float wordPositionMin;
 		private float checkpointInterval = -16.0f; 
 		private float progressScale;
+		private Metrics metrics = new Metrics();
 
 		
 		public Model()
@@ -74,6 +75,15 @@ namespace com.finegamedesign.anagram
 			tutorLevel = levels.parameters.Count;
 			isNewGameVisible = true;
 			populateWord("");
+			metrics.trial_headers = new string[]{
+				"level_start", 
+				"level_up", 
+				"response_time", 
+				"game_over", 
+				"hint_count", 
+				"word" 
+			};
+			metrics.StartSession();
 		}
 		
 		private void populateWord(string text)
@@ -129,6 +139,12 @@ namespace com.finegamedesign.anagram
 			}
 			;
 			if (isVerbose) Debug.Log("Model.trial: word[0]: <" + word[0] + ">");
+			metrics.StartTrial();
+			metrics.trial_integers["game_over"] = 0;
+			metrics.trial_integers["hint_count"] = 0;
+			metrics.trial_integers["level_start"] = progress.GetLevelNormal();
+			metrics.trial_integers["level_up"] = 0;
+			metrics.trial_strings["word"] = text;
 		}
 		
 		private int previous = 0;
@@ -148,6 +164,7 @@ namespace com.finegamedesign.anagram
 				updatePosition(deltaSeconds);
 			}
 			updateHintVisible();
+			metrics.Update(deltaSeconds);
 		}
 
 		internal float width = 720;
@@ -172,6 +189,9 @@ namespace com.finegamedesign.anagram
 				isGamePlaying = false;
 				isContinueVisible = true;
 				isNewGameVisible = true;
+				metrics.trial_integers["game_over"] = 1;
+				metrics.EndTrial();
+				metrics.EndSession();
 			}
 			wordPosition = Mathf.Max(min, Mathf.Min(0, wordPosition));
 		}
@@ -376,6 +396,7 @@ namespace com.finegamedesign.anagram
 				isHintVisible = false;
 				string letter = hintWord.Substring(hints.Count, 1);
 				hints.Add(letter);
+				metrics.trial_integers["hint_count"]++;
 			}
 		}
 
@@ -395,6 +416,7 @@ namespace com.finegamedesign.anagram
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
 				Debug.Log("Model.doContinue: level " + level);
 				progress.SetLevelNormal(level);
+				metrics.StartSession();
 				nextTrial();
 			}
 		}
@@ -438,6 +460,7 @@ namespace com.finegamedesign.anagram
 						if (complete)
 						{
 							completes = DataUtil.CloneList(word);
+							metrics.EndTrial();
 							if (progress.level < tutorLevel) {
 								progress.level++;
 								trial(levels.up());
@@ -491,6 +514,7 @@ namespace com.finegamedesign.anagram
 				isGamePlaying = false;
 				isContinueVisible = true;
 				populateWord("");
+				metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;
 				Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
 			}
@@ -513,6 +537,7 @@ namespace com.finegamedesign.anagram
 		internal void levelUp()
 		{
 			progress.Creep(performance());
+			metrics.trial_integers["level_up"] = progress.GetLevelNormal() - metrics.trial_integers["level_start"];
 			nextTrial();
 		}
 
