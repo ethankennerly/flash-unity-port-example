@@ -3,18 +3,25 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using com.finegamedesign.anagram;
+using com.finegamedesign.utils;
 
 public class AnagramView 
 {
 	private AudioSource audio;
 	private Model model;
 	private Main main;
+	public Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
+	public List<SceneNode> letterNodes;
 
 	public AnagramView(Model theModel, Main theMainScene) 
 	{
 		model = theModel;
 		main = theMainScene;
 		audio = main.gameObject.GetComponent<AudioSource>();
+		string wordAddress = "word/state";
+		objects[wordAddress] = main.transform.Find(wordAddress).gameObject;
+		letterNodes = SceneNodeView.ToSceneNodeList(
+			SceneNodeView.GetChildren(objects[wordAddress]));
 	}
 
 	private string letterMouseDown;

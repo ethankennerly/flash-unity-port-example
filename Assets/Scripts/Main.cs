@@ -20,8 +20,9 @@ public class Main : MonoBehaviour {
 		pushWords();
 		model.wordHash = new Words().init();
 		model.scaleToScreen(9.5f);
-        model.load(storage.Load());
+		model.load(storage.Load());
 		view = new AnagramView(model, this);
+		model.setReadingOrder(view.letterNodes);
 	}
 
 	private void pushWords()
@@ -47,10 +48,10 @@ public class Main : MonoBehaviour {
 
 	public void Update() {
 		model.update(Time.deltaTime);
-        if ("complete" == model.state) {
-            storage.SetKeyValue("level", model.progress.GetLevelNormal());
-            storage.Save(storage.data);
-        }
+		if ("complete" == model.state) {
+			storage.SetKeyValue("level", model.progress.GetLevelNormal());
+			storage.Save(storage.data);
+		}
 		wordPosition = model.wordPosition;
 		wordPositionScaled = model.wordPositionScaled;
 		view.update();

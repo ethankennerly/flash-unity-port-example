@@ -16,6 +16,30 @@ namespace com.finegamedesign.anagram
 				cards[i] = swap;
 			}
 		}
+
+		private static bool ContainsWord(Dictionary<string, dynamic> wordHash, List<string> letters, List<int> readingOrder)
+		{
+			string word = "";
+			for (int index = 0; index < DataUtil.Length(readingOrder); index++)
+			{
+				if (index < DataUtil.Length(letters))
+				{
+					word += letters[index];
+				}
+			}
+			return wordHash.ContainsKey(word);
+		}
+
+		private static void shuffleNotWord(Dictionary<string, dynamic> wordHash, List<string> letters, List<int> readingOrder, int attemptMax = 16)
+		{
+			for (int attempt = 0; attempt < attemptMax; attempt++)
+			{
+				Deck.ShuffleList(letters);
+				if (!ContainsWord(wordHash, letters, readingOrder)) {
+					break;
+				}
+			}
+		}
 		
 		internal string helpState;
 		internal int letterMax = 10;
@@ -119,7 +143,7 @@ namespace com.finegamedesign.anagram
 			populateWord(text);
 			if ("" == help)
 			{
-				shuffle(word);
+				shuffleNotWord(wordHash, word, readingOrder);
 				wordWidthPerSecond = // -0.05;
 				// -0.02;
 				// -0.01;
@@ -249,7 +273,7 @@ namespace com.finegamedesign.anagram
 			if (enabled)
 			{
 				wordPosition += outputKnockback;
-				shuffle(word);
+				shuffleNotWord(wordHash, word, readingOrder);
 				selects = DataUtil.CloneList(word);
 				for (int i = 0; i < DataUtil.Length(inputs); i++)
 				{
@@ -489,6 +513,10 @@ namespace com.finegamedesign.anagram
 				}
 				outputs = DataUtil.CloneList(inputs);
 			}
+			if (!accepted) {
+				float perWordNotAccepted = -0.1f;
+				wordPosition += perWordNotAccepted;
+			}
 			if (isVerbose) Debug.Log("Model.submit: " + submission + ". Accepted " + accepted);
 			DataUtil.Clear(inputs);
 			available = DataUtil.CloneList(word);
@@ -569,6 +597,18 @@ namespace com.finegamedesign.anagram
 			progress.Creep(0.0f);
 			nextTrial();
 			wordPosition = 0.0f;
+		}
+
+		private List<int> readingOrder = new List<int>();
+
+		internal void setReadingOrder(List<SceneNode> letterNodes)
+		{	
+			DataUtil.Clear(readingOrder);
+			for (int letter = 0; letter < DataUtil.Length(letterNodes); letter++)
+			{
+				int index = Toolkit.ParseIndex(letterNodes[letter].name);
+				readingOrder.Add(index);
+			}
 		}
 	}
 }
