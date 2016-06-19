@@ -72,14 +72,16 @@ FEATURES
 			start level vs game over.  
 			Pivot table.
 		Log TSV:  response time, start level, level up, hint count, game over, word.
+	Continue.  No letters selected or partially typed.
+	Hint.  No mismatch between letters selected or partially typed.
 
 TODO
 
 	Continue.  Do not repeat tutorial.
-	Continue.  No letters selected or partially typed.
-	Hint.  No letters selected or partially typed.
+	If attempt 5 shuffles until word not order of a word in dictionary.
+	Model view.
+	Clarify will lose when word at bottom.
 	Update Unity version.
-	Word never in order of a word in dictionary.
 	Creep up to challenging word.
 	Letter creep animation.
 	Read limit hints.

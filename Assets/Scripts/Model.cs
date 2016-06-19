@@ -410,6 +410,11 @@ namespace com.finegamedesign.anagram
 			}
 		}
 
+		/**
+		 * When tapping Continue, but not at every next trial, clear inputs.  Animation displays inputs.
+		 * Test case:  2016-06-19 Some letters selected.  Game over.  Continue.  Expect no letter selected.  
+		 * + Submit full word.  Expect animation.  Got nothing.
+		 */
 		internal void doContinue()
 		{
 			if (isContinueVisible) {
@@ -418,6 +423,7 @@ namespace com.finegamedesign.anagram
 				progress.SetLevelNormal(level);
 				metrics.StartSession();
 				nextTrial();
+				DataUtil.Clear(inputs);
 			}
 		}
 

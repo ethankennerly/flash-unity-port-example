@@ -161,7 +161,7 @@ string state = selected ? "selected" : "none";
 		|| Input.GetKeyDown("return")
 		|| "submit" == letterMouseDown)
 		{
-		letterMouseDown = null;
+			letterMouseDown = null;
 			string state = model.submit();
 			if (null != state) 
 			{
@@ -173,6 +173,10 @@ string state = selected ? "selected" : "none";
 		}
 	}
 
+	/**
+	 * Hint does not reset letters selected.
+	 * Test case:  2016-06-19 Hint.  Expect no mismatch between letters typed and letters selected.
+	 */
 	private void updateHint()
 	{
 		if (Input.GetKeyDown(KeyCode.Question)
@@ -180,7 +184,6 @@ string state = selected ? "selected" : "none";
 		|| "hint" == letterMouseDown)
 		{
 			model.hint();
-			resetSelect();
 		}
 		ViewUtil.SetVisible(main.transform.Find("input/hint").gameObject, model.isHintVisible);
 
@@ -203,6 +206,7 @@ string state = selected ? "selected" : "none";
 		|| "continue" == letterMouseDown)
 		{
 			model.doContinue();
+			resetSelect();
 		}
 		ViewUtil.SetVisible(main.transform.Find("input/continue").gameObject, model.isContinueVisible);
 
