@@ -552,7 +552,7 @@ namespace com.finegamedesign.anagram
 				isGamePlaying = false;
 				isContinueVisible = true;
 				populateWord("");
-				metrics.EndSession();
+				//- metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;
 				Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
 			}

@@ -84,11 +84,11 @@ FEATURES
 			sort x, name. 
 			Name reading order.
 		Lookup word.
+	Unknown step.  Load level 0.  New game.  Expect to advance level.
+	Unknown step.  Load level 0.  Continue.  Second trial.  Do not repeat tutorial.  Advance level.
 
 TODO
 
-	Unknown step.  Load level 0.  New game.  Expect to advance level.
-	Unknown step.  Load level 0.  Continue.  Second trial.  Do not repeat tutorial.  Advance level.
 	Model view 
 		Dictionary maps string addresses to game objects.
 		Separate file of addresses.
