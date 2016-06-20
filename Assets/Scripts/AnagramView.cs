@@ -12,6 +12,7 @@ public class AnagramView
 	private Main main;
 	public Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
 	public List<SceneNode> letterNodes;
+	private Email email = new Email();
 
 	public AnagramView(Model theModel, Main theMainScene) 
 	{
@@ -101,6 +102,11 @@ public class AnagramView
 		{
 			model.levelDownMax();
 			audio.PlayOneShot(main.selectSound);
+		}
+		else if (Input.GetKeyDown("0")
+		 		|| "email metrics" == letterMouseDown)
+		{
+			email.Send(model.metrics.ToTable());
 		}
 	}
 

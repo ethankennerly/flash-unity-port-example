@@ -87,10 +87,15 @@ FEATURES
 
 TODO
 
+	Unknown step.  Load level 0.  New game.  Expect to advance level.
 	Unknown step.  Load level 0.  Continue.  Second trial.  Do not repeat tutorial.  Advance level.
-	Model view.
-	Clarify will lose when word at bottom.
+	Model view 
+		Dictionary maps string addresses to game objects.
+		Separate file of addresses.
+		Map of map of addresses.
+		Variables assigned to game objects at addresses.
 	Update Unity version.
+	Clarify will lose when word at bottom.
 	Creep up to challenging word.
 	Letter creep animation.
 	Read limit hints.

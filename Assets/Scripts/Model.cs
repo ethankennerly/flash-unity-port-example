@@ -90,13 +90,15 @@ namespace com.finegamedesign.anagram
 		private float wordPositionMin;
 		private float checkpointInterval = -16.0f; 
 		private float progressScale;
-		private Metrics metrics = new Metrics();
+		private int trialCount;
+		internal Metrics metrics = new Metrics();
 
 		
 		public Model()
 		{
 			setupProgress();
-			tutorLevel = levels.parameters.Count;
+			tutorLevel = 4;  // levels.parameters.Count;
+			trialCount = 0;
 			isNewGameVisible = true;
 			populateWord("");
 			metrics.trial_headers = new string[]{
@@ -491,14 +493,16 @@ namespace com.finegamedesign.anagram
 						{
 							completes = DataUtil.CloneList(word);
 							metrics.EndTrial();
-							if (progress.level < tutorLevel) {
-								progress.level++;
+							if (progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel) {
 								trial(levels.up());
 							}
 							else {
 								levelUp();
 							}
+							Toolkit.Log("Model.submit: " + submission 
+								+ " " + progress.GetLevelNormal());
 							state = "complete";
+							trialCount++;
 							if (null != onComplete)
 							{
 								onComplete();
