@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using com.finegamedesign.utils/*<DataUtil>*/;
-namespace com.finegamedesign.anagram
+using /*<com>*/Finegamedesign.Utils/*<DataUtil>*/;
+namespace /*<com>*/Finegamedesign.Anagram
 {
 	public class Levels
 	{

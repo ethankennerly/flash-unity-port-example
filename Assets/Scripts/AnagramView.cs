@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using com.finegamedesign.anagram;
-using com.finegamedesign.utils;
+using /*<com>*/Finegamedesign.Anagram;
+using /*<com>*/Finegamedesign.Utils;
 
 public class AnagramView 
 {

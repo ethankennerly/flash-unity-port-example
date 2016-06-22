@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using com.finegamedesign.utils/*<Model>*/;
-namespace com.finegamedesign.anagram
+using /*<com>*/Finegamedesign.Utils/*<Model>*/;
+namespace /*<com>*/Finegamedesign.Anagram
 {
 	public class Model
 	{

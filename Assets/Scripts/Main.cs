@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using com.finegamedesign.anagram;
+using /*<com>*/Finegamedesign.Anagram;
 
 public class Main : MonoBehaviour {
 	public AudioClip explosionBigSound;
