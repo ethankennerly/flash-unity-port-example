@@ -25,7 +25,6 @@ namespace Finegamedesign.Anagram
 			model.wordHash = new Words().init();
 			model.scaleToScreen(9.5f);
 			model.load(storage.Load());
-			view.Setup();
 			view.SetupAudio(soundFileNames);
 			model.setReadingOrder(view.letterNodes);
 		}

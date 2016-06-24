@@ -8,8 +8,6 @@ namespace Finegamedesign.Anagram
 	{
 		public List<SceneNode> letterNodes;
 		internal AudioView audio;
-		internal string letterMouseDown;
-		internal int letterIndexMouseDown;
 		internal GameObject main;
 		internal GameObject word;
 		internal GameObject wordState;
@@ -37,8 +35,9 @@ namespace Finegamedesign.Anagram
 		 * Cache found game objects.
 		 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 		 */
-		public void Setup() 
+		public void Setup(GameObject rootObject)
 		{
+			main = rootObject;
 			word = SceneNodeView.GetChild(main, "word");
 			wordState = SceneNodeView.GetChild(main, "word/state");
 			input = SceneNodeView.GetChild(main, "input");

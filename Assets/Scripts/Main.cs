@@ -8,7 +8,7 @@ namespace Finegamedesign.Anagram
 
 		public void Start()
 		{
-			controller.view.main = this.gameObject;
+			controller.view.Setup(this.gameObject);
 			controller.Setup();
 		}
 

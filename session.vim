@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nmap <S-Insert> "+gP
-nnoremap <C-Tab> w
 nnoremap <C-F4> c
+nnoremap <C-Tab> w
+nmap <S-Insert> "+gP
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -72,7 +72,7 @@ set nowritebackup
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd C:\archive\unity\anagram\Assets\Scripts
+cd C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -82,33 +82,33 @@ badd +1 \archive\unity\anagram\todo.txt
 badd +1 \archive\unity\race\Assets\RaceModel.cs
 badd +55 \archive\unity\race\Assets\RaceController.cs
 badd +2 \archive\unity\anagram\AnagramController.cs
-badd +1 AnagramController.cs
+badd +180 \archive\unity\anagram\Assets\Scripts\AnagramController.cs
 badd +1 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Controller.as
 badd +190 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Model.as
 badd +42 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Main.as
 badd +133 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Levels.as
-badd +125 Model.cs
-badd +9 AnagramModel.cs
+badd +7 \archive\unity\anagram\Assets\Scripts\Model.cs
+badd +9 \archive\unity\anagram\Assets\Scripts\AnagramModel.cs
 badd +14 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Words.as
 badd +39 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\View.as
-badd +112 AnagramView.cs
-badd +46 Levels.cs
-badd +13 Controller.cs
-badd +1 View.cs
-badd +58 Main.cs
-badd +1 Toolkit.cs
-badd +9 Words.cs
-badd +91 DataUtil.cs
-badd +1 WordHash.as
+badd +35 \archive\unity\anagram\Assets\Scripts\AnagramView.cs
+badd +46 \archive\unity\anagram\Assets\Scripts\Levels.cs
+badd +13 \archive\unity\anagram\Assets\Scripts\Controller.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\View.cs
+badd +12 \archive\unity\anagram\Assets\Scripts\Main.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\Toolkit.cs
+badd +9 \archive\unity\anagram\Assets\Scripts\Words.cs
+badd +91 \archive\unity\anagram\Assets\Scripts\DataUtil.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\WordHash.as
 badd +62 \archive\python\as2cs\test\TestSyntaxModel.as
 badd +1 \archive\python\as2cs\test\TestSyntaxLevels.as
 badd +64 \archive\python\as2cs\test\TestSyntaxModel.cs
-badd +69 UnityToykit\toolkit\ViewUtil.cs
+badd +69 ViewUtil.cs
 badd +300 \archive\python\as2cs\README.md
 badd +36 \archive\unity\anagram\design.txt
 badd +24 \archive\unity\anagram\play.txt
 badd +1 \archive\unity\anagram\note.txt
-badd +1 Referee.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\Referee.cs
 badd +2896 \archive\unity\anagram\Assets\Resources\text\anagram_words.txt
 badd +113810 \archive\unity\anagram\Assets\Resources\text\word_list_moby_crossword.flat.txt
 badd +25 \archive\unity\anagram\Build\windows\anagram_attack_Data\output_log.txt
@@ -127,35 +127,38 @@ badd +2933 \archive\python\anagram-frequency\anagram_words.txt
 badd +172820 \archive\python\anagram-frequency\enable1.txt
 badd +2406 \archive\python\anagram-frequency\TWL06.txt.anagram.csv
 badd +35 \archive\unity\anagram\README.md
-badd +1 UnityToykit\framework\Controller.cs
-badd +1 UnityToykit\framework\Examples\MainExample.cs
-badd +1 UnityToykit\framework\Examples\ModelExample.cs
-badd +1 UnityToykit\framework\IModel.cs
-badd +1 UnityToykit\framework\MainView.cs
-badd +1 UnityToykit\framework\View.cs
-badd +1 UnityToykit\framework\ViewModel.cs
-badd +1 UnityToykit\toolkit\ButtonView.cs
-badd +1 UnityToykit\toolkit\ControllerUtil.cs
-badd +1 UnityToykit\toolkit\Deck.cs
-badd +1 UnityToykit\toolkit\GameObjectTree.cs
-badd +1 UnityToykit\toolkit\MouseView.cs
-badd +16 UnityToykit\toolkit\Toolkit.cs
-badd +86 UnityToykit\Editor\Tests\TestProgress.cs
-badd +26 UnityToykit\Editor\Tests\TestToolkit.cs
-badd +135 UnityToykit\Toolkit\Progress.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Controller.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Examples\MainExample.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Examples\ModelExample.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\IModel.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\MainView.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\View.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\ViewModel.cs
+badd +1 ButtonView.cs
+badd +1 ControllerUtil.cs
+badd +1 Deck.cs
+badd +1 GameObjectTree.cs
+badd +1 MouseView.cs
+badd +16 Toolkit.cs
+badd +86 \archive\unity\anagram\Assets\Scripts\UnityToykit\Editor\Tests\TestProgress.cs
+badd +26 \archive\unity\anagram\Assets\Scripts\UnityToykit\Editor\Tests\TestToolkit.cs
+badd +74 Progress.cs
 badd +1 \archive\unity\anagram\engineering.txt
-badd +21 Storage.cs
-badd +34 Metrics.cs
-badd +1 Editor\TestSyntax\TestCalculate.cs
-badd +12 Editor\TestSceneModel.cs
-badd +5 Editor\TestSceneNode.cs
-badd +1 SceneNode.cs
-badd +1 UnityToykit\Editor\Tests\TestSceneNode.cs
-badd +1 UnityToykit\Toolkit\SceneNode.cs
-badd +1 UnityToykit\Toolkit\SceneNodeCompareLeftToRight.cs
-badd +1 UnityToykit\Toolkit\DataUtil.cs
-badd +11 Email.cs
-args AnagramView.cs DataUtil.cs Levels.cs Main.cs Model.cs Referee.cs UnityToykit\framework\Controller.cs UnityToykit\framework\Examples\MainExample.cs UnityToykit\framework\Examples\ModelExample.cs UnityToykit\framework\IModel.cs UnityToykit\framework\MainView.cs UnityToykit\framework\View.cs UnityToykit\framework\ViewModel.cs UnityToykit\toolkit\ButtonView.cs UnityToykit\toolkit\ControllerUtil.cs UnityToykit\toolkit\Deck.cs UnityToykit\toolkit\GameObjectTree.cs UnityToykit\toolkit\MouseView.cs UnityToykit\toolkit\Toolkit.cs UnityToykit\toolkit\ViewUtil.cs Words.cs
+badd +21 \archive\unity\anagram\Assets\Scripts\Storage.cs
+badd +34 \archive\unity\anagram\Assets\Scripts\Metrics.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\TestCalculate.cs
+badd +12 \archive\unity\anagram\Assets\Scripts\Editor\TestSceneModel.cs
+badd +5 \archive\unity\anagram\Assets\Scripts\Editor\TestSceneNode.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\SceneNode.cs
+badd +18 \archive\unity\anagram\Assets\Scripts\UnityToykit\Editor\Tests\TestSceneNode.cs
+badd +9 SceneNode.cs
+badd +19 SceneNodeCompareLeftToRight.cs
+badd +87 DataUtil.cs
+badd +11 \archive\unity\anagram\Assets\Scripts\Email.cs
+badd +0 \archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\AllInOne.cs
+badd +28 AudioView.cs
+badd +10 KeyView.cs
+args \archive\unity\anagram\Assets\Scripts\AnagramView.cs \archive\unity\anagram\Assets\Scripts\DataUtil.cs \archive\unity\anagram\Assets\Scripts\Levels.cs \archive\unity\anagram\Assets\Scripts\Main.cs \archive\unity\anagram\Assets\Scripts\Model.cs \archive\unity\anagram\Assets\Scripts\Referee.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Controller.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Examples\MainExample.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Examples\ModelExample.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\IModel.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\MainView.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\View.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\ViewModel.cs ButtonView.cs ControllerUtil.cs Deck.cs GameObjectTree.cs MouseView.cs Toolkit.cs ViewUtil.cs \archive\unity\anagram\Assets\Scripts\Words.cs
 edit \archive\unity\anagram\todo.txt
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -170,10 +173,10 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 21 + 16) / 33)
-exe '2resize ' . ((&lines * 9 + 16) / 33)
+exe '1resize ' . ((&lines * 22 + 16) / 33)
+exe '2resize ' . ((&lines * 8 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 68 + 66) / 133)
-exe '3resize ' . ((&lines * 9 + 16) / 33)
+exe '3resize ' . ((&lines * 8 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
 argglobal
 edit \archive\unity\anagram\todo.txt
@@ -278,12 +281,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 90 - ((13 * winheight(0) + 10) / 21)
+let s:l = 91 - ((10 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-90
-normal! 01l
+91
+normal! 0
 wincmd w
 argglobal
 edit \archive\unity\anagram\engineering.txt
@@ -388,7 +391,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((0 * winheight(0) + 4) / 9)
+let s:l = 19 - ((0 * winheight(0) + 4) / 8)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -498,7 +501,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 83 - ((0 * winheight(0) + 4) / 9)
+let s:l = 83 - ((0 * winheight(0) + 4) / 8)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -506,33 +509,33 @@ normal! zt
 normal! 0
 lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
-exe '1resize ' . ((&lines * 21 + 16) / 33)
-exe '2resize ' . ((&lines * 9 + 16) / 33)
+exe '1resize ' . ((&lines * 22 + 16) / 33)
+exe '2resize ' . ((&lines * 8 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 68 + 66) / 133)
-exe '3resize ' . ((&lines * 9 + 16) / 33)
+exe '3resize ' . ((&lines * 8 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
-tabedit C:\archive\unity\anagram\Assets\Scripts\Model.cs
+tabedit C:\archive\unity\anagram\Assets\Scripts\Main.cs
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
-wincmd w
 wincmd _ | wincmd |
 split
 1wincmd k
+wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 68 + 66) / 133)
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 1resize ' . ((&columns * 66 + 66) / 133)
 exe '2resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 64 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
+exe 'vert 2resize ' . ((&columns * 66 + 66) / 133)
+exe 'vert 3resize ' . ((&columns * 66 + 66) / 133)
 argglobal
 7argu
-edit C:\archive\unity\anagram\Assets\Scripts\Model.cs
+edit C:\archive\unity\anagram\Assets\Scripts\Main.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -634,15 +637,128 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 429 - ((15 * winheight(0) + 15) / 31)
+let s:l = 11 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-429
-normal! 016l
+11
+normal! 03l
 lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
 argglobal
+7argu
+edit C:\archive\unity\anagram\Assets\Scripts\AnagramController.cs
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'cs'
+setlocal filetype=cs
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'cs'
+setlocal syntax=cs
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 180 - ((0 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+180
+normal! 03l
+lcd C:\archive\unity\anagram\Assets\Scripts
+wincmd w
+argglobal
+7argu
 edit C:\archive\unity\anagram\Assets\Scripts\AnagramView.cs
 setlocal keymap=
 setlocal noarabic
@@ -708,7 +824,6 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=octal,hex
-set number
 setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -746,158 +861,27 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 43 - ((2 * winheight(0) + 7) / 15)
+let s:l = 38 - ((4 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-43
-normal! 032l
+38
+normal! 030l
+lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
-argglobal
-edit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\Progress.cs
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cs'
-setlocal filetype=cs
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cs'
-setlocal syntax=cs
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 74 - ((8 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-74
-normal! 02l
-wincmd w
-exe 'vert 1resize ' . ((&columns * 68 + 66) / 133)
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 1resize ' . ((&columns * 66 + 66) / 133)
 exe '2resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 64 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 64 + 66) / 133)
-tabedit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\SceneNodeCompareLeftToRight.cs
+exe 'vert 2resize ' . ((&columns * 66 + 66) / 133)
+exe 'vert 3resize ' . ((&columns * 66 + 66) / 133)
+tabedit C:\archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\AllInOne.cs
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 133)
-exe '2resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 67 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 65 + 66) / 133)
-exe '4resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 65 + 66) / 133)
 argglobal
-7argu
-edit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\SceneNodeCompareLeftToRight.cs
+edit C:\archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\AllInOne.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -999,358 +983,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((3 * winheight(0) + 7) / 15)
+let s:l = 12 - ((11 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 014l
+12
+normal! 04l
 lcd C:\archive\unity\anagram\Assets\Scripts
-wincmd w
-argglobal
-7argu
-edit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\SceneNode.cs
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cs'
-setlocal filetype=cs
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cs'
-setlocal syntax=cs
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 9 - ((7 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-9
-normal! 017l
-lcd C:\archive\unity\anagram\Assets\Scripts
-wincmd w
-argglobal
-7argu
-edit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\DataUtil.cs
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cs'
-setlocal filetype=cs
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cs'
-setlocal syntax=cs
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 203 - ((0 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-203
-normal! 0
-lcd C:\archive\unity\anagram\Assets\Scripts
-wincmd w
-argglobal
-7argu
-edit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Editor\Tests\TestSceneNode.cs
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cs'
-setlocal filetype=cs
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cs'
-setlocal syntax=cs
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 18 - ((6 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-18
-normal! 013l
-lcd C:\archive\unity\anagram\Assets\Scripts
-wincmd w
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 133)
-exe '2resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 67 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 65 + 66) / 133)
-exe '4resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 65 + 66) / 133)
 tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
