@@ -119,7 +119,8 @@ namespace Finegamedesign.Anagram
 		{
 			if (KeyView.IsDownNow("page up"))
 			{
-				model.levelUp();
+				model.inputs = DataUtil.Split(model.text, "");
+				model.submit();
 				view.audio.Play("select");
 			}
 			else if (KeyView.IsDownNow("page down"))

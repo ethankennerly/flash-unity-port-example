@@ -84,11 +84,11 @@ FEATURES
 			sort x, name. 
 			Name reading order.
 		Lookup word.
+	Extract AnagramController from AnagramView
+		Variables assigned to game objects at addresses.
 
 TODO
 
-	Extract AnagramController from AnagramView
-		Variables assigned to game objects at addresses.
 	Update Unity version to 5.3
 		Remove unnecessary NUnit.
 	Help text above word to be easy to read.
@@ -125,6 +125,6 @@ TODO
 	Spider Word.  Looks like a spider on a thread.
 	Words with 2 anagrams.
 	More responsive.
-	Namespace.
-	CapitalCase.
+	C# CapitalCase style functions.
+	C# single line comment style.
 	Animate 11th and 12th letters.

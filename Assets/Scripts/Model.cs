@@ -85,7 +85,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		;
 		private List<string> selects;
 		internal Dictionary<string, dynamic> wordHash;
-		private bool isVerbose = false;
+		private bool isVerbose = true;
 		private float responseSeconds;
 		private float wordPositionMin;
 		private float checkpointInterval = -16.0f; 
@@ -228,7 +228,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			clampWordPosition();
 			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
 			wordPositionScaled = wordPosition * scale;
-			if (isVerbose) Debug.Log("Model.updatePosition: " + wordPosition);
+			bool isVerbosePosition = false;
+			if (isVerbosePosition) Debug.Log("Model.updatePosition: " + wordPosition);
 			updateProgress(deltaSeconds);
 		}
 
