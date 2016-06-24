@@ -6,15 +6,49 @@ namespace Finegamedesign.Anagram
 {
 	public sealed class AnagramController
 	{
-		private Model model;
 		internal AnagramView view = new AnagramView();
+		private List<string> soundFileNames = new List<string>(){
+				"select",
+				"shoot",
+				"explosion_big"
+			};
+		private Model model;
 		private Email email = new Email();
+		private Storage storage = new Storage();
 		private string letterMouseDown;
 		private int letterIndexMouseDown;
 
-		public void Start()
+		public void Setup()
 		{
 			model = new Model();
+			loadWords();
+			model.wordHash = new Words().init();
+			model.scaleToScreen(9.5f);
+			model.load(storage.Load());
+			view.Setup();
+			view.SetupAudio(soundFileNames);
+			model.setReadingOrder(view.letterNodes);
+		}
+
+		private void loadWords()
+		{
+			string text = Toolkit.Read("text/anagram_words.txt");
+			string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
+			pushWords(model.levels.parameters, words);
+			string[] win = new string[]{"YOU", "WIN"};
+			pushWords(model.levels.parameters, win);
+		}
+
+		private static void pushWords(
+				List<Dictionary<string, dynamic>> parameters, 
+				string[] words)
+		{
+			for (int w = 0; w < words.Length; w++) {
+				Dictionary<string, dynamic> 
+				parameter = new Dictionary<string, dynamic>(){
+					{"text", words[w]}};
+				parameters.Add(parameter);
+			}
 		}
 
 		/**
@@ -40,20 +74,29 @@ namespace Finegamedesign.Anagram
 		public void Update(float deltaSeconds)
 		{
 			model.update(deltaSeconds);
+			if ("complete" == model.state) {
+				storage.SetKeyValue("level", model.progress.GetLevelNormal());
+				storage.Save(storage.data);
+			}
 			updateCheat();
 			updateMouseDown();
 			updateBackspace();
 			if (model.isGamePlaying) {
 				updatePlay();
 			}
-			view.updateLetters(view.wordState, model.word, "bone_{0}/letter");
-			view.updateLetters(view.inputState, model.inputs, "Letter_{0}");
-			view.updateLetters(view.output, model.outputs, "Letter_{0}");
-			view.updateLetters(view.hint, model.hints, "Letter_{0}");
+			updateLetters();
 			updateHud();
 			updateHint();
 			updateContinue();
 			updateNewGame();
+		}
+
+		private void updateLetters()
+		{
+			view.updateLetters(view.wordState, model.word, "bone_{0}/letter", model.letterMax);
+			view.updateLetters(view.inputState, model.inputs, "Letter_{0}", model.letterMax);
+			view.updateLetters(view.output, model.outputs, "Letter_{0}", model.letterMax);
+			view.updateLetters(view.hint, model.hints, "Letter_{0}", model.letterMax);
 		}
 
 		public bool IsLetterKeyDown(string letter)
@@ -168,8 +211,8 @@ namespace Finegamedesign.Anagram
 		 */
 		private void updateHint()
 		{
-			if (KeyView.IsDownNow("question")
-			|| KeyView.IsDownNow("slash")
+			if (KeyView.IsDownNow("?")
+			|| KeyView.IsDownNow("/")
 			|| "hint" == letterMouseDown)
 			{
 				model.hint();

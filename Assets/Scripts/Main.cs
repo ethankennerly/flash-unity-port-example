@@ -1,56 +1,20 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Finegamedesign.Anagram
 {
 	public sealed class Main : MonoBehaviour 
 	{
-		private Model model;
-		private AnagramView view;
-		// private AnagramController controller;
-		private Storage storage = new Storage();
+		private AnagramController controller = new AnagramController();
 
-		public void Start() {
-			model = new Model();
-			pushWords();
-			model.wordHash = new Words().init();
-			model.scaleToScreen(9.5f);
-			model.load(storage.Load());
-			view = new AnagramView();
-			// controller.view.Setup(model, this.gameObject);
-			view.Setup(model, this.gameObject);
-			model.setReadingOrder(view.letterNodes);
-		}
-
-		private void pushWords()
+		public void Start()
 		{
-			string text = Toolkit.Read("text/anagram_words.txt");
-			string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
-			pushWords(model.levels.parameters, words);
-			string[] win = new string[]{"YOU", "WIN"};
-			pushWords(model.levels.parameters, win);
+			controller.view.main = this.gameObject;
+			controller.Setup();
 		}
 
-		private static void pushWords(
-				List<Dictionary<string, dynamic>> parameters, 
-				string[] words)
+		public void Update()
 		{
-			for (int w = 0; w < words.Length; w++) {
-				Dictionary<string, dynamic> 
-				parameter = new Dictionary<string, dynamic>(){
-					{"text", words[w]}};
-				parameters.Add(parameter);
-			}
-		}
-
-		public void Update() {
-			//+ controller.Update(Time.deltaTime);
-			if ("complete" == model.state) {
-				storage.SetKeyValue("level", model.progress.GetLevelNormal());
-				storage.Save(storage.data);
-			}
-			view.update();
+			controller.Update(Time.deltaTime);
 		}
 	}
 }
