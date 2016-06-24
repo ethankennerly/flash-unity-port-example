@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 namespace Finegamedesign.Anagram
 {
-	public class Main : MonoBehaviour 
+	public sealed class Main : MonoBehaviour 
 	{
 		private Model model;
 		private AnagramView view;
+		// private AnagramController controller;
 		private Storage storage = new Storage();
 
 		public void Start() {
@@ -16,7 +17,9 @@ namespace Finegamedesign.Anagram
 			model.wordHash = new Words().init();
 			model.scaleToScreen(9.5f);
 			model.load(storage.Load());
-			view = new AnagramView(model, this);
+			view = new AnagramView();
+			// controller.view.Setup(model, this.gameObject);
+			view.Setup(model, this.gameObject);
 			model.setReadingOrder(view.letterNodes);
 		}
 
@@ -42,7 +45,7 @@ namespace Finegamedesign.Anagram
 		}
 
 		public void Update() {
-			model.update(Time.deltaTime);
+			//+ controller.Update(Time.deltaTime);
 			if ("complete" == model.state) {
 				storage.SetKeyValue("level", model.progress.GetLevelNormal());
 				storage.Save(storage.data);

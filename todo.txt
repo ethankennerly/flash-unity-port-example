@@ -84,17 +84,14 @@ FEATURES
 			sort x, name. 
 			Name reading order.
 		Lookup word.
-	Unknown step.  Load level 0.  New game.  Expect to advance level.
-	Unknown step.  Load level 0.  Continue.  Second trial.  Do not repeat tutorial.  Advance level.
 
 TODO
 
-	Model view 
-		Dictionary maps string addresses to game objects.
-		Separate file of addresses.
-		Map of map of addresses.
+	Extract AnagramController from AnagramView
 		Variables assigned to game objects at addresses.
-	Update Unity version.
+	Update Unity version to 5.3
+		Remove unnecessary NUnit.
+	Help text above word to be easy to read.
 	Clarify will lose when word at bottom.
 	Creep up to challenging word.
 	Letter creep animation.

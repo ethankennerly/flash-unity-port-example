@@ -1,56 +1,63 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Finegamedesign.Utils;
 
 namespace Finegamedesign.Anagram 
 {
-	public class AnagramView 
+	public sealed class AnagramView 
 	{
 		public List<SceneNode> letterNodes;
-		private AudioView audio;
-		private Model model;
-		private Email email = new Email();
-		private string letterMouseDown;
-		private int letterIndexMouseDown;
-		private GameObject main;
-		private GameObject word;
-		private GameObject input;
-		private GameObject inputState;
-		private GameObject output;
-		private GameObject hint;
-		private GameObject hintButton;
-		private GameObject hud;
-		private GameObject help;
-		private GameObject score;
-		private GameObject level;
-		private GameObject levelMax;
+		internal AudioView audio;
+		internal Model model;
+		internal Email email = new Email();
+		internal string letterMouseDown;
+		internal int letterIndexMouseDown;
+		internal GameObject main;
+		internal GameObject word;
+		internal GameObject wordState;
+		internal GameObject input;
+		internal GameObject newGameButton;
+		internal GameObject continueButton;
+		internal GameObject inputState;
+		internal GameObject output;
+		internal GameObject hint;
+		internal GameObject hintButton;
+		internal GameObject hud;
+		internal GameObject help;
+		internal GameObject score;
+		internal GameObject progress;
+		internal GameObject level;
+		internal GameObject levelMax;
 
-		public AnagramView(Model theModel, Main theMainScene) 
+		public void Setup(Model anagramModel, GameObject mainObject) 
 		{
-			model = theModel;
-			main = theMainScene.gameObject;
-			string[] soundFileNames = new string[]{
+			model = anagramModel;
+			main = mainObject;
+			List<string> soundFileNames = new List<string>(){
 				"select",
 				"shoot",
 				"explosion_big"
 			};
 			audio = new AudioView();
-			audio.Setup(theMainScene.name, soundFileNames, "Sounds/");
-			word = SceneNodeView.GetChild(main, "word/state");
+			audio.Setup(SceneNodeView.GetName(main), soundFileNames, "Sounds/");
+			word = SceneNodeView.GetChild(main, "word");
+			wordState = SceneNodeView.GetChild(main, "word/state");
 			input = SceneNodeView.GetChild(main, "input");
 			inputState = SceneNodeView.GetChild(main, "input/state");
 			output = SceneNodeView.GetChild(main, "input/output");
 			hint = SceneNodeView.GetChild(main, "input/hints");
 			hintButton = SceneNodeView.GetChild(main, "input/hint");
+			newGameButton = SceneNodeView.GetChild(main, "input/newGame");
+			continueButton = SceneNodeView.GetChild(main, "input/continue");
 			hud = SceneNodeView.GetChild(main, "canvas/hud");
 			help = SceneNodeView.GetChild(main, "canvas/help");
 			score = SceneNodeView.GetChild(main, "canvas/hud/score");
+			progress = SceneNodeView.GetChild(main, "progress");
 			level = SceneNodeView.GetChild(main, "canvas/hud/level");
 			levelMax = SceneNodeView.GetChild(main, "canvas/hud/levelMax");
 			letterNodes = SceneNodeView.ToSceneNodeList(
-				SceneNodeView.GetChildren(word));
+				SceneNodeView.GetChildren(wordState));
 		}
 
 		/**
@@ -62,30 +69,20 @@ namespace Finegamedesign.Anagram
 		{
 			letterMouseDown = null;
 			letterIndexMouseDown = -1;
-			if (Input.GetMouseButtonDown(0)) {
-				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit)) {
-					GameObject target = SceneNodeView.GetChild(hit.transform.gameObject, "text3d");
-					letterMouseDown = target.GetComponent<TextMesh>().text.ToLower();
-					string name = SceneNodeView.GetName(
-						SceneNodeView.GetParent(
-							SceneNodeView.GetParent(target)));
-					letterIndexMouseDown = Toolkit.ParseIndex(name);
-					// Debug.Log("View.updateMouseDown: " + letterMouseDown);
-				}
+			MouseView.Update();
+			if (MouseView.target) {
+				GameObject text3d = SceneNodeView.GetChild(MouseView.target, "text3d");
+				letterMouseDown = TextView.GetText(text3d).ToLower();
+				string name = SceneNodeView.GetName(
+					SceneNodeView.GetParent(MouseView.target));
+				letterIndexMouseDown = Toolkit.ParseIndex(name);
+				// Debug.Log("View.updateMouseDown: " + letterMouseDown);
 			}
-		}
-
-		private bool IsLetterMouseDown(string letter)
-		{
-			return letter == letterMouseDown;
 		}
 
 		public bool IsLetterKeyDown(string letter)
 		{
 			return Input.GetKeyDown(letter.ToLower());
-				// || IsLetterMouseDown(letter.ToLower());
 		}
 
 		public void update()
@@ -96,7 +93,7 @@ namespace Finegamedesign.Anagram
 			if (model.isGamePlaying) {
 				updatePlay();
 			}
-			updateLetters(word, model.word, "bone_{0}/letter");
+			updateLetters(wordState, model.word, "bone_{0}/letter");
 			updateLetters(inputState, model.inputs, "Letter_{0}");
 			updateLetters(output, model.outputs, "Letter_{0}");
 			updateLetters(hint, model.hints, "Letter_{0}");
@@ -163,7 +160,7 @@ namespace Finegamedesign.Anagram
 			{
 				int index = (int) selects[s];
 				string name = "bone_" + index + "/letter";
-				AnimationView.SetState(SceneNodeView.GetChild(word, name), state);
+				AnimationView.SetState(SceneNodeView.GetChild(wordState, name), state);
 				audio.Play("select");
 			}
 		}
@@ -171,7 +168,6 @@ namespace Finegamedesign.Anagram
 		private void updateHud()
 		{
 			SceneNodeView.SetVisible(hud, model.isHudVisible);
-			
 			TextView.SetText(help, model.help);
 			TextView.SetText(score, model.score.ToString());
 			TextView.SetText(level, model.progress.level.ToString());
@@ -199,7 +195,7 @@ namespace Finegamedesign.Anagram
 				string state = model.submit();
 				if (null != state) 
 				{
-					// TODO AnimationView.SetState(word, state);
+					// TODO AnimationView.SetState(wordState, state);
 					AnimationView.SetState(input, state);
 					audio.Play("shoot");
 				}
@@ -230,7 +226,7 @@ namespace Finegamedesign.Anagram
 			{
 				model.newGame();
 			}
-			SceneNodeView.SetVisible(main.transform.Find("input/newGame").gameObject, model.isNewGameVisible);
+			SceneNodeView.SetVisible(newGameButton, model.isNewGameVisible);
 
 		}
 
@@ -242,29 +238,18 @@ namespace Finegamedesign.Anagram
 				model.doContinue();
 				resetSelect();
 			}
-			SceneNodeView.SetVisible(main.transform.Find("input/continue").gameObject, model.isContinueVisible);
+			SceneNodeView.SetVisible(continueButton, model.isContinueVisible);
 
 		}
 
 		private void resetSelect()
 		{
-			GameObject parent = main.transform.Find("word").gameObject.transform.Find("state").gameObject;
 			int max = model.word.Count;
 			for (int index = 0; index < max; index++)
 			{
 				string name = "bone_" + index + "/letter";
-				AnimationView.SetState(parent.transform.Find(name).gameObject, "none");
+				AnimationView.SetState(SceneNodeView.GetChild(wordState, name), "none");
 			}
-		}
-
-		/**
-		 * Unity prohibits editing a property of position.
-		 */
-		private void setPositionY(Transform transform, float y)
-		{
-			Vector3 position = transform.position;
-			position.y = y;
-			transform.position = position;
 		}
 
 		/**
@@ -276,15 +261,15 @@ namespace Finegamedesign.Anagram
 			{
 				updateOutputHitsWord();
 			}
-			setPositionY(main.transform.Find("word"), model.wordPositionScaled);
-			setPositionY(main.transform.Find("progress"), model.progressPositionTweened);
+			SceneNodeView.SetWorldY(word, model.wordPositionScaled);
+			SceneNodeView.SetWorldY(progress, model.progressPositionTweened);
 		}
 
 		private void updateOutputHitsWord()
 		{
 			if (model.onOutputHitsWord())
 			{
-				AnimationView.SetState(word, "hit");
+				AnimationView.SetState(wordState, "hit");
 				audio.Play("explosion_big");
 			}
 		}
@@ -293,7 +278,7 @@ namespace Finegamedesign.Anagram
 		 * Find could be cached.
 		 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 		 */
-		private void updateLetters(GameObject parent, List<string> letters, string namePattern) 
+		internal void updateLetters(GameObject parent, List<string> letters, string namePattern) 
 		{
 			int max = model.letterMax;
 			for (int i = 0; i < max; i++)
@@ -306,8 +291,7 @@ namespace Finegamedesign.Anagram
 					SceneNodeView.SetVisible(letter, visible);
 					if (visible) {
 						GameObject text3d = SceneNodeView.GetChild(letter, "text3d");
-						TextMesh mesh = text3d.GetComponent<TextMesh>();
-						mesh.text = letters[i];
+						TextView.SetText(text3d, letters[i]);
 					}
 				}
 			}

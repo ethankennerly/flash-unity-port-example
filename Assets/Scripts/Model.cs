@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using /*<com>*/Finegamedesign.Utils/*<Model>*/;
 namespace /*<com>*/Finegamedesign.Anagram
 {
-	public class Model
+	public sealed class Model
 	{
 		private static void shuffle(List<string> cards)
 		{
