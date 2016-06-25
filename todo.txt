@@ -95,8 +95,10 @@ TODO
 	Play to summarize opportunities to be consistent and clear.
 	Compare to other word games for clean look and feel.
 	Hit and complete not so loud.
+	Letters do not overlap bottom buttons.
 	Help text above word to be easy to read.
 	Clarify will lose when word at bottom.
+	Checkpoint.  Congratulate.
 	Creep up to challenging word.
 	Letter creep animation.
 	Read limit hints.

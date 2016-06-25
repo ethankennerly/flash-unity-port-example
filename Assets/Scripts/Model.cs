@@ -86,7 +86,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		;
 		private List<string> selects;
 		internal Dictionary<string, dynamic> wordHash;
-		private bool isVerbose = true;
+		private bool isVerbose = false;
 		private float responseSeconds;
 		private float wordPositionMin;
 		private float checkpointInterval = -16.0f; 
@@ -278,7 +278,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (enabled)
 			{
 				wordPosition += outputKnockback;
-				shuffleNotWord(wordHash, word, readingOrder);
+				if ("complete" != state)
+				{
+					shuffleNotWord(wordHash, word, readingOrder);
+				}
 				selects = DataUtil.CloneList(word);
 				for (int i = 0; i < DataUtil.Length(inputs); i++)
 				{
@@ -432,8 +435,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		internal void newGame()
 		{
-			if (isNewGameVisible) {
-				Debug.Log("Model.newGame");
+			if (isNewGameVisible)
+			{
+				if (isVerbose)
+				{
+					Debug.Log("Model.newGame");
+				}
 				previousSessionLevel = 0;
 				progress.SetLevelNormal(previousSessionLevel);
 				trial(levels.parameters[0]);
@@ -449,7 +456,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			if (isContinueVisible) {
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
-				Debug.Log("Model.doContinue: level " + level);
+				if (isVerbose)
+				{
+					Debug.Log("Model.doContinue: level " + level);
+				}
 				progress.SetLevelNormal(level);
 				metrics.StartSession();
 				nextTrial();
@@ -498,8 +508,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 							completes = DataUtil.CloneList(word);
 							metrics.EndTrial();
 							levelUp();
-							Toolkit.Log("Model.submit: " + submission 
-								+ " " + progress.GetLevelNormal());
+							if (isVerbose)
+							{
+								Debug.Log("Model.submit: " + submission 
+									+ " " + progress.GetLevelNormal());
+							}
 							state = "complete";
 							trialCount++;
 							if (null != onComplete)
@@ -553,7 +566,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 				populateWord("");
 				//- metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;
-				Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
+				if (isVerbose) {
+					Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
+				}
 			}
 			return progress.isCheckpoint;
 		}
@@ -595,7 +610,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
 					isContinueVisible = true;
-					Debug.Log("Load level " + previousSessionLevel);
+					if (isVerbose)
+					{
+						Debug.Log("Load level " + previousSessionLevel);
+					}
 				}
 				else {
 					Debug.Log("Data does not contain level.");
