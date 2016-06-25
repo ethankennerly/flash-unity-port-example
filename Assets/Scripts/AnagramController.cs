@@ -60,7 +60,7 @@ namespace Finegamedesign.Anagram
 			letterMouseDown = null;
 			letterIndexMouseDown = -1;
 			MouseView.Update();
-			if (MouseView.target) {
+			if (null != MouseView.target) {
 				var text3d = SceneNodeView.GetChild(MouseView.target, "text3d");
 				letterMouseDown = TextView.GetText(text3d).ToLower();
 				string name = SceneNodeView.GetName(
