@@ -95,7 +95,6 @@ TODO
 
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
-	Repeat.  Not remain on screen.
 	Letters do not overlap bottom buttons.
 	Help text above word to be easy to read.
 	Checkpoint.  Congratulate.
