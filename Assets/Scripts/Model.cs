@@ -472,6 +472,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 *	  "submit" or "complete":  Word shoots. Test case:  2015-04-18 Anders sees word is a weapon.
 		 *	  "submit":  Shuffle letters.  Test case:  2015-04-18 Jennifer wants to shuffle.  Irregular arrangement of letters.  Jennifer feels uncomfortable.
 		 * Test case:  2015-04-19 Backspace. Deselect. Submit. Type. Select.
+		 * Copy outputs from inputs, even if no submission length.
+		 * Test case:  2016-06-25 Submit word.  Submit again.  Expect to see no output.  Saw output.
 		 */
 		internal string submit()
 		{
@@ -527,8 +529,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 						}
 					}
 				}
-				outputs = DataUtil.CloneList(inputs);
 			}
+			outputs = DataUtil.CloneList(inputs);
 			if (!accepted) {
 				float perWordNotAccepted = -0.1f;
 				wordPosition += perWordNotAccepted;
