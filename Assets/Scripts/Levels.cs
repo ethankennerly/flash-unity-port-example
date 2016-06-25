@@ -18,48 +18,43 @@ namespace /*<com>*/Finegamedesign.Anagram
 				{
 					"text", "START"}
 				, {
-					"help", "ANAGRAM ATTACK\n\nTAP THE LETTERS TO SPELL 'START.' THEN TAP 'SUBMIT.'"}
+					"help", "TAP THE LETTERS TO SPELL 'START.' THEN TAP 'SUBMIT.'"}
 				,
 				{
 					"wordWidthPerSecond", 0.0f}
 				,
 				{
-					"wordPosition", 0.0f}
+					"wordPosition", -200.0f}
 			}
 			,
 			new Dictionary<string, dynamic>(){
 				{
 					"text", "SPELL"}
 				, {
-					"help", "TO ADVANCE, USE ALL THE LETTERS.  FOR EXAMPLE:  'SPELL.'  THEN TAP 'SUBMIT.'"}
+					"help", "USE ALL THE LETTERS.  FOR EXAMPLE:  'SPELL.'  THEN TAP 'SUBMIT.'"}
+				,
+				{
+					"wordPosition", -100.0f}
 			}
 			,
 			new Dictionary<string, dynamic>(){
 				{
 					"text", "WORDS"}
 				, {
-					"help", "SHORTER WORDS SHUFFLE LETTERS. EXAMPLES: 'ROD', 'RODS', 'WORD', 'SWORD'."}
+					"help", "SHORTER WORDS KNOCK THE LETTERS BACK. EXAMPLES: 'ROD', 'WORD'."}
+				,
+				{
+					"wordPosition", -100.0f}
 			}
 			,
 			new Dictionary<string, dynamic>(){
 				{
 					"text", "STARE"}
 				, {
-					"help", "SHORTER WORDS KNOCKBACK.  YOU CAN USE EACH SHORT WORD ONCE. EXAMPLE:  'EAT', 'TEAR', 'STARE'"}
-			}
-			,
-			new Dictionary<string, dynamic>(){
+					"help", "YOU CAN USE EACH SHORT WORD ONCE. EXAMPLES: 'EAT', 'TEAR'."}
+				,
 				{
-					"text", "FOR"}
-				, {
-					"help", "WORDS WITH FEW LETTERS MOVE FAST!"}
-			}
-			,
-			new Dictionary<string, dynamic>(){
-				{
-					"text", "BEAST"}
-				, {
-					"help", "FOR BONUS POINTS, FIRST ENTER SHORT WORDS.  EXAMPLES: 'BE', 'BATS', 'AT.'"}
+					"wordPosition", -100.0f}
 			}
 		}
 		;

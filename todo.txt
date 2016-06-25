@@ -90,18 +90,19 @@ FEATURES
 		Remove unnecessary NUnit.
 	Letters complete animation.  Then next word.
 	Hit and complete not so loud.
+	Letters do not overlap bottom buttons.
+	Title on menu screen:  Word Power.
+	Help text above word to be easy to read.
 
 TODO
 
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
-	Letters do not overlap bottom buttons.
-	Help text above word to be easy to read.
+	Color palette.
 	Checkpoint.  Congratulate.
 	Repeat.  Different sound.
 	Not accepted.  Different sound.
 	New word approach sound.
-	Title on menu screen:  Word Power.
 	Clarify will lose when word at bottom.
 	Pause button: show menu: continue, new game.
 	Creep up to challenging word.

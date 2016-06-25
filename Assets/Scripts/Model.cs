@@ -6,17 +6,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 {
 	public sealed class Model
 	{
-		private static void shuffle(List<string> cards)
-		{
-			for (int i = DataUtil.Length(cards) - 1; 1 <= i; i--)
-			{
-				int r = (int)Mathf.Floor((Random.value % 1.0f) * (i + 1));
-				string swap = cards[r];
-				cards[r] = cards[i];
-				cards[i] = swap;
-			}
-		}
-
 		private static bool ContainsWord(Dictionary<string, dynamic> wordHash, List<string> letters, List<int> readingOrder)
 		{
 			string word = "";
@@ -98,7 +87,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public Model()
 		{
 			setupProgress();
-			tutorLevel = 4;  // levels.parameters.Count;
+			tutorLevel = 3;
 			trialCount = 0;
 			isNewGameVisible = true;
 			populateWord("");
@@ -166,7 +155,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			;
 			wordStateNow = "none";
-			if (isVerbose) Debug.Log("Model.trial: word[0]: <" + word[0] + ">" + " level " + progress.GetLevelNormal());
+			if (isVerbose) 
+			{
+				Debug.Log("Model.trial: word[0]: <" + word[0] + ">" 
+					+ " level " + progress.GetLevelNormal());
+			}
 			metrics.StartTrial();
 			metrics.trial_integers["game_over"] = 0;
 			metrics.trial_integers["hint_count"] = 0;
@@ -612,6 +605,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
 					isContinueVisible = true;
+					help = "WORD POWER";
 					if (isVerbose)
 					{
 						Debug.Log("Model.load: level " + previousSessionLevel);
