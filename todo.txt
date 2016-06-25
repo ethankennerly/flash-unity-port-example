@@ -93,19 +93,22 @@ FEATURES
 	Letters do not overlap bottom buttons.
 	Title on menu screen:  Word Power.
 	Help text above word to be easy to read.
+	Clear letter select image.
+	Checkpoint.  Congratulation text.
 
 TODO
 
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
 	Color palette.
-	Checkpoint.  Congratulate.
 	Repeat.  Different sound.
 	Not accepted.  Different sound.
 	New word approach sound.
 	Clarify will lose when word at bottom.
 	Pause button: show menu: continue, new game.
 	Creep up to challenging word.
+	Checkpoint.  Congratulation animation.
+	Clear buttons.
 	Letter creep animation.
 	Read limit hints.
 	Hints at each checkpoint.
@@ -144,4 +147,5 @@ TODO
 	Landscape layout and portrait layout.
 	Button press.
 	Clean font.
+	Plant flower where you are.
 	Animate 11th and 12th letters.

@@ -20,6 +20,7 @@ namespace Finegamedesign.Anagram
 		internal GameObject hintButton;
 		internal GameObject hud;
 		internal GameObject help;
+		internal GameObject helpText;
 		internal GameObject score;
 		internal GameObject progress;
 		internal GameObject level;
@@ -47,12 +48,13 @@ namespace Finegamedesign.Anagram
 			hintButton = SceneNodeView.GetChild(main, "input/hint");
 			newGameButton = SceneNodeView.GetChild(main, "input/newGame");
 			continueButton = SceneNodeView.GetChild(main, "input/continue");
-			hud = SceneNodeView.GetChild(main, "canvas/hud");
 			help = SceneNodeView.GetChild(main, "canvas/help");
+			helpText = SceneNodeView.GetChild(main, "canvas/help/helpText");
+			hud = SceneNodeView.GetChild(main, "canvas/hud");
 			score = SceneNodeView.GetChild(main, "canvas/hud/score");
-			progress = SceneNodeView.GetChild(main, "progress");
 			level = SceneNodeView.GetChild(main, "canvas/hud/level");
 			levelMax = SceneNodeView.GetChild(main, "canvas/hud/levelMax");
+			progress = SceneNodeView.GetChild(main, "progress");
 			letterNodes = SceneNodeView.ToSceneNodeList(
 				SceneNodeView.GetChildren(wordState));
 		}

@@ -170,7 +170,8 @@ namespace Finegamedesign.Anagram
 		private void updateHud()
 		{
 			SceneNodeView.SetVisible(view.hud, model.isHudVisible);
-			TextView.SetText(view.help, model.help);
+			TextView.SetText(view.helpText, model.help);
+			SceneNodeView.SetVisible(view.help, model.help != "");
 			TextView.SetText(view.score, model.score.ToString());
 			TextView.SetText(view.level, model.progress.level.ToString());
 			TextView.SetText(view.levelMax, model.progress.levelMax.ToString());
