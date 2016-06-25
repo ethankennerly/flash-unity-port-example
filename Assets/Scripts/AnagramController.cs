@@ -186,9 +186,15 @@ namespace Finegamedesign.Anagram
 		 *		 input
 		 *			 output
 		 *			 state
+		 * Play "complete" animation on word, so that letters are off-screen when populating next word.
 		 */
 		private void updateSubmit()
 		{
+			if (null != model.wordStateNow)
+			{
+				AnimationView.SetState(view.wordState, model.wordStateNow);
+				model.wordStateNow = null;
+			}
 			if (KeyView.IsDownNow("space")
 			|| KeyView.IsDownNow("return")
 			|| "submit" == letterMouseDown)
@@ -197,11 +203,23 @@ namespace Finegamedesign.Anagram
 				string state = model.submit();
 				if (null != state) 
 				{
-					// TODO AnimationView.SetState(view.wordState, state);
 					AnimationView.SetState(view.input, state);
 					view.audio.Play("shoot");
 				}
 				resetSelect();
+			}
+			string completedNow = AnimationView.CompletedNow(view.input);
+			if ("complete" == completedNow)
+			{
+				model.nextTrial();
+			}
+		}
+
+		private void updateOutputHitsWord()
+		{
+			if (model.onOutputHitsWord())
+			{
+				view.audio.Play("explosion_big");
 			}
 		}
 
@@ -266,15 +284,6 @@ namespace Finegamedesign.Anagram
 			}
 			SceneNodeView.SetWorldY(view.word, model.wordPositionScaled);
 			SceneNodeView.SetWorldY(view.progress, model.progressPositionTweened);
-		}
-
-		private void updateOutputHitsWord()
-		{
-			if (model.onOutputHitsWord())
-			{
-				AnimationView.SetState(view.wordState, "hit");
-				view.audio.Play("explosion_big");
-			}
 		}
 	}
 }

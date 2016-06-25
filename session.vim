@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nnoremap <C-F4> c
-nnoremap <C-Tab> w
 nmap <S-Insert> "+gP
+nnoremap <C-Tab> w
+nnoremap <C-F4> c
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -91,11 +91,11 @@ badd +7 \archive\unity\anagram\Assets\Scripts\Model.cs
 badd +9 \archive\unity\anagram\Assets\Scripts\AnagramModel.cs
 badd +14 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\Words.as
 badd +39 \archive\flash\anagram-attack\src\com\finegamedesign\anagram\View.as
-badd +35 \archive\unity\anagram\Assets\Scripts\AnagramView.cs
+badd +39 \archive\unity\anagram\Assets\Scripts\AnagramView.cs
 badd +46 \archive\unity\anagram\Assets\Scripts\Levels.cs
 badd +13 \archive\unity\anagram\Assets\Scripts\Controller.cs
 badd +1 \archive\unity\anagram\Assets\Scripts\View.cs
-badd +12 \archive\unity\anagram\Assets\Scripts\Main.cs
+badd +1 \archive\unity\anagram\Assets\Scripts\Main.cs
 badd +1 \archive\unity\anagram\Assets\Scripts\Toolkit.cs
 badd +9 \archive\unity\anagram\Assets\Scripts\Words.cs
 badd +91 \archive\unity\anagram\Assets\Scripts\DataUtil.cs
@@ -155,9 +155,10 @@ badd +9 SceneNode.cs
 badd +19 SceneNodeCompareLeftToRight.cs
 badd +87 DataUtil.cs
 badd +11 \archive\unity\anagram\Assets\Scripts\Email.cs
-badd +0 \archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\AllInOne.cs
+badd +12 \archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\AllInOne.cs
 badd +28 AudioView.cs
 badd +10 KeyView.cs
+badd +0 AnimationView.cs
 args \archive\unity\anagram\Assets\Scripts\AnagramView.cs \archive\unity\anagram\Assets\Scripts\DataUtil.cs \archive\unity\anagram\Assets\Scripts\Levels.cs \archive\unity\anagram\Assets\Scripts\Main.cs \archive\unity\anagram\Assets\Scripts\Model.cs \archive\unity\anagram\Assets\Scripts\Referee.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Controller.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Examples\MainExample.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\Examples\ModelExample.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\IModel.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\MainView.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\View.cs \archive\unity\anagram\Assets\Scripts\UnityToykit\framework\ViewModel.cs ButtonView.cs ControllerUtil.cs Deck.cs GameObjectTree.cs MouseView.cs Toolkit.cs ViewUtil.cs \archive\unity\anagram\Assets\Scripts\Words.cs
 edit \archive\unity\anagram\todo.txt
 set splitbelow splitright
@@ -173,7 +174,7 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 22 + 16) / 33)
+exe '1resize ' . ((&lines * 23 + 16) / 33)
 exe '2resize ' . ((&lines * 8 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 68 + 66) / 133)
 exe '3resize ' . ((&lines * 8 + 16) / 33)
@@ -281,7 +282,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 91 - ((10 * winheight(0) + 11) / 22)
+let s:l = 91 - ((10 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -509,7 +510,7 @@ normal! zt
 normal! 0
 lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
-exe '1resize ' . ((&lines * 22 + 16) / 33)
+exe '1resize ' . ((&lines * 23 + 16) / 33)
 exe '2resize ' . ((&lines * 8 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 68 + 66) / 133)
 exe '3resize ' . ((&lines * 8 + 16) / 33)
@@ -637,12 +638,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 11 - ((8 * winheight(0) + 7) / 15)
+let s:l = 11 - ((1 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 11
-normal! 03l
+normal! 0
 lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
 argglobal
@@ -759,7 +760,7 @@ lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
 argglobal
 7argu
-edit C:\archive\unity\anagram\Assets\Scripts\AnagramView.cs
+edit C:\archive\unity\anagram\Assets\Scripts\AnagramController.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -861,27 +862,28 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 38 - ((4 * winheight(0) + 15) / 31)
+let s:l = 203 - ((13 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-38
-normal! 030l
+203
+normal! 04l
 lcd C:\archive\unity\anagram\Assets\Scripts
 wincmd w
+3wincmd w
 exe '1resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 66 + 66) / 133)
 exe '2resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 66 + 66) / 133)
 exe 'vert 3resize ' . ((&columns * 66 + 66) / 133)
-tabedit C:\archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\AllInOne.cs
+tabedit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\AnimationView.cs
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-edit C:\archive\unity\anagram\Assets\Scripts\Editor\TestSyntax\AllInOne.cs
+edit C:\archive\unity\anagram\Assets\Scripts\UnityToykit\Toolkit\AnimationView.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -983,13 +985,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 12 - ((11 * winheight(0) + 16) / 32)
+let s:l = 79 - ((14 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
-normal! 04l
-lcd C:\archive\unity\anagram\Assets\Scripts
+79
+normal! 07l
+3wincmd w
 tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

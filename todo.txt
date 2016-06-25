@@ -86,11 +86,15 @@ FEATURES
 		Lookup word.
 	Extract AnagramController from AnagramView
 		Variables assigned to game objects at addresses.
+	Update Unity version to 5.3
+		Remove unnecessary NUnit.
+	Letters complete animation.  Then next word.
 
 TODO
 
-	Update Unity version to 5.3
-		Remove unnecessary NUnit.
+	Play to summarize opportunities to be consistent and clear.
+	Compare to other word games for clean look and feel.
+	Hit and complete not so loud.
 	Help text above word to be easy to read.
 	Clarify will lose when word at bottom.
 	Creep up to challenging word.
@@ -125,6 +129,11 @@ TODO
 	Spider Word.  Looks like a spider on a thread.
 	Words with 2 anagrams.
 	More responsive.
+	Main.cs to MainBehaviour.cs
 	C# CapitalCase style functions.
 	C# single line comment style.
+	Fit screen sizes.
+	Landscape layout and portrait layout.
+	Button press.
+	Clean font.
 	Animate 11th and 12th letters.

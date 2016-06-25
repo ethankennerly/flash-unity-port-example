@@ -77,6 +77,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int tutorLevel = 0;
 		internal bool isHudVisible = false;
 		internal string state;
+		internal string wordStateNow;
 		internal Levels levels = new Levels();
 		internal Progress progress = new Progress();
 		private List<string> available;
@@ -164,6 +165,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			repeat = new Dictionary<string, dynamic>(){
 			}
 			;
+			wordStateNow = "none";
 			if (isVerbose) Debug.Log("Model.trial: word[0]: <" + word[0] + ">");
 			metrics.StartTrial();
 			metrics.trial_integers["game_over"] = 0;
@@ -288,6 +290,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					}
 				}
 				outputKnockback = 0;
+				wordStateNow = "complete" == state ? "complete" : "hit";
 			}
 			return enabled;
 		}
@@ -494,12 +497,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 						{
 							completes = DataUtil.CloneList(word);
 							metrics.EndTrial();
-							if (progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel) {
-								trial(levels.up());
-							}
-							else {
-								levelUp();
-							}
+							levelUp();
 							Toolkit.Log("Model.submit: " + submission 
 								+ " " + progress.GetLevelNormal());
 							state = "complete";
@@ -560,13 +558,19 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return progress.isCheckpoint;
 		}
 
-		private void nextTrial()
+		// If next trial starts; otherwise checkpoint.
+		internal void nextTrial()
 		{
-			if (updateCheckpoint()) {
-			}
-			else {
+			bool isNow = !updateCheckpoint();
+			if (isNow) {
 				isHudVisible = true;
-				Dictionary<string, dynamic> level = progress.Pop(levels.parameters, tutorLevel);
+				Dictionary<string, dynamic> level;
+				if (progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel) {
+					level = levels.up();
+				}
+				else {
+					level = progress.Pop(levels.parameters, tutorLevel);
+				}
 				trial(level);
 			}
 		}
@@ -575,9 +579,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
 		internal void levelUp()
 		{
-			progress.Creep(performance());
-			metrics.trial_integers["level_up"] = progress.GetLevelNormal() - metrics.trial_integers["level_start"];
-			nextTrial();
+			if (progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel) {
+			}
+			else {
+				progress.Creep(performance());
+				metrics.trial_integers["level_up"] = progress.GetLevelNormal() - metrics.trial_integers["level_start"];
+			}
 		}
 
 		private int previousSessionLevel;

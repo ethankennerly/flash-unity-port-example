@@ -23,9 +23,14 @@ namespace /*<com>*/Finegamedesign.Utils
 
 		public void StartSession()
 		{
-			time = 0;
-			trials_integers = new List<Dictionary<string, int>>();
-			trials_strings = new List<Dictionary<string, string>>();
+			if (null == trials_integers)
+			{
+				trials_integers = new List<Dictionary<string, int>>();
+			}
+			if (null == trials_strings)
+			{
+				trials_strings = new List<Dictionary<string, string>>();
+			}
 		}
 
 		public void EndSession()
@@ -43,6 +48,7 @@ namespace /*<com>*/Finegamedesign.Utils
 			trials_integers.Add(trial_integers);
 			trial_strings = new Dictionary<string, string>();
 			trials_strings.Add(trial_strings);
+			trial_integers["response_time"] = -1;
 		}
 
 		public void EndTrial()
