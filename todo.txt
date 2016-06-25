@@ -89,15 +89,18 @@ FEATURES
 	Update Unity version to 5.3
 		Remove unnecessary NUnit.
 	Letters complete animation.  Then next word.
+	Hit and complete not so loud.
 
 TODO
 
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
-	Hit and complete not so loud.
+	Repeat.  Not remain on screen.
 	Letters do not overlap bottom buttons.
 	Help text above word to be easy to read.
 	Checkpoint.  Congratulate.
+	Repeat.  Different sound.
+	Not accepted.  Different sound.
 	New word approach sound.
 	Title on menu screen:  Word Power.
 	Clarify will lose when word at bottom.

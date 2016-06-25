@@ -219,7 +219,10 @@ namespace Finegamedesign.Anagram
 		{
 			if (model.onOutputHitsWord())
 			{
-				view.audio.Play("explosion_big");
+				if ("complete" == model.state)
+				{
+					view.audio.Play("explosion_big");
+				}
 			}
 		}
 
