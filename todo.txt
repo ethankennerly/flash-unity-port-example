@@ -93,12 +93,14 @@ FEATURES
 TODO
 
 	Play to summarize opportunities to be consistent and clear.
-	Compare to other word games for clean look and feel.
+	Compare to profitable word games for clean look and feel.
 	Hit and complete not so loud.
 	Letters do not overlap bottom buttons.
 	Help text above word to be easy to read.
-	Clarify will lose when word at bottom.
 	Checkpoint.  Congratulate.
+	New word approach sound.
+	Clarify will lose when word at bottom.
+	Pause button: show menu: continue, new game.
 	Creep up to challenging word.
 	Letter creep animation.
 	Read limit hints.

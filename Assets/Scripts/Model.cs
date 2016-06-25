@@ -86,7 +86,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		;
 		private List<string> selects;
 		internal Dictionary<string, dynamic> wordHash;
-		private bool isVerbose = false;
+		private bool isVerbose = true;
 		private float responseSeconds;
 		private float wordPositionMin;
 		private float checkpointInterval = -16.0f; 
@@ -166,7 +166,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			;
 			wordStateNow = "none";
-			if (isVerbose) Debug.Log("Model.trial: word[0]: <" + word[0] + ">");
+			if (isVerbose) Debug.Log("Model.trial: word[0]: <" + word[0] + ">" + " level " + progress.GetLevelNormal());
 			metrics.StartTrial();
 			metrics.trial_integers["game_over"] = 0;
 			metrics.trial_integers["hint_count"] = 0;
@@ -612,7 +612,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					isContinueVisible = true;
 					if (isVerbose)
 					{
-						Debug.Log("Load level " + previousSessionLevel);
+						Debug.Log("Model.load: level " + previousSessionLevel);
 					}
 				}
 				else {
