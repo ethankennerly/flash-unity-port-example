@@ -101,10 +101,10 @@ FEATURES
 	Scale down and preview in 480x852.
 		Test case:  2016-06-25 Nexus 5.  Aspect ratio similar to 480x852:  Expect letters not clipped.
 	Align row of flowers at checkpoint.  Test case:  2016-06-25 Plateau around word 1700.  Jennifer Russ expects checkpoint.  Got no checkpoint till higher.
+	Hint button large at top right.  Test case:  2016-06-25 Jennifer Russ doesn't select hint by accident.
 
 TODO
 
-	Hint button at top right.  Test case:  2016-06-25 Jennifer Russ doesn't select hint by accident.
 	Submit.  Always all letters selected.
 	Test case:  2016-06-25 Jennifer Russ expects to feel all words sound right.  Examples:  robusta, inanes.
 	Word animation.  Does not rotate.
