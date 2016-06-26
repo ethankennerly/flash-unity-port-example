@@ -100,16 +100,15 @@ FEATURES
 		Test case:  2016-06-25 Repeat word.  Jennifer Russ expects to read message and see letters.
 	Scale down and preview in 480x852.
 		Test case:  2016-06-25 Nexus 5.  Aspect ratio similar to 480x852:  Expect letters not clipped.
+	Align row of flowers at checkpoint.  Test case:  2016-06-25 Plateau around word 1700.  Jennifer Russ expects checkpoint.  Got no checkpoint till higher.
 
 TODO
 
-	Advanced flowers in color palette.
-	Always all letters selected.
-	Test case:  2016-06-25 Jennifer Russ doesn't select hint by accident.
-	Align finish line at checkpoint.  Test case:  2016-06-25 Plateau around word 1700.  Jennifer Russ expects checkpoint.  Got no checkpoint till higher.
+	Hint button at top right.  Test case:  2016-06-25 Jennifer Russ doesn't select hint by accident.
+	Submit.  Always all letters selected.
 	Test case:  2016-06-25 Jennifer Russ expects to feel all words sound right.  Examples:  robusta, inanes.
 	Word animation.  Does not rotate.
-	Letters behind.  Game Over.  Continue and New Game button clear.
+	Letters behind.  Game Over.  Continue and New Game button borders clear.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
 	Approaching letters in grid.
@@ -144,16 +143,20 @@ TODO
 	Mouse down to select that letter when there are 2 copies.
 	Animate various outcomes:  many subwords.  fast.  barely survive.
 	Theme:  
-		Word Garden
-		Word Sharp
-		Word Star
-		Word Peak
-		Word Star
-		Word Quest
-		Word Bowling
-		Word Ball
-		Word Odyssey
-		Word War
+		WORD GARDEN
+		WORD SHARP
+		WORD STAR
+		WORD PEAK
+		WORD STAR
+		WORD QUEST
+		WORD FLOW
+		WORD STREAM
+		WORD RAPIDS
+		WORD BOWLING
+		WORD BALL
+		WORD ODYSSEY
+		WORD VOYAGE
+		WORD WAR
 	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
 	Spider Word.  Looks like a spider on a thread.
 	Words with 2 anagrams.

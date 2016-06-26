@@ -82,7 +82,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private float progressScale;
 		private int trialCount;
 		internal Metrics metrics = new Metrics();
-
+		private int previous = 0;
+		private int now = 0;
+		internal float width = 720;
+		internal float scale = 1.0f;
+		private float wordWidthPerSecond;
 		
 		public Model()
 		{
@@ -168,9 +172,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.trial_strings["word"] = text;
 		}
 		
-		private int previous = 0;
-		private int now = 0;
-		
 		internal void updateNow(int cumulativeMilliseconds)
 		{
 			float deltaSeconds = (now - previous) / 1000.0f;
@@ -187,10 +188,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			updateHintVisible();
 			metrics.Update(deltaSeconds);
 		}
-
-		internal float width = 720;
-		internal float scale = 1.0f;
-		private float wordWidthPerSecond;
 		
 		internal void scaleToScreen(float screenWidth)
 		{

@@ -77,9 +77,9 @@ namespace Finegamedesign.Anagram
 				storage.SetKeyValue("level", model.progress.GetLevelNormal());
 				storage.Save(storage.data);
 			}
-			updateCheat();
 			updateMouseDown();
 			updateBackspace();
+			updateCheat();
 			if (model.isGamePlaying) {
 				updatePlay();
 			}
@@ -120,8 +120,7 @@ namespace Finegamedesign.Anagram
 			if (KeyView.IsDownNow("page up"))
 			{
 				model.inputs = DataUtil.Split(model.text, "");
-				model.submit();
-				view.audio.Play("select");
+				letterMouseDown = "submit";
 			}
 			else if (KeyView.IsDownNow("page down"))
 			{
@@ -293,7 +292,7 @@ namespace Finegamedesign.Anagram
 				updateOutputHitsWord();
 			}
 			SceneNodeView.SetWorldY(view.word, model.wordPositionScaled);
-			SceneNodeView.SetWorldY(view.progress, model.progressPositionTweened);
+			SceneNodeView.SetWorldY(view.progress, model.progressPositionTweened * SceneNodeView.GetWorldScaleY(view.progress));
 		}
 	}
 }
