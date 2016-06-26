@@ -283,7 +283,12 @@ namespace Finegamedesign.Anagram
 		}
 
 		/**
-		 * Unity prohibits editing a property of position.
+		 * Multiply progress position by world scale on progress.
+		 * An ancestor is scaled.  The checkpoints are placed in 
+		 * the editor at the model's checkpoint interval (which at this time is 16).
+		 * Test case:  2016-06-26 Reach two checkpoints.  
+		 * Expect checkpoint line near bottom of screen each time.
+		 * Got checkpoint lines had gone down off the screen.
 		 */
 		private void updatePosition()
 		{

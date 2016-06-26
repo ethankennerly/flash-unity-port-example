@@ -106,7 +106,7 @@ FEATURES
 TODO
 
 	Submit.  Always all letters selected.
-	Test case:  2016-06-25 Jennifer Russ expects to feel all words sound right.  Examples:  robusta, inanes.
+	Test case:  2016-06-25 Jennifer Russ expects to feel all words sound right.  Examples:  robusta, inanes.  (both are accepted scrabble words and have definitions)
 	Word animation.  Does not rotate.
 	Letters behind.  Game Over.  Continue and New Game button borders clear.
 	Play to summarize opportunities to be consistent and clear.
