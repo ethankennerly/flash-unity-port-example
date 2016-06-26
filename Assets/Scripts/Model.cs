@@ -558,7 +558,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (progress.isCheckpoint) {
 				isGamePlaying = false;
 				isContinueVisible = true;
-				help = "Brilliant! You reached word " + progress.level + " of " + progress.levelMax;
+				help = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
 				populateWord("");
 				//- metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;

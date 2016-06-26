@@ -34,7 +34,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					"help", "USE ALL THE LETTERS.  FOR EXAMPLE:  'SPELL.'  THEN TAP 'SUBMIT.'"}
 				,
 				{
-					"wordPosition", -100.0f}
+					"wordPosition", -150.0f}
 			}
 			,
 			new Dictionary<string, dynamic>(){
@@ -44,7 +44,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					"help", "SHORTER WORDS KNOCK THE LETTERS BACK. EXAMPLES: 'ROD', 'WORD'."}
 				,
 				{
-					"wordPosition", -100.0f}
+					"wordPosition", -150.0f}
 			}
 			,
 			new Dictionary<string, dynamic>(){
@@ -54,7 +54,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					"help", "YOU CAN USE EACH SHORT WORD ONCE. EXAMPLES: 'EAT', 'TEAR'."}
 				,
 				{
-					"wordPosition", -100.0f}
+					"wordPosition", -150.0f}
 			}
 		}
 		;
