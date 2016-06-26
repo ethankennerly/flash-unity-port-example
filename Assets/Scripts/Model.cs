@@ -348,12 +348,22 @@ namespace /*<com>*/Finegamedesign.Anagram
 					int selected = selects.IndexOf(letter);
 					if (0 <= selected)
 					{
-						selectsNow.Add(selected);
-						selects[selected] = letter.ToLower();
+						select(selectsNow, selected, letter);
 					}
 				}
 			}
 			return selectsNow;
+		}
+
+		private void select(List<int> selectsNow, int selected, string letter)
+		{
+			selectsNow.Add(selected);
+			selects[selected] = letter.ToLower();
+			if ("repeat" == helpState)
+			{
+				helpState = "";
+				help = "";
+			}
 		}
 
 		internal List<int> mouseDown(int selected)
@@ -365,8 +375,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				if (0 <= index) {
 					available.RemoveRange(index, 1);
 					inputs.Add(letter);
-					selectsNow.Add(selected);
-					selects[selected] = letter.ToLower();
+					select(selectsNow, selected, letter);
 				}
 			}
 			return selectsNow;
@@ -482,7 +491,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 						state = "repeat";
 						if (levels.index <= 50 && "" == help)
 						{
-							help = "YOU CAN ONLY ENTER EACH SHORTER WORD ONCE.";
+							help = "WORD REPEATED";
 							helpState = "repeat";
 						}
 					}
