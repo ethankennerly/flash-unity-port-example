@@ -574,13 +574,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			bool isNow = !updateCheckpoint();
 			if (isNow) {
-				isHudVisible = true;
 				Dictionary<string, dynamic> level;
-				if (progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel) {
-					level = levels.up();
+				isHudVisible = !(progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel);
+				if (isHudVisible) {
+					level = progress.Pop(levels.parameters, tutorLevel);
 				}
 				else {
-					level = progress.Pop(levels.parameters, tutorLevel);
+					level = levels.up();
 				}
 				trial(level);
 			}

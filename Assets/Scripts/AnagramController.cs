@@ -206,6 +206,9 @@ namespace Finegamedesign.Anagram
 				{
 					AnimationView.SetState(view.input, state);
 					view.audio.Play("shoot");
+					if ("complete" != model.state) {
+						resetSelect();
+					}
 				}
 			}
 			string completedNow = AnimationView.CompletedNow(view.input);
@@ -264,6 +267,8 @@ namespace Finegamedesign.Anagram
 				resetSelect();
 			}
 			SceneNodeView.SetVisible(view.continueButton, model.isContinueVisible);
+			SceneNodeView.SetVisible(view.deleteButton, !model.isContinueVisible);
+			SceneNodeView.SetVisible(view.submitButton, !model.isContinueVisible);
 
 		}
 

@@ -95,12 +95,13 @@ FEATURES
 	Help text above word to be easy to read.
 	Clear letter select image.
 	Checkpoint.  Congratulation text.
+	Spring color palette.
 
 TODO
 
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
-	Color palette.
+	Word animation.  Does not rotate.
 	Repeat.  Different sound.
 	Not accepted.  Different sound.
 	New word approach sound.
@@ -108,7 +109,7 @@ TODO
 	Pause button: show menu: continue, new game.
 	Creep up to challenging word.
 	Checkpoint.  Congratulation animation.
-	Clear buttons.
+	Obvious buttons.
 	Letter creep animation.
 	Read limit hints.
 	Hints at each checkpoint.
