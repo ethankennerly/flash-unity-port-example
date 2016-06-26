@@ -606,7 +606,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
 					isContinueVisible = true;
-					help = "WORD POWER";
+					help = "WORD GARDEN";
 					if (isVerbose)
 					{
 						Debug.Log("Model.load: level " + previousSessionLevel);
