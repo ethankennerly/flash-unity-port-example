@@ -102,16 +102,20 @@ FEATURES
 		Test case:  2016-06-25 Nexus 5.  Aspect ratio similar to 480x852:  Expect letters not clipped.
 	Align row of flowers at checkpoint.  Test case:  2016-06-25 Plateau around word 1700.  Jennifer Russ expects checkpoint.  Got no checkpoint till higher.
 	Hint button large at top right.  Test case:  2016-06-25 Jennifer Russ doesn't select hint by accident.
+	Test case:  2016-06-25 Jennifer Russ expects to feel all words sound right.  Examples:  robusta, inanes.  (both are accepted scrabble words and have definitions)
+		Least frequency cross-referenced from open subtitles:
+			https://invokeit.wordpress.com/frequency-word-lists/
+		Fourth power frequency percentile, since it has a long tail of infrequent words.
+		Exclude suggesting some words that ruffle prudes feathers.
 
 TODO
 
-	Submit.  Always all letters selected.
-	Test case:  2016-06-25 Jennifer Russ expects to feel all words sound right.  Examples:  robusta, inanes.  (both are accepted scrabble words and have definitions)
 	Word animation.  Does not rotate.
+	Approaching letters in grid.
 	Letters behind.  Game Over.  Continue and New Game button borders clear.
+	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
-	Approaching letters in grid.
 	Repeat.  Different sound.
 	Not accepted.  Different sound.
 	New word approach sound.
@@ -150,13 +154,21 @@ TODO
 		WORD STAR
 		WORD QUEST
 		WORD FLOW
+		WAY WITH WORDS
 		WORD STREAM
 		WORD RAPIDS
+		WORD SPEED
+		WORD BLITZ
+		WORD BLIZZARD
 		WORD BOWLING
+		WORD SWEEP
 		WORD BALL
 		WORD ODYSSEY
 		WORD VOYAGE
 		WORD WAR
+		WORDSMITH
+		WORDCRAFT
+		WORD WIZ
 	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
 	Spider Word.  Looks like a spider on a thread.
 	Words with 2 anagrams.
