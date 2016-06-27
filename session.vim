@@ -288,12 +288,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 114 - ((10 * winheight(0) + 11) / 23)
+let s:l = 111 - ((7 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-114
-normal! 031l
+111
+normal! 0
 wincmd w
 argglobal
 edit \archive\unity\anagram\engineering.txt

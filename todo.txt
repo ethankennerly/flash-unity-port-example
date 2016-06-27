@@ -107,12 +107,17 @@ FEATURES
 			https://invokeit.wordpress.com/frequency-word-lists/
 		Fourth power frequency percentile, since it has a long tail of infrequent words.
 		Exclude suggesting some words that ruffle prudes feathers.
+	Letters behind.  Game Over.  Continue and New Game button borders clear.  Exported at 150 DPI.
 
 TODO
 
+	Play in WebGL or WebPlayer.
+		WebGL says "NotSupportedException: Collection is read-only"
+		http://stackoverflow.com/questions/21471593/why-is-my-ilist-read-only
+	Successful submit animation contacts word and disperses.
+		Test case:  2016-06-25 Submit.  Jennifer Russ expects to recognize word accepted.
 	Word animation.  Does not rotate.
 	Approaching letters in grid.
-	Letters behind.  Game Over.  Continue and New Game button borders clear.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
@@ -141,9 +146,6 @@ TODO
 	Animate word bug damaging plant and ground that it covers.
 		Animate repairing after defeating a bug.
 	Google Play Store.
-	Play in WebGL or WebPlayer.
-		WebGL says "NotSupportedException: Collection is read-only"
-		http://stackoverflow.com/questions/21471593/why-is-my-ilist-read-only
 	Mouse down to select that letter when there are 2 copies.
 	Animate various outcomes:  many subwords.  fast.  barely survive.
 	Theme:  
