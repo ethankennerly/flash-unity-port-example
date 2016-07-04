@@ -114,12 +114,16 @@ FEATURES
 		http://www.kongregate.com/games/ethankennerly/word-garden
 		http://gamejolt.com/games/word-garden/162413
 		http://www.newgrounds.com/portal/view/677432?updated=1467645753
+	Successful submit animation contacts word and disperses.
+	Word animation.  Does not rotate.
+		Test case:  2016-06-25 Submit.  Jennifer Russ expects to recognize word accepted.
 
 TODO
 
-	Successful submit animation contacts word and disperses.
-		Test case:  2016-06-25 Submit.  Jennifer Russ expects to recognize word accepted.
-	Word animation.  Does not rotate.
+	Synchronize complete animation on word state and letters.
+	Help disappears on letter entry.
+	Buttons not aliasing.
+	Text not aliasing.
 	Approaching letters in grid.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
