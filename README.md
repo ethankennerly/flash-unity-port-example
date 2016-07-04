@@ -2,6 +2,15 @@ Line port Anagram Attack from Flash ActionScript 3 to Unity 5.
 
 A literal port of data types, so used ArrayList and Hashtable, instead of List and Dictionary.  Then used my repo as2cs to convert model and levels.
 
+Play at:
+
+https://ethankennerly.itch.io/word-garden
+
+http://www.kongregate.com/games/ethankennerly/word-garden
+
+http://gamejolt.com/games/word-garden/162413
+
+http://www.newgrounds.com/portal/view/677432?updated=1467645753
 
 LICENSE does not cover third-party content:
 
