@@ -196,6 +196,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		
 		/**
 		 * Test case:  2015-03 Use Mac. Rosa Zedek expects to read key to change level.
+		 * During tutor, clamp word position below help message.
+		 * Test case:  2016-06-28 Tutor.  Enter smaller words.  Expect to read letters.  Got overlapped by help.
 		 */
 		private void clampWordPosition()
 		{
@@ -211,7 +213,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 				metrics.EndTrial();
 				metrics.EndSession();
 			}
-			wordPosition = Mathf.Max(min, Mathf.Min(0, wordPosition));
+			float max = isTutor() ? -0.4f * wordWidth : 0.0f;
+			wordPosition = Mathf.Max(min, Mathf.Min(max, wordPosition));
 		}
 		
 		private void updatePosition(float deltaSeconds)
@@ -575,13 +578,19 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return progress.isCheckpoint;
 		}
 
+		private bool isTutor()
+		{
+			return progress.GetLevelNormal() < tutorLevel 
+				&& trialCount < tutorLevel;
+		}
+
 		// If next trial starts; otherwise checkpoint.
 		internal void nextTrial()
 		{
 			bool isNow = !updateCheckpoint();
 			if (isNow) {
 				Dictionary<string, dynamic> level;
-				isHudVisible = !(progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel);
+				isHudVisible = !isTutor();
 				if (isHudVisible) {
 					level = progress.Pop(levels.parameters, tutorLevel);
 				}

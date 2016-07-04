@@ -120,11 +120,11 @@ FEATURES
 
 TODO
 
-	Synchronize complete animation on word state and letters.
 	Help disappears on letter entry.
 	Buttons not aliasing.
 	Text not aliasing.
 	Approaching letters in grid.
+	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.

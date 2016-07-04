@@ -46,6 +46,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				{
 					"wordPosition", -150.0f}
 			}
+			/*
 			,
 			new Dictionary<string, dynamic>(){
 				{
@@ -56,6 +57,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				{
 					"wordPosition", -150.0f}
 			}
+			 */
 		}
 		;
 		
