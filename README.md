@@ -52,17 +52,25 @@ Flash:
 + Rename, reorganize, replace nodes and animations still work.
 + Share a library symbol anywhere and automatically update it.
 + Conveniently preview and customize text, buttons, images, animations.
-+ Copy and paste keyframes.
-+ Default keyframe interpolation is linear.
-+ Draw images in place.
++ Draw images in the editor.
 + Compress vector images.
 + Conveniently share source code in multiple projects.
 + On Windows, conveniently use another code editor.
 + Easily program a button.
++ Copy and paste keyframes.
++ Default keyframe interpolation is linear.
 + Minimal need to wire in the editor:  Root class linkages.
-+ Any display object is conveniently animated.
-+ No special cases for buttons or other objects.
++ Same coordinates for buttons and other objects.
 + Descendents of objects conveniently capture button presses on listeners.
-+ Conveniently stop animations when they finish.
 + Crisp fonts on all devices.
 + Exact layout on all devices.
++ Deploy to Android in 15 seconds, iOS in 1 minute, without third-party tools.
+
+
+
+Unity Android gotcha:
+
+Unity 5.3.4f1.  Windows 10.  Android build tools 24.
+Android failed to build.
+After downgrading Android build tools to 23, Android built.
+

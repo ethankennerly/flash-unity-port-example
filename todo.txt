@@ -109,7 +109,7 @@ FEATURES
 		Exclude suggesting some words that ruffle prudes feathers.
 	Letters behind.  Game Over.  Continue and New Game button borders clear.  Exported at 150 DPI.
 	Play in WebGL or WebPlayer.
-	Upload to Newgrounds, itch.io, kongregate, GameJolt:
+	Upload to Newgrounds, Itch.io, Kongregate, GameJolt:
 		https://ethankennerly.itch.io/word-garden
 		http://www.kongregate.com/games/ethankennerly/word-garden
 		http://gamejolt.com/games/word-garden/162413
@@ -117,12 +117,21 @@ FEATURES
 	Successful submit animation contacts word and disperses.
 	Word animation.  Does not rotate.
 		Test case:  2016-06-25 Submit.  Jennifer Russ expects to recognize word accepted.
+	Repeat help disappears on letter entry.
+	Do not see letter count in HUD.
 
 TODO
 
-	Help disappears on letter entry.
 	Buttons not aliasing.
+		Scale canvas to web portrait coordinate space:  320x480.
+		Resize help and HUD text.
+		9-slice help button images.
+		TODO:
+		UI button:  Hint, New game, continue, delete, submit.
+		InputController, InputView, InputBehaviour
+		Scale world coordinates to UI coordinate space.
 	Text not aliasing.
+	Outline area for hint, or show disabled hint button.
 	Approaching letters in grid.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
