@@ -22,3 +22,6 @@ sysinfo.txt
 
 # OpenOffice
 .~lock*
+
+# Git BASH
+*.stackdump
