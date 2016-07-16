@@ -59,6 +59,7 @@ namespace Finegamedesign.Anagram
 			buttonController.view.Listen(view.continueButton);
 			buttonController.view.Listen(view.deleteButton);
 			buttonController.view.Listen(view.submitButton);
+			buttonController.view.Listen(view.emailButton);
 		}
 
 		private void UpdateButtonController()
@@ -148,7 +149,7 @@ namespace Finegamedesign.Anagram
 				view.audio.Play("select");
 			}
 			else if (KeyView.IsDownNow("0")
-					|| "email metrics" == buttonDownName)
+					|| "email" == buttonDownName)
 			{
 				email.Send(model.metrics.ToTable());
 			}

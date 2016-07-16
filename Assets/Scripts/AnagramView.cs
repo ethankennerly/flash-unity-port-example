@@ -19,6 +19,7 @@ namespace Finegamedesign.Anagram
 		internal GameObject hint;
 		internal GameObject deleteButton;
 		internal GameObject submitButton;
+		internal GameObject emailButton;
 		internal GameObject hintButton;
 		internal GameObject hud;
 		internal GameObject help;
@@ -52,6 +53,7 @@ namespace Finegamedesign.Anagram
 			continueButton = SceneNodeView.GetChild(main, "canvas/continue");
 			deleteButton = SceneNodeView.GetChild(main, "canvas/delete");
 			submitButton = SceneNodeView.GetChild(main, "canvas/submit");
+			emailButton = SceneNodeView.GetChild(main, "canvas/email");
 			help = SceneNodeView.GetChild(main, "canvas/help");
 			helpText = SceneNodeView.GetChild(main, "canvas/help/helpText");
 			hud = SceneNodeView.GetChild(main, "canvas/hud");
