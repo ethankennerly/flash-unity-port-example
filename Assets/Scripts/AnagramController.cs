@@ -66,7 +66,7 @@ namespace Finegamedesign.Anagram
 				string name = SceneNodeView.GetName(
 					SceneNodeView.GetParent(MouseView.target));
 				letterIndexMouseDown = Toolkit.ParseIndex(name);
-				// Debug.Log("View.updateMouseDown: " + letterMouseDown);
+				Toolkit.Log("AnagramController.updateMouseDown: " + letterMouseDown);
 			}
 		}
 
