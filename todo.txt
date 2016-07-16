@@ -125,11 +125,10 @@ FEATURES
 		9-slice help button images.
 		UI button:  Hint, New game, continue, delete, submit.
 		ButtonController, ButtonView, ButtonBehaviour
+	Outline area for hint, or show disabled hint button.
 
 TODO
 
-	Text not aliasing.
-	Outline area for hint, or show disabled hint button.
 	Approaching letters in grid.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
@@ -146,6 +145,7 @@ TODO
 	Letter creep animation.
 	Read limit hints.
 	Hints at each checkpoint.
+	Text not aliasing.
 	Profile
 		Optimize view update of letters.
 	Animate letters if repeating word.
