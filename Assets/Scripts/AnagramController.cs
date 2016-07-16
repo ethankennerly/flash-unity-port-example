@@ -15,8 +15,9 @@ namespace Finegamedesign.Anagram
 		private Model model;
 		private Email email = new Email();
 		private Storage storage = new Storage();
-		private string letterMouseDown;
+		private string buttonDownName;
 		private int letterIndexMouseDown;
+		private ButtonController buttonController = new ButtonController();
 
 		public void Setup()
 		{
@@ -27,6 +28,7 @@ namespace Finegamedesign.Anagram
 			model.load(storage.Load());
 			view.SetupAudio(soundFileNames);
 			model.setReadingOrder(view.letterNodes);
+			SetupButtonController();
 		}
 
 		private void loadWords()
@@ -50,6 +52,23 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
+		private void SetupButtonController()
+		{
+			buttonController.view.Listen(view.hintButton);
+			buttonController.view.Listen(view.newGameButton);
+			buttonController.view.Listen(view.continueButton);
+			buttonController.view.Listen(view.deleteButton);
+			buttonController.view.Listen(view.submitButton);
+		}
+
+		private void UpdateButtonController()
+		{
+			buttonController.Update();
+			if (buttonController.isAnyNow) {
+				buttonDownName = buttonController.downName;
+			}
+		}
+
 		/**
 		 * Remember which letter was just clicked on this update.
 		 *
@@ -57,16 +76,16 @@ namespace Finegamedesign.Anagram
 		 */
 		private void updateMouseDown()
 		{
-			letterMouseDown = null;
+			buttonDownName = null;
 			letterIndexMouseDown = -1;
 			MouseView.Update();
 			if (null != MouseView.target) {
 				var text3d = SceneNodeView.GetChild(MouseView.target, "text3d");
-				letterMouseDown = TextView.GetText(text3d).ToLower();
+				buttonDownName = TextView.GetText(text3d).ToLower();
 				string name = SceneNodeView.GetName(
 					SceneNodeView.GetParent(MouseView.target));
 				letterIndexMouseDown = Toolkit.ParseIndex(name);
-				Toolkit.Log("AnagramController.updateMouseDown: " + letterMouseDown);
+				Toolkit.Log("AnagramController.updateMouseDown: " + buttonDownName);
 			}
 		}
 
@@ -78,6 +97,7 @@ namespace Finegamedesign.Anagram
 				storage.Save(storage.data);
 			}
 			updateMouseDown();
+			UpdateButtonController();
 			updateBackspace();
 			updateCheat();
 			if (model.isGamePlaying) {
@@ -120,7 +140,7 @@ namespace Finegamedesign.Anagram
 			if (KeyView.IsDownNow("page up"))
 			{
 				model.inputs = DataUtil.Split(model.text, "");
-				letterMouseDown = "submit";
+				buttonDownName = "submit";
 			}
 			else if (KeyView.IsDownNow("page down"))
 			{
@@ -128,7 +148,7 @@ namespace Finegamedesign.Anagram
 				view.audio.Play("select");
 			}
 			else if (KeyView.IsDownNow("0")
-					|| "email metrics" == letterMouseDown)
+					|| "email metrics" == buttonDownName)
 			{
 				email.Send(model.metrics.ToTable());
 			}
@@ -141,10 +161,10 @@ namespace Finegamedesign.Anagram
 		{
 			if (KeyView.IsDownNow("delete")
 			|| KeyView.IsDownNow("backspace")
-			|| "delete" == letterMouseDown)
+			|| "delete" == buttonDownName)
 			{
 				updateSelect(model.backspace(), false);
-				letterMouseDown = null;
+				buttonDownName = null;
 			}
 		}
 
@@ -197,9 +217,9 @@ namespace Finegamedesign.Anagram
 			}
 			if (KeyView.IsDownNow("space")
 			|| KeyView.IsDownNow("return")
-			|| "submit" == letterMouseDown)
+			|| "submit" == buttonDownName)
 			{
-				letterMouseDown = null;
+				buttonDownName = null;
 				string state = model.submit();
 				if (null != state) 
 				{
@@ -237,7 +257,7 @@ namespace Finegamedesign.Anagram
 		{
 			if (KeyView.IsDownNow("?")
 			|| KeyView.IsDownNow("/")
-			|| "hint" == letterMouseDown)
+			|| "hint" == buttonDownName)
 			{
 				model.hint();
 			}
@@ -248,7 +268,7 @@ namespace Finegamedesign.Anagram
 		private void updateNewGame()
 		{
 			if (KeyView.IsDownNow("home")
-			|| "new game" == letterMouseDown)
+			|| "newGame" == buttonDownName)
 			{
 				model.newGame();
 				resetSelect();
@@ -260,7 +280,7 @@ namespace Finegamedesign.Anagram
 		private void updateContinue()
 		{
 			if (KeyView.IsDownNow("end")
-			|| "continue" == letterMouseDown)
+			|| "continue" == buttonDownName)
 			{
 				model.doContinue();
 				resetSelect();
