@@ -119,17 +119,15 @@ FEATURES
 		Test case:  2016-06-25 Submit.  Jennifer Russ expects to recognize word accepted.
 	Repeat help disappears on letter entry.
 	Do not see letter count in HUD.
-
-TODO
-
 	Buttons not aliasing.
 		Scale canvas to web portrait coordinate space:  320x480.
 		Resize help and HUD text.
 		9-slice help button images.
-		TODO:
 		UI button:  Hint, New game, continue, delete, submit.
-		InputController, InputView, InputBehaviour
-		Scale world coordinates to UI coordinate space.
+		ButtonController, ButtonView, ButtonBehaviour
+
+TODO
+
 	Text not aliasing.
 	Outline area for hint, or show disabled hint button.
 	Approaching letters in grid.
@@ -156,6 +154,7 @@ TODO
 			http://docs.unity3d.com/Manual/script-InputField.html
 			http://docs.unity3d.com/ScriptReference/TouchScreenKeyboard.Open.html
 		Reset user level.
+	Scale world coordinates to UI coordinate space.
 	Select user name from menu.
 	Letter graphic.
 	Menu to select any word.  Example:  WordBrain.
