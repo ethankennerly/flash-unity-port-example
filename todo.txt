@@ -126,13 +126,14 @@ FEATURES
 		UI button:  Hint, New game, continue, delete, submit.
 		ButtonController, ButtonView, ButtonBehaviour
 	Outline area for hint, or show disabled hint button.
-
-TODO
-
+	Approaching letters in grid.
 	Replace letters:
 		Tap to select.
 		Resize hints.
-	Approaching letters in grid.
+
+TODO
+
+	Animate word letters none, complete, hit.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
