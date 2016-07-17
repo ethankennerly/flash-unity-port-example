@@ -48,7 +48,7 @@ namespace Finegamedesign.Anagram
 			input = SceneNodeView.GetChild(main, "input");
 			inputState = SceneNodeView.GetChild(main, "input/state");
 			output = SceneNodeView.GetChild(main, "input/output");
-			hint = SceneNodeView.GetChild(main, "input/hints");
+			hint = SceneNodeView.GetChild(main, "canvas/hints");
 			hintButton = SceneNodeView.GetChild(main, "canvas/hint");
 			newGameButton = SceneNodeView.GetChild(main, "canvas/newGame");
 			continueButton = SceneNodeView.GetChild(main, "canvas/continue");
