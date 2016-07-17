@@ -39,16 +39,16 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
         internal string state;
         internal TestSyntaxLevels levels = new TestSyntaxLevels();
         private List<string> available;
-        private Dictionary<string, dynamic> repeat = new Dictionary<string, dynamic>(){
+        private Dictionary<string, object> repeat = new Dictionary<string, object>(){
         }
         ;
         private List<string> selects;
-        private Dictionary<string, dynamic> wordHash;
+        private Dictionary<string, object> wordHash;
         private bool isVerbose = false;
         
         public TestSyntaxModel()
         {
-            wordHash = new Dictionary<string, dynamic>(){
+            wordHash = new Dictionary<string, object>(){
                 {
                     "aa", true}
             }
@@ -56,7 +56,7 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
             Trial(levels.GetParams());
         }
         
-        internal void Trial(Dictionary<string, dynamic> parameters)
+        internal void Trial(Dictionary<string, object> parameters)
         {
             wordPosition = 0.0f;
             help = "";
@@ -92,7 +92,7 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
                 wordWidthPerSecond *= Mathf.Pow(baseRate, power);
             }
             selects = DataUtil.CloneList(word);
-            repeat = new Dictionary<string, dynamic>(){
+            repeat = new Dictionary<string, object>(){
             }
             ;
             if (isVerbose) Debug.Log("Model.trial: word[0]: <" + word[0] + ">");
@@ -196,7 +196,7 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
         internal List<string> GetPresses(/*<Function>*/IsJustPressed justPressed)
         {
             List<string> presses = new List<string>();
-            Dictionary<string, dynamic> letters = new Dictionary<string, dynamic>(){
+            Dictionary<string, object> letters = new Dictionary<string, object>(){
             }
             ;
             for (int i = 0; i < DataUtil.Length(available); i++)
@@ -224,7 +224,7 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
          */
         internal List<int> Press(List<string> presses)
         {
-            Dictionary<string, dynamic> letters = new Dictionary<string, dynamic>(){
+            Dictionary<string, object> letters = new Dictionary<string, object>(){
             }
             ;
             List<int> selectsNow = new List<int>();

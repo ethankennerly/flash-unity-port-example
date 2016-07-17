@@ -15,7 +15,7 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
          * http://www.cse.unr.edu/~cohen/text.php
          */
         internal ArrayList parameters = new ArrayList(){
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "START"}
                 , {
@@ -28,527 +28,527 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
                     "wordPosition", 0.0f}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "LSEPL"}
                 , {
                     "help", "TO ADVANCE, USE ALL THE LETTERS.  HINT:  'SPELL'.  THEN PRESS THE SPACE KEY OR ENTER KEY."}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "DWORS"}
                 , {
                     "help", "SHORTER WORDS SHUFFLE SAME LETTERS. EXAMPLES: 'ROD', 'RODS', 'WORD', 'SWORD'."}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "STARE"}
                 , {
                     "help", "SHORTER WORDS KNOCKBACK.  YOU CAN USE EACH SHORT WORD ONCE. EXAMPLE:  'EAT', 'TEAR', 'STARE'"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "FOR"}
                 , {
                     "help", "WORDS WITH FEW LETTERS MOVE FAST!"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "EAT"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ART"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SAP"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SATE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "APT"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ARM"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ERA"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "POST"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "OWN"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PLEA"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "BATS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "LEAD"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "BEAST"}
                 , {
                     "help", "FOR BONUS POINTS, FIRST ENTER SHORT WORDS.  EXAMPLES: 'BE', 'BATS', 'AT'."}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "DIET"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "INKS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "LIVE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "RACES"}
                 , {
                     "help", "TOO CLOSE?  ENTER SHORT WORDS."}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "KALE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SNOW"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "NEST"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "STEAM"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "EMIT"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "NAME"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SWAY"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PEARS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SKATE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "BREAD"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "CODE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "DIETS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "CRATES"}
                 , {
                     "help", "SHORT WORDS SHUFFLES LETTERS, BUT THEY REMAIN THE SAME."}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "TERSE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "LAPSE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PROSE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SPREAD"}
                 , {
                     "help", "FOR BONUS POINTS OR KNOCKBACK, ENTER SHORT WORDS. TO ADVANCE, ENTER FULL WORD."}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SMILE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ALERT"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "BEGIN"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "TIMERS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "HEROS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PETAL"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "LITER"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PETALS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "VERSE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "RESIN"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "NOTES"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SHEAR"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SUBTLE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SPARSE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "REWARD"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "REPLAYS"}
                 , {
                     "help", "NEXT SESSION, TO SKIP WORDS, PRESS PAGEUP."}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "MANTEL"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "DESIGN"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "LASTED"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "RECANTS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "FOREST"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "POINTS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "MASTER"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "THREADS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "DANGER"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "SPRITES"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ARTIST"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "TENSOR"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ARIDEST"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "LISTEN"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PIRATES"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ALERTED"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ALLERGY"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "REDUCES"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "MEDICAL"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "RAPIDS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "RETARDS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "REALIST"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "MEANEST"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ADMIRER"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "TRAINERS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "RECOUNTS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PARROTED"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "DESIGNER"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "CRATERED"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "CALIPERS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "CREATIVE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ARROGANT"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "EMIGRANTS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "AUCTIONED"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "CASSEROLE"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "UPROARS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "ANTIGEN"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "DEDUCTIONS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "INTRODUCES"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "PERCUSSION"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "CONFIDENT"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "HARMONICAS"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "OMNIPOTENT"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "YOU"}
             }
             ,
-            new Dictionary<string, dynamic>(){
+            new Dictionary<string, object>(){
                 {
                     "text", "WIN"}
             }
         }
         ;
         
-        internal Dictionary<string, dynamic> GetParams()
+        internal Dictionary<string, object> GetParams()
         {
-            return (Dictionary<string, dynamic>)(parameters[index]);
+            return (Dictionary<string, object>)(parameters[index]);
         }
         
-        internal Dictionary<string, dynamic> Up(int add = 1)
+        internal Dictionary<string, object> Up(int add = 1)
         {
             index = (index + add) % DataUtil.Length(parameters);
             while (index < 0)

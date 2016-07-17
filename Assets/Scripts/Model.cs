@@ -6,7 +6,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 {
 	public sealed class Model
 	{
-		private static bool ContainsWord(Dictionary<string, dynamic> wordHash, List<string> letters, List<int> readingOrder)
+		private static bool ContainsWord(Dictionary<string, object> wordHash, List<string> letters, List<int> readingOrder)
 		{
 			string word = "";
 			for (int index = 0; index < DataUtil.Length(readingOrder); index++)
@@ -19,7 +19,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return wordHash.ContainsKey(word);
 		}
 
-		private static void shuffleNotWord(Dictionary<string, dynamic> wordHash, List<string> letters, List<int> readingOrder, int attemptMax = 16)
+		private static void shuffleNotWord(Dictionary<string, object> wordHash, List<string> letters, List<int> readingOrder, int attemptMax = 16)
 		{
 			for (int attempt = 0; attempt < attemptMax; attempt++)
 			{
@@ -40,7 +40,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal float wordWidth = 
 									// 160.0f;
 									420.0f; 
-		internal delegate /*<dynamic>*/void ActionDelegate();
+		internal delegate /*<object>*/void ActionDelegate();
 		internal /*<Function>*/ActionDelegate onComplete;
 		internal delegate bool IsJustPressed(string letter);
 		internal string help = "";
@@ -70,11 +70,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal Levels levels = new Levels();
 		internal Progress progress = new Progress();
 		private List<string> available;
-		private Dictionary<string, dynamic> repeat = new Dictionary<string, dynamic>(){
+		private Dictionary<string, object> repeat = new Dictionary<string, object>(){
 		}
 		;
 		private List<string> selects;
-		internal Dictionary<string, dynamic> wordHash;
+		internal Dictionary<string, object> wordHash;
 		private bool isVerbose = true;
 		private float responseSeconds;
 		private float wordPositionMin;
@@ -114,7 +114,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			populateHint(text);
 		}
 
-		internal void trial(Dictionary<string, dynamic> parameters)
+		internal void trial(Dictionary<string, object> parameters)
 		{
 			isGamePlaying = true;
 			isContinueVisible = false;
@@ -155,7 +155,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				wordWidthPerSecond *= Mathf.Pow(baseRate, power);
 			}
 			selects = DataUtil.CloneList(word);
-			repeat = new Dictionary<string, dynamic>(){
+			repeat = new Dictionary<string, object>(){
 			}
 			;
 			wordStateNow = "none";
@@ -297,7 +297,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<string> getPresses(/*<Function>*/IsJustPressed justPressed)
 		{
 			List<string> presses = new List<string>();
-			Dictionary<string, dynamic> letters = new Dictionary<string, dynamic>(){
+			Dictionary<string, object> letters = new Dictionary<string, object>(){
 			}
 			;
 			for (int i = 0; i < DataUtil.Length(available); i++)
@@ -325,7 +325,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 */
 		internal List<int> press(List<string> presses)
 		{
-			Dictionary<string, dynamic> letters = new Dictionary<string, dynamic>(){
+			Dictionary<string, object> letters = new Dictionary<string, object>(){
 			}
 			;
 			List<int> selectsNow = new List<int>();
@@ -589,7 +589,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			bool isNow = !updateCheckpoint();
 			if (isNow) {
-				Dictionary<string, dynamic> level;
+				Dictionary<string, object> level;
 				isHudVisible = !isTutor();
 				if (isHudVisible) {
 					level = progress.Pop(levels.parameters, tutorLevel);
@@ -615,7 +615,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		private int previousSessionLevel;
 
-		internal void load(Dictionary<string, dynamic> data)
+		internal void load(Dictionary<string, object> data)
 		{
 			if (null != data) {
 				if (data.ContainsKey("level")) {

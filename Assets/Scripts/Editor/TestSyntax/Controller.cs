@@ -9,7 +9,7 @@ namespace Monster
     {
         public delegate /*<var>*/void ChildKeyChangeDelegate(string _key, string _change);
         
-        public static void ListenToChildren(Dictionary<string, dynamic> view, ArrayList childNames, string methodName, /*<var>*/object owner)
+        public static void ListenToChildren(Dictionary<string, object> view, ArrayList childNames, string methodName, /*<var>*/object owner)
         {
             for (int c = 0; c < DataUtil.Length(childNames); c++)
             {
@@ -27,15 +27,15 @@ namespace Monster
         /**
          * @param   changes     What is different as nested hashes.
          */
-        public static void Visit(Dictionary<string, dynamic> parent, Dictionary<string, dynamic> changes)
+        public static void Visit(Dictionary<string, object> parent, Dictionary<string, object> changes)
         {
-            foreach(KeyValuePair<string, dynamic> _entry in changes){
+            foreach(KeyValuePair<string, object> _entry in changes){
                 string key = _entry.Key;
                 var change = changes[key];
                 var child = parent[key];
                 if (IsObject(change))
                 {
-                    Visit((Dictionary<string, dynamic>)(child), (Dictionary<string, dynamic>)(change));
+                    Visit((Dictionary<string, object>)(child), (Dictionary<string, object>)(change));
                 }
                 else
                 {

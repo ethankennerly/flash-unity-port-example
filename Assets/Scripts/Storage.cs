@@ -9,7 +9,7 @@ using System.IO;
 // http://gamedevelopment.tutsplus.com/tutorials/how-to-save-and-load-your-players-progress-in-unity--cms-20934
 public class Storage 
 {
-	public Dictionary<string, dynamic> data;
+	public Dictionary<string, object> data;
 	public string name = "user";
 	
 	private string FormatPath()
@@ -17,15 +17,15 @@ public class Storage
 		return Application.persistentDataPath + "/" + name + ".data";
 	}
 
-	public void SetKeyValue(string key, dynamic val)
+	public void SetKeyValue(string key, object val)
 	{
 		if (null == data) {
-			data = new Dictionary<string, dynamic>();
+			data = new Dictionary<string, object>();
 		}
 		data[key] = val;
 	}
 
-	public void Save(Dictionary<string, dynamic> hash)
+	public void Save(Dictionary<string, object> hash)
 	{
 		this.data = hash;
 		BinaryFormatter formatter = new BinaryFormatter();
@@ -34,12 +34,12 @@ public class Storage
 		file.Close();
 	}
 	 
-	public Dictionary<string, dynamic> Load()
+	public Dictionary<string, object> Load()
 	{
 		if (File.Exists(FormatPath())) {
 			BinaryFormatter formatter = new BinaryFormatter();
 			FileStream file = File.Open(FormatPath(), FileMode.Open);
-			data = (Dictionary<string, dynamic>)formatter.Deserialize(file);
+			data = (Dictionary<string, object>)formatter.Deserialize(file);
 			file.Close();
 		}
 		return data;

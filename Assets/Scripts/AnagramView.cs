@@ -10,6 +10,7 @@ namespace Finegamedesign.Anagram
 		internal AudioView audio;
 		internal GameObject main;
 		internal GameObject word;
+		internal List<GameObject> wordLetters;
 		internal GameObject wordState;
 		internal GameObject input;
 		internal GameObject newGameButton;
@@ -63,6 +64,19 @@ namespace Finegamedesign.Anagram
 			progress = SceneNodeView.GetChild(main, "progress");
 			letterNodes = SceneNodeView.ToSceneNodeList(
 				SceneNodeView.GetChildren(wordState));
+		}
+
+		internal List<GameObject> GetLetters(GameObject parent, string namePattern, int letterMax) 
+		{
+			List<GameObject> letters = new List<GameObject>();
+			for (int i = 0; i < letterMax; i++)
+			{
+				string name = namePattern.Replace("{0}", i.ToString());
+				var letter = SceneNodeView.GetChild(parent, name);
+				letters.Add(letter);
+
+			}
+			return letters;
 		}
 
 		internal void updateLetters(GameObject parent, List<string> letters, string namePattern, int letterMax) 

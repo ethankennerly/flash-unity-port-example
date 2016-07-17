@@ -28,6 +28,7 @@ namespace Finegamedesign.Anagram
 			model.load(storage.Load());
 			view.SetupAudio(soundFileNames);
 			model.setReadingOrder(view.letterNodes);
+			view.wordLetters = view.GetLetters(view.wordState, "bone_{0}/letter", model.letterMax);
 			SetupButtonController();
 		}
 
@@ -41,12 +42,12 @@ namespace Finegamedesign.Anagram
 		}
 
 		private static void pushWords(
-				List<Dictionary<string, dynamic>> parameters, 
+				List<Dictionary<string, object>> parameters, 
 				string[] words)
 		{
 			for (int w = 0; w < words.Length; w++) {
-				Dictionary<string, dynamic> 
-				parameter = new Dictionary<string, dynamic>(){
+				Dictionary<string, object> 
+				parameter = new Dictionary<string, object>(){
 					{"text", words[w]}};
 				parameters.Add(parameter);
 			}
@@ -60,14 +61,21 @@ namespace Finegamedesign.Anagram
 			buttonController.view.Listen(view.deleteButton);
 			buttonController.view.Listen(view.submitButton);
 			buttonController.view.Listen(view.emailButton);
+			for (int index = 0; index < DataUtil.Length(view.wordLetters); index++)
+			{
+				var letter = view.wordLetters[index];
+				buttonController.view.Listen(letter);
+			}
 		}
 
 		private void UpdateButtonController()
 		{
+			buttonDownName = null;
 			buttonController.Update();
 			if (buttonController.isAnyNow) {
 				buttonDownName = buttonController.downName;
 			}
+			UpdateLetterButton();
 		}
 
 		/**
@@ -75,18 +83,16 @@ namespace Finegamedesign.Anagram
 		 *
 		 * http://answers.unity3d.com/questions/20328/onmousedown-to-return-object-name.html
 		 */
-		private void updateMouseDown()
+		private void UpdateLetterButton()
 		{
-			buttonDownName = null;
 			letterIndexMouseDown = -1;
-			MouseView.Update();
-			if (null != MouseView.target) {
-				var text3d = SceneNodeView.GetChild(MouseView.target, "text3d");
+			if ("letter" == buttonController.downName && null != buttonController.view.target) {
+				var text3d = SceneNodeView.GetChild(buttonController.view.target, "text3d");
 				buttonDownName = TextView.GetText(text3d).ToLower();
 				string name = SceneNodeView.GetName(
-					SceneNodeView.GetParent(MouseView.target));
+					SceneNodeView.GetParent(buttonController.view.target));
 				letterIndexMouseDown = Toolkit.ParseIndex(name);
-				Toolkit.Log("AnagramController.updateMouseDown: " + buttonDownName);
+				Toolkit.Log("AnagramController.UpdateLetterButton: " + buttonDownName);
 			}
 		}
 
@@ -97,7 +103,6 @@ namespace Finegamedesign.Anagram
 				storage.SetKeyValue("level", model.progress.GetLevelNormal());
 				storage.Save(storage.data);
 			}
-			updateMouseDown();
 			UpdateButtonController();
 			updateBackspace();
 			updateCheat();

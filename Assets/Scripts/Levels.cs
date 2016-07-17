@@ -13,8 +13,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 * Test case:  2015-04-18 Redbeard at The MADE types word.  Got stumped by anagram "ERISIOUS" and "NIOMTENTPO"
 		 * http://www.cse.unr.edu/~cohen/text.php
 		 */
-		internal List<Dictionary<string, dynamic>> parameters = new List<Dictionary<string, dynamic>>(){
-			new Dictionary<string, dynamic>(){
+		internal List<Dictionary<string, object>> parameters = new List<Dictionary<string, object>>(){
+			new Dictionary<string, object>(){
 				{
 					"text", "START"}
 				, {
@@ -27,7 +27,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					"wordPosition", -200.0f}
 			}
 			,
-			new Dictionary<string, dynamic>(){
+			new Dictionary<string, object>(){
 				{
 					"text", "SPELL"}
 				, {
@@ -37,7 +37,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					"wordPosition", -150.0f}
 			}
 			,
-			new Dictionary<string, dynamic>(){
+			new Dictionary<string, object>(){
 				{
 					"text", "WORDS"}
 				, {
@@ -48,7 +48,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			/*
 			,
-			new Dictionary<string, dynamic>(){
+			new Dictionary<string, object>(){
 				{
 					"text", "STARE"}
 				, {
@@ -61,18 +61,18 @@ namespace /*<com>*/Finegamedesign.Anagram
 		}
 		;
 		
-		internal Dictionary<string, dynamic> getParams()
+		internal Dictionary<string, object> getParams()
 		{
-			return (Dictionary<string, dynamic>)parameters[index];
+			return (Dictionary<string, object>)parameters[index];
 		}
 		
-		internal Dictionary<string, dynamic> progress(float fraction)
+		internal Dictionary<string, object> progress(float fraction)
 		{
 			int add = (int)(fraction * DataUtil.Length(parameters));
 			return up(add);
 		}
 
-		internal Dictionary<string, dynamic> up(int add = 1)
+		internal Dictionary<string, object> up(int add = 1)
 		{
 			index = (index + add) % DataUtil.Length(parameters);
 			while (index < 0)

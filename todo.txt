@@ -129,6 +129,9 @@ FEATURES
 
 TODO
 
+	Replace letters:
+		Tap to select.
+		Resize hints.
 	Approaching letters in grid.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.

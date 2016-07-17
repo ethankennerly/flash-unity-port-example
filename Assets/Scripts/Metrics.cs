@@ -8,8 +8,8 @@ namespace /*<com>*/Finegamedesign.Utils
 		// Divided by integer and string data type.
 		// Integers are simpler than floats.
 		// Sometimes a string is useful, though slower to query.
-		// Not dynamic type, because MonoDevelop-Unity 5.3 debugger 
-		// crashes when it encounters a dynamic keyword.
+		// Not object type, because MonoDevelop-Unity 5.3 debugger 
+		// crashes when it encounters a object keyword.
 		public Dictionary<string, int> trial_integers;
 		public Dictionary<string, string> trial_strings;
 		public List<Dictionary<string, int>> trials_integers;
