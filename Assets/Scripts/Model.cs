@@ -30,6 +30,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 		
+		internal List<int> stationIndexes;
 		internal string helpState;
 		internal int letterMax = 10;
 		internal List<string> inputs = new List<string>();
@@ -112,6 +113,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 			available = DataUtil.Split(text, "");
 			word = DataUtil.CloneList(available);
 			populateHint(text);
+			stationIndexes = new List<int>();
+			for (int index = 0; index < DataUtil.Length(word); index++)
+			{
+				stationIndexes.Add(index);
+			}
 		}
 
 		internal void trial(Dictionary<string, object> parameters)
@@ -139,7 +145,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			populateWord(text);
 			if ("" == help)
 			{
-				shuffleNotWord(wordHash, word, readingOrder);
+				//? shuffleNotWord(wordHash, word, readingOrder);
 				wordWidthPerSecond = // -0.05;
 				// -0.02;
 				// -0.01;
@@ -273,7 +279,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 				wordPosition += outputKnockback;
 				if ("complete" != state)
 				{
-					shuffleNotWord(wordHash, word, readingOrder);
+					//? shuffleNotWord(wordHash, word, readingOrder);
+					Deck.ShuffleList(stationIndexes);
 				}
 				selects = DataUtil.CloneList(word);
 				for (int i = 0; i < DataUtil.Length(inputs); i++)

@@ -29,6 +29,8 @@ namespace Finegamedesign.Anagram
 			view.SetupAudio(soundFileNames);
 			model.setReadingOrder(view.letterNodes);
 			view.wordLetters = view.GetLetters(view.wordState, "bone_{0}/letter", model.letterMax);
+			view.wordBones = view.GetLetters(view.wordState, "bone_{0}", model.letterMax);
+			view.tweenSwap.Setup(view.wordBones);
 			SetupButtonController();
 		}
 
@@ -218,7 +220,7 @@ namespace Finegamedesign.Anagram
 		{
 			if (null != model.wordStateNow)
 			{
-				AnimationView.SetState(view.wordState, model.wordStateNow);
+				AnimationView.SetState(view.wordState, model.wordStateNow, true);
 				model.wordStateNow = null;
 			}
 			if (KeyView.IsDownNow("space")
@@ -240,6 +242,7 @@ namespace Finegamedesign.Anagram
 			if ("complete" == completedNow)
 			{
 				model.nextTrial();
+				// view.tweenSwap.Move(model.stationIndexes);
 				resetSelect();
 			}
 		}
@@ -251,6 +254,10 @@ namespace Finegamedesign.Anagram
 				if ("complete" == model.state)
 				{
 					view.audio.Play("explosion_big");
+				}
+				else
+				{
+					view.tweenSwap.Move(model.stationIndexes);
 				}
 			}
 		}

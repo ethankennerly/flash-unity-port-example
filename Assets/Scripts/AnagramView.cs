@@ -10,6 +10,7 @@ namespace Finegamedesign.Anagram
 		internal AudioView audio;
 		internal GameObject main;
 		internal GameObject word;
+		internal List<GameObject> wordBones;
 		internal List<GameObject> wordLetters;
 		internal GameObject wordState;
 		internal GameObject input;
@@ -29,6 +30,7 @@ namespace Finegamedesign.Anagram
 		internal GameObject progress;
 		internal GameObject level;
 		internal GameObject levelMax;
+		internal TweenSwap tweenSwap = new TweenSwap();
 
 		public void SetupAudio(List<string> soundFileNames)
 		{
