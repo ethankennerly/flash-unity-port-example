@@ -243,6 +243,7 @@ namespace Finegamedesign.Anagram
 			{
 				model.nextTrial();
 				// view.tweenSwap.Move(model.stationIndexes);
+				view.tweenSwap.Reset();
 				resetSelect();
 			}
 		}

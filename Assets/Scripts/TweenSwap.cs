@@ -28,6 +28,23 @@ namespace /*<com>*/Finegamedesign.Utils
 			}
 		}
 
+		// Kill previous tweens.
+		// Instantly return to original positions.
+		// Test case:  2016-07-17 Word Garden.
+		// Enter shorter word.  Swap positions.
+		// Unknown step.  Enter full word.
+		// Next word.  Expect no letters overlapping.
+		// One of the five letters was hidden behind another letter.
+		public void Reset()
+		{
+			DOTween.CompleteAll();
+			for (int index = 0; index < movers.Count; index++)
+			{
+				SceneNodeView.SetLocal(movers[index], 
+					stations[index]);
+			}
+		}
+
 		public void Move(List<int> stationIndexes)
 		{
 			for (int s = 0; s < stationIndexes.Count; s++)

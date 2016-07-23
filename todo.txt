@@ -131,21 +131,32 @@ FEATURES
 		Tap to select.
 		Resize hints.
 	Animate word letters none, complete, hit.
-
-TODO
-
 	Animate letters shuffling positions without seam.
 		At setup get position for each letter.
-		Vector3.MoveTowards
 		http://dentedpixel.com/video/leantween-speed-comparison-to-itween-and-hotween/#respond
-			LeanTween
 			DOTween
+			LeanTween
 			iTween
 			https://www.reddit.com/r/Unity3D/comments/2wxazw/itween_dotween_or_leantween/
 			http://blog.codestage.ru/2014/08/17/unity3d-tweening-performance/
 			http://zehfernando.com/2014/creating-a-tweening-library-for-unity/
-		Set to next position.  Tween from previous position.
-		Shuffle indexes until not in reading order.
+		Alternatives:
+			Set to next position.  Tween from previous position.
+			Shuffle indexes until not in reading order.
+			Vector3.MoveTowards
+		Next trial.  Reset tween positions.
+			Finish word.  Unknown steps.  Expect no letters overlapping.  Sometimes got a letter was overlapped.
+
+TODO
+
+	Can notice hint letter.  Got low contrast.
+	Next word.  Tween intro word.
+	Open editor.  Letter nodes.  Why does this warning appear in the editor?
+		Parameter 'Normal' does not exist.
+		UnityEngine.CanvasRenderer:RequestRefresh()
+	Simplify UnityToykit directories.
+	Expose wired game objects in editor.  Can overwrite.  If not found, throw error.
+	Profile git file time.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
