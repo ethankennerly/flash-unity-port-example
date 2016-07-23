@@ -152,14 +152,16 @@ FEATURES
 	Test case:  2016-07-23 Neighbor Kristine expects time to enter word.  Got word already near bottom of screen.
 	Tutor:  TO ADD TIME, SPELL A SHORT WORD. 
 		Test case:  2016-07-23 Read "knock back letter".  Neighbor Kristine expects to realize can enter shorter word.
+	AnagramView:  Expose wired game objects in editor.  Can overwrite.  If not found, throw error.
+	Inspect letter button.  Select animation transition.  Delete triggers.  Select color tint transition.
+		http://forum.unity3d.com/threads/weird-button-warning.298673/
+		Test case:  Open editor.  Letter nodes.  Why does this warning appear in the editor?
+			Parameter 'Normal' does not exist.
+			UnityEngine.CanvasRenderer:RequestRefresh()
 
 TODO
 
-	Open editor.  Letter nodes.  Why does this warning appear in the editor?
-		Parameter 'Normal' does not exist.
-		UnityEngine.CanvasRenderer:RequestRefresh()
 	Simplify UnityToykit directories.
-	Expose wired game objects in editor.  Can overwrite.  If not found, throw error.
 	Profile git file time.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
