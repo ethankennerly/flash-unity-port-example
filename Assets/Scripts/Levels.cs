@@ -35,7 +35,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				{
 					"text", "WORDS"}
 				, {
-					"help", "SHORTER WORDS KNOCK THE LETTERS BACK. EXAMPLES: 'ROD', 'WORD'."}
+					"help", "TO ADD TIME, SPELL A SHORT WORD. EXAMPLES: 'ROD', 'WORD'."}
 			}
 			/*
 			,

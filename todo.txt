@@ -149,11 +149,12 @@ FEATURES
 	Can notice hint letter.  Got low contrast.
 	Hint at top.  Can see hint when word is near.
 	Next word.  Tween intro word.
+	Test case:  2016-07-23 Neighbor Kristine expects time to enter word.  Got word already near bottom of screen.
+	Tutor:  TO ADD TIME, SPELL A SHORT WORD. 
+		Test case:  2016-07-23 Read "knock back letter".  Neighbor Kristine expects to realize can enter shorter word.
 
 TODO
 
-	Test case:  2016-07-23 Neighbor Kristine expects time to enter word.  Got word already near bottom of screen.
-	Test case:  2016-07-23 Read "knock back letter".  Neighbor Kristine expects to realize can enter shorter word.
 	Open editor.  Letter nodes.  Why does this warning appear in the editor?
 		Parameter 'Normal' does not exist.
 		UnityEngine.CanvasRenderer:RequestRefresh()
