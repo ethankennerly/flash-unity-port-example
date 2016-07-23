@@ -6,7 +6,7 @@ namespace Finegamedesign.Anagram
 {
 	public sealed class AnagramController
 	{
-		internal AnagramView view = new AnagramView();
+		internal AnagramView view;
 		private List<string> soundFileNames = new List<string>(){
 				"select",
 				"shoot",
@@ -330,7 +330,7 @@ namespace Finegamedesign.Anagram
 			{
 				updateOutputHitsWord();
 			}
-			SceneNodeView.SetWorldY(view.word, model.wordPositionScaled);
+			SceneNodeView.SetLocalY(view.word, model.wordPositionScaled * view.wordPositionScale);
 			SceneNodeView.SetWorldY(view.progress, model.progressPositionTweened * SceneNodeView.GetWorldScaleY(view.progress));
 		}
 	}

@@ -164,7 +164,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			repeat = new Dictionary<string, object>(){
 			}
 			;
-			wordStateNow = "none";
+			wordStateNow = "begin";
 			if (isVerbose) 
 			{
 				Debug.Log("Model.trial: word[0]: <" + word[0] + ">" 
@@ -222,13 +222,16 @@ namespace /*<com>*/Finegamedesign.Anagram
 			float max = isTutor() ? -0.4f * wordWidth : 0.0f;
 			wordPosition = Mathf.Max(min, Mathf.Min(max, wordPosition));
 		}
-		
+	
+		// Tween word position.
+		// Test case:  2016-07-17 Next word.  Expect slide in.  Got blink in.
 		private void updatePosition(float deltaSeconds)
 		{
 			wordPosition += (deltaSeconds * width * wordWidthPerSecond);
 			clampWordPosition();
 			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
-			wordPositionScaled = wordPosition * scale;
+			float nextPosition = wordPosition * scale;
+			wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
 			bool isVerbosePosition = false;
 			if (isVerbosePosition) Debug.Log("Model.updatePosition: " + wordPosition);
 			updateProgress(deltaSeconds);

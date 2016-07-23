@@ -4,35 +4,53 @@ using Finegamedesign.Utils;
 
 namespace Finegamedesign.Anagram 
 {
-	public sealed class AnagramView 
+	public sealed class AnagramView : MonoBehaviour
 	{
-		public List<SceneNode> letterNodes;
+		// Larger number moves word more.
+		public float wordPositionScale = 33.0f;
+		public GameObject hint;
+
+		public GameObject main;
+		public GameObject word;
+		public GameObject wordState;
+		public GameObject input;
+		public GameObject newGameButton;
+		public GameObject continueButton;
+		public GameObject inputState;
+		public GameObject output;
+		public GameObject deleteButton;
+		public GameObject submitButton;
+		public GameObject emailButton;
+		public GameObject hintButton;
+		public GameObject hud;
+		public GameObject help;
+		public GameObject helpText;
+		public GameObject score;
+		public GameObject progress;
+		public GameObject level;
+		public GameObject levelMax;
+
 		internal AudioView audio;
-		internal GameObject main;
-		internal GameObject word;
+		internal List<SceneNode> letterNodes;
 		internal List<GameObject> wordBones;
 		internal List<GameObject> wordLetters;
-		internal GameObject wordState;
-		internal GameObject input;
-		internal GameObject newGameButton;
-		internal GameObject continueButton;
-		internal GameObject inputState;
-		internal GameObject output;
-		internal GameObject hint;
-		internal GameObject deleteButton;
-		internal GameObject submitButton;
-		internal GameObject emailButton;
-		internal GameObject hintButton;
-		internal GameObject hud;
-		internal GameObject help;
-		internal GameObject helpText;
-		internal GameObject score;
-		internal GameObject progress;
-		internal GameObject level;
-		internal GameObject levelMax;
 		internal TweenSwap tweenSwap = new TweenSwap();
 
-		public void SetupAudio(List<string> soundFileNames)
+		private AnagramController controller = new AnagramController();
+
+		public void Start()
+		{
+			Setup(this.gameObject);
+			controller.view = this;
+			controller.Setup();
+		}
+
+		public void Update()
+		{
+			controller.Update(Time.deltaTime);
+		}
+
+		internal void SetupAudio(List<string> soundFileNames)
 		{
 			audio = new AudioView();
 			audio.Setup(SceneNodeView.GetName(main), soundFileNames, "Sounds/");
@@ -42,28 +60,28 @@ namespace Finegamedesign.Anagram
 		 * Cache found game objects.
 		 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
 		 */
-		public void Setup(GameObject rootObject)
+		internal void Setup(GameObject rootObject)
 		{
 			main = rootObject;
-			word = SceneNodeView.GetChild(main, "canvas/word");
-			wordState = SceneNodeView.GetChild(main, "canvas/word/state");
-			input = SceneNodeView.GetChild(main, "input");
-			inputState = SceneNodeView.GetChild(main, "input/state");
-			output = SceneNodeView.GetChild(main, "input/output");
-			hint = SceneNodeView.GetChild(main, "canvas/hints");
-			hintButton = SceneNodeView.GetChild(main, "canvas/hint");
-			newGameButton = SceneNodeView.GetChild(main, "canvas/newGame");
-			continueButton = SceneNodeView.GetChild(main, "canvas/continue");
-			deleteButton = SceneNodeView.GetChild(main, "canvas/delete");
-			submitButton = SceneNodeView.GetChild(main, "canvas/submit");
-			emailButton = SceneNodeView.GetChild(main, "canvas/email");
-			help = SceneNodeView.GetChild(main, "canvas/help");
-			helpText = SceneNodeView.GetChild(main, "canvas/help/helpText");
-			hud = SceneNodeView.GetChild(main, "canvas/hud");
-			score = SceneNodeView.GetChild(main, "canvas/hud/score");
-			level = SceneNodeView.GetChild(main, "canvas/hud/level");
-			levelMax = SceneNodeView.GetChild(main, "canvas/hud/levelMax");
-			progress = SceneNodeView.GetChild(main, "progress");
+			word = SceneNodeView.GetChild(main, "canvas/word", word);
+			wordState = SceneNodeView.GetChild(main, "canvas/word/state", wordState);
+			input = SceneNodeView.GetChild(main, "input", input);
+			inputState = SceneNodeView.GetChild(main, "input/state", inputState);
+			output = SceneNodeView.GetChild(main, "input/output", output);
+			hint = SceneNodeView.GetChild(main, "canvas/hints", hint);
+			hintButton = SceneNodeView.GetChild(main, "canvas/hint", hintButton);
+			newGameButton = SceneNodeView.GetChild(main, "canvas/newGame", newGameButton);
+			continueButton = SceneNodeView.GetChild(main, "canvas/continue", continueButton);
+			deleteButton = SceneNodeView.GetChild(main, "canvas/delete", deleteButton);
+			submitButton = SceneNodeView.GetChild(main, "canvas/submit", submitButton);
+			emailButton = SceneNodeView.GetChild(main, "canvas/email", emailButton);
+			help = SceneNodeView.GetChild(main, "canvas/help", help);
+			helpText = SceneNodeView.GetChild(main, "canvas/help/helpText", helpText);
+			hud = SceneNodeView.GetChild(main, "canvas/hud", hud);
+			score = SceneNodeView.GetChild(main, "canvas/hud/score", score);
+			level = SceneNodeView.GetChild(main, "canvas/hud/level", level);
+			levelMax = SceneNodeView.GetChild(main, "canvas/hud/levelMax", levelMax);
+			progress = SceneNodeView.GetChild(main, "progress", progress);
 			letterNodes = SceneNodeView.ToSceneNodeList(
 				SceneNodeView.GetChildren(wordState));
 		}

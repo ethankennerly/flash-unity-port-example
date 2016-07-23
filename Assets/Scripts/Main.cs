@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Finegamedesign.Anagram
 {
-	public sealed class Main : MonoBehaviour 
+	public sealed class MainBehaviour : MonoBehaviour 
 	{
 		private AnagramController controller = new AnagramController();
 
