@@ -154,6 +154,7 @@ FEATURES
 		Test case:  2016-07-23 Read "knock back letter".  Neighbor Kristine expects to realize can enter shorter word.
 	AnagramView:  Expose wired game objects in editor.  Can overwrite.  If not found, throw error.
 	Inspect letter button.  Select animation transition.  Delete triggers.  Select color tint transition.
+		http://answers.unity3d.com/questions/923853/why-do-i-get-these-messages-from-unity3d-ui.html
 		http://forum.unity3d.com/threads/weird-button-warning.298673/
 		Test case:  Open editor.  Letter nodes.  Why does this warning appear in the editor?
 			Parameter 'Normal' does not exist.

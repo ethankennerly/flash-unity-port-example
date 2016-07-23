@@ -657,7 +657,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		private List<int> readingOrder = new List<int>();
 
-		internal void setReadingOrder(List<SceneNode> letterNodes)
+		internal void setReadingOrder(List<SceneNodeModel> letterNodes)
 		{	
 			DataUtil.Clear(readingOrder);
 			for (int letter = 0; letter < DataUtil.Length(letterNodes); letter++)

@@ -31,7 +31,7 @@ namespace Finegamedesign.Anagram
 		public GameObject levelMax;
 
 		internal AudioView audio;
-		internal List<SceneNode> letterNodes;
+		internal List<SceneNodeModel> letterNodes;
 		internal List<GameObject> wordBones;
 		internal List<GameObject> wordLetters;
 		internal TweenSwap tweenSwap = new TweenSwap();
