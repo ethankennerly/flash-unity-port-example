@@ -146,10 +146,11 @@ FEATURES
 			Vector3.MoveTowards
 		Next trial.  Reset tween positions.
 			Finish word.  Unknown steps.  Expect no letters overlapping.  Sometimes got a letter was overlapped.
+	Can notice hint letter.  Got low contrast.
+	Hint at top.  Can see hint when word is near.
 
 TODO
 
-	Can notice hint letter.  Got low contrast.
 	Next word.  Tween intro word.
 	Open editor.  Letter nodes.  Why does this warning appear in the editor?
 		Parameter 'Normal' does not exist.
