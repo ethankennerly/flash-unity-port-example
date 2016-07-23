@@ -22,9 +22,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 				,
 				{
 					"wordWidthPerSecond", 0.0f}
-				,
-				{
-					"wordPosition", -200.0f}
 			}
 			,
 			new Dictionary<string, object>(){
@@ -32,9 +29,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 					"text", "SPELL"}
 				, {
 					"help", "USE ALL THE LETTERS.  FOR EXAMPLE:  'SPELL.'  THEN TAP 'SUBMIT.'"}
-				,
-				{
-					"wordPosition", -150.0f}
 			}
 			,
 			new Dictionary<string, object>(){
@@ -42,9 +36,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 					"text", "WORDS"}
 				, {
 					"help", "SHORTER WORDS KNOCK THE LETTERS BACK. EXAMPLES: 'ROD', 'WORD'."}
-				,
-				{
-					"wordPosition", -150.0f}
 			}
 			/*
 			,

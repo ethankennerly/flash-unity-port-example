@@ -223,15 +223,19 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPosition = Mathf.Max(min, Mathf.Min(max, wordPosition));
 		}
 	
-		// Tween word position.
-		// Test case:  2016-07-17 Next word.  Expect slide in.  Got blink in.
+		// Do not tween word position.
+		// Test case:  2016-07-23
+		// Continue.
+		// Next word.
+		// Neighbor Kristine expects time to enter.
+		// Got word still at the bottom.
 		private void updatePosition(float deltaSeconds)
 		{
 			wordPosition += (deltaSeconds * width * wordWidthPerSecond);
 			clampWordPosition();
 			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
-			float nextPosition = wordPosition * scale;
-			wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
+			wordPositionScaled = wordPosition * scale;
+			// wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
 			bool isVerbosePosition = false;
 			if (isVerbosePosition) Debug.Log("Model.updatePosition: " + wordPosition);
 			updateProgress(deltaSeconds);
