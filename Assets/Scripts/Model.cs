@@ -129,7 +129,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
 			help = "";
-			wordWidthPerSecond = -0.01f;
+			wordWidthPerSecond = isTutor() ? -0.005f : -0.01f;
 			if (parameters.ContainsKey("text")) {
 				text = (string)parameters["text"];
 			}
@@ -204,11 +204,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 * Test case:  2015-03 Use Mac. Rosa Zedek expects to read key to change level.
 		 * During tutor, clamp word position below help message.
 		 * Test case:  2016-06-28 Tutor.  Enter smaller words.  Expect to read letters.  Got overlapped by help.
+		 * During tutorial, cannot run out of time.
+		 * Test case:  2016-07-23 Tutor.  Neighbor Kristine expects time to enter word.  Got game over.
 		 */
 		private void clampWordPosition()
 		{
 			float min = wordWidth - width;
-			if (wordPosition <= min)
+			if (!isTutor() && wordPosition <= min)
 			{
 				help = "GAME OVER!";
 				helpState = "gameOver";
@@ -467,6 +469,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 * When tapping Continue, but not at every next trial, clear inputs.  Animation displays inputs.
 		 * Test case:  2016-06-19 Some letters selected.  Game over.  Continue.  Expect no letter selected.  
 		 * + Submit full word.  Expect animation.  Got nothing.
+		 *
+		 * When continue, add trial count.
+		 * Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
 		 */
 		internal void doContinue()
 		{
@@ -477,6 +482,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					Debug.Log("Model.doContinue: level " + level);
 				}
 				progress.SetLevelNormal(level);
+				trialCount++;
 				metrics.StartSession();
 				nextTrial();
 				DataUtil.Clear(inputs);
@@ -619,7 +625,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
 		internal void levelUp()
 		{
-			if (progress.GetLevelNormal() < tutorLevel && trialCount < tutorLevel) {
+			if (isTutor()) {
 			}
 			else {
 				progress.Creep(performance());

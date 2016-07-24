@@ -8,7 +8,6 @@ vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
 let &cpo=s:cpo_save
 unlet s:cpo_save
-set autoindent
 set background=dark
 set backspace=indent,eol,start
 set clipboard=unnamed
@@ -29,9 +28,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 ~/workspace/flash-unity-port-example/todo.txt
-badd +48 AnagramView.cs
-badd +255 AnagramController.cs
+badd +1 ~/workspace/flash-unity-port-example/session.vim
+badd +1 ~/workspace/flash-unity-port-example/todo.txt
+badd +34 AnagramView.cs
+badd +333 AnagramController.cs
 badd +1 UnityToykit/Toolkit/MouseView.cs
 badd +37 UnityToykit/Toolkit/ButtonView.cs
 badd +7 UnityToykit/Editor/Tests/TestButtonController.cs
@@ -81,60 +81,62 @@ badd +1 UnityToykit/Framework/ViewModel.cs
 badd +1 UnityToykit/Toolkit/Deck.cs
 badd +1 UnityToykit/Toolkit/GameObjectTree.cs
 badd +1 UnityToykit/Toolkit/Progress.cs
-badd +7 TweenSwap.cs
+badd +5 TweenSwap.cs
+badd +0 ~/workspace/time.txt
+badd +0 ~/workspace/UnityToykit.git.log
 argglobal
 silent! argdel *
 argadd AnagramController.cs
-argadd AnagramView.cs
-argadd Editor/TestSyntax/AllInOne.cs
-argadd Editor/TestSyntax/Calculate.cs
-argadd Editor/TestSyntax/Controller.cs
-argadd Editor/TestSyntax/EmptyClass.cs
-argadd Editor/TestSyntax/Model.cs
-argadd Editor/TestSyntax/Rule.cs
-argadd Editor/TestSyntax/TestCalculate.cs
-argadd Editor/TestSyntax/TestRule.cs
-argadd Editor/TestSyntax/TestSyntaxLevels.cs
-argadd Editor/TestSyntax/TestSyntaxModel.cs
-argadd Editor/TestSyntax/TestToolkit.cs
-argadd Email.cs
-argadd Levels.cs
-argadd Main.cs
-argadd Metrics.cs
-argadd Model.cs
-argadd Storage.cs
-argadd UnityToykit/Editor/Tests/TestButtonController.cs
-argadd UnityToykit/Editor/Tests/TestProgress.cs
-argadd UnityToykit/Editor/Tests/TestSceneNode.cs
-argadd UnityToykit/Editor/Tests/TestSceneNodeView.cs
-argadd UnityToykit/Editor/Tests/TestTextView.cs
-argadd UnityToykit/Editor/Tests/TestToolkit.cs
-argadd UnityToykit/Framework/Controller.cs
-argadd UnityToykit/Framework/Examples/MainExample.cs
-argadd UnityToykit/Framework/Examples/ModelExample.cs
-argadd UnityToykit/Framework/IModel.cs
-argadd UnityToykit/Framework/MainView.cs
-argadd UnityToykit/Framework/View.cs
-argadd UnityToykit/Framework/ViewModel.cs
-argadd UnityToykit/Toolkit/AnimationView.cs
-argadd UnityToykit/Toolkit/AudioView.cs
-argadd UnityToykit/Toolkit/ButtonBehaviour.cs
-argadd UnityToykit/Toolkit/ButtonController.cs
-argadd UnityToykit/Toolkit/ButtonView.cs
-argadd UnityToykit/Toolkit/ControllerUtil.cs
-argadd UnityToykit/Toolkit/DataUtil.cs
-argadd UnityToykit/Toolkit/Deck.cs
-argadd UnityToykit/Toolkit/GameObjectTree.cs
-argadd UnityToykit/Toolkit/KeyView.cs
-argadd UnityToykit/Toolkit/MouseView.cs
-argadd UnityToykit/Toolkit/Progress.cs
-argadd UnityToykit/Toolkit/SceneNode.cs
-argadd UnityToykit/Toolkit/SceneNodeCompareLeftToRight.cs
-argadd UnityToykit/Toolkit/SceneNodeView.cs
-argadd UnityToykit/Toolkit/TextView.cs
-argadd UnityToykit/Toolkit/Toolkit.cs
-argadd UnityToykit/Toolkit/ViewUtil.cs
 argadd Words.cs
+argadd UnityToykit/Toolkit/ViewUtil.cs
+argadd UnityToykit/Toolkit/Toolkit.cs
+argadd UnityToykit/Toolkit/TextView.cs
+argadd UnityToykit/Toolkit/SceneNodeView.cs
+argadd UnityToykit/Toolkit/SceneNodeCompareLeftToRight.cs
+argadd UnityToykit/Toolkit/SceneNode.cs
+argadd UnityToykit/Toolkit/Progress.cs
+argadd UnityToykit/Toolkit/MouseView.cs
+argadd UnityToykit/Toolkit/KeyView.cs
+argadd UnityToykit/Toolkit/GameObjectTree.cs
+argadd UnityToykit/Toolkit/Deck.cs
+argadd UnityToykit/Toolkit/DataUtil.cs
+argadd UnityToykit/Toolkit/ControllerUtil.cs
+argadd UnityToykit/Toolkit/ButtonView.cs
+argadd UnityToykit/Toolkit/ButtonController.cs
+argadd UnityToykit/Toolkit/ButtonBehaviour.cs
+argadd UnityToykit/Toolkit/AudioView.cs
+argadd UnityToykit/Toolkit/AnimationView.cs
+argadd UnityToykit/Framework/ViewModel.cs
+argadd UnityToykit/Framework/View.cs
+argadd UnityToykit/Framework/MainView.cs
+argadd UnityToykit/Framework/IModel.cs
+argadd UnityToykit/Framework/Examples/ModelExample.cs
+argadd UnityToykit/Framework/Examples/MainExample.cs
+argadd UnityToykit/Framework/Controller.cs
+argadd UnityToykit/Editor/Tests/TestToolkit.cs
+argadd UnityToykit/Editor/Tests/TestTextView.cs
+argadd UnityToykit/Editor/Tests/TestSceneNodeView.cs
+argadd UnityToykit/Editor/Tests/TestSceneNode.cs
+argadd UnityToykit/Editor/Tests/TestProgress.cs
+argadd UnityToykit/Editor/Tests/TestButtonController.cs
+argadd Storage.cs
+argadd Model.cs
+argadd Metrics.cs
+argadd Main.cs
+argadd Levels.cs
+argadd Email.cs
+argadd Editor/TestSyntax/TestToolkit.cs
+argadd Editor/TestSyntax/TestSyntaxModel.cs
+argadd Editor/TestSyntax/TestSyntaxLevels.cs
+argadd Editor/TestSyntax/TestRule.cs
+argadd Editor/TestSyntax/TestCalculate.cs
+argadd Editor/TestSyntax/Rule.cs
+argadd Editor/TestSyntax/Model.cs
+argadd Editor/TestSyntax/EmptyClass.cs
+argadd Editor/TestSyntax/Controller.cs
+argadd Editor/TestSyntax/Calculate.cs
+argadd Editor/TestSyntax/AllInOne.cs
+argadd AnagramView.cs
 set stal=2
 edit ~/workspace/flash-unity-port-example/todo.txt
 set splitbelow splitright
@@ -251,7 +253,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 149 - ((44 * winheight(0) + 30) / 60)
+let s:l = 149 - ((37 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -275,14 +277,14 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 30 + 31) / 63)
-exe 'vert 1resize ' . ((&columns * 95 + 95) / 190)
-exe '2resize ' . ((&lines * 29 + 31) / 63)
-exe 'vert 2resize ' . ((&columns * 95 + 95) / 190)
-exe '3resize ' . ((&lines * 30 + 31) / 63)
-exe 'vert 3resize ' . ((&columns * 94 + 95) / 190)
-exe '4resize ' . ((&lines * 29 + 31) / 63)
-exe 'vert 4resize ' . ((&columns * 94 + 95) / 190)
+exe '1resize ' . ((&lines * 25 + 26) / 53)
+exe 'vert 1resize ' . ((&columns * 86 + 86) / 172)
+exe '2resize ' . ((&lines * 24 + 26) / 53)
+exe 'vert 2resize ' . ((&columns * 86 + 86) / 172)
+exe '3resize ' . ((&lines * 25 + 26) / 53)
+exe 'vert 3resize ' . ((&columns * 85 + 86) / 172)
+exe '4resize ' . ((&lines * 24 + 26) / 53)
+exe 'vert 4resize ' . ((&columns * 85 + 86) / 172)
 argglobal
 51argu
 edit AnagramController.cs
@@ -393,7 +395,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 243 - ((9 * winheight(0) + 15) / 30)
+let s:l = 243 - ((1 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -510,7 +512,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 146 - ((12 * winheight(0) + 14) / 29)
+let s:l = 146 - ((10 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -626,7 +628,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 15) / 30)
+let s:l = 2 - ((1 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -634,7 +636,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-edit TweenSwap.cs
+edit UnityToykit/Editor/Tests/TestSceneNodeView.cs
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -742,265 +744,22 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5 - ((2 * winheight(0) + 14) / 29)
+let s:l = 81 - ((10 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
-normal! 039|
-wincmd w
-4wincmd w
-exe '1resize ' . ((&lines * 30 + 31) / 63)
-exe 'vert 1resize ' . ((&columns * 95 + 95) / 190)
-exe '2resize ' . ((&lines * 29 + 31) / 63)
-exe 'vert 2resize ' . ((&columns * 95 + 95) / 190)
-exe '3resize ' . ((&lines * 30 + 31) / 63)
-exe 'vert 3resize ' . ((&columns * 94 + 95) / 190)
-exe '4resize ' . ((&lines * 29 + 31) / 63)
-exe 'vert 4resize ' . ((&columns * 94 + 95) / 190)
-tabedit UnityToykit/Toolkit/AnimationView.cs
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winheight=1 winwidth=1
-argglobal
-edit UnityToykit/Toolkit/AnimationView.cs
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cs'
-setlocal filetype=cs
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=8
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cs'
-setlocal syntax=cs
-endif
-setlocal tabstop=8
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 26 - ((25 * winheight(0) + 30) / 60)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-26
-normal! 0106|
-tabedit UnityToykit/Toolkit/DataUtil.cs
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winheight=1 winwidth=1
-argglobal
-edit UnityToykit/Toolkit/DataUtil.cs
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cs'
-setlocal filetype=cs
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=8
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cs'
-setlocal syntax=cs
-endif
-setlocal tabstop=8
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 147 - ((30 * winheight(0) + 30) / 60)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-147
+81
 normal! 0
-tabnext 2
+wincmd w
+exe '1resize ' . ((&lines * 25 + 26) / 53)
+exe 'vert 1resize ' . ((&columns * 86 + 86) / 172)
+exe '2resize ' . ((&lines * 24 + 26) / 53)
+exe 'vert 2resize ' . ((&columns * 86 + 86) / 172)
+exe '3resize ' . ((&lines * 25 + 26) / 53)
+exe 'vert 3resize ' . ((&columns * 85 + 86) / 172)
+exe '4resize ' . ((&lines * 24 + 26) / 53)
+exe 'vert 4resize ' . ((&columns * 85 + 86) / 172)
+tabnext 1
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

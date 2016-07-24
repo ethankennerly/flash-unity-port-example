@@ -1,0 +1,1182 @@
+2016-07-23 12:26:39 -0700,Delete unused classes in UnityToykit.
+
+ Assets/Animation/Word_begin.anim                   | Bin 10348 -> 10348 bytes
+ Assets/Animation/Word_complete.anim                | Bin 10392 -> 10392 bytes
+ Assets/Scripts/AnagramView.cs                      |   2 +-
+ Assets/Scripts/Editor/TestSyntax/Controller.cs     |  58 ---------------------
+ .../Scripts/Editor/TestSyntax/Controller.cs.meta   |  12 -----
+ Assets/Scripts/Model.cs                            |   2 +-
+ Assets/Scripts/UnityToykit                         |   2 +-
+ todo.txt                                           |   1 +
+ 8 files changed, 4 insertions(+), 73 deletions(-)
+2016-07-23 12:06:21 -0700,Silence button parameter does not exist.
+
+ Assets/Prefabs/bone_0.prefab | Bin 17132 -> 17092 bytes
+ todo.txt                     |  10 ++++++----
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+2016-07-23 11:54:58 -0700,Kristine reads: To add time, spell a short word.
+
+ Assets/Scripts/Levels.cs | 2 +-
+ todo.txt                 | 5 +++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+2016-07-23 11:52:27 -0700,Kristine sees 4-letters wide move faster.
+
+ Assets/Animation/Word_begin.anim    | Bin 10348 -> 10348 bytes
+ Assets/Animation/Word_complete.anim | Bin 10392 -> 10392 bytes
+ Assets/Animation/Word_hit.anim      | Bin 10384 -> 10384 bytes
+ Assets/Scripts/Levels.cs            |   9 ---------
+ Assets/Scripts/Model.cs             |  12 ++++++++----
+ Assets/anagram.unity                | Bin 234188 -> 234148 bytes
+ todo.txt                            |   4 +++-
+ 7 files changed, 11 insertions(+), 14 deletions(-)
+2016-07-23 09:25:01 -0700,Slide next word in.
+
+ Assets/Animation/Word_begin.anim      | Bin 0 -> 10348 bytes
+ Assets/Animation/Word_begin.anim.meta |   8 +++
+ Assets/Animation/Word_complete.anim   | Bin 10392 -> 10392 bytes
+ Assets/Animation/state.controller     | Bin 7392 -> 7584 bytes
+ Assets/Scripts/AnagramController.cs   |   4 +-
+ Assets/Scripts/AnagramView.cs         | 104 ++++++++++++++++++++--------------
+ Assets/Scripts/Main.cs                |   2 +-
+ Assets/Scripts/Model.cs               |   9 ++-
+ Assets/Scripts/UnityToykit            |   2 +-
+ Assets/anagram.unity                  | Bin 232268 -> 234188 bytes
+ 10 files changed, 79 insertions(+), 50 deletions(-)
+2016-07-23 08:34:05 -0700,High contrast hint near top of screen.
+
+ Assets/Prefabs/HintLetter.prefab | Bin 10956 -> 10956 bytes
+ Assets/anagram.unity             | Bin 232268 -> 232268 bytes
+ todo.txt                         |   3 ++-
+ 3 files changed, 2 insertions(+), 1 deletion(-)
+2016-07-23 07:51:13 -0700,Tween swapping words.
+
+ Assets/Scripts/AnagramController.cs    |    1 +
+ Assets/Scripts/TweenSwap.cs            |   17 +
+ Assets/Scripts/UnityToykit             |    2 +-
+ ProjectSettings/GraphicsSettings.asset |  Bin 4256 -> 4256 bytes
+ session.vim                            | 1905 +++++++++++++++++---------------
+ todo.txt                               |   25 +-
+ 6 files changed, 1054 insertions(+), 896 deletions(-)
+2016-07-17 17:56:40 -0700,Type shorter word.  Tween letters swap positions.
+
+ Assets/Animation/Word_hit.anim                   |  Bin 15032 -> 10384 bytes
+ Assets/Animation/state.controller                |  Bin 7216 -> 7392 bytes
+ Assets/DOTween.meta                              |    9 +
+ Assets/DOTween/DOTween.XML                       | 2457 ++++++++++++++++++++++
+ Assets/DOTween/DOTween.XML.meta                  |    8 +
+ Assets/DOTween/DOTween.dll                       |  Bin 0 -> 139264 bytes
+ Assets/DOTween/DOTween.dll.mdb                   |  Bin 0 -> 52896 bytes
+ Assets/DOTween/DOTween.dll.mdb.meta              |    8 +
+ Assets/DOTween/DOTween.dll.meta                  |   24 +
+ Assets/DOTween/DOTween43.dll                     |  Bin 0 -> 9728 bytes
+ Assets/DOTween/DOTween43.dll.mdb                 |  Bin 0 -> 1789 bytes
+ Assets/DOTween/DOTween43.dll.mdb.meta            |    8 +
+ Assets/DOTween/DOTween43.dll.meta                |   24 +
+ Assets/DOTween/DOTween43.xml                     |   85 +
+ Assets/DOTween/DOTween43.xml.meta                |    8 +
+ Assets/DOTween/DOTween46.dll                     |  Bin 0 -> 20480 bytes
+ Assets/DOTween/DOTween46.dll.mdb                 |  Bin 0 -> 5901 bytes
+ Assets/DOTween/DOTween46.dll.mdb.meta            |    8 +
+ Assets/DOTween/DOTween46.dll.meta                |   24 +
+ Assets/DOTween/DOTween46.xml                     |  261 +++
+ Assets/DOTween/DOTween46.xml.meta                |    8 +
+ Assets/DOTween/DOTween50.dll                     |  Bin 0 -> 5632 bytes
+ Assets/DOTween/DOTween50.dll.mdb                 |  Bin 0 -> 796 bytes
+ Assets/DOTween/DOTween50.dll.mdb.meta            |    8 +
+ Assets/DOTween/DOTween50.dll.meta                |   24 +
+ Assets/DOTween/DOTween50.xml                     |  112 +
+ Assets/DOTween/DOTween50.xml.meta                |    8 +
+ Assets/DOTween/Editor.meta                       |    9 +
+ Assets/DOTween/Editor/DOTweenEditor.XML          |   65 +
+ Assets/DOTween/Editor/DOTweenEditor.XML.meta     |    8 +
+ Assets/DOTween/Editor/DOTweenEditor.dll          |  Bin 0 -> 31744 bytes
+ Assets/DOTween/Editor/DOTweenEditor.dll.mdb      |  Bin 0 -> 5244 bytes
+ Assets/DOTween/Editor/DOTweenEditor.dll.mdb.meta |    8 +
+ Assets/DOTween/Editor/DOTweenEditor.dll.meta     |   24 +
+ Assets/DOTween/Editor/Imgs.meta                  |    9 +
+ Assets/DOTween/Editor/Imgs/DOTweenIcon.png       |  Bin 0 -> 1565 bytes
+ Assets/DOTween/Editor/Imgs/DOTweenIcon.png.meta  |   57 +
+ Assets/DOTween/Editor/Imgs/Footer.png            |  Bin 0 -> 4409 bytes
+ Assets/DOTween/Editor/Imgs/Footer.png.meta       |   57 +
+ Assets/DOTween/Editor/Imgs/Footer_dark.png       |  Bin 0 -> 4429 bytes
+ Assets/DOTween/Editor/Imgs/Footer_dark.png.meta  |   57 +
+ Assets/DOTween/Editor/Imgs/Header.jpg            |  Bin 0 -> 22787 bytes
+ Assets/DOTween/Editor/Imgs/Header.jpg.meta       |   57 +
+ Assets/DOTween/readme.txt                        |   18 +
+ Assets/DOTween/readme.txt.meta                   |    8 +
+ Assets/Resources/DOTweenSettings.asset           |  Bin 0 -> 4244 bytes
+ Assets/Resources/DOTweenSettings.asset.meta      |    8 +
+ Assets/Scripts/AnagramController.cs              |    9 +-
+ Assets/Scripts/AnagramView.cs                    |    2 +
+ Assets/Scripts/Model.cs                          |   11 +-
+ Assets/Scripts/TweenSwap.cs                      |   42 +
+ Assets/Scripts/TweenSwap.cs.meta                 |   12 +
+ Assets/anagram.unity                             |  Bin 232268 -> 232268 bytes
+ todo.txt                                         |   14 +-
+ 54 files changed, 3555 insertions(+), 4 deletions(-)
+2016-07-17 13:19:32 -0700,Complete word.  Word slides up.
+
+ Assets/Animation/Word_complete.anim    | Bin 14728 -> 10392 bytes
+ Assets/Animation/Word_hit.anim         | Bin 13748 -> 15032 bytes
+ Assets/Animation/Word_none.anim        | Bin 14724 -> 10084 bytes
+ Assets/Animation/state.controller      | Bin 0 -> 7216 bytes
+ Assets/Animation/state.controller.meta |   8 ++++++++
+ Assets/anagram.unity                   | Bin 276948 -> 232268 bytes
+ todo.txt                               |   9 +++++----
+ 7 files changed, 13 insertions(+), 4 deletions(-)
+2016-07-16 18:04:06 -0700,Replace hint sprites with UI images.
+
+ Assets/Prefabs/HintLetter.prefab      | Bin 0 -> 10956 bytes
+ Assets/Prefabs/HintLetter.prefab.meta |   8 ++++++++
+ Assets/Scripts/AnagramView.cs         |   2 +-
+ Assets/anagram.unity                  | Bin 263732 -> 276948 bytes
+ 4 files changed, 9 insertions(+), 1 deletion(-)
+2016-07-16 17:40:19 -0700,Tap to select letter button.
+
+ Assets/Animation/Letter.controller                 | Bin 8952 -> 7288 bytes
+ Assets/Images/letter_selected.png.meta             |  11 +-
+ Assets/Prefabs/bone_0.prefab                       | Bin 15260 -> 17132 bytes
+ Assets/Scripts/AnagramController.cs                |  27 +--
+ Assets/Scripts/AnagramView.cs                      |  14 ++
+ Assets/Scripts/Editor/TestSyntax/Controller.cs     |  10 +-
+ Assets/Scripts/Editor/TestSyntax/Model.cs          |   6 +-
+ .../Scripts/Editor/TestSyntax/TestSyntaxLevels.cs  | 208 ++++++++++-----------
+ .../Scripts/Editor/TestSyntax/TestSyntaxModel.cs   |  16 +-
+ Assets/Scripts/Levels.cs                           |  18 +-
+ Assets/Scripts/Metrics.cs                          |   4 +-
+ Assets/Scripts/Model.cs                            |  22 +--
+ Assets/Scripts/Storage.cs                          |  12 +-
+ Assets/Scripts/UnityToykit                         |   2 +-
+ Assets/Scripts/Words.cs                            |   6 +-
+ todo.txt                                           |   3 +
+ 16 files changed, 191 insertions(+), 168 deletions(-)
+2016-07-16 16:24:13 -0700,See letter buttons.
+
+ Assets/Prefabs/bone_0.prefab  | Bin 15260 -> 15260 bytes
+ Assets/Scripts/AnagramView.cs |   4 ++--
+ Assets/anagram.unity          | Bin 263732 -> 263732 bytes
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+2016-07-16 15:41:07 -0700,Structure letter buttons.
+
+ Assets/Prefabs.meta               |   9 +++++++++
+ Assets/Prefabs/bone_0.prefab      | Bin 0 -> 15260 bytes
+ Assets/Prefabs/bone_0.prefab.meta |   8 ++++++++
+ Assets/anagram.unity              | Bin 248356 -> 263732 bytes
+ 4 files changed, 17 insertions(+)
+2016-07-16 13:17:07 -0700,Darken place for hint button.
+
+ Assets/anagram.unity | Bin 246908 -> 248356 bytes
+ todo.txt             |   4 ++--
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+2016-07-16 13:10:47 -0700,Email button.
+
+ Assets/Scripts/AnagramController.cs |   3 ++-
+ Assets/Scripts/AnagramView.cs       |   2 ++
+ Assets/anagram.unity                | Bin 247804 -> 246908 bytes
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+2016-07-16 12:55:00 -0700,Text fits in button image.
+
+ Assets/anagram.unity | Bin 247804 -> 247804 bytes
+ todo.txt             |  11 +++++------
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+2016-07-16 10:57:20 -0700,Setup ButtonController for static buttons.
+
+ Assets/Scripts/AnagramController.cs |  46 ++++++++++++++++++++++++++----------
+ Assets/Scripts/UnityToykit          |   2 +-
+ Assets/anagram.unity                | Bin 245100 -> 247804 bytes
+ 3 files changed, 34 insertions(+), 14 deletions(-)
+2016-07-16 10:20:03 -0700,Unit test portable ButtonController.
+
+ Assets/Images/button_background.png.meta |   2 +-
+ Assets/Scripts/AnagramController.cs      |   2 +-
+ Assets/Scripts/AnagramView.cs            |  10 +++++-----
+ Assets/anagram.unity                     | Bin 244948 -> 245100 bytes
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+2016-07-16 09:26:16 -0700,Ignore bash stackdump files.
+
+ .gitignore | 3 +++
+ 1 file changed, 3 insertions(+)
+2016-07-10 11:40:32 -0700,9-slice HUD background.
+
+ Assets/Images/button_background.png.meta |   6 +++---
+ Assets/Images/text_background.png.meta   |   8 ++++----
+ Assets/anagram.unity                     | Bin 239124 -> 244948 bytes
+ ProjectSettings/GraphicsSettings.asset   | Bin 4256 -> 4256 bytes
+ README.md                                |  20 ++++++++++++++------
+ system.xls                               | Bin 30208 -> 30720 bytes
+ todo.txt                                 |  13 +++++++++++--
+ 7 files changed, 32 insertions(+), 15 deletions(-)
+2016-07-04 15:30:18 -0700,During tutor bound word below help.
+
+ Assets/Scripts/Levels.cs               |   2 ++
+ Assets/Scripts/Model.cs                |  13 +++++++++++--
+ ProjectSettings/GraphicsSettings.asset | Bin 4256 -> 4256 bytes
+ todo.txt                               |   2 +-
+ 4 files changed, 14 insertions(+), 3 deletions(-)
+2016-07-04 10:44:14 -0700,Jennifer does not see word rotate.
+
+ Assets/Animation/Input.controller     | Bin 10832 -> 10832 bytes
+ Assets/Animation/Input_complete.anim  | Bin 18200 -> 10656 bytes
+ Assets/Animation/Input_completed.anim | Bin 14256 -> 10448 bytes
+ Assets/Animation/Input_repeat.anim    | Bin 32664 -> 10800 bytes
+ Assets/Animation/Input_submit.anim    | Bin 16948 -> 10652 bytes
+ Assets/Animation/Input_submitted.anim | Bin 11544 -> 10808 bytes
+ Assets/Animation/Input_wrong.anim     | Bin 14520 -> 10676 bytes
+ Assets/Animation/Input_wronged.anim   | Bin 9412 -> 10448 bytes
+ Assets/Animation/Word_complete.anim   | Bin 14728 -> 14728 bytes
+ Assets/anagram.unity                  | Bin 239124 -> 239124 bytes
+ todo.txt                              |  10 +++++++---
+ 11 files changed, 7 insertions(+), 3 deletions(-)
+2016-07-04 09:56:58 -0700,Uploaded to Itch.io, GameJolt, NewGrounds, Kongregate.
+
+ ProjectSettings/GraphicsSettings.asset | Bin 4256 -> 4256 bytes
+ README.md                              |   9 +++++++++
+ screenshot.png                         | Bin 0 -> 25680 bytes
+ screenshot_x2.png                      | Bin 0 -> 25936 bytes
+ todo.txt                               |   9 ++++++---
+ 5 files changed, 15 insertions(+), 3 deletions(-)
+2016-06-26 21:25:01 -0700,WebGL: finegamedesign.com/anagram/unity
+
+ Assets/Images/button_background.png    | Bin 710 -> 1069 bytes
+ ProjectSettings/GraphicsSettings.asset | Bin 4256 -> 4256 bytes
+ ProjectSettings/ProjectSettings.asset  | Bin 38305 -> 38301 bytes
+ ProjectSettings/QualitySettings.asset  | Bin 5004 -> 5064 bytes
+ session.vim                            |   6 +++---
+ system.xls                             | Bin 16896 -> 30208 bytes
+ todo.txt                               |  10 ++++++----
+ 7 files changed, 9 insertions(+), 7 deletions(-)
+2016-06-26 16:53:24 -0700,Jennifer reads more frequent words.
+
+ Assets/Resources/text/anagram_words.txt | 5149 ++++++++++++++++---------------
+ session.vim                             |  236 +-
+ todo.txt                                |   18 +-
+ 3 files changed, 2666 insertions(+), 2737 deletions(-)
+2016-06-26 12:52:38 -0700,Progress position aligns to checkpoint.
+
+ Assets/Scripts/AnagramController.cs |   7 ++++++-
+ Assets/Scripts/UnityToykit          |   2 +-
+ Assets/anagram.unity                | Bin 239124 -> 239124 bytes
+ todo.txt                            |   2 +-
+ 4 files changed, 8 insertions(+), 3 deletions(-)
+2016-06-26 11:54:04 -0700,Jennifer doesn't accidentally tap hint.
+
+ Assets/anagram.unity | Bin 239124 -> 239124 bytes
+ todo.txt             |   2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+2016-06-26 11:46:27 -0700,Jennifer sees row of flowers at checkpoint.
+
+ Assets/Scripts/AnagramController.cs |   7 +++----
+ Assets/Scripts/Model.cs             |  13 +++++--------
+ Assets/anagram.unity                | Bin 180618 -> 239124 bytes
+ todo.txt                            |  33 ++++++++++++++++++---------------
+ 4 files changed, 26 insertions(+), 27 deletions(-)
+2016-06-26 10:30:25 -0700,Jennifer reads word repeated.
+
+ Assets/Scripts/Model.cs |  19 ++++++++++++++-----
+ Assets/anagram.unity    | Bin 180218 -> 180618 bytes
+ todo.txt                |  20 +++++++++++++++++---
+ 3 files changed, 31 insertions(+), 8 deletions(-)
+2016-06-25 18:18:47 -0700,Letter selected in front of background.
+
+ Assets/Scripts/Model.cs |   2 +-
+ Assets/anagram.unity    | Bin 180218 -> 180218 bytes
+ todo.txt                |   7 +++++--
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+2016-06-25 17:36:43 -0700,Hide delete and submit button when menu.
+
+ .../cliparwolf.com.flower-clip-art-4TbMX6n7c.png   | Bin 99032 -> 86155 bytes
+ Assets/Scripts/AnagramController.cs                |   5 +++++
+ Assets/Scripts/AnagramView.cs                      |   4 ++++
+ Assets/Scripts/Model.cs                            |   8 ++++----
+ Assets/anagram.unity                               | Bin 180722 -> 180218 bytes
+ todo.txt                                           |   5 +++--
+ 6 files changed, 16 insertions(+), 6 deletions(-)
+2016-06-25 17:13:37 -0700,Spring color palette except decorations.
+
+ Assets/Scripts/AnagramController.cs |   3 ++-
+ Assets/Scripts/Levels.cs            |   6 +++---
+ Assets/Scripts/Model.cs             |   2 +-
+ Assets/anagram.unity                | Bin 174674 -> 180722 bytes
+ 4 files changed, 6 insertions(+), 5 deletions(-)
+2016-06-25 16:51:09 -0700,Spring color palette on letters
+
+ Assets/Images/button_background.png       | Bin 0 -> 710 bytes
+ Assets/Images/button_background.png.meta  |  57 ++++++++++++++++++++++++++++++
+ Assets/Images/input_letter_background.png | Bin 1048 -> 1166 bytes
+ Assets/Images/letter_background.png       | Bin 796 -> 710 bytes
+ Assets/Images/letter_selected.png         | Bin 1408 -> 1299 bytes
+ Assets/Images/letter_selected2.png        | Bin 0 -> 1408 bytes
+ Assets/Images/letter_selected2.png.meta   |  57 ++++++++++++++++++++++++++++++
+ Assets/Images/text_background.png         | Bin 0 -> 762 bytes
+ Assets/Images/text_background.png.meta    |  57 ++++++++++++++++++++++++++++++
+ Assets/Scripts/AnagramController.cs       |   3 +-
+ Assets/Scripts/AnagramView.cs             |   6 ++--
+ Assets/Scripts/Model.cs                   |   1 +
+ Assets/anagram.unity                      | Bin 170722 -> 174674 bytes
+ todo.txt                                  |   6 +++-
+ 14 files changed, 183 insertions(+), 4 deletions(-)
+2016-06-25 13:05:07 -0700,Help text above letters.
+
+ Assets/Scripts/Levels.cs   |  31 +++++++++++++------------------
+ Assets/Scripts/Model.cs    |  20 +++++++-------------
+ Assets/Scripts/UnityToykit |   2 +-
+ Assets/anagram.unity       | Bin 170722 -> 170722 bytes
+ todo.txt                   |   7 ++++---
+ 5 files changed, 25 insertions(+), 35 deletions(-)
+2016-06-25 12:16:15 -0700,Letters behind buttons.
+
+ Assets/Animation/Input_intro.anim     | Bin 9408 -> 10916 bytes
+ Assets/Animation/Input_none.anim      | Bin 9304 -> 10804 bytes
+ Assets/Animation/Input_repeat.anim    | Bin 32312 -> 32664 bytes
+ Assets/Animation/Input_submitted.anim | Bin 11184 -> 11544 bytes
+ Assets/Materials/3DText.mat           | Bin 0 -> 4892 bytes
+ Assets/Materials/3DText.mat.meta      |   8 ++++++++
+ Assets/Scripts/3DText.shader          |  18 ++++++++++++++++++
+ Assets/Scripts/3DText.shader.meta     |   9 +++++++++
+ Assets/Scripts/AnagramController.cs   |   2 +-
+ Assets/anagram.unity                  | Bin 171274 -> 170722 bytes
+ 10 files changed, 36 insertions(+), 1 deletion(-)
+2016-06-25 11:37:24 -0700,Widescreen: Repeated word not onscreen.
+
+ Assets/Animation/Input_repeat.anim     | Bin 16632 -> 32312 bytes
+ Assets/Animation/Input_repeated.anim   | Bin 9308 -> 10448 bytes
+ Assets/Animation/Input_submit.anim     | Bin 14252 -> 16948 bytes
+ Assets/Animation/Input_submitted.anim  | Bin 9668 -> 11184 bytes
+ Assets/Animation/Word_complete.anim    | Bin 14728 -> 14728 bytes
+ Assets/Animation/Word_none.anim        | Bin 8960 -> 14724 bytes
+ ProjectSettings/GraphicsSettings.asset | Bin 4256 -> 4256 bytes
+ todo.txt                               |   1 -
+ 8 files changed, 1 deletion(-)
+2016-06-25 11:29:51 -0700,Quieter submit sound.
+
+ Assets/Resources/Sounds/shoot.wav   | Bin 46990 -> 46990 bytes
+ Assets/Scripts/AnagramController.cs |   5 ++++-
+ todo.txt                            |   5 ++++-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+2016-06-25 11:18:50 -0700,Submit empty. See no output.
+
+ Assets/Scripts/Model.cs | 4 +++-
+ todo.txt                | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+2016-06-25 10:36:45 -0700,Continue word at last session level.
+
+ Assets/Scripts/Model.cs    | 6 +++---
+ Assets/Scripts/UnityToykit | 2 +-
+ todo.txt                   | 6 ++++--
+ 3 files changed, 8 insertions(+), 6 deletions(-)
+2016-06-25 09:51:12 -0700,Disable verbose logs.
+
+ Assets/Scripts/Model.cs    | 36 +++++++++++++++++++++++++++---------
+ Assets/Scripts/UnityToykit |  2 +-
+ todo.txt                   |  2 ++
+ 3 files changed, 30 insertions(+), 10 deletions(-)
+2016-06-25 09:20:34 -0700,Complete animation; then next word.
+
+ Assets/Animation/Input_complete.anim               | Bin 18200 -> 18200 bytes
+ Assets/Animation/Input_completed.anim              | Bin 14256 -> 14256 bytes
+ Assets/Animation/Input_repeat.anim                 | Bin 16632 -> 16632 bytes
+ Assets/Animation/Input_repeated.anim               | Bin 9308 -> 9308 bytes
+ Assets/Animation/Input_submitted.anim              | Bin 9668 -> 9668 bytes
+ Assets/Animation/Input_wrong.anim                  | Bin 14520 -> 14520 bytes
+ Assets/Animation/Input_wronged.anim                | Bin 9412 -> 9412 bytes
+ Assets/Animation/WordState.controller              | Bin 9008 -> 9352 bytes
+ Assets/Animation/Word_complete.anim                | Bin 0 -> 14728 bytes
+ Assets/Animation/Word_complete.anim.meta           |   8 ++++
+ Assets/Scripts/AnagramController.cs                |  29 +++++++++-----
+ Assets/Scripts/Metrics.cs                          |  12 ++++--
+ Assets/Scripts/Model.cs                            |  35 ++++++++++-------
+ Assets/Scripts/UnityToykit                         |   2 +-
+ Assets/anagram.unity                               | Bin 169452 -> 171274 bytes
+ ...ticsManager.asset => ClusterInputManager.asset} | Bin 4112 -> 4104 bytes
+ ProjectSettings/GraphicsSettings.asset             | Bin 4248 -> 4256 bytes
+ ProjectSettings/ProjectSettings.asset              | Bin 41793 -> 38305 bytes
+ ProjectSettings/ProjectVersion.txt                 |   2 +-
+ ProjectSettings/UnityConnectSettings.asset         | Bin 0 -> 4116 bytes
+ session.vim                                        |  42 +++++++++++----------
+ todo.txt                                           |  13 ++++++-
+ 22 files changed, 92 insertions(+), 51 deletions(-)
+2016-06-24 07:25:44 -0700,Cheat: Press page up: Submit a word.
+
+ Assets/Scripts/AnagramController.cs |   3 +-
+ Assets/Scripts/Levels.cs            | 486 +-----------------------------------
+ Assets/Scripts/Model.cs             |   5 +-
+ todo.txt                            |   8 +-
+ 4 files changed, 11 insertions(+), 491 deletions(-)
+2016-06-23 20:56:06 -0700,Setup view before controller.
+
+ Assets/Scripts/AnagramController.cs |   1 -
+ Assets/Scripts/AnagramView.cs       |   5 +-
+ Assets/Scripts/Main.cs              |   2 +-
+ Assets/Scripts/UnityToykit          |   2 +-
+ session.vim                         | 541 ++++++------------------------------
+ 5 files changed, 94 insertions(+), 457 deletions(-)
+2016-06-23 20:47:42 -0700,Extract portable AnagramController.
+
+ Assets/Scripts/AnagramController.cs |  59 +++++++--
+ Assets/Scripts/AnagramView.cs       | 247 ++----------------------------------
+ Assets/Scripts/Main.cs              |  48 +------
+ 3 files changed, 70 insertions(+), 284 deletions(-)
+2016-06-23 20:07:48 -0700,Compile syntax of portable AnagramController
+
+ Assets/Scripts/AnagramController.cs          | 237 +++++++++++++++++++++++++++
+ Assets/Scripts/AnagramController.cs.meta     |  12 ++
+ Assets/Scripts/AnagramView.cs                | 120 ++++++--------
+ Assets/Scripts/Editor/TestSyntax/AllInOne.cs |   2 +-
+ Assets/Scripts/Main.cs                       |   9 +-
+ Assets/Scripts/Model.cs                      |   2 +-
+ Assets/Scripts/UnityToykit                   |   2 +-
+ Assets/anagram.unity                         | Bin 170532 -> 169452 bytes
+ todo.txt                                     |  11 +-
+ 9 files changed, 314 insertions(+), 81 deletions(-)
+2016-06-23 08:19:03 -0700,Access GameObject by SceneNodeView.
+
+ Assets/Resources/Sounds/select.wav.meta |  2 +-
+ Assets/Scripts/AnagramView.cs           | 34 +++++++++++++++++++--------------
+ Assets/Scripts/UnityToykit              |  2 +-
+ 3 files changed, 22 insertions(+), 16 deletions(-)
+2016-06-23 07:44:48 -0700,Wrap scene node access.
+
+ Assets/{ => Resources}/Sounds.meta                 |   4 +-
+ Assets/{ => Resources}/Sounds/explosion_big.wav    | Bin
+ .../{ => Resources}/Sounds/explosion_big.wav.meta  |   0
+ Assets/{ => Resources}/Sounds/select.wav           | Bin
+ Assets/{ => Resources}/Sounds/select.wav.meta      |   0
+ Assets/{ => Resources}/Sounds/shoot.wav            | Bin
+ Assets/{ => Resources}/Sounds/shoot.wav.meta       |   0
+ Assets/Scripts/AnagramView.cs                      | 487 +++++++++++----------
+ Assets/Scripts/Main.cs                             |  88 ++--
+ Assets/Scripts/UnityToykit                         |   2 +-
+ Assets/anagram.unity                               | Bin 172652 -> 170532 bytes
+ 11 files changed, 294 insertions(+), 287 deletions(-)
+2016-06-22 06:56:41 -0700,Test syntax of PascalCase functions.
+
+ Assets/Scripts/AnagramView.cs                      |   4 +-
+ Assets/Scripts/Editor/TestSyntax/AllInOne.cs       |  39 ++
+ Assets/Scripts/Editor/TestSyntax/AllInOne.cs.meta  |  12 +
+ Assets/Scripts/Editor/TestSyntax/Calculate.cs      |  36 +-
+ Assets/Scripts/Editor/TestSyntax/Controller.cs     |  58 +++
+ .../Scripts/Editor/TestSyntax/Controller.cs.meta   |  12 +
+ Assets/Scripts/Editor/TestSyntax/EmptyClass.cs     |  12 +
+ .../Scripts/Editor/TestSyntax/EmptyClass.cs.meta   |  12 +
+ Assets/Scripts/Editor/TestSyntax/Model.cs          |  34 ++
+ Assets/Scripts/Editor/TestSyntax/Model.cs.meta     |  12 +
+ Assets/Scripts/Editor/TestSyntax/Rule.cs           |  51 +-
+ Assets/Scripts/Editor/TestSyntax/TestCalculate.cs  |  10 +-
+ Assets/Scripts/Editor/TestSyntax/TestRule.cs       |  32 +-
+ .../Scripts/Editor/TestSyntax/TestSyntaxLevels.cs  | 571 +++++++++++++++++++++
+ .../Editor/TestSyntax/TestSyntaxLevels.cs.meta     |  12 +
+ .../Scripts/Editor/TestSyntax/TestSyntaxModel.cs   | 349 +++++++++++++
+ .../Editor/TestSyntax/TestSyntaxModel.cs.meta      |  12 +
+ Assets/Scripts/Editor/TestSyntax/TestToolkit.cs    |  24 +
+ .../Scripts/Editor/TestSyntax/TestToolkit.cs.meta  |  12 +
+ Assets/Scripts/Levels.cs                           |   4 +-
+ Assets/Scripts/Main.cs                             |   2 +-
+ Assets/Scripts/Metrics.cs                          |   2 +-
+ Assets/Scripts/Model.cs                            |   4 +-
+ Assets/Scripts/UnityToykit                         |   2 +-
+ 24 files changed, 1246 insertions(+), 72 deletions(-)
+2016-06-19 21:01:20 -0700,Include all from before continue.
+
+ Assets/Scripts/Model.cs |   2 +-
+ session.vim             | 187 ++++++++++++++++++++++++++++++++++++++++--------
+ todo.txt                |   4 +-
+ 3 files changed, 159 insertions(+), 34 deletions(-)
+2016-06-19 20:33:48 -0700,Button to e-mail play metrics.
+
+ Assets/Scripts/AnagramView.cs |   6 ++++++
+ Assets/Scripts/Email.cs       |  20 ++++++++++++++++++++
+ Assets/Scripts/Email.cs.meta  |  12 ++++++++++++
+ Assets/Scripts/Model.cs       |  12 ++++++++----
+ Assets/anagram.unity          | Bin 170980 -> 172652 bytes
+ todo.txt                      |   9 +++++++--
+ 6 files changed, 53 insertions(+), 6 deletions(-)
+2016-06-19 10:47:54 -0700,Attempt to shuffle word out of reading order.
+
+ Assets/Scripts/AnagramView.cs |   7 ++
+ Assets/Scripts/Main.cs        |  11 +-
+ Assets/Scripts/Model.cs       |  44 ++++++-
+ Assets/Scripts/UnityToykit    |   2 +-
+ session.vim                   | 270 +++++++++++++++++++++++++++++++-----------
+ todo.txt                      |  15 ++-
+ 6 files changed, 267 insertions(+), 82 deletions(-)
+2016-06-19 07:38:53 -0700,Continue or hint: Letters synchronized.
+
+ Assets/Scripts/AnagramView.cs | 8 ++++++--
+ Assets/Scripts/Model.cs       | 6 ++++++
+ todo.txt                      | 8 +++++---
+ 3 files changed, 17 insertions(+), 5 deletions(-)
+2016-06-19 07:06:25 -0700,Chart 25 trial response times and level ups
+
+ session.vim | 198 ++++++++++++++++++++++++++++++++++++++++++++++++------------
+ system.xls  | Bin 15360 -> 16896 bytes
+ todo.txt    |  16 ++---
+ 3 files changed, 169 insertions(+), 45 deletions(-)
+2016-06-18 20:01:40 -0700,Chart 9 trial response times and level ups
+
+ Assets/Scripts/Metrics.cs      | 101 +++++++++++++++++++++++++++++++++++++++++
+ Assets/Scripts/Metrics.cs.meta |  12 +++++
+ Assets/Scripts/Model.cs        |  25 ++++++++++
+ Assets/Scripts/UnityToykit     |   2 +-
+ system.xls                     | Bin 14848 -> 15360 bytes
+ todo.txt                       |   3 +-
+ 6 files changed, 141 insertions(+), 2 deletions(-)
+2016-06-18 11:09:45 -0700,4 scatter plots of 3 example trials.
+
+ Assets/Scripts/Model.cs    |  21 +++++++++++++--------
+ Assets/Scripts/UnityToykit |   2 +-
+ Assets/anagram.unity       | Bin 152340 -> 170980 bytes
+ system.xls                 | Bin 8192 -> 14848 bytes
+ todo.txt                   |  23 ++++++++++++++++++-----
+ 5 files changed, 32 insertions(+), 14 deletions(-)
+2016-06-10 08:34:02 -0700,Checkpoint approximately at each scene.
+
+ Assets/Scripts/Model.cs    |  25 ++++++++++++-------------
+ Assets/Scripts/UnityToykit |   2 +-
+ Assets/anagram.unity       | Bin 152340 -> 152340 bytes
+ todo.txt                   |   2 ++
+ 4 files changed, 15 insertions(+), 14 deletions(-)
+2016-06-05 21:01:13 -0700,Convert example ActionScript unit tests to C#.
+
+ Assets/Scripts/AnagramView.cs                      |   4 +-
+ Assets/Scripts/Editor.meta                         |   9 ++
+ Assets/Scripts/Editor/TestSyntax.meta              |   9 ++
+ Assets/Scripts/Editor/TestSyntax/Calculate.cs      | 135 ++++++++++++++++
+ Assets/Scripts/Editor/TestSyntax/Calculate.cs.meta |  12 ++
+ Assets/Scripts/Editor/TestSyntax/Rule.cs           | 180 +++++++++++++++++++++
+ Assets/Scripts/Editor/TestSyntax/Rule.cs.meta      |  12 ++
+ Assets/Scripts/Editor/TestSyntax/TestCalculate.cs  |  34 ++++
+ .../Editor/TestSyntax/TestCalculate.cs.meta        |  12 ++
+ Assets/Scripts/Editor/TestSyntax/TestRule.cs       |  59 +++++++
+ Assets/Scripts/Editor/TestSyntax/TestRule.cs.meta  |  12 ++
+ Assets/Scripts/UnityToykit                         |   2 +-
+ 12 files changed, 477 insertions(+), 3 deletions(-)
+2016-05-30 20:48:17 -0700,Checkpoint at first two flowers.
+
+ Assets/Scripts/Model.cs |    8 +-
+ session.vim             | 1113 ++++-------------------------------------------
+ 2 files changed, 90 insertions(+), 1031 deletions(-)
+2016-05-30 18:23:43 -0700,On first run, show new game button.
+
+ Assets/Scripts/Model.cs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+2016-05-30 18:10:23 -0700,Checkpoint every 10%.
+
+ Assets/Scripts/Model.cs | 32 ++++++++++++++++++++++++++++----
+ 1 file changed, 28 insertions(+), 4 deletions(-)
+2016-05-30 17:39:40 -0700,Continue game from last level.
+
+ Assets/Scripts/Model.cs |   6 +++---
+ Assets/anagram.unity    | Bin 152340 -> 152340 bytes
+ todo.txt                |  18 +++++++++---------
+ 3 files changed, 12 insertions(+), 12 deletions(-)
+2016-05-30 17:22:29 -0700,New game and continue buttons.
+
+ Assets/Scripts/AnagramView.cs |  48 ++++++++++++++++++++++-----
+ Assets/Scripts/Model.cs       |  73 +++++++++++++++++++++++++++++++++---------
+ Assets/anagram.unity          | Bin 149004 -> 152340 bytes
+ todo.txt                      |   8 ++---
+ 4 files changed, 101 insertions(+), 28 deletions(-)
+2016-05-30 10:35:48 -0700,Load level on Nexus 5.
+
+ Assets/Scripts/Main.cs    |  2 +-
+ Assets/Scripts/Model.cs   | 13 ++++++++++---
+ Assets/Scripts/Storage.cs |  4 ++--
+ 3 files changed, 13 insertions(+), 6 deletions(-)
+2016-05-30 09:47:11 -0700,Normalize level.
+
+ Assets/Scripts/UnityToykit | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+2016-05-30 09:46:24 -0700,Wire saving level.
+
+ Assets/Scripts/Main.cs    | 4 ++++
+ Assets/Scripts/Storage.cs | 8 ++++++++
+ 2 files changed, 12 insertions(+)
+2016-05-30 09:40:14 -0700,Wire loading level if it were saved.
+
+ Assets/Animation/Word_move.anim | Bin 15728 -> 12400 bytes
+ Assets/Scripts/Main.cs          |   2 ++
+ Assets/Scripts/Model.cs         |  22 ++++++++++++++++++----
+ Assets/Scripts/Storage.cs       |  39 +++++++++++++++++++++++++++++++++++++++
+ Assets/Scripts/Storage.cs.meta  |  12 ++++++++++++
+ engineering.txt                 |  19 +++++++++++++++++++
+ todo.txt                        |  17 ++++++++++++++---
+ 7 files changed, 104 insertions(+), 7 deletions(-)
+2016-05-30 07:40:49 -0700,Jennifer taps large letter buttons.
+
+ Assets/Images/clipartbest.com.aieK5ELKT.jpeg      | Bin 9600 -> 0 bytes
+ Assets/Images/clipartbest.com.aieK5ELKT.jpeg.meta |  56 ----------------------
+ Assets/Scripts/Model.cs                           |  13 +++--
+ Assets/anagram.unity                              | Bin 115756 -> 149004 bytes
+ todo.txt                                          |   6 ++-
+ 5 files changed, 14 insertions(+), 61 deletions(-)
+2016-05-29 19:44:03 -0700,Jennifer starts with small flower.
+
+ Assets/Scripts/Model.cs |   2 +-
+ Assets/anagram.unity    | Bin 115244 -> 115756 bytes
+ play.txt                |  13 +++++++++++++
+ todo.txt                |  11 ++++++-----
+ 4 files changed, 20 insertions(+), 6 deletions(-)
+2016-05-29 18:35:54 -0700,Green background. Colorize flowers.
+
+ ...ne-clipart-flower-outline-clip-art-free-188.jpg | Bin 28727 -> 0 bytes
+ ...ne-clipart-flower-outline-clip-art-free-188.png | Bin 0 -> 35619 bytes
+ ...part-flower-outline-clip-art-free-188.png.meta} |   4 ++--
+ Assets/Images/icons8.com.Plants-Flower-icon.png    | Bin 4518 -> 6235 bytes
+ .../picgifs.com.flowers-coloring-pages-18.gif      | Bin 10473 -> 10473 bytes
+ Assets/Materials.meta                              |   9 +++++++++
+ Assets/Materials/Grass.mat                         | Bin 0 -> 4892 bytes
+ Assets/Materials/Grass.mat.meta                    |   8 ++++++++
+ Assets/anagram.unity                               | Bin 115244 -> 115244 bytes
+ 9 files changed, 19 insertions(+), 2 deletions(-)
+2016-05-29 18:05:53 -0700,Jennifer scrolls flowers as she completes words quickly.
+
+ Assets/Images/clipartbest.com.aieK5ELKT.png        | Bin 0 -> 18693 bytes
+ Assets/Images/clipartbest.com.aieK5ELKT.png.meta   |  56 +++++++++++++++++++++
+ .../picgifs.com.flowers-coloring-pages-18.gif      | Bin 0 -> 10473 bytes
+ .../picgifs.com.flowers-coloring-pages-18.gif.meta |  56 +++++++++++++++++++++
+ Assets/Scripts/AnagramView.cs                      |   1 +
+ Assets/Scripts/Model.cs                            |  18 ++++++-
+ Assets/Scripts/UnityToykit                         |   2 +-
+ Assets/anagram.unity                               | Bin 113044 -> 115244 bytes
+ README.md                                          |   7 +++
+ todo.txt                                           |   6 +--
+ 10 files changed, 140 insertions(+), 6 deletions(-)
+2016-05-29 17:08:57 -0700,Copy free clip art. Source at start of filename.
+
+ Assets/Images/clipartbest.com.aieK5ELKT.jpeg       | Bin 0 -> 9600 bytes
+ Assets/Images/clipartbest.com.aieK5ELKT.jpeg.meta  |  56 +++++++++++++++++++++
+ .../cliparwolf.com.flower-clip-art-4TbMX6n7c.png   | Bin 0 -> 99032 bytes
+ ...iparwolf.com.flower-clip-art-4TbMX6n7c.png.meta |  56 +++++++++++++++++++++
+ ...arwolf.com.flower-outline-clipart-7iayXBxiA.png | Bin 0 -> 41839 bytes
+ ...f.com.flower-outline-clipart-7iayXBxiA.png.meta |  56 +++++++++++++++++++++
+ ...ne-clipart-flower-outline-clip-art-free-188.jpg | Bin 0 -> 28727 bytes
+ ...ipart-flower-outline-clip-art-free-188.jpg.meta |  56 +++++++++++++++++++++
+ Assets/Images/icons8.com.Plants-Flower-icon.png    | Bin 0 -> 4518 bytes
+ .../Images/icons8.com.Plants-Flower-icon.png.meta  |  56 +++++++++++++++++++++
+ Assets/anagram.unity                               | Bin 111652 -> 113044 bytes
+ todo.txt                                           |   3 ++
+ 12 files changed, 283 insertions(+)
+2016-05-29 16:43:50 -0700,Do not repeat tutorial.
+
+ Assets/Scripts/UnityToykit | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+2016-05-29 16:41:12 -0700,Hide hint until level would go down and 3 more subwords submitted.
+
+ Assets/Scripts/AnagramView.cs |   9 +++--
+ Assets/Scripts/Model.cs       |  76 +++++++++++++++++++++++++++---------------
+ Assets/anagram.unity          | Bin 111644 -> 111652 bytes
+ todo.txt                      |   8 ++---
+ 4 files changed, 59 insertions(+), 34 deletions(-)
+2016-05-29 16:04:44 -0700,Tap hint button to reveal a letter.
+
+ Assets/Scripts/AnagramView.cs |  18 +++++++++++++++---
+ Assets/Scripts/Levels.cs      |   4 ++--
+ Assets/Scripts/Model.cs       |  12 ++++++++++++
+ Assets/anagram.unity          | Bin 99804 -> 111644 bytes
+ todo.txt                      |  11 +++++++----
+ 5 files changed, 36 insertions(+), 9 deletions(-)
+2016-05-29 11:38:05 -0700,Slide letters at 1/8 speed for Jennifer to tap conveniently.
+
+ Assets/Animation/WordState.controller | Bin 9008 -> 9008 bytes
+ todo.txt                              |  10 +++++-----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+2016-05-29 11:35:13 -0700,Jennifer sees letters higher than submit button.
+
+ Assets/Scripts/AnagramView.cs |  13 ++++++++-----
+ Assets/Scripts/Model.cs       |   4 +++-
+ Assets/Scripts/UnityToykit    |   2 +-
+ Assets/anagram.unity          | Bin 99492 -> 99804 bytes
+ todo.txt                      |   4 ++--
+ 5 files changed, 14 insertions(+), 9 deletions(-)
+2016-05-29 11:20:38 -0700,Jennifer sees even letter spacing.
+
+ Assets/anagram.unity | Bin 99492 -> 99492 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+2016-05-29 11:08:13 -0700,Tap duplicate letter. Jennifer sees that letter selected.
+
+ Assets/Scripts/AnagramView.cs | 139 ++++++++++++++++++++++--------------------
+ Assets/Scripts/Model.cs       |  16 +++++
+ Assets/Scripts/UnityToykit    |   2 +-
+ README.md                     |   4 +-
+ design.txt                    |  35 +++++++++++
+ play.txt                      |  34 +++++++++++
+ todo.txt                      |  14 +++--
+ 7 files changed, 172 insertions(+), 72 deletions(-)
+2016-05-28 18:50:28 -0700,Level up by response time.
+
+ Assets/Scripts/Model.cs    | 16 ++++++++++++++--
+ Assets/Scripts/UnityToykit |  2 +-
+ todo.txt                   | 10 +++++-----
+ 3 files changed, 20 insertions(+), 8 deletions(-)
+2016-05-28 12:23:39 -0700,Draw level progress from a deck of cards.
+
+ Assets/Animation/Input.controller    | Bin 10832 -> 10832 bytes
+ Assets/Animation/Input_repeated.anim | Bin 9412 -> 9308 bytes
+ Assets/Scripts/UnityToykit           |   2 +-
+ Assets/Text.meta                     |   9 -
+ design.txt                           |  18 ++
+ play.txt                             |  13 +
+ session.vim                          | 581 +++++++++++++++++++++++++++++------
+ todo.txt                             |  25 +-
+ 8 files changed, 528 insertions(+), 120 deletions(-)
+2016-05-28 12:22:52 -0700,Draw level progress from a deck of cards.
+
+ Assets/Scripts/AnagramView.cs   |  4 +-
+ Assets/Scripts/DataUtil.cs      | 92 -----------------------------------------
+ Assets/Scripts/DataUtil.cs.meta | 12 ------
+ Assets/Scripts/Levels.cs        | 11 +++--
+ Assets/Scripts/Main.cs          |  4 +-
+ Assets/Scripts/Model.cs         | 20 ++++++---
+ Assets/Scripts/Referee.cs       | 27 ------------
+ Assets/Scripts/Referee.cs.meta  | 12 ------
+ Assets/Scripts/UnityToykit      |  2 +-
+ 9 files changed, 25 insertions(+), 159 deletions(-)
+2016-05-22 21:30:48 -0700,Jennifer levels up slower.
+
+ Assets/Resources/text/anagram_words.txt | 53 +--------------------------------
+ Assets/Scripts/Referee.cs               |  4 ++-
+ todo.txt                                |  7 +++--
+ 3 files changed, 9 insertions(+), 55 deletions(-)
+2016-05-22 17:25:11 -0700,Sort 2900 anagrams by short and frequent.
+
+ ...word_list_moby_crossword.flat.txt => TWL06.txt} | 67473 ++++++++++++++++++-
+ ...moby_crossword.flat.txt.meta => TWL06.txt.meta} |     4 +-
+ Assets/Resources/text/anagram_words.txt            |  4989 +-
+ Assets/Scripts/Words.cs                            |     4 +-
+ README.md                                          |     6 +-
+ system.xls                                         |   Bin 7168 -> 8192 bytes
+ todo.txt                                           |     9 +-
+ 7 files changed, 68979 insertions(+), 3506 deletions(-)
+2016-05-22 09:33:29 -0700,Jennifer converges to max level.
+
+ .gitignore                              |    3 +
+ Assets/Animation/Input_repeat.anim      |  Bin 13036 -> 16632 bytes
+ Assets/Resources/text/anagram_words.txt |    2 +-
+ Assets/Scripts/AnagramView.cs           |  134 ++--
+ Assets/Scripts/DataUtil.cs              |  150 ++--
+ Assets/Scripts/Levels.cs                | 1138 +++++++++++++++----------------
+ Assets/Scripts/Main.cs                  |    2 +
+ Assets/Scripts/Model.cs                 |  702 +++++++++----------
+ Assets/Scripts/Referee.cs               |   25 +
+ Assets/Scripts/Referee.cs.meta          |   12 +
+ design.txt                              |   14 +
+ play.txt                                |   24 +
+ session.vim                             |  498 ++++++++++++--
+ system.xls                              |  Bin 0 -> 7168 bytes
+ todo.txt                                |  147 +---
+ 15 files changed, 1605 insertions(+), 1246 deletions(-)
+2016-05-21 16:53:37 -0700,Edit repeat word animation.
+
+ Assets/Animation/Input_repeat.anim | Bin 9720 -> 13036 bytes
+ todo.txt                           |   2 ++
+ 2 files changed, 2 insertions(+)
+2016-05-21 16:35:55 -0700,Interpolate level by relative speed.
+
+ Assets/Scripts/Model.cs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+2016-05-21 16:34:05 -0700,Interpolate level by relative speed.
+
+ Assets/Scripts/Model.cs |   8 +-
+ session.vim             | 587 +++++++++++++++++++++++++++++++++++++++++++-----
+ todo.txt                |   4 +-
+ 3 files changed, 537 insertions(+), 62 deletions(-)
+2016-05-21 13:09:32 -0700,Adjust level by relative speed.
+
+ Assets/Scripts/Levels.cs          |  12 +-
+ Assets/Scripts/Levels.cs.bak      | 571 ++++++++++++++++++++++++++++++++++++++
+ Assets/Scripts/Levels.cs.bak.meta |   8 +
+ Assets/Scripts/Model.cs           |  16 +-
+ todo.txt                          |  10 +-
+ 5 files changed, 609 insertions(+), 8 deletions(-)
+2016-05-21 12:18:17 -0700,Append 2000 anagrams. Integrate as2cs.
+
+ .gitmodules                                        |    3 +
+ Assets/Resources/text/anagram_words.txt            | 2362 ++++++++++++++++++++
+ Assets/Resources/text/anagram_words.txt.meta       |    8 +
+ Assets/Scripts/{View.cs => AnagramView.cs}         |   19 +-
+ .../{Toolkit.cs.meta => AnagramView.cs.meta}       |    4 +-
+ Assets/Scripts/DataUtil.cs                         |   92 +
+ Assets/Scripts/{View.cs.meta => DataUtil.cs.meta}  |    4 +-
+ Assets/Scripts/Levels.cs                           |  695 ++++--
+ Assets/Scripts/Main.cs                             |   24 +-
+ Assets/Scripts/Model.cs                            |  525 +++--
+ Assets/Scripts/Toolkit.cs                          |   76 -
+ Assets/Scripts/UnityToykit                         |    1 +
+ Assets/Scripts/UnityToykit.meta                    |    9 +
+ Assets/Scripts/Words.cs                            |    8 +-
+ todo.txt                                           |    4 +
+ 15 files changed, 3361 insertions(+), 473 deletions(-)
+2016-02-14 12:14:15 -0800,Compare productivity of Flash to Unity.
+
+ README.md | 42 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+2016-02-14 10:29:33 -0800,Readme includes Flash repo.
+
+ README.md |  6 ++++++
+ git.log   | 40 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 46 insertions(+)
+2016-02-14 10:01:17 -0800,Play on Android phone, Nexus 5.
+
+ Assets/Resources.meta                              |   9 ++++++
+ Assets/Resources/text.meta                         |   9 ++++++
+ .../text}/word_list_moby_crossword.flat.txt        |   0
+ .../text}/word_list_moby_crossword.flat.txt.meta   |   4 +--
+ Assets/Scripts/Levels.cs                           |   6 ++--
+ Assets/Scripts/Model.cs                            |   2 +-
+ Assets/Scripts/Toolkit.cs                          |  31 ++++++++++++++++++++-
+ Assets/Scripts/Words.cs                            |   4 +--
+ Assets/anagram.unity                               | Bin 99492 -> 99492 bytes
+ ProjectSettings/ProjectSettings.asset              | Bin 41777 -> 41793 bytes
+ todo.txt                                           |   8 ++++++
+ ..._credits.txt => word_list_mobywords_credits.txt |   0
+ ...xt.meta => word_list_mobywords_credits.txt.meta |   0
+ 13 files changed, 64 insertions(+), 9 deletions(-)
+2016-01-28 21:44:18 -0800,Update TODO.
+
+ ProjectSettings/ProjectSettings.asset | Bin 41769 -> 41777 bytes
+ todo.txt                              |   3 +++
+ 2 files changed, 3 insertions(+)
+2015-11-22 11:54:48 -0800,Button to submit.
+
+ Assets/Animation/Input_complete.anim  | Bin 14256 -> 18200 bytes
+ Assets/Animation/Input_repeat.anim    | Bin 9720 -> 9720 bytes
+ Assets/Animation/Input_repeated.anim  | Bin 8964 -> 9412 bytes
+ Assets/Animation/Input_wronged.anim   | Bin 9412 -> 9412 bytes
+ Assets/Animation/WordState.controller | Bin 9008 -> 9008 bytes
+ Assets/Scripts/View.cs                |   6 ++++--
+ Assets/anagram.unity                  | Bin 97820 -> 99492 bytes
+ todo.txt                              |   2 +-
+ 8 files changed, 5 insertions(+), 3 deletions(-)
+2015-11-22 11:43:47 -0800,Button to delete last letter.
+
+ Assets/Scripts/View.cs |   4 +++-
+ Assets/anagram.unity   | Bin 95036 -> 97820 bytes
+ todo.txt               |   2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+2015-11-22 11:34:10 -0800,Mouse down to select a letter.
+
+ Assets/Scripts/View.cs |  29 ++++++++++++++++++++++++++++-
+ Assets/anagram.unity   | Bin 93060 -> 95036 bytes
+ todo.txt               |   5 ++++-
+ 3 files changed, 32 insertions(+), 2 deletions(-)
+2015-11-22 10:37:54 -0800,Page Up/Down to cheat level.  (Mac: Fn Up/Down)
+
+ Assets/Animation/Input_submit.anim | Bin 13804 -> 14252 bytes
+ Assets/Scripts/Model.cs            |  13 ++++++++++++-
+ Assets/Scripts/View.cs             |  18 ++++++++++++++++++
+ todo.txt                           |   2 +-
+ 4 files changed, 31 insertions(+), 2 deletions(-)
+2015-11-22 10:19:26 -0800,If repeat word, shake sword.
+
+ Assets/Animation/Input.controller                   | Bin 9208 -> 10832 bytes
+ Assets/Animation/Input_complete.anim                | Bin 0 -> 14256 bytes
+ Assets/Animation/Input_complete.anim.meta           |   8 ++++++++
+ Assets/Animation/Input_completed.anim               | Bin 0 -> 14256 bytes
+ Assets/Animation/Input_completed.anim.meta          |   8 ++++++++
+ Assets/Animation/{intro.anim => Input_intro.anim}   | Bin 9404 -> 9408 bytes
+ .../{intro.anim.meta => Input_intro.anim.meta}      |   0
+ Assets/Animation/{none.anim => Input_none.anim}     | Bin 9296 -> 9304 bytes
+ .../{none.anim.meta => Input_none.anim.meta}        |   0
+ Assets/Animation/Input_repeat.anim                  | Bin 0 -> 9720 bytes
+ Assets/Animation/Input_repeat.anim.meta             |   8 ++++++++
+ Assets/Animation/Input_repeated.anim                | Bin 0 -> 8964 bytes
+ Assets/Animation/Input_repeated.anim.meta           |   8 ++++++++
+ Assets/Animation/{submit.anim => Input_submit.anim} | Bin 13800 -> 13804 bytes
+ .../{submit.anim.meta => Input_submit.anim.meta}    |   0
+ .../{submitted.anim => Input_submitted.anim}        | Bin 9664 -> 9668 bytes
+ ...ubmitted.anim.meta => Input_submitted.anim.meta} |   0
+ Assets/Animation/Input_wrong.anim                   | Bin 0 -> 14520 bytes
+ Assets/Animation/Input_wrong.anim.meta              |   8 ++++++++
+ Assets/Animation/Input_wronged.anim                 | Bin 0 -> 9412 bytes
+ Assets/Animation/Input_wronged.anim.meta            |   8 ++++++++
+ Assets/Scripts/View.cs                              |   2 +-
+ Assets/anagram.unity                                | Bin 93060 -> 93060 bytes
+ todo.txt                                            |   5 +++--
+ 24 files changed, 52 insertions(+), 3 deletions(-)
+2015-11-22 09:50:24 -0800,Letters scatter on submit and then crawl.
+
+ Assets/Animation/WordState.controller | Bin 9008 -> 9008 bytes
+ Assets/Animation/Word_hit.anim        | Bin 9508 -> 13748 bytes
+ Assets/Animation/Word_move.anim       | Bin 9616 -> 15728 bytes
+ Assets/Animation/Word_none.anim       | Bin 8960 -> 8960 bytes
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+2015-11-22 09:23:49 -0800,One letter is hit and moves.
+
+ Assets/Animation/WordState.controller | Bin 7216 -> 9008 bytes
+ Assets/Animation/Word_hit.anim        | Bin 9508 -> 9508 bytes
+ Assets/Animation/Word_move.anim       | Bin 0 -> 9616 bytes
+ Assets/Animation/Word_move.anim.meta  |   8 ++++++++
+ Assets/Scripts/View.cs                |   8 +++++---
+ 5 files changed, 13 insertions(+), 3 deletions(-)
+2015-11-22 09:11:45 -0800,Parent bone to each letter to prepare to move.
+
+ Assets/Animation/Letter.controller         | Bin 8952 -> 8952 bytes
+ Assets/Animation/WordState.controller      | Bin 0 -> 7216 bytes
+ Assets/Animation/WordState.controller.meta |   8 ++++++++
+ Assets/Animation/Word_hit.anim             | Bin 0 -> 9508 bytes
+ Assets/Animation/Word_hit.anim.meta        |   8 ++++++++
+ Assets/Animation/Word_none.anim            | Bin 0 -> 8960 bytes
+ Assets/Animation/Word_none.anim.meta       |   8 ++++++++
+ Assets/Scripts/View.cs                     |  12 ++++++------
+ Assets/anagram.unity                       | Bin 90188 -> 93060 bytes
+ 9 files changed, 30 insertions(+), 6 deletions(-)
+2015-11-21 14:05:55 -0800,If word gets to bottom of screen, game over.
+
+ Assets/Animation/submit.anim | Bin 17880 -> 13800 bytes
+ Assets/Scripts/Main.cs       |   6 ++++++
+ Assets/Scripts/Model.cs      |   8 ++++++++
+ Assets/Scripts/View.cs       |   2 +-
+ Assets/anagram.unity         | Bin 90132 -> 90188 bytes
+ todo.txt                     |   4 ++--
+ 6 files changed, 17 insertions(+), 3 deletions(-)
+2015-11-21 10:58:56 -0800,Type sub-word.  Knockback letters.
+
+ Assets/Scripts/Main.cs               |   1 +
+ Assets/Scripts/Model.cs              |  66 ++++++++++++++++++++++++++++++++++-
+ Assets/Scripts/View.cs               |  25 +++++++++++--
+ Assets/Sounds/explosion_big.wav      | Bin 0 -> 32354 bytes
+ Assets/Sounds/explosion_big.wav.meta |  22 ++++++++++++
+ 5 files changed, 110 insertions(+), 4 deletions(-)
+2015-11-21 10:22:00 -0800,Word moves down screen.
+
+ Assets/Scripts/Main.cs  |   4 +-
+ Assets/Scripts/Model.cs |  28 +++-
+ Assets/Scripts/View.cs  |  14 +-
+ Assets/anagram.unity    | Bin 89980 -> 90132 bytes
+ session.vim             | 367 +++++++++---------------------------------------
+ todo.txt                |   6 +-
+ 6 files changed, 110 insertions(+), 309 deletions(-)
+2015-11-15 21:01:40 -0800,On submit, input rotates upward.
+
+ Assets/Animation/Input.controller      | Bin 0 -> 9208 bytes
+ Assets/Animation/Input.controller.meta |   8 ++++++++
+ Assets/Animation/intro.anim            | Bin 0 -> 9404 bytes
+ Assets/Animation/intro.anim.meta       |   8 ++++++++
+ Assets/Animation/none.anim             | Bin 0 -> 9296 bytes
+ Assets/Animation/none.anim.meta        |   8 ++++++++
+ Assets/Animation/submit.anim           | Bin 0 -> 17880 bytes
+ Assets/Animation/submit.anim.meta      |   8 ++++++++
+ Assets/Animation/submitted.anim        | Bin 0 -> 9664 bytes
+ Assets/Animation/submitted.anim.meta   |   8 ++++++++
+ Assets/Scripts/Toolkit.cs              |  11 +++++++++--
+ Assets/Scripts/View.cs                 |   2 ++
+ Assets/anagram.unity                   | Bin 73386 -> 89980 bytes
+ 13 files changed, 51 insertions(+), 2 deletions(-)
+2015-11-15 20:24:11 -0800,Input letters on blue background.
+
+ Assets/anagram.unity | Bin 79386 -> 73386 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+2015-11-15 20:14:35 -0800,On type and submit, hear sound.
+
+ Assets/Scripts/Main.cs        |   7 ++++---
+ Assets/Scripts/Model.cs       |   2 +-
+ Assets/Scripts/View.cs        |  15 ++++++---------
+ Assets/Sounds.meta            |   9 +++++++++
+ Assets/Sounds/select.wav      | Bin 0 -> 10188 bytes
+ Assets/Sounds/select.wav.meta |  22 ++++++++++++++++++++++
+ Assets/Sounds/shoot.wav       | Bin 0 -> 46990 bytes
+ Assets/Sounds/shoot.wav.meta  |  22 ++++++++++++++++++++++
+ Assets/anagram.unity          | Bin 76658 -> 79386 bytes
+ todo.txt                      |   9 ++++++++-
+ 10 files changed, 72 insertions(+), 14 deletions(-)
+2015-11-15 16:07:14 -0800,Read word level.
+
+ Assets/Scripts/Levels.cs |  10 ++++++++++
+ Assets/Scripts/View.cs   |   4 ++++
+ Assets/anagram.unity     | Bin 73690 -> 76658 bytes
+ todo.txt                 |   2 +-
+ 4 files changed, 15 insertions(+), 1 deletion(-)
+2015-11-15 16:01:03 -0800,Read number of letters entered.
+
+ Assets/Scripts/View.cs |   4 +++-
+ Assets/anagram.unity   | Bin 72210 -> 73690 bytes
+ todo.txt               |   5 +++--
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+2015-11-15 15:51:56 -0800,At each level, read help in UI text.
+
+ Assets/Scripts/Toolkit.cs |  10 ++++++++--
+ Assets/Scripts/View.cs    |  14 +++++++++++---
+ Assets/anagram.unity      | Bin 65116 -> 72210 bytes
+ todo.txt                  |   9 ++++++++-
+ 4 files changed, 27 insertions(+), 6 deletions(-)
+2015-11-15 14:58:38 -0800,Animate selecting letters in multiple words.
+
+ Assets/Animation/Letter.controller | Bin 8952 -> 8952 bytes
+ Assets/Scripts/Main.cs             |   3 +++
+ Assets/Scripts/Toolkit.cs          |  16 ++++++++++++++++
+ Assets/Scripts/View.cs             |  18 +++++++++---------
+ Assets/anagram.unity               | Bin 65004 -> 65116 bytes
+ 5 files changed, 28 insertions(+), 9 deletions(-)
+2015-11-15 12:32:47 -0800,Animate select any letter.
+
+ Assets/anagram.unity | Bin 63828 -> 65004 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+2015-11-15 12:31:14 -0800,Animate select first letter.
+
+ Assets/Animation.meta                      |   9 +++++++++
+ Assets/Animation/Letter.anim               | Bin 0 -> 9148 bytes
+ Assets/Animation/Letter.anim.meta          |   8 ++++++++
+ Assets/Animation/Letter.controller         | Bin 0 -> 8952 bytes
+ Assets/Animation/Letter.controller.meta    |   8 ++++++++
+ Assets/Animation/Letter_selected.anim      | Bin 0 -> 9156 bytes
+ Assets/Animation/Letter_selected.anim.meta |   8 ++++++++
+ Assets/Scripts/View.cs                     |   5 +++++
+ Assets/anagram.unity                       | Bin 62700 -> 63828 bytes
+ todo.txt                                   |   9 +++++++--
+ 10 files changed, 45 insertions(+), 2 deletions(-)
+2015-11-15 11:32:23 -0800,Line port backspace to delete last letter.
+
+ Assets/Scripts/View.cs | 33 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 32 insertions(+), 1 deletion(-)
+2015-11-15 11:26:34 -0800,Line port model of backspace.
+
+ Assets/Scripts/Model.cs | 18 ++++++++++++++++++
+ todo.txt                |  7 ++++++-
+ 2 files changed, 24 insertions(+), 1 deletion(-)
+2015-11-15 11:18:55 -0800,Port 100 levels.
+
+ Assets/Scripts/Levels.cs | 101 ++++++++++++++++++++++++++++++++++++++++++++++-
+ todo.txt                 |  14 +++----
+ 2 files changed, 107 insertions(+), 8 deletions(-)
+2015-11-15 10:42:32 -0800,Submit a word.  Log score.
+
+ Assets/Scripts/Model.cs |  2 +-
+ Assets/Scripts/View.cs  | 39 +++++++++++++++++++++++++++++++++++++++
+ todo.txt                |  5 +++++
+ 3 files changed, 45 insertions(+), 1 deletion(-)
+2015-11-15 10:28:20 -0800,Port model of word submission from AS3 to C#.
+
+ Assets/Scripts/Levels.cs                           |     10 +
+ Assets/Scripts/Model.cs                            |     84 +-
+ Assets/Scripts/Words.cs                            |     20 +
+ Assets/Scripts/Words.cs.meta                       |     12 +
+ Assets/Text.meta                                   |      9 +
+ Assets/Text/word_list_moby_crossword.flat.txt      | 113810 ++++++++++++++++++
+ Assets/Text/word_list_moby_crossword.flat.txt.meta |      8 +
+ Assets/Text/word_list_mobywords_credits.txt        |     26 +
+ Assets/Text/word_list_mobywords_credits.txt.meta   |      8 +
+ Assets/anagram.unity                               |    Bin 62700 -> 62700 bytes
+ session.vim                                        |    706 +-
+ todo.txt                                           |     32 +-
+ 12 files changed, 114136 insertions(+), 589 deletions(-)
+2015-11-15 09:06:48 -0800,Press letter key, input letter appears.
+
+ Assets/Scripts/View.cs |   4 ++--
+ Assets/anagram.unity   | Bin 62156 -> 62700 bytes
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+2015-11-15 09:00:55 -0800,Port model of keypress from ActionScript to C#.
+
+ Assets/Scripts/Model.cs   | 28 +++++++++++++++++++++++++++-
+ Assets/Scripts/Toolkit.cs |  4 ++++
+ Assets/Scripts/View.cs    | 11 +++++++++--
+ todo.txt                  | 19 ++++++++++++++++++-
+ 4 files changed, 58 insertions(+), 4 deletions(-)
+2015-11-15 08:32:47 -0800,Extract splitString to Toolkit.
+
+ Assets/Scripts/Model.cs        | 50 +++++++++++++++++++++++++++++++++++++-----
+ Assets/Scripts/Toolkit.cs      | 14 ++++++++++++
+ Assets/Scripts/Toolkit.cs.meta | 12 ++++++++++
+ todo.txt                       | 24 ++++++++++++++++++++
+ 4 files changed, 94 insertions(+), 6 deletions(-)
+2015-11-14 12:48:06 -0800,Structure animation of output.
+
+ Assets/Scripts/Model.cs |   1 +
+ Assets/Scripts/View.cs  |   5 +++--
+ Assets/anagram.unity    | Bin 39564 -> 62156 bytes
+ todo.txt                |   2 +-
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+2015-11-14 12:16:35 -0800,Hide invisible letters.
+
+ Assets/Scripts/View.cs | 1 -
+ 1 file changed, 1 deletion(-)
+2015-11-14 11:56:50 -0800,Read letters of "START".
+
+ Assets/Scripts/Levels.cs |  8 ++++----
+ Assets/Scripts/Main.cs   |  4 +++-
+ Assets/Scripts/Model.cs  | 33 +++++++++++++++++++++++++++++++--
+ Assets/Scripts/View.cs   | 28 ++++++++++++++++++++++++++--
+ todo.txt                 | 20 ++++++++++++++++++++
+ 5 files changed, 84 insertions(+), 9 deletions(-)
+2015-11-14 09:21:08 -0800,Match file base names from ActionScript version.
+
+ Assets/Scripts/{AnagramController.cs => Main.cs}    |   6 +++---
+ .../Scripts/{AnagramView.cs.meta => Main.cs.meta}   |   4 ++--
+ Assets/Scripts/{AnagramModel.cs => Model.cs}        |   2 +-
+ .../{AnagramController.cs.meta => Model.cs.meta}    |   4 ++--
+ Assets/Scripts/{AnagramView.cs => View.cs}          |   6 +++---
+ .../Scripts/{AnagramModel.cs.meta => View.cs.meta}  |   4 ++--
+ Assets/anagram.unity                                | Bin 39564 -> 39564 bytes
+ todo.txt                                            |   2 +-
+ 8 files changed, 14 insertions(+), 14 deletions(-)
+2015-11-14 09:11:40 -0800,Convert level 0 data from ActionScript to C#.
+
+ Assets/Scripts/AnagramModel.cs |    6 +-
+ Assets/Scripts/Levels.cs       |   21 +
+ Assets/Scripts/Levels.cs.meta  |   12 +
+ session.vim                    | 1396 ++++++++++++++++++++++++++++++++++++++++
+ todo.txt                       |   13 +-
+ 5 files changed, 1444 insertions(+), 4 deletions(-)
+2015-11-08 15:37:05 -0800,Stub word and level parameters variable.
+
+ Assets/Scripts/AnagramController.cs | 1 +
+ Assets/Scripts/AnagramModel.cs      | 7 +++++++
+ Assets/Scripts/AnagramView.cs       | 1 -
+ 3 files changed, 8 insertions(+), 1 deletion(-)
+2015-11-08 15:27:37 -0800,Stub model and view.
+
+ Assets/Scripts.meta                      |   9 +++++++++
+ Assets/Scripts/AnagramController.cs      |  14 ++++++++++++++
+ Assets/Scripts/AnagramController.cs.meta |  12 ++++++++++++
+ Assets/Scripts/AnagramModel.cs           |   7 +++++++
+ Assets/Scripts/AnagramModel.cs.meta      |  12 ++++++++++++
+ Assets/Scripts/AnagramView.cs            |  19 +++++++++++++++++++
+ Assets/Scripts/AnagramView.cs.meta       |  12 ++++++++++++
+ Assets/anagram.unity                     | Bin 38492 -> 39564 bytes
+ ProjectSettings/ProjectSettings.asset    | Bin 41745 -> 41769 bytes
+ 9 files changed, 85 insertions(+)
+2015-11-08 14:48:19 -0800,Read letters 0 to 9.
+
+ Assets/Images/letter_background.png.meta |   6 +++---
+ Assets/Images/letter_selected.png.meta   |   6 +++---
+ Assets/anagram.unity                     | Bin 23152 -> 38492 bytes
+ ProjectSettings/TagManager.asset         | Bin 4308 -> 4324 bytes
+ todo.txt                                 |   5 ++++-
+ 5 files changed, 10 insertions(+), 7 deletions(-)
+2015-11-08 13:50:05 -0800,Structure text of one letter tile.
+
+ Assets/DK Harimau Dua.otf                      | Bin 0 -> 51264 bytes
+ Assets/DK Harimau Dua.otf.meta                 |  19 +++++++++
+ Assets/Images.meta                             |   9 ++++
+ Assets/Images/input_letter_background.png      | Bin 0 -> 1048 bytes
+ Assets/Images/input_letter_background.png.meta |  56 +++++++++++++++++++++++++
+ Assets/Images/input_root.png                   | Bin 0 -> 2618 bytes
+ Assets/Images/input_root.png.meta              |  56 +++++++++++++++++++++++++
+ Assets/Images/letter_background.png            | Bin 0 -> 796 bytes
+ Assets/Images/letter_background.png.meta       |  56 +++++++++++++++++++++++++
+ Assets/Images/letter_selected.png              | Bin 0 -> 1408 bytes
+ Assets/Images/letter_selected.png.meta         |  56 +++++++++++++++++++++++++
+ Assets/anagram.unity                           | Bin 0 -> 23152 bytes
+ Assets/anagram.unity.meta                      |   8 ++++
+ ProjectSettings/AudioManager.asset             | Bin 0 -> 4140 bytes
+ ProjectSettings/DynamicsManager.asset          | Bin 0 -> 4276 bytes
+ ProjectSettings/EditorBuildSettings.asset      | Bin 0 -> 4104 bytes
+ ProjectSettings/EditorSettings.asset           | Bin 0 -> 4212 bytes
+ ProjectSettings/GraphicsSettings.asset         | Bin 0 -> 4248 bytes
+ ProjectSettings/InputManager.asset             | Bin 0 -> 5520 bytes
+ ProjectSettings/NavMeshAreas.asset             | Bin 0 -> 4384 bytes
+ ProjectSettings/NetworkManager.asset           | Bin 0 -> 4112 bytes
+ ProjectSettings/Physics2DSettings.asset        | Bin 0 -> 4308 bytes
+ ProjectSettings/ProjectSettings.asset          | Bin 0 -> 41745 bytes
+ ProjectSettings/ProjectVersion.txt             |   2 +
+ ProjectSettings/QualitySettings.asset          | Bin 0 -> 5004 bytes
+ ProjectSettings/TagManager.asset               | Bin 0 -> 4308 bytes
+ ProjectSettings/TimeManager.asset              | Bin 0 -> 4112 bytes
+ ProjectSettings/UnityAdsSettings.asset         | Bin 0 -> 4116 bytes
+ ProjectSettings/UnityAnalyticsManager.asset    | Bin 0 -> 4112 bytes
+ todo.txt                                       |  13 ++++++
+ 30 files changed, 275 insertions(+)
+2015-11-08 13:48:26 -0800,Initial commit
+
+ .gitignore | 21 +++++++++++++++++++++
+ LICENSE    | 22 ++++++++++++++++++++++
+ 2 files changed, 43 insertions(+)

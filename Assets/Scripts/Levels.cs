@@ -37,18 +37,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 				, {
 					"help", "TO ADD TIME, SPELL A SHORT WORD. EXAMPLES: 'ROD', 'WORD'."}
 			}
-			/*
-			,
-			new Dictionary<string, object>(){
-				{
-					"text", "STARE"}
-				, {
-					"help", "YOU CAN USE EACH SHORT WORD ONCE. EXAMPLES: 'EAT', 'TEAR'."}
-				,
-				{
-					"wordPosition", -150.0f}
-			}
-			 */
 		}
 		;
 		

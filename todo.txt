@@ -159,11 +159,25 @@ FEATURES
 		Test case:  Open editor.  Letter nodes.  Why does this warning appear in the editor?
 			Parameter 'Normal' does not exist.
 			UnityEngine.CanvasRenderer:RequestRefresh()
+	Simplify UnityToykit directories.
+	Rank file timesink.  About a full-time month of hours (160).  Mostly in model (15), editor (13), data utility (11).
+		minutes	percent	file
+		1289	12	todo.txt
+		897	8	Model.cs
+		738	7	anagram.unity
+		645	6	DataUtil.cs
+		354	3	session.vim
+		311	3	Levels.cs
+		298	3	README.md
+		271	3	View.cs
+		233	2	AnagramView.cs
+		225	2	Main.cs
+	Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
 
 TODO
 
-	Simplify UnityToykit directories.
-	Profile git file time.
+	Hint button.  Expect no seam.
+	Expect hint button top left corner same size as other corners.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
