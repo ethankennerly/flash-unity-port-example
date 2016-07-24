@@ -120,6 +120,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
+		/**
+		 * In tutor, word speed is half.
+		 */
 		internal void trial(Dictionary<string, object> parameters)
 		{
 			isGamePlaying = true;

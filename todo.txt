@@ -176,7 +176,6 @@ FEATURES
 
 TODO
 
-	Hint button.  Expect no seam.
 	Expect hint button top left corner same size as other corners.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
