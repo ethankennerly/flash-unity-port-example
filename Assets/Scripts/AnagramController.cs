@@ -26,9 +26,15 @@ namespace Finegamedesign.Anagram
 			view.wordBones = view.GetLetters(view.wordState, "bone_{0}", model.letterMax);
 			view.tweenSwap.Setup(view.wordBones);
 			SetupButtonController();
+			ScreenView.AutoRotate();
+			UpdateScreenOrientation();
+
+		}
+
+		private void UpdateScreenOrientation()
+		{
 			string aspect = ScreenView.IsPortrait() ? "portrait" : "landscape";
 			AnimationView.SetState(view.main, aspect);
-
 		}
 
 		private void LoadWords()
@@ -113,6 +119,7 @@ namespace Finegamedesign.Anagram
 			UpdateHint();
 			UpdateContinue();
 			UpdateNewGame();
+			UpdateScreenOrientation();
 		}
 
 		private void UpdateLetters()

@@ -180,11 +180,11 @@ FEATURES
 	Play one sound on timeline.
 		https://www.raywenderlich.com/116652/introduction-unity-animation-system
 	Fit HUD, buttons, and input to screen sizes.
+	Landscape layout
+		HUD and buttons on left.
 
 TODO
 
-	Landscape layout
-		HUD and buttons on right.
 	HUD intro animation.
 	Story clarifies rules and stars the player:
 		Word Sword
