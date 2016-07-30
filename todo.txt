@@ -184,6 +184,7 @@ TODO
 
 	Fit screen sizes.
 	Landscape layout and portrait layout.
+	HUD intro animation.
 	Story clarifies rules and stars the player:
 		Word Sword
 			RULE	STORY
