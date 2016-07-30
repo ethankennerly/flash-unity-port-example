@@ -57,7 +57,7 @@ namespace Finegamedesign.Anagram
 		{
 			main = rootObject;
 			word = SceneNodeView.GetChild(main, "canvas/word", word);
-			wordState = SceneNodeView.GetChild(main, "canvas/word/state", wordState);
+			wordState = SceneNodeView.GetChild(word, "state", wordState);
 			input = SceneNodeView.GetChild(main, "input", input);
 			inputState = SceneNodeView.GetChild(main, "input/state", inputState);
 			output = SceneNodeView.GetChild(main, "input/output", output);

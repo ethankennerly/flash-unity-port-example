@@ -179,11 +179,12 @@ FEATURES
 	C# single line comment style.
 	Play one sound on timeline.
 		https://www.raywenderlich.com/116652/introduction-unity-animation-system
+	Fit HUD, buttons, and input to screen sizes.
 
 TODO
 
-	Fit screen sizes.
-	Landscape layout and portrait layout.
+	Landscape layout
+		HUD and buttons on right.
 	HUD intro animation.
 	Story clarifies rules and stars the player:
 		Word Sword

@@ -57,6 +57,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<string> completes = new List<string>();
 		internal string text;
 		internal List<string> word;
+		internal float nextProgress = 0.0f;
 		internal float progressPositionScaled = 0.0f;
 		internal float progressPositionTweened = 0.0f;
 		internal float wordPosition = 0.0f;
@@ -80,7 +81,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private float responseSeconds;
 		private float wordPositionMin;
 		private float checkpointInterval = -16.0f; 
-		private float progressScale;
+		internal float progressScale;
 		private int trialCount;
 		internal Metrics metrics = new Metrics();
 		private int previous = 0;
@@ -198,7 +199,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.Update(deltaSeconds);
 		}
 		
-		internal void scaleToScreen(float screenWidth)
+		internal void ScaleToScreen(float screenWidth)
 		{
 			scale = screenWidth / width;
 		}
@@ -255,8 +256,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		private void UpdateProgress(float deltaSeconds)
 		{
+			nextProgress = progress.NextCreep(Performance());
 			progressPositionScaled = progressScale * width 
-				* progress.NextCreep(Performance());
+				* nextProgress;
 			progressPositionTweened += (progressPositionScaled - progressPositionTweened) * deltaSeconds;
 		}
 		

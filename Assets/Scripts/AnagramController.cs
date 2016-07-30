@@ -7,7 +7,7 @@ namespace Finegamedesign.Anagram
 	public sealed class AnagramController
 	{
 		internal AnagramView view;
-		private AnagramModel model;
+		internal AnagramModel model;
 		private Email email = new Email();
 		private Storage storage = new Storage();
 		private string buttonDownName;
@@ -19,13 +19,16 @@ namespace Finegamedesign.Anagram
 			model = new AnagramModel();
 			LoadWords();
 			model.wordHash = new Words().Init();
-			model.scaleToScreen(9.5f);
+			model.ScaleToScreen(9.5f);
 			model.Load(storage.Load());
 			model.SetReadingOrder(view.letterNodes);
 			view.wordLetters = view.GetLetters(view.wordState, "bone_{0}/letter", model.letterMax);
 			view.wordBones = view.GetLetters(view.wordState, "bone_{0}", model.letterMax);
 			view.tweenSwap.Setup(view.wordBones);
 			SetupButtonController();
+			string aspect = ScreenView.IsPortrait() ? "portrait" : "landscape";
+			AnimationView.SetState(view.main, aspect);
+
 		}
 
 		private void LoadWords()
@@ -316,7 +319,7 @@ namespace Finegamedesign.Anagram
 				UpdateOutputHitsWord();
 			}
 			SceneNodeView.SetLocalY(view.word, model.wordPositionScaled * view.wordPositionScale);
-			SceneNodeView.SetWorldY(view.progress, model.progressPositionTweened * SceneNodeView.GetWorldScaleY(view.progress));
+			SceneNodeView.SetLocalY(view.progress, model.progressPositionTweened * SceneNodeView.GetWorldScaleY(view.progress));
 		}
 	}
 }
