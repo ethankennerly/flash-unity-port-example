@@ -187,10 +187,8 @@ namespace Finegamedesign.Anagram
 			for (int s = 0; s < selects.Count; s++)
 			{
 				int index = (int) selects[s];
-				string name = "bone_" + index + "/letter";
-				AnimationView.SetState(
-					SceneNodeView.GetChild(view.wordState, name), state);
-				view.audio.Play("select");
+				AnimationView.SetState(view.wordLetters[index],
+					state);
 			}
 		}
 

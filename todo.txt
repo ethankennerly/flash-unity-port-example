@@ -177,6 +177,8 @@ FEATURES
 	Main.cs to AnagramView.cs
 	C# CapitalCase style functions.
 	C# single line comment style.
+	Play one sound on timeline.
+		https://www.raywenderlich.com/116652/introduction-unity-animation-system
 
 TODO
 
