@@ -40,33 +40,33 @@ namespace /*<com>*/Finegamedesign.Anagram
 		}
 		;
 		
-		internal Dictionary<string, object> getParams()
+		internal Dictionary<string, object> GetParams()
 		{
 			return (Dictionary<string, object>)parameters[index];
 		}
 		
-		internal Dictionary<string, object> progress(float fraction)
+		internal Dictionary<string, object> Progress(float fraction)
 		{
 			int add = (int)(fraction * DataUtil.Length(parameters));
-			return up(add);
+			return Up(add);
 		}
 
-		internal Dictionary<string, object> up(int add = 1)
+		internal Dictionary<string, object> Up(int add = 1)
 		{
 			index = (index + add) % DataUtil.Length(parameters);
 			while (index < 0)
 			{
 				index += DataUtil.Length(parameters);
 			}
-			return getParams();
+			return GetParams();
 		}
 		
-		internal int current()
+		internal int Current()
 		{
 			return index + 1;
 		}
 		
-		internal int count()
+		internal int Count()
 		{
 			return DataUtil.Length(parameters);
 		}

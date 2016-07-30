@@ -33,7 +33,7 @@ namespace /*<com>*/Finegamedesign.Powerplant
          */
         public void Reset()
         {
-            Debug.Log("Rule.reset:  Now your cards will be dealt in the tutorial's starting order.");
+            Debug.Log("Rule.Reset:  Now your cards will be dealt in the tutorial's starting order.");
             if (null == deck) {
                 deck = DataUtil.ToList(1, 3,
                 2, 4,

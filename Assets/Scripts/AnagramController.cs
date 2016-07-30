@@ -22,28 +22,28 @@ namespace Finegamedesign.Anagram
 		public void Setup()
 		{
 			model = new Model();
-			loadWords();
-			model.wordHash = new Words().init();
+			LoadWords();
+			model.wordHash = new Words().Init();
 			model.scaleToScreen(9.5f);
-			model.load(storage.Load());
+			model.Load(storage.Load());
 			view.SetupAudio(soundFileNames);
-			model.setReadingOrder(view.letterNodes);
+			model.SetReadingOrder(view.letterNodes);
 			view.wordLetters = view.GetLetters(view.wordState, "bone_{0}/letter", model.letterMax);
 			view.wordBones = view.GetLetters(view.wordState, "bone_{0}", model.letterMax);
 			view.tweenSwap.Setup(view.wordBones);
 			SetupButtonController();
 		}
 
-		private void loadWords()
+		private void LoadWords()
 		{
 			string text = Toolkit.Read("text/anagram_words.txt");
 			string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
-			pushWords(model.levels.parameters, words);
+			AddWords(model.levels.parameters, words);
 			string[] win = new string[]{"YOU", "WIN"};
-			pushWords(model.levels.parameters, win);
+			AddWords(model.levels.parameters, win);
 		}
 
-		private static void pushWords(
+		private static void AddWords(
 				List<Dictionary<string, object>> parameters, 
 				string[] words)
 		{
@@ -100,30 +100,30 @@ namespace Finegamedesign.Anagram
 
 		public void Update(float deltaSeconds)
 		{
-			model.update(deltaSeconds);
+			model.Update(deltaSeconds);
 			if ("complete" == model.state) {
 				storage.SetKeyValue("level", model.progress.GetLevelNormal());
 				storage.Save(storage.data);
 			}
 			UpdateButtonController();
-			updateBackspace();
-			updateCheat();
+			UpdateBackspace();
+			UpdateCheat();
 			if (model.isGamePlaying) {
-				updatePlay();
+				UpdatePlay();
 			}
-			updateLetters();
-			updateHud();
-			updateHint();
-			updateContinue();
-			updateNewGame();
+			UpdateLetters();
+			UpdateHud();
+			UpdateHint();
+			UpdateContinue();
+			UpdateNewGame();
 		}
 
-		private void updateLetters()
+		private void UpdateLetters()
 		{
-			view.updateLetters(view.wordState, model.word, "bone_{0}/letter", model.letterMax);
-			view.updateLetters(view.inputState, model.inputs, "Letter_{0}", model.letterMax);
-			view.updateLetters(view.output, model.outputs, "Letter_{0}", model.letterMax);
-			view.updateLetters(view.hint, model.hints, "Letter_{0}", model.letterMax);
+			view.UpdateLetters(view.wordState, model.word, "bone_{0}/letter", model.letterMax);
+			view.UpdateLetters(view.inputState, model.inputs, "Letter_{0}", model.letterMax);
+			view.UpdateLetters(view.output, model.outputs, "Letter_{0}", model.letterMax);
+			view.UpdateLetters(view.hint, model.hints, "Letter_{0}", model.letterMax);
 		}
 
 		public bool IsLetterKeyDown(string letter)
@@ -131,19 +131,19 @@ namespace Finegamedesign.Anagram
 			return KeyView.IsDownNow(letter.ToLower());
 		}
 
-		private void updatePlay()
+		private void UpdatePlay()
 		{
-			List<string> presses = model.getPresses(IsLetterKeyDown);
-			updateSelect(model.press(presses), true);
-			updateSelect(model.mouseDown(letterIndexMouseDown), true);
-			updateSubmit();
-			updatePosition();
+			List<string> presses = model.GetPresses(IsLetterKeyDown);
+			UpdateSelect(model.Press(presses), true);
+			UpdateSelect(model.MouseDown(letterIndexMouseDown), true);
+			UpdateSubmit();
+			UpdatePosition();
 		}
 
 		/**
 		 * http://answers.unity3d.com/questions/762073/c-list-of-string-name-for-inputgetkeystring-name.html
 		 */
-		private void updateCheat()
+		private void UpdateCheat()
 		{
 			if (KeyView.IsDownNow("page up"))
 			{
@@ -152,7 +152,7 @@ namespace Finegamedesign.Anagram
 			}
 			else if (KeyView.IsDownNow("page down"))
 			{
-				model.levelDownMax();
+				model.LevelDownMax();
 				view.audio.Play("select");
 			}
 			else if (KeyView.IsDownNow("0")
@@ -165,13 +165,13 @@ namespace Finegamedesign.Anagram
 		/**
 		 * Delete or backspace:  Remove last letter.
 		 */
-		private void updateBackspace()
+		private void UpdateBackspace()
 		{
 			if (KeyView.IsDownNow("delete")
 			|| KeyView.IsDownNow("backspace")
 			|| "delete" == buttonDownName)
 			{
-				updateSelect(model.backspace(), false);
+				UpdateSelect(model.Backspace(), false);
 				buttonDownName = null;
 			}
 		}
@@ -181,7 +181,7 @@ namespace Finegamedesign.Anagram
 		 * Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
 		 * Could cache finds.
 		 */
-		private void updateSelect(List<int> selects, bool selected)
+		private void UpdateSelect(List<int> selects, bool selected)
 		{
 			string state = selected ? "selected" : "none";
 			for (int s = 0; s < selects.Count; s++)
@@ -194,7 +194,7 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
-		private void updateHud()
+		private void UpdateHud()
 		{
 			SceneNodeView.SetVisible(view.hud, model.isHudVisible);
 			TextView.SetText(view.helpText, model.help);
@@ -216,7 +216,7 @@ namespace Finegamedesign.Anagram
 		 *			 state
 		 * Play "complete" animation on word, so that letters are off-screen when populating next word.
 		 */
-		private void updateSubmit()
+		private void UpdateSubmit()
 		{
 			if (null != model.wordStateNow)
 			{
@@ -228,29 +228,29 @@ namespace Finegamedesign.Anagram
 			|| "submit" == buttonDownName)
 			{
 				buttonDownName = null;
-				string state = model.submit();
+				string state = model.Submit();
 				if (null != state) 
 				{
 					AnimationView.SetState(view.input, state);
 					view.audio.Play("shoot");
 					if ("complete" != model.state) {
-						resetSelect();
+						ResetSelect();
 					}
 				}
 			}
 			string completedNow = AnimationView.CompletedNow(view.input);
 			if ("complete" == completedNow)
 			{
-				model.nextTrial();
+				model.NextTrial();
 				// view.tweenSwap.Move(model.stationIndexes);
 				view.tweenSwap.Reset();
-				resetSelect();
+				ResetSelect();
 			}
 		}
 
-		private void updateOutputHitsWord()
+		private void UpdateOutputHitsWord()
 		{
-			if (model.onOutputHitsWord())
+			if (model.OnOutputHitsWord())
 			{
 				if ("complete" == model.state)
 				{
@@ -267,37 +267,37 @@ namespace Finegamedesign.Anagram
 		 * Hint does not reset letters selected.
 		 * Test case:  2016-06-19 Hint.  Expect no mismatch between letters typed and letters selected.
 		 */
-		private void updateHint()
+		private void UpdateHint()
 		{
 			if (KeyView.IsDownNow("?")
 			|| KeyView.IsDownNow("/")
 			|| "hint" == buttonDownName)
 			{
-				model.hint();
+				model.Hint();
 			}
 			SceneNodeView.SetVisible(view.hintButton, model.isHintVisible);
 
 		}
 
-		private void updateNewGame()
+		private void UpdateNewGame()
 		{
 			if (KeyView.IsDownNow("home")
 			|| "newGame" == buttonDownName)
 			{
-				model.newGame();
-				resetSelect();
+				model.NewGame();
+				ResetSelect();
 			}
 			SceneNodeView.SetVisible(view.newGameButton, model.isNewGameVisible);
 
 		}
 
-		private void updateContinue()
+		private void UpdateContinue()
 		{
 			if (KeyView.IsDownNow("end")
 			|| "continue" == buttonDownName)
 			{
-				model.doContinue();
-				resetSelect();
+				model.ContinueGame();
+				ResetSelect();
 			}
 			SceneNodeView.SetVisible(view.continueButton, model.isContinueVisible);
 			SceneNodeView.SetVisible(view.deleteButton, !model.isContinueVisible);
@@ -305,7 +305,7 @@ namespace Finegamedesign.Anagram
 
 		}
 
-		private void resetSelect()
+		private void ResetSelect()
 		{
 			int max = model.word.Count;
 			for (int index = 0; index < max; index++)
@@ -324,11 +324,11 @@ namespace Finegamedesign.Anagram
 		 * Expect checkpoint line near bottom of screen each time.
 		 * Got checkpoint lines had gone down off the screen.
 		 */
-		private void updatePosition()
+		private void UpdatePosition()
 		{
-			if (model.mayKnockback())
+			if (model.MayKnockback())
 			{
-				updateOutputHitsWord();
+				UpdateOutputHitsWord();
 			}
 			SceneNodeView.SetLocalY(view.word, model.wordPositionScaled * view.wordPositionScale);
 			SceneNodeView.SetWorldY(view.progress, model.progressPositionTweened * SceneNodeView.GetWorldScaleY(view.progress));

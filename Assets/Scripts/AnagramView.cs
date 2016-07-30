@@ -99,7 +99,7 @@ namespace Finegamedesign.Anagram
 			return letters;
 		}
 
-		internal void updateLetters(GameObject parent, List<string> letters, string namePattern, int letterMax) 
+		internal void UpdateLetters(GameObject parent, List<string> letters, string namePattern, int letterMax) 
 		{
 			for (int i = 0; i < letterMax; i++)
 			{

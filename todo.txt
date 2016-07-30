@@ -173,10 +173,34 @@ FEATURES
 		233	2	AnagramView.cs
 		225	2	Main.cs
 	Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
+	Expect hint button top left corner same size as other corners.
+	Main.cs to AnagramView.cs
+	C# CapitalCase style functions.
 
 TODO
 
-	Expect hint button top left corner same size as other corners.
+	C# single line comment style.
+	Fit screen sizes.
+	Landscape layout and portrait layout.
+	Story clarifies rules and stars the player:
+		Word Sword
+			RULE	STORY
+			Anagram	Grid of letters
+			Timer	Letters falling
+			Bonus	Knock letters back
+			Shuffle	Letters slide
+			Spell	Slide letters up and off
+			LevelUp	Progress on map
+		Word Garden
+			RULE	STORY
+			Anagram	Grid of letters
+			Timer	Letters falling
+			Bonus	Knock letters back
+			Shuffle	Letters slide
+			Spell	Slide letters up and off
+			LevelUp	Scroll flowers
+	Different scene for each theme.
+	Play in landscape or portrait.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
@@ -211,6 +235,9 @@ TODO
 	Mouse down to select that letter when there are 2 copies.
 	Animate various outcomes:  many subwords.  fast.  barely survive.
 	Theme:  
+		WORD SWORD
+		BATTLE OF WORDS
+		WORDCRAFT
 		WORD GARDEN
 		WORD SHARP
 		WORD STAR
@@ -223,6 +250,7 @@ TODO
 		WORD RAPIDS
 		WORD SPEED
 		WORD BLITZ
+		SPIDER WORD
 		WORD BLIZZARD
 		WORD BOWLING
 		WORD SWEEP
@@ -231,17 +259,9 @@ TODO
 		WORD VOYAGE
 		WORD WAR
 		WORDSMITH
-		WORDCRAFT
 		WORD WIZ
+	If spell full word, auto-submit.
 	Experiment:  Only letters knocked back that had been spelled.  Knockback farther.
-	Spider Word.  Looks like a spider on a thread.
-	Words with 2 anagrams.
-	More responsive.
-	Main.cs to MainBehaviour.cs
-	C# CapitalCase style functions.
-	C# single line comment style.
-	Fit screen sizes.
-	Landscape layout and portrait layout.
 	Button press.
 	Clean font.
 	Plant flower where you are.

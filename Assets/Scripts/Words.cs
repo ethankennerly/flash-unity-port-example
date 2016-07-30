@@ -4,7 +4,7 @@ public class Words
 {
 	public Dictionary<string, object> words;
 
-	public Dictionary<string, object> init()
+	public Dictionary<string, object> Init()
 	{
 		string text = Toolkit.Read(
 			"text/TWL06.txt"

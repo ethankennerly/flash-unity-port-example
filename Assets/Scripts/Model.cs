@@ -19,7 +19,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return wordHash.ContainsKey(word);
 		}
 
-		private static void shuffleNotWord(Dictionary<string, object> wordHash, List<string> letters, List<int> readingOrder, int attemptMax = 16)
+		private static void ShuffleNotWord(Dictionary<string, object> wordHash, List<string> letters, List<int> readingOrder, int attemptMax = 16)
 		{
 			for (int attempt = 0; attempt < attemptMax; attempt++)
 			{
@@ -91,11 +91,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 		
 		public Model()
 		{
-			setupProgress();
+			SetupProgress();
 			tutorLevel = 3;
 			trialCount = 0;
 			isNewGameVisible = true;
-			populateWord("");
+			PopulateWord("");
 			metrics.trial_headers = new string[]{
 				"level_start", 
 				"level_up", 
@@ -107,12 +107,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.StartSession();
 		}
 		
-		private void populateWord(string text)
+		private void PopulateWord(string text)
 		{
 			this.text = text;
 			available = DataUtil.Split(text, "");
 			word = DataUtil.CloneList(available);
-			populateHint(text);
+			PopulateHint(text);
 			stationIndexes = new List<int>();
 			for (int index = 0; index < DataUtil.Length(word); index++)
 			{
@@ -123,7 +123,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		/**
 		 * In tutor, word speed is half.
 		 */
-		internal void trial(Dictionary<string, object> parameters)
+		internal void StartTrial(Dictionary<string, object> parameters)
 		{
 			isGamePlaying = true;
 			isContinueVisible = false;
@@ -132,7 +132,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
 			help = "";
-			wordWidthPerSecond = isTutor() ? -0.005f : -0.01f;
+			wordWidthPerSecond = IsTutor() ? -0.005f : -0.01f;
 			if (parameters.ContainsKey("text")) {
 				text = (string)parameters["text"];
 			}
@@ -145,10 +145,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (parameters.ContainsKey("wordPosition")) {
 				wordPosition = (float)parameters["wordPosition"];
 			}
-			populateWord(text);
+			PopulateWord(text);
 			if ("" == help)
 			{
-				//? shuffleNotWord(wordHash, word, readingOrder);
+				//? ShuffleNotWord(wordHash, word, readingOrder);
 				wordWidthPerSecond = // -0.05;
 				// -0.02;
 				// -0.01;
@@ -170,7 +170,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordStateNow = "begin";
 			if (isVerbose) 
 			{
-				Debug.Log("Model.trial: word[0]: <" + word[0] + ">" 
+				Debug.Log("Model.StartTrial: word[0]: <" + word[0] + ">" 
 					+ " level " + progress.GetLevelNormal());
 			}
 			metrics.StartTrial();
@@ -181,20 +181,20 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.trial_strings["word"] = text;
 		}
 		
-		internal void updateNow(int cumulativeMilliseconds)
+		internal void UpdateNow(int cumulativeMilliseconds)
 		{
 			float deltaSeconds = (now - previous) / 1000.0f;
-			update(deltaSeconds);
+			Update(deltaSeconds);
 			previous = now;
 		}
 		
-		internal void update(float deltaSeconds)
+		internal void Update(float deltaSeconds)
 		{
 			if (isGamePlaying) {
 				responseSeconds += deltaSeconds;
-				updatePosition(deltaSeconds);
+				UpdatePosition(deltaSeconds);
 			}
-			updateHintVisible();
+			UpdateHintVisible();
 			metrics.Update(deltaSeconds);
 		}
 		
@@ -213,7 +213,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private void clampWordPosition()
 		{
 			float min = wordWidth - width;
-			if (!isTutor() && wordPosition <= min)
+			if (!IsTutor() && wordPosition <= min)
 			{
 				help = "GAME OVER!";
 				helpState = "gameOver";
@@ -224,7 +224,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				metrics.EndTrial();
 				metrics.EndSession();
 			}
-			float max = isTutor() ? -0.4f * wordWidth : 0.0f;
+			float max = IsTutor() ? -0.4f * wordWidth : 0.0f;
 			wordPosition = Mathf.Max(min, Mathf.Min(max, wordPosition));
 		}
 	
@@ -234,7 +234,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Next word.
 		// Neighbor Kristine expects time to enter.
 		// Got word still at the bottom.
-		private void updatePosition(float deltaSeconds)
+		private void UpdatePosition(float deltaSeconds)
 		{
 			wordPosition += (deltaSeconds * width * wordWidthPerSecond);
 			clampWordPosition();
@@ -242,27 +242,27 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPositionScaled = wordPosition * scale;
 			// wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
 			bool isVerbosePosition = false;
-			if (isVerbosePosition) Debug.Log("Model.updatePosition: " + wordPosition);
-			updateProgress(deltaSeconds);
+			if (isVerbosePosition) Debug.Log("Model.UpdatePosition: " + wordPosition);
+			UpdateProgress(deltaSeconds);
 		}
 
 		// Scale scrolling to arrive at each checkpoint in the world on each step of normalized progress.
-		private void setupProgress()
+		private void SetupProgress()
 		{
 			progressScale = checkpointInterval / checkpointStep / width;
 			progress.SetCheckpointStep(checkpointStep);
 		}
 
-		private void updateProgress(float deltaSeconds)
+		private void UpdateProgress(float deltaSeconds)
 		{
 			progressPositionScaled = progressScale * width 
-				* progress.NextCreep(performance());
+				* progress.NextCreep(Performance());
 			progressPositionTweened += (progressPositionScaled - progressPositionTweened) * deltaSeconds;
 		}
 		
 		private float outputKnockback = 0.0f;
 		
-		internal bool mayKnockback()
+		internal bool MayKnockback()
 		{
 			return 0 < outputKnockback && 1 <= DataUtil.Length(outputs);
 		}
@@ -270,7 +270,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		/**
 		 * Clamp word to appear on screen.  Test case:  2015-04-18 Complete word.  See next word slide in.
 		 */
-		private void prepareKnockback(int length, bool complete)
+		private void PrepareKnockback(int length, bool complete)
 		{
 			float perLength =
 			0.03f;
@@ -283,15 +283,15 @@ namespace /*<com>*/Finegamedesign.Anagram
 			clampWordPosition();
 		}
 		
-		internal bool onOutputHitsWord()
+		internal bool OnOutputHitsWord()
 		{
-			bool enabled = mayKnockback();
+			bool enabled = MayKnockback();
 			if (enabled)
 			{
 				wordPosition += outputKnockback;
 				if ("complete" != state)
 				{
-					//? shuffleNotWord(wordHash, word, readingOrder);
+					//? ShuffleNotWord(wordHash, word, readingOrder);
 					Deck.ShuffleList(stationIndexes);
 				}
 				selects = DataUtil.CloneList(word);
@@ -313,7 +313,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		/**
 		 * @param   justPressed	 Filter signature justPressed(letter):Boolean.
 		 */
-		internal List<string> getPresses(/*<Function>*/IsJustPressed justPressed)
+		internal List<string> GetPresses(/*<Function>*/IsJustPressed justPressed)
 		{
 			List<string> presses = new List<string>();
 			Dictionary<string, object> letters = new Dictionary<string, object>(){
@@ -342,7 +342,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 * If letter not available, disable typing it.
 		 * @return Vector of word indexes.
 		 */
-		internal List<int> press(List<string> presses)
+		internal List<int> Press(List<string> presses)
 		{
 			Dictionary<string, object> letters = new Dictionary<string, object>(){
 			}
@@ -367,14 +367,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 					int selected = selects.IndexOf(letter);
 					if (0 <= selected)
 					{
-						select(selectsNow, selected, letter);
+						Select(selectsNow, selected, letter);
 					}
 				}
 			}
 			return selectsNow;
 		}
 
-		private void select(List<int> selectsNow, int selected, string letter)
+		private void Select(List<int> selectsNow, int selected, string letter)
 		{
 			selectsNow.Add(selected);
 			selects[selected] = letter.ToLower();
@@ -385,7 +385,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
-		internal List<int> mouseDown(int selected)
+		internal List<int> MouseDown(int selected)
 		{
 			List<int> selectsNow = new List<int>();
 			if (0 <= selected) {
@@ -394,13 +394,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 				if (0 <= index) {
 					available.RemoveRange(index, 1);
 					inputs.Add(letter);
-					select(selectsNow, selected, letter);
+					Select(selectsNow, selected, letter);
 				}
 			}
 			return selectsNow;
 		}
 		
-		internal List<int> backspace()
+		internal List<int> Backspace()
 		{
 			List<int> selectsNow = new List<int>();
 			if (1 <= DataUtil.Length(inputs))
@@ -417,7 +417,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return selectsNow;
 		}
 	
-		private void populateHint(string text)
+		private void PopulateHint(string text)
 		{
 			hints.Clear();
 			isHintVisible = false;
@@ -425,7 +425,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			hintWord = text;
 		}
 		
-		private void updateHintVisible()
+		private void UpdateHintVisible()
 		{
 			if (!isGamePlaying) {
 				isHintVisible = false;
@@ -434,7 +434,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				float hintPerformanceMax = // 0.25f;
 											// 0.375f;
 											0.5f;
-				if (performance() <= hintPerformanceMax) {
+				if (Performance() <= hintPerformanceMax) {
 					isHintVisible = submitsUntilHintNow <= 0;
 				}
 				else {
@@ -443,7 +443,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
-		internal void hint()
+		internal void Hint()
 		{
 			if (isHintVisible && hints.Count < word.Count) {
 				submitsUntilHintNow = submitsUntilHint;
@@ -454,7 +454,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
-		internal void newGame()
+		internal void NewGame()
 		{
 			if (isNewGameVisible)
 			{
@@ -464,7 +464,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				}
 				previousSessionLevel = 0;
 				progress.SetLevelNormal(previousSessionLevel);
-				trial(levels.parameters[0]);
+				StartTrial(levels.parameters[0]);
 			}
 		}
 
@@ -476,7 +476,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 * When continue, add trial count.
 		 * Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
 		 */
-		internal void doContinue()
+		internal void ContinueGame()
 		{
 			if (isContinueVisible) {
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
@@ -487,7 +487,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				progress.SetLevelNormal(level);
 				trialCount++;
 				metrics.StartSession();
-				nextTrial();
+				NextTrial();
 				DataUtil.Clear(inputs);
 			}
 		}
@@ -500,7 +500,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		 * Copy outputs from inputs, even if no submission length.
 		 * Test case:  2016-06-25 Submit word.  Submit again.  Expect to see no output.  Saw output.
 		 */
-		internal string submit()
+		internal string Submit()
 		{
 			string submission = DataUtil.Join(inputs, "");
 			bool accepted = false;
@@ -527,14 +527,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 						}
 						repeat[submission] = true;
 						accepted = true;
-						scoreUp(submission);
+						ScoreUp(submission);
 						bool complete = DataUtil.Length(text) == DataUtil.Length(submission);
-						prepareKnockback(DataUtil.Length(submission), complete);
+						PrepareKnockback(DataUtil.Length(submission), complete);
 						if (complete)
 						{
 							completes = DataUtil.CloneList(word);
 							metrics.EndTrial();
-							levelUp();
+							LevelUp();
 							if (isVerbose)
 							{
 								Debug.Log("Model.submit: " + submission 
@@ -567,13 +567,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return state;
 		}
 		
-		private void scoreUp(string submission)
+		private void ScoreUp(string submission)
 		{
 			points = DataUtil.Length(submission);
 			score += points;
 		}
 
-		private float performance()
+		private float Performance()
 		{
 			float bestResponseSeconds = 0.75f * word.Count;
 			float worstResponseSeconds = 4.0f * bestResponseSeconds;
@@ -584,61 +584,61 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return performanceNormal;
 		}
 
-		private bool updateCheckpoint()
+		private bool UpdateCheckpoint()
 		{
 			progress.UpdateCheckpoint();
 			if (progress.isCheckpoint) {
 				isGamePlaying = false;
 				isContinueVisible = true;
 				help = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
-				populateWord("");
+				PopulateWord("");
 				//- metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;
 				if (isVerbose) {
-					Debug.Log("Model.updateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
+					Debug.Log("Model.UpdateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
 				}
 			}
 			return progress.isCheckpoint;
 		}
 
-		private bool isTutor()
+		private bool IsTutor()
 		{
 			return progress.GetLevelNormal() < tutorLevel 
 				&& trialCount < tutorLevel;
 		}
 
 		// If next trial starts; otherwise checkpoint.
-		internal void nextTrial()
+		internal void NextTrial()
 		{
-			bool isNow = !updateCheckpoint();
+			bool isNow = !UpdateCheckpoint();
 			if (isNow) {
 				Dictionary<string, object> level;
-				isHudVisible = !isTutor();
+				isHudVisible = !IsTutor();
 				if (isHudVisible) {
 					level = progress.Pop(levels.parameters, tutorLevel);
 				}
 				else {
-					level = levels.up();
+					level = levels.Up();
 				}
-				trial(level);
+				StartTrial(level);
 			}
 		}
 
 		// Level up by response time and worst word position.
 		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
-		internal void levelUp()
+		internal void LevelUp()
 		{
-			if (isTutor()) {
+			if (IsTutor()) {
 			}
 			else {
-				progress.Creep(performance());
+				progress.Creep(Performance());
 				metrics.trial_integers["level_up"] = progress.GetLevelNormal() - metrics.trial_integers["level_start"];
 			}
 		}
 
 		private int previousSessionLevel;
 
-		internal void load(Dictionary<string, object> data)
+		internal void Load(Dictionary<string, object> data)
 		{
 			if (null != data) {
 				if (data.ContainsKey("level")) {
@@ -647,7 +647,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					help = "WORD GARDEN";
 					if (isVerbose)
 					{
-						Debug.Log("Model.load: level " + previousSessionLevel);
+						Debug.Log("Model.Load: level " + previousSessionLevel);
 					}
 				}
 				else {
@@ -656,17 +656,17 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
-		internal void levelDownMax()
+		internal void LevelDownMax()
 		{
 			score = 0;
 			progress.Creep(0.0f);
-			nextTrial();
+			NextTrial();
 			wordPosition = 0.0f;
 		}
 
 		private List<int> readingOrder = new List<int>();
 
-		internal void setReadingOrder(List<SceneNodeModel> letterNodes)
+		internal void SetReadingOrder(List<SceneNodeModel> letterNodes)
 		{	
 			DataUtil.Clear(readingOrder);
 			for (int letter = 0; letter < DataUtil.Length(letterNodes); letter++)

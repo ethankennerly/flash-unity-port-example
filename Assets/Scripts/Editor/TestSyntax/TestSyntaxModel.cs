@@ -95,7 +95,7 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
             repeat = new Dictionary<string, object>(){
             }
             ;
-            if (isVerbose) Debug.Log("Model.trial: word[0]: <" + word[0] + ">");
+            if (isVerbose) Debug.Log("Model.StartTrial: word[0]: <" + word[0] + ">");
         }
         
         private int previous = 0;
@@ -142,7 +142,7 @@ namespace /*<com>*/Finegamedesign.Anagram.TestSyntax
             wordPosition += (seconds * width * wordWidthPerSecond);
             ClampWordPosition();
             wordPositionScaled = wordPosition * scale;
-            if (isVerbose) Debug.Log("Model.updatePosition: " + wordPosition);
+            if (isVerbose) Debug.Log("Model.UpdatePosition: " + wordPosition);
         }
         
         private float outputKnockback = 0.0f;
