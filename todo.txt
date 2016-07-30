@@ -208,11 +208,13 @@ TODO
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
+	Remove scale from root.
 	Repeat.  Different sound.
 	Not accepted.  Different sound.
 	New word approach sound.
 	Clarify will lose when word at bottom.
 	Pause button: show menu: continue, new game.
+	Validate find letters at start.
 	Creep up to challenging word.
 	Checkpoint.  Congratulation animation.
 	Cache letter nodes at setup.
