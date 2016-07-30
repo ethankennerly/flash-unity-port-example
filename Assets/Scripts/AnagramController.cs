@@ -7,12 +7,7 @@ namespace Finegamedesign.Anagram
 	public sealed class AnagramController
 	{
 		internal AnagramView view;
-		private List<string> soundFileNames = new List<string>(){
-				"select",
-				"shoot",
-				"explosion_big"
-			};
-		private Model model;
+		private AnagramModel model;
 		private Email email = new Email();
 		private Storage storage = new Storage();
 		private string buttonDownName;
@@ -21,12 +16,11 @@ namespace Finegamedesign.Anagram
 
 		public void Setup()
 		{
-			model = new Model();
+			model = new AnagramModel();
 			LoadWords();
 			model.wordHash = new Words().Init();
 			model.scaleToScreen(9.5f);
 			model.Load(storage.Load());
-			view.SetupAudio(soundFileNames);
 			model.SetReadingOrder(view.letterNodes);
 			view.wordLetters = view.GetLetters(view.wordState, "bone_{0}/letter", model.letterMax);
 			view.wordBones = view.GetLetters(view.wordState, "bone_{0}", model.letterMax);
@@ -89,8 +83,8 @@ namespace Finegamedesign.Anagram
 		{
 			letterIndexMouseDown = -1;
 			if ("letter" == buttonController.downName && null != buttonController.view.target) {
-				var text3d = SceneNodeView.GetChild(buttonController.view.target, "text3d");
-				buttonDownName = TextView.GetText(text3d).ToLower();
+				var text = SceneNodeView.GetChild(buttonController.view.target, "text");
+				buttonDownName = TextView.GetText(text).ToLower();
 				string name = SceneNodeView.GetName(
 					SceneNodeView.GetParent(buttonController.view.target));
 				letterIndexMouseDown = Toolkit.ParseIndex(name);
@@ -153,7 +147,6 @@ namespace Finegamedesign.Anagram
 			else if (KeyView.IsDownNow("page down"))
 			{
 				model.LevelDownMax();
-				view.audio.Play("select");
 			}
 			else if (KeyView.IsDownNow("0")
 					|| "email" == buttonDownName)
@@ -229,8 +222,7 @@ namespace Finegamedesign.Anagram
 				string state = model.Submit();
 				if (null != state) 
 				{
-					AnimationView.SetState(view.input, state);
-					view.audio.Play("shoot");
+					AnimationView.SetState(view.input, state, true);
 					if ("complete" != model.state) {
 						ResetSelect();
 					}
@@ -240,7 +232,6 @@ namespace Finegamedesign.Anagram
 			if ("complete" == completedNow)
 			{
 				model.NextTrial();
-				// view.tweenSwap.Move(model.stationIndexes);
 				view.tweenSwap.Reset();
 				ResetSelect();
 			}
@@ -250,11 +241,7 @@ namespace Finegamedesign.Anagram
 		{
 			if (model.OnOutputHitsWord())
 			{
-				if ("complete" == model.state)
-				{
-					view.audio.Play("explosion_big");
-				}
-				else
+				if ("complete" != model.state)
 				{
 					view.tweenSwap.Move(model.stationIndexes);
 				}

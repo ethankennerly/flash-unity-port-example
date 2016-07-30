@@ -214,6 +214,7 @@ TODO
 	Pause button: show menu: continue, new game.
 	Creep up to challenging word.
 	Checkpoint.  Congratulation animation.
+	Cache letter nodes at setup.
 	Obvious buttons.
 	Letter creep animation.
 	Read limit hints.

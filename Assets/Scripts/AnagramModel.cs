@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using /*<com>*/Finegamedesign.Utils/*<Model>*/;
 namespace /*<com>*/Finegamedesign.Anagram
 {
-	public sealed class Model
+	public sealed class AnagramModel
 	{
 		private static bool ContainsWord(Dictionary<string, object> wordHash, List<string> letters, List<int> readingOrder)
 		{
@@ -89,7 +89,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal float scale = 1.0f;
 		private float wordWidthPerSecond;
 		
-		public Model()
+		public AnagramModel()
 		{
 			SetupProgress();
 			tutorLevel = 3;
@@ -170,7 +170,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordStateNow = "begin";
 			if (isVerbose) 
 			{
-				Debug.Log("Model.StartTrial: word[0]: <" + word[0] + ">" 
+				Debug.Log("AnagramModel.StartTrial: word[0]: <" + word[0] + ">" 
 					+ " level " + progress.GetLevelNormal());
 			}
 			metrics.StartTrial();
@@ -242,7 +242,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPositionScaled = wordPosition * scale;
 			// wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
 			bool isVerbosePosition = false;
-			if (isVerbosePosition) Debug.Log("Model.UpdatePosition: " + wordPosition);
+			if (isVerbosePosition) Debug.Log("AnagramModel.UpdatePosition: " + wordPosition);
 			UpdateProgress(deltaSeconds);
 		}
 
@@ -460,7 +460,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			{
 				if (isVerbose)
 				{
-					Debug.Log("Model.newGame");
+					Debug.Log("AnagramModel.newGame");
 				}
 				previousSessionLevel = 0;
 				progress.SetLevelNormal(previousSessionLevel);
@@ -482,7 +482,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
 				if (isVerbose)
 				{
-					Debug.Log("Model.doContinue: level " + level);
+					Debug.Log("AnagramModel.doContinue: level " + level);
 				}
 				progress.SetLevelNormal(level);
 				trialCount++;
@@ -537,7 +537,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 							LevelUp();
 							if (isVerbose)
 							{
-								Debug.Log("Model.submit: " + submission 
+								Debug.Log("AnagramModel.submit: " + submission 
 									+ " " + progress.GetLevelNormal());
 							}
 							state = "complete";
@@ -560,7 +560,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				float perWordNotAccepted = -0.1f;
 				wordPosition += perWordNotAccepted;
 			}
-			if (isVerbose) Debug.Log("Model.submit: " + submission + ". Accepted " + accepted);
+			if (isVerbose) Debug.Log("AnagramModel.submit: " + submission + ". Accepted " + accepted);
 			DataUtil.Clear(inputs);
 			available = DataUtil.CloneList(word);
 			selects = DataUtil.CloneList(word);
@@ -595,7 +595,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				//- metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;
 				if (isVerbose) {
-					Debug.Log("Model.UpdateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
+					Debug.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
 				}
 			}
 			return progress.isCheckpoint;
@@ -647,7 +647,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					help = "WORD GARDEN";
 					if (isVerbose)
 					{
-						Debug.Log("Model.Load: level " + previousSessionLevel);
+						Debug.Log("AnagramModel.Load: level " + previousSessionLevel);
 					}
 				}
 				else {

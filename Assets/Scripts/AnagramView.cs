@@ -30,7 +30,6 @@ namespace Finegamedesign.Anagram
 		public GameObject level;
 		public GameObject levelMax;
 
-		internal AudioView audio;
 		internal List<SceneNodeModel> letterNodes;
 		internal List<GameObject> wordBones;
 		internal List<GameObject> wordLetters;
@@ -48,12 +47,6 @@ namespace Finegamedesign.Anagram
 		public void Update()
 		{
 			controller.Update(Time.deltaTime);
-		}
-
-		internal void SetupAudio(List<string> soundFileNames)
-		{
-			audio = new AudioView();
-			audio.Setup(SceneNodeView.GetName(main), soundFileNames, "Sounds/");
 		}
 
 		//
@@ -110,8 +103,8 @@ namespace Finegamedesign.Anagram
 					bool visible = i < letters.Count;
 					SceneNodeView.SetVisible(letter, visible);
 					if (visible) {
-						var text3d = SceneNodeView.GetChild(letter, "text3d");
-						TextView.SetText(text3d, letters[i]);
+						var text = SceneNodeView.GetChild(letter, "text");
+						TextView.SetText(text, letters[i]);
 					}
 				}
 			}
