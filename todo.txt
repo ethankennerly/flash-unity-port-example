@@ -176,10 +176,10 @@ FEATURES
 	Expect hint button top left corner same size as other corners.
 	Main.cs to AnagramView.cs
 	C# CapitalCase style functions.
+	C# single line comment style.
 
 TODO
 
-	C# single line comment style.
 	Fit screen sizes.
 	Landscape layout and portrait layout.
 	Story clarifies rules and stars the player:

@@ -56,10 +56,10 @@ namespace Finegamedesign.Anagram
 			audio.Setup(SceneNodeView.GetName(main), soundFileNames, "Sounds/");
 		}
 
-		/**
-		 * Cache found game objects.
-		 * http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
-		 */
+		//
+		// Cache found game objects.
+		// http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
+		// 
 		internal void Setup(GameObject rootObject)
 		{
 			main = rootObject;

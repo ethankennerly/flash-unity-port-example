@@ -80,11 +80,11 @@ namespace Finegamedesign.Anagram
 			UpdateLetterButton();
 		}
 
-		/**
-		 * Remember which letter was just clicked on this update.
-		 *
-		 * http://answers.unity3d.com/questions/20328/onmousedown-to-return-object-name.html
-		 */
+		//
+		// * Remember which letter was just clicked on this update.
+		// *
+		// http://answers.unity3d.com/questions/20328/onmousedown-to-return-object-name.html
+		// 
 		private void UpdateLetterButton()
 		{
 			letterIndexMouseDown = -1;
@@ -140,9 +140,9 @@ namespace Finegamedesign.Anagram
 			UpdatePosition();
 		}
 
-		/**
-		 * http://answers.unity3d.com/questions/762073/c-list-of-string-name-for-inputgetkeystring-name.html
-		 */
+		//
+		// http://answers.unity3d.com/questions/762073/c-list-of-string-name-for-inputgetkeystring-name.html
+		// 
 		private void UpdateCheat()
 		{
 			if (KeyView.IsDownNow("page up"))
@@ -162,9 +162,9 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
-		/**
-		 * Delete or backspace:  Remove last letter.
-		 */
+		//
+		// Delete or backspace:  Remove last letter.
+		// 
 		private void UpdateBackspace()
 		{
 			if (KeyView.IsDownNow("delete")
@@ -176,11 +176,11 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
-		/**
-		 * Each selected letter in word plays animation "selected".
-		 * Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
-		 * Could cache finds.
-		 */
+		//
+		// Each selected letter in word plays animation "selected".
+		// Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
+		// Could cache finds.
+		// 
 		private void UpdateSelect(List<int> selects, bool selected)
 		{
 			string state = selected ? "selected" : "none";
@@ -204,18 +204,18 @@ namespace Finegamedesign.Anagram
 			TextView.SetText(view.levelMax, model.progress.levelMax.ToString());
 		}
 
-		/**
-		 * Press space or enter.  Input word.
-		 * Word robot approaches.
-		 *	 restructure synchronized animations:
-		 *		 word
-		 *			 complete
-		 *			 state
-		 *		 input
-		 *			 output
-		 *			 state
-		 * Play "complete" animation on word, so that letters are off-screen when populating next word.
-		 */
+		//
+		// Press space or enter.  Input word.
+		// Word robot approaches.
+		// 	 restructure synchronized animations:
+		// 		 word
+		// 			 complete
+		// 			 state
+		// 		 input
+		// 			 output
+		// 			 state
+		// Play "complete" animation on word, so that letters are off-screen when populating next word.
+		// 
 		private void UpdateSubmit()
 		{
 			if (null != model.wordStateNow)
@@ -263,10 +263,10 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
-		/**
-		 * Hint does not reset letters selected.
-		 * Test case:  2016-06-19 Hint.  Expect no mismatch between letters typed and letters selected.
-		 */
+		//
+		// Hint does not reset letters selected.
+		// Test case:  2016-06-19 Hint.  Expect no mismatch between letters typed and letters selected.
+		// 
 		private void UpdateHint()
 		{
 			if (KeyView.IsDownNow("?")
@@ -316,14 +316,14 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
-		/**
-		 * Multiply progress position by world scale on progress.
-		 * An ancestor is scaled.  The checkpoints are placed in 
-		 * the editor at the model's checkpoint interval (which at this time is 16).
-		 * Test case:  2016-06-26 Reach two checkpoints.  
-		 * Expect checkpoint line near bottom of screen each time.
-		 * Got checkpoint lines had gone down off the screen.
-		 */
+		//
+		// Multiply progress position by world scale on progress.
+		// An ancestor is scaled.  The checkpoints are placed in 
+		// the editor at the model's checkpoint interval (which at this time is 16).
+		// Test case:  2016-06-26 Reach two checkpoints.  
+		// Expect checkpoint line near bottom of screen each time.
+		// Got checkpoint lines had gone down off the screen.
+		// 
 		private void UpdatePosition()
 		{
 			if (model.MayKnockback())

@@ -8,11 +8,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 	{
 		internal int index = 0;
 
-		/**
-		 * Words by estimated difficulty will be appended.
-		 * Test case:  2015-04-18 Redbeard at The MADE types word.  Got stumped by anagram "ERISIOUS" and "NIOMTENTPO"
-		 * http://www.cse.unr.edu/~cohen/text.php
-		 */
+		//
+		// Words by estimated difficulty will be appended.
+		// Test case:  2015-04-18 Redbeard at The MADE types word.  Got stumped by anagram "ERISIOUS" and "NIOMTENTPO"
+		// http://www.cse.unr.edu/~cohen/text.php
+		// 
 		internal List<Dictionary<string, object>> parameters = new List<Dictionary<string, object>>(){
 			new Dictionary<string, object>(){
 				{

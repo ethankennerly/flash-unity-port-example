@@ -34,9 +34,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal string helpState;
 		internal int letterMax = 10;
 		internal List<string> inputs = new List<string>();
-		/**
-		 * From letter graphic.
-		 */
+		//
+		// From letter graphic.
+		// 
 		internal float letterWidth = 42.0f;
 		internal float wordWidth = 
 									// 160.0f;
@@ -120,9 +120,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
-		/**
-		 * In tutor, word speed is half.
-		 */
+		//
+		// In tutor, word speed is half.
+		// 
 		internal void StartTrial(Dictionary<string, object> parameters)
 		{
 			isGamePlaying = true;
@@ -203,13 +203,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 			scale = screenWidth / width;
 		}
 		
-		/**
-		 * Test case:  2015-03 Use Mac. Rosa Zedek expects to read key to change level.
-		 * During tutor, clamp word position below help message.
-		 * Test case:  2016-06-28 Tutor.  Enter smaller words.  Expect to read letters.  Got overlapped by help.
-		 * During tutorial, cannot run out of time.
-		 * Test case:  2016-07-23 Tutor.  Neighbor Kristine expects time to enter word.  Got game over.
-		 */
+		//
+		// Test case:  2015-03 Use Mac. Rosa Zedek expects to read key to change level.
+		// During tutor, clamp word position below help message.
+		// Test case:  2016-06-28 Tutor.  Enter smaller words.  Expect to read letters.  Got overlapped by help.
+		// During tutorial, cannot run out of time.
+		// Test case:  2016-07-23 Tutor.  Neighbor Kristine expects time to enter word.  Got game over.
+		// 
 		private void clampWordPosition()
 		{
 			float min = wordWidth - width;
@@ -267,9 +267,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return 0 < outputKnockback && 1 <= DataUtil.Length(outputs);
 		}
 		
-		/**
-		 * Clamp word to appear on screen.  Test case:  2015-04-18 Complete word.  See next word slide in.
-		 */
+		//
+		// Clamp word to appear on screen.  Test case:  2015-04-18 Complete word.  See next word slide in.
+		// 
 		private void PrepareKnockback(int length, bool complete)
 		{
 			float perLength =
@@ -310,9 +310,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return enabled;
 		}
 		
-		/**
-		 * @param   justPressed	 Filter signature justPressed(letter):Boolean.
-		 */
+		//
+		// @param   justPressed	 Filter signature justPressed(letter):Boolean.
+		// 
 		internal List<string> GetPresses(/*<Function>*/IsJustPressed justPressed)
 		{
 			List<string> presses = new List<string>();
@@ -338,10 +338,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return presses;
 		}
 		
-		/**
-		 * If letter not available, disable typing it.
-		 * @return Vector of word indexes.
-		 */
+		//
+		// If letter not available, disable typing it.
+		// @return Vector of word indexes.
+		// 
 		internal List<int> Press(List<string> presses)
 		{
 			Dictionary<string, object> letters = new Dictionary<string, object>(){
@@ -468,14 +468,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
-		/**
-		 * When tapping Continue, but not at every next trial, clear inputs.  Animation displays inputs.
-		 * Test case:  2016-06-19 Some letters selected.  Game over.  Continue.  Expect no letter selected.  
-		 * + Submit full word.  Expect animation.  Got nothing.
-		 *
-		 * When continue, add trial count.
-		 * Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
-		 */
+		//
+		// When tapping Continue, but not at every next trial, clear inputs.  Animation displays inputs.
+		// Test case:  2016-06-19 Some letters selected.  Game over.  Continue.  Expect no letter selected.  
+		// + Submit full word.  Expect animation.  Got nothing.
+		// 
+		// When continue, add trial count.
+		// Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
+		// 
 		internal void ContinueGame()
 		{
 			if (isContinueVisible) {
@@ -492,14 +492,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
-		/**
-		 * @return animation state.
-		 *	  "submit" or "complete":  Word shoots. Test case:  2015-04-18 Anders sees word is a weapon.
-		 *	  "submit":  Shuffle letters.  Test case:  2015-04-18 Jennifer wants to shuffle.  Irregular arrangement of letters.  Jennifer feels uncomfortable.
-		 * Test case:  2015-04-19 Backspace. Deselect. Submit. Type. Select.
-		 * Copy outputs from inputs, even if no submission length.
-		 * Test case:  2016-06-25 Submit word.  Submit again.  Expect to see no output.  Saw output.
-		 */
+		//
+		// @return animation state.
+		// 	  "submit" or "complete":  Word shoots. Test case:  2015-04-18 Anders sees word is a weapon.
+		// 	  "submit":  Shuffle letters.  Test case:  2015-04-18 Jennifer wants to shuffle.  Irregular arrangement of letters.  Jennifer feels uncomfortable.
+		// Test case:  2015-04-19 Backspace. Deselect. Submit. Type. Select.
+		// Copy outputs from inputs, even if no submission length.
+		// Test case:  2016-06-25 Submit word.  Submit again.  Expect to see no output.  Saw output.
+		// 
 		internal string Submit()
 		{
 			string submission = DataUtil.Join(inputs, "");
