@@ -196,7 +196,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			previous = now;
 		}
 		
-		internal void Update(float deltaSeconds)
+		public void Update(float deltaSeconds)
 		{
 			if (isGamePlaying) {
 				responseSeconds += deltaSeconds;
@@ -204,6 +204,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			UpdateHintVisible();
 			metrics.Update(deltaSeconds);
+			journal.Update(deltaSeconds);
 		}
 		
 		internal void ScaleToScreen(float screenWidth)
