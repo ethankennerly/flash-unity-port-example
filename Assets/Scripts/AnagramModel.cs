@@ -30,7 +30,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 		
-		public AnagramJournal journal = new AnagramJournal();
+		public Journal journal = new Journal();
 
 		internal List<int> stationIndexes;
 		internal string helpState;
@@ -55,7 +55,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int submitsUntilHintNow;
 		internal bool isContinueVisible = false;
 		internal bool isGamePlaying = false;
-		internal bool isNewGameVisible = false;
+		public bool isNewGameVisible = false;
 		internal List<string> completes = new List<string>();
 		internal string text;
 		internal List<string> word;
@@ -69,7 +69,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int score = 0;
 		internal int tutorLevel = 0;
 		internal bool isHudVisible = false;
-		internal string state;
+		public string state;
 		internal string wordStateNow;
 		internal Levels levels = new Levels();
 		internal Progress progress = new Progress();
@@ -205,6 +205,26 @@ namespace /*<com>*/Finegamedesign.Anagram
 			UpdateHintVisible();
 			metrics.Update(deltaSeconds);
 			journal.Update(deltaSeconds);
+			UpdateCommand(journal.commandNow);
+		}
+
+		private void UpdateCommand(string command)
+		{
+			if (null == command)
+			{
+			}
+			else if ("submit" == command)
+			{
+				Submit();
+			}
+			else if ("newGame" == command)
+			{
+				NewGame();
+			}
+			else
+			{
+				throw new System.InvalidOperationException("Did not expect command <" + command + ">");
+			}
 		}
 		
 		internal void ScaleToScreen(float screenWidth)
