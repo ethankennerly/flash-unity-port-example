@@ -30,6 +30,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 		
+		public AnagramJournal journal = new AnagramJournal();
+
 		internal List<int> stationIndexes;
 		internal string helpState;
 		internal int letterMax = 10;
@@ -508,7 +510,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Copy outputs from inputs, even if no submission length.
 		// Test case:  2016-06-25 Submit word.  Submit again.  Expect to see no output.  Saw output.
 		// 
-		internal string Submit()
+		public string Submit()
 		{
 			string submission = DataUtil.Join(inputs, "");
 			bool accepted = false;
@@ -572,6 +574,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			DataUtil.Clear(inputs);
 			available = DataUtil.CloneList(word);
 			selects = DataUtil.CloneList(word);
+			journal.Record("submit");
 			return state;
 		}
 		

@@ -6,8 +6,8 @@ namespace Finegamedesign.Anagram
 {
 	public sealed class AnagramController
 	{
-		internal AnagramView view;
-		internal AnagramModel model;
+		public AnagramView view;
+		internal AnagramModel model = new AnagramModel();
 		private Email email = new Email();
 		private Storage storage = new Storage();
 		private string buttonDownName;
@@ -16,7 +16,6 @@ namespace Finegamedesign.Anagram
 
 		public void Setup()
 		{
-			model = new AnagramModel();
 			LoadWords();
 			model.wordHash = new Words().Init();
 			model.ScaleToScreen(9.5f);
@@ -229,15 +228,7 @@ namespace Finegamedesign.Anagram
 			|| KeyView.IsDownNow("return")
 			|| "submit" == buttonDownName)
 			{
-				buttonDownName = null;
-				string state = model.Submit();
-				if (null != state) 
-				{
-					AnimationView.SetState(view.input, state, true);
-					if ("complete" != model.state) {
-						ResetSelect();
-					}
-				}
+				Submit();
 			}
 			string completedNow = AnimationView.CompletedNow(view.input);
 			if ("complete" == completedNow)
@@ -245,6 +236,20 @@ namespace Finegamedesign.Anagram
 				model.NextTrial();
 				view.tweenSwap.Reset();
 				ResetSelect();
+			}
+		}
+
+		public void Submit()
+		{
+			buttonDownName = null;
+			string state = model.Submit();
+			if (null != state) 
+			{
+				AnimationView.SetState(view.input, state, true);
+				if ("complete" != model.state)
+				{
+					ResetSelect();
+				}
 			}
 		}
 

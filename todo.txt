@@ -187,6 +187,7 @@ FEATURES
 
 TODO
 
+	Journal and playback seed, input, animation.
 	Story clarifies rules and stars the player:
 		Word Sword
 			RULE	STORY
