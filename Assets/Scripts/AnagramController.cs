@@ -197,7 +197,8 @@ namespace Finegamedesign.Anagram
 
 		private void UpdateHud()
 		{
-			SceneNodeView.SetVisible(view.hud, model.isHudVisible);
+			string hudState = model.isHudVisible ? "begin" : "end";
+			AnimationView.SetState(view.hud, hudState, false, true);
 			TextView.SetText(view.helpText, model.help);
 			SceneNodeView.SetVisible(view.help, model.help != "");
 			TextView.SetText(view.score, model.score.ToString());

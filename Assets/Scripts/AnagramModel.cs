@@ -123,9 +123,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		//
 		// In tutor, word speed is half.
+		// Otherwise HUD is visible.
+		// Test case:  2016-07-31 Continue. Game over. New game.
+		// Expect HUD goes away.  Got HUD remains.
+		// Complete tutorial trials.  Expect HUD slides into view.
 		// 
 		internal void StartTrial(Dictionary<string, object> parameters)
 		{
+			isHudVisible = !IsTutor();
 			isGamePlaying = true;
 			isContinueVisible = false;
 			isNewGameVisible = false;
@@ -466,6 +471,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				}
 				previousSessionLevel = 0;
 				progress.SetLevelNormal(previousSessionLevel);
+				trialCount = 0;
 				StartTrial(levels.parameters[0]);
 			}
 		}
@@ -615,7 +621,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			bool isNow = !UpdateCheckpoint();
 			if (isNow) {
 				Dictionary<string, object> level;
-				isHudVisible = !IsTutor();
 				if (isHudVisible) {
 					level = progress.Pop(levels.parameters, tutorLevel);
 				}
