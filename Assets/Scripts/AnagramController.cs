@@ -16,6 +16,7 @@ namespace Finegamedesign.Anagram
 
 		public void Setup()
 		{
+			model.Setup();
 			LoadWords();
 			model.wordHash = new Words().Init();
 			model.ScaleToScreen(9.5f);

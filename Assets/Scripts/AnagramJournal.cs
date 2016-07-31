@@ -18,6 +18,7 @@ namespace Finegamedesign.Anagram
 		public void Record(string act)
 		{
 			action = act;
+			seconds = 0.0f;
 		}
 	}
 }
