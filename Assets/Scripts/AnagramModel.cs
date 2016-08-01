@@ -203,6 +203,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 				responseSeconds += deltaSeconds;
 				UpdatePosition(deltaSeconds);
 			}
+			DataUtil.Clear(selectsNow);
+			DataUtil.Clear(backspacesNow);
 			UpdateHintVisible();
 			metrics.Update(deltaSeconds);
 			journal.Update(deltaSeconds);
@@ -233,6 +235,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 			else if ("hint" == command)
 			{
 				Hint();
+			}
+			else if (command.IndexOf("select_") == 0)
+			{
+				int index = Toolkit.ParseIndex(command);
+				MouseDown(index);
 			}
 			else
 			{
@@ -390,7 +397,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			Dictionary<string, object> letters = new Dictionary<string, object>(){
 			}
 			;
-			List<int> selectsNow = new List<int>();
 			for (int i = 0; i < DataUtil.Length(presses); i++)
 			{
 				string letter = presses[i];
@@ -410,14 +416,16 @@ namespace /*<com>*/Finegamedesign.Anagram
 					int selected = selects.IndexOf(letter);
 					if (0 <= selected)
 					{
-						Select(selectsNow, selected, letter);
+						Select(selected, letter);
 					}
 				}
 			}
 			return selectsNow;
 		}
 
-		private void Select(List<int> selectsNow, int selected, string letter)
+		internal List<int> selectsNow = new List<int>();
+
+		private void Select(int selected, string letter)
 		{
 			selectsNow.Add(selected);
 			selects[selected] = letter.ToLower();
@@ -426,18 +434,18 @@ namespace /*<com>*/Finegamedesign.Anagram
 				helpState = "";
 				help = "";
 			}
+			journal.Record("select_" + selected.ToString());
 		}
 
 		internal List<int> MouseDown(int selected)
 		{
-			List<int> selectsNow = new List<int>();
 			if (0 <= selected) {
 				string letter = word[selected];
 				int index = available.IndexOf(letter);
 				if (0 <= index) {
 					available.RemoveRange(index, 1);
 					inputs.Add(letter);
-					Select(selectsNow, selected, letter);
+					Select(selected, letter);
 				}
 			}
 			return selectsNow;
@@ -447,7 +455,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		internal List<int> Backspace()
 		{
-			List<int> selectsNow = new List<int>();
 			if (1 <= DataUtil.Length(inputs))
 			{
 				string letter = DataUtil.Pop(inputs);
@@ -455,13 +462,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 				int selected = selects.LastIndexOf(letter.ToLower());
 				if (0 <= selected)
 				{
-					selectsNow.Add(selected);
+					backspacesNow.Add(selected);
 					selects[selected] = letter;
 				}
 			}
-			backspacesNow = selectsNow;
 			journal.Record("delete");
-			return selectsNow;
+			return backspacesNow;
 		}
 	
 		private void PopulateHint(string text)

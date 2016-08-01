@@ -138,8 +138,9 @@ namespace Finegamedesign.Anagram
 		private void UpdatePlay()
 		{
 			List<string> presses = model.GetPresses(IsLetterKeyDown);
-			UpdateSelect(model.Press(presses), true);
-			UpdateSelect(model.MouseDown(letterIndexMouseDown), true);
+			model.Press(presses);
+			model.MouseDown(letterIndexMouseDown);
+			UpdateSelect(model.selectsNow, true);
 			UpdateSubmit();
 			UpdatePosition();
 		}
