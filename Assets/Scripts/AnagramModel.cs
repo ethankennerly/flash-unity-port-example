@@ -94,6 +94,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		
 		public void Setup()
 		{
+			state = null;
 			SetupProgress();
 			tutorLevel = 3;
 			trialCount = 0;
