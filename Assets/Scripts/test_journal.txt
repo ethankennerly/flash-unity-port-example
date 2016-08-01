@@ -2,3 +2,4 @@ delay	action
 1111	newGame
 2067	submit
 1000	delete
+1000	hint

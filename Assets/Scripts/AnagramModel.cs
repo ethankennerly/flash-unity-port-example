@@ -226,6 +226,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			{
 				Backspace();
 			}
+			else if ("hint" == command)
+			{
+				Hint();
+			}
 			else
 			{
 				throw new System.InvalidOperationException("Did not expect command <" + command + ">");
@@ -491,6 +495,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				hints.Add(letter);
 				metrics.trial_integers["hint_count"]++;
 			}
+			journal.Record("hint");
 		}
 
 		public void NewGame()
