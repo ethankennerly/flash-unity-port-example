@@ -306,6 +306,9 @@ namespace Finegamedesign.Anagram
 			|| "continue" == buttonDownName)
 			{
 				model.ContinueGame();
+			}
+			if ("continue" == model.journal.actionNow)
+			{
 				ResetSelect();
 			}
 			SceneNodeView.SetVisible(view.continueButton, model.isContinueVisible);

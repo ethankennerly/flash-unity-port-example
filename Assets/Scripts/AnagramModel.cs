@@ -222,6 +222,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			{
 				NewGame();
 			}
+			else if ("continue" == command)
+			{
+				ContinueGame();
+			}
 			else if ("delete" == command)
 			{
 				Backspace();
@@ -536,6 +540,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				NextTrial();
 				DataUtil.Clear(inputs);
 			}
+			journal.Record("continue");
 		}
 
 		//

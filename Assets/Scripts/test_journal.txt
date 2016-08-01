@@ -3,3 +3,4 @@ delay	action
 2067	submit
 1000	delete
 1000	hint
+1000	continue
