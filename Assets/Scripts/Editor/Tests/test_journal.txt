@@ -1,6 +1,7 @@
 delay	action
 1111	newGame
 2067	submit
+2067	trialComplete
 2067	select_1
 2067	select_3
 2067	select_2

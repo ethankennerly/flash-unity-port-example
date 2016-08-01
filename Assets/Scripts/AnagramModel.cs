@@ -57,7 +57,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal bool isGamePlaying = false;
 		public bool isNewGameVisible = false;
 		internal List<string> completes = new List<string>();
-		internal string text;
+		public string text;
 		internal List<string> word;
 		internal float nextProgress = 0.0f;
 		internal float progressPositionScaled = 0.0f;
@@ -235,6 +235,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			else if ("hint" == command)
 			{
 				Hint();
+			}
+			else if ("trialComplete" == command)
+			{
+				TrialComplete();
 			}
 			else if (command.IndexOf("select_") == 0)
 			{
@@ -439,7 +443,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		internal List<int> MouseDown(int selected)
 		{
-			if (0 <= selected) {
+			if (0 <= selected && selected < DataUtil.Length(word)) {
 				string letter = word[selected];
 				int index = available.IndexOf(letter);
 				if (0 <= index) {
@@ -663,6 +667,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			return progress.GetLevelNormal() < tutorLevel 
 				&& trialCount < tutorLevel;
+		}
+
+		internal void TrialComplete()
+		{
+			NextTrial();
+			journal.Record("trialComplete");
 		}
 
 		// If next trial starts; otherwise checkpoint.

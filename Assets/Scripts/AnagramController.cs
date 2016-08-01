@@ -17,8 +17,7 @@ namespace Finegamedesign.Anagram
 		public void Setup()
 		{
 			model.Setup();
-			LoadWords();
-			model.wordHash = new Words().Init();
+			Words.Setup(model);
 			model.ScaleToScreen(9.5f);
 			model.Load(storage.Load());
 			model.SetReadingOrder(view.letterNodes);
@@ -35,27 +34,6 @@ namespace Finegamedesign.Anagram
 		{
 			string aspect = ScreenView.IsPortrait() ? "portrait" : "landscape";
 			AnimationView.SetState(view.main, aspect);
-		}
-
-		private void LoadWords()
-		{
-			string text = Toolkit.Read("text/anagram_words.txt");
-			string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
-			AddWords(model.levels.parameters, words);
-			string[] win = new string[]{"YOU", "WIN"};
-			AddWords(model.levels.parameters, win);
-		}
-
-		private static void AddWords(
-				List<Dictionary<string, object>> parameters, 
-				string[] words)
-		{
-			for (int w = 0; w < words.Length; w++) {
-				Dictionary<string, object> 
-				parameter = new Dictionary<string, object>(){
-					{"text", words[w]}};
-				parameters.Add(parameter);
-			}
 		}
 
 		private void SetupButtonController()
@@ -247,7 +225,10 @@ namespace Finegamedesign.Anagram
 			string completedNow = AnimationView.CompletedNow(view.input);
 			if ("complete" == completedNow)
 			{
-				model.NextTrial();
+				model.TrialComplete();
+			}
+			if ("trialComplete" == model.journal.actionNow)
+			{
 				view.tweenSwap.Reset();
 				ResetSelect();
 			}

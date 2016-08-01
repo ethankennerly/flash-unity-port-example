@@ -184,10 +184,11 @@ FEATURES
 		HUD and buttons on left.
 	Play in landscape or portrait.
 	Trigger HUD animations.
+	Journal and playback input.
 
 TODO
 
-	Journal and playback seed, input, animation.
+	Pass unit test of example journal and playback animation.
 	Story clarifies rules and stars the player:
 		Word Sword
 			RULE	STORY

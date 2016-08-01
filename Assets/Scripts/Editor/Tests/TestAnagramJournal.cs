@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using System.IO;
+using System.Linq/*<Sum>*/;
+using UnityEngine/*<Mathf>*/;
 
 namespace Finegamedesign.Anagram
 {
@@ -83,16 +85,43 @@ namespace Finegamedesign.Anagram
 		[Test]
 		public void PlaybackActionEqualsCommand()
 		{
-			string historyTsv = File.ReadAllText("Assets/Scripts/test_journal.txt");
 			AnagramModel model = new AnagramModel();
+			Words.Setup(model);
+			AssertPlaybackActionEqualsCommand(model,
+				"Assets/Scripts/Editor/Tests/test_journal.txt");
+			model = new AnagramModel();
+			Words.Setup(model);
+			AssertPlaybackActionEqualsCommand(model,
+				"Assets/Scripts/Editor/Tests/ethan_20160731.txt");
+		}
+
+		private void AssertPlaybackActionEqualsCommand(
+				AnagramModel model, string filePath)
+		{
+			string historyTsv = File.ReadAllText(filePath);
 			model.Setup();
 			model.journal.ReadAndPlay(historyTsv);
+			float time = 0.0f;
+			float step = 1.0f / 60.0f;
+			float recorded = (float)(
+				model.journal.playbackDelays.Sum()) / 1000.0f;
+			string message = "file " + filePath;
 			while (model.journal.IsPlaying())
 			{
-				model.Update(1.0f / 60.0f);
+				time += step;
+				model.Update(step);
+				message = "file " + filePath
+					+ " playback index " + model.journal.playbackIndex
+					+ " word " + model.text;
 				Assert.AreEqual(model.journal.commandNow,
-					model.journal.actionNow);
+					model.journal.actionNow, message);
 			}
+			float difference = Mathf.Abs(time - recorded);
+			message = "file " + filePath
+				+ " playback " + time.ToString() 
+				+ " record " + recorded.ToString() 
+				+ " difference " + difference;
+			Assert.AreEqual(true, difference < 0.01f, message);
 		}
 	}
 }

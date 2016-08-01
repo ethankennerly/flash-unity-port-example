@@ -1,22 +1,53 @@
 using System.Collections.Generic;
+using Finegamedesign.Utils;
 
-public class Words 
+namespace Finegamedesign.Anagram
 {
-	public Dictionary<string, object> words;
-
-	public Dictionary<string, object> Init()
+	public sealed class Words 
 	{
-		string text = Toolkit.Read(
-			"text/TWL06.txt"
-		);
-		string[] lines = text.Split('\n');
-		int length = lines.Length;
-		words = new Dictionary<string, object>();
-		for (int i = 0; i < length; i++)
+		public static Dictionary<string, object> words;
+
+		public static Dictionary<string, object> Read()
 		{
-			string word = lines[i];
-			words[word] = true;
+			string text = Toolkit.Read(
+				"text/TWL06.txt"
+			);
+			string[] lines = text.Split('\n');
+			int length = lines.Length;
+			words = new Dictionary<string, object>();
+			for (int i = 0; i < length; i++)
+			{
+				string word = lines[i];
+				words[word] = true;
+			}
+			return words;
 		}
-		return words;
+
+		public static void Setup(AnagramModel model)
+		{
+			LoadWords(model);
+			model.wordHash = Read();
+		}
+
+		private static void LoadWords(AnagramModel model)
+		{
+			string text = Toolkit.Read("text/anagram_words.txt");
+			string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
+			AddWords(model.levels.parameters, words);
+			string[] win = new string[]{"YOU", "WIN"};
+			AddWords(model.levels.parameters, win);
+		}
+
+		private static void AddWords(
+				List<Dictionary<string, object>> parameters, 
+				string[] words)
+		{
+			for (int w = 0; w < words.Length; w++) {
+				Dictionary<string, object> 
+				parameter = new Dictionary<string, object>(){
+					{"text", words[w]}};
+				parameters.Add(parameter);
+			}
+		}
 	}
 }
