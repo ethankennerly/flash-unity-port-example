@@ -222,6 +222,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			{
 				NewGame();
 			}
+			else if ("delete" == command)
+			{
+				Backspace();
+			}
 			else
 			{
 				throw new System.InvalidOperationException("Did not expect command <" + command + ">");
@@ -430,7 +434,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			return selectsNow;
 		}
-		
+	
+		internal List<int> backspacesNow = new List<int>();
+
 		internal List<int> Backspace()
 		{
 			List<int> selectsNow = new List<int>();
@@ -445,6 +451,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 					selects[selected] = letter;
 				}
 			}
+			backspacesNow = selectsNow;
+			journal.Record("delete");
 			return selectsNow;
 		}
 	

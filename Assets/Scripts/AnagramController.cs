@@ -177,9 +177,10 @@ namespace Finegamedesign.Anagram
 			|| KeyView.IsDownNow("backspace")
 			|| "delete" == buttonDownName)
 			{
-				UpdateSelect(model.Backspace(), false);
+				model.Backspace();
 				buttonDownName = null;
 			}
+			UpdateSelect(model.backspacesNow, false);
 		}
 
 		//
@@ -234,6 +235,14 @@ namespace Finegamedesign.Anagram
 			{
 				Submit();
 			}
+			if ("submit" == model.journal.actionNow && null != model.state) 
+			{
+				AnimationView.SetState(view.input, model.state, true);
+				if ("complete" != model.state)
+				{
+					ResetSelect();
+				}
+			}
 			string completedNow = AnimationView.CompletedNow(view.input);
 			if ("complete" == completedNow)
 			{
@@ -246,15 +255,7 @@ namespace Finegamedesign.Anagram
 		public void Submit()
 		{
 			buttonDownName = null;
-			string state = model.Submit();
-			if (null != state) 
-			{
-				AnimationView.SetState(view.input, state, true);
-				if ("complete" != model.state)
-				{
-					ResetSelect();
-				}
-			}
+			model.Submit();
 		}
 
 		private void UpdateOutputHitsWord()

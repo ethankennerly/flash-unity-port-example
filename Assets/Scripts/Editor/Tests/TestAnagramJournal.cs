@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.IO;
 
 namespace Finegamedesign.Anagram
 {
@@ -45,6 +46,7 @@ namespace Finegamedesign.Anagram
 			model.Update(1.0f / 60.0f);
 			Assert.AreEqual("newGame", model.journal.action);
 			Assert.AreEqual("newGame", model.journal.actionNow);
+			Assert.AreEqual("newGame", model.journal.commandNow);
 			Assert.AreEqual(50, model.journal.milliseconds);
 			Assert.AreEqual(false, model.isNewGameVisible);
 			model.Update(1.0f / 60.0f);
@@ -53,6 +55,7 @@ namespace Finegamedesign.Anagram
 			Assert.AreEqual("wrong", model.state);
 			Assert.AreEqual("submit", model.journal.action);
 			Assert.AreEqual("submit", model.journal.actionNow);
+			Assert.AreEqual("submit", model.journal.commandNow);
 			Assert.AreEqual(33, model.journal.milliseconds);
 		}
 
@@ -75,6 +78,21 @@ namespace Finegamedesign.Anagram
 			Assert.AreEqual(historyTsv, model.journal.Write());
 			model.journal.ReadAndPlay(historyTsv);
 			AssertPlaybackSubmitAndNewGame(model);
+		}
+
+		[Test]
+		public void PlaybackActionEqualsCommand()
+		{
+			string historyTsv = File.ReadAllText("Assets/Scripts/test_journal.txt");
+			AnagramModel model = new AnagramModel();
+			model.Setup();
+			model.journal.ReadAndPlay(historyTsv);
+			while (model.journal.IsPlaying())
+			{
+				model.Update(1.0f / 60.0f);
+				Assert.AreEqual(model.journal.commandNow,
+					model.journal.actionNow);
+			}
 		}
 	}
 }
