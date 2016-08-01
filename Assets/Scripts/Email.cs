@@ -12,6 +12,7 @@ public class Email
 
 	public void Send(string body)
 	{
+		Debug.Log(body);
 		body = EscapeURL(body);
 		Application.OpenURL("mailto:" + to
 			+ "?subject=" + subject 

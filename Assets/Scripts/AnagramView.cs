@@ -37,11 +37,17 @@ namespace Finegamedesign.Anagram
 
 		private AnagramController controller = new AnagramController();
 
+		public TextAsset journalHistoryTsv;
+
 		public void Start()
 		{
 			Setup(this.gameObject);
 			controller.view = this;
 			controller.Setup();
+			if (null != journalHistoryTsv)
+			{
+				controller.model.journal.ReadAndPlay(journalHistoryTsv.text);
+			}
 		}
 
 		public void Update()

@@ -1,0 +1,3 @@
+delay	action
+1111	newGame
+2067	submit

@@ -22,41 +22,37 @@ namespace Finegamedesign.Anagram
 			model.Update(1.0f / 60.0f);
 			model.NewGame();
 			Assert.AreEqual("newGame", model.journal.action);
+			Assert.AreEqual("newGame", model.journal.actionNow);
 			Assert.AreEqual(50, model.journal.milliseconds);
 			Assert.AreEqual(false, model.isNewGameVisible);
 			model.Update(1.0f / 60.0f);
+			Assert.AreEqual(null, model.journal.actionNow);
 			model.Update(1.0f / 60.0f);
 			model.Submit();
 			Assert.AreEqual("wrong", model.state);
 			Assert.AreEqual("submit", model.journal.action);
+			Assert.AreEqual("submit", model.journal.actionNow);
 			Assert.AreEqual(33, model.journal.milliseconds);
-		}
-
-		[Test]
-		public void PlaybackSubmitAndNewGame()
-		{
-			AnagramModel model = new AnagramModel();
-			string historyTsv = "delay\taction\n50\tnewGame\n33\tsubmit";
-			model.journal.Read(historyTsv);
-			AssertPlaybackSubmitAndNewGame(model);
 		}
 
 		private void AssertPlaybackSubmitAndNewGame(AnagramModel model)
 		{
 			model.Setup();
-			model.journal.StartPlayback();
 			Assert.AreEqual(null, model.state);
 			Assert.AreEqual(true, model.isNewGameVisible);
 			model.Update(1.0f / 60.0f);
 			model.Update(1.0f / 60.0f);
 			model.Update(1.0f / 60.0f);
 			Assert.AreEqual("newGame", model.journal.action);
+			Assert.AreEqual("newGame", model.journal.actionNow);
 			Assert.AreEqual(50, model.journal.milliseconds);
 			Assert.AreEqual(false, model.isNewGameVisible);
 			model.Update(1.0f / 60.0f);
+			Assert.AreEqual(null, model.journal.actionNow);
 			model.Update(1.0f / 60.0f);
 			Assert.AreEqual("wrong", model.state);
 			Assert.AreEqual("submit", model.journal.action);
+			Assert.AreEqual("submit", model.journal.actionNow);
 			Assert.AreEqual(33, model.journal.milliseconds);
 		}
 
@@ -65,9 +61,20 @@ namespace Finegamedesign.Anagram
 		{
 			AnagramModel model = new AnagramModel();
 			AssertRecordSubmitAndNewGame(model);
+			model.journal.StartPlayback();
 			AssertPlaybackSubmitAndNewGame(model);
 			model.journal.isPlayback = false;
 		}
 
+		[Test]
+		public void WriteAndRead()
+		{
+			AnagramModel model = new AnagramModel();
+			AssertRecordSubmitAndNewGame(model);
+			string historyTsv = "delay\taction\n50\tnewGame\n33\tsubmit";
+			Assert.AreEqual(historyTsv, model.journal.Write());
+			model.journal.ReadAndPlay(historyTsv);
+			AssertPlaybackSubmitAndNewGame(model);
+		}
 	}
 }

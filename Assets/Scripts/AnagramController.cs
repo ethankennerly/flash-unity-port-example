@@ -161,7 +161,10 @@ namespace Finegamedesign.Anagram
 			else if (KeyView.IsDownNow("0")
 					|| "email" == buttonDownName)
 			{
-				email.Send(model.metrics.ToTable());
+				string message = model.metrics.ToTable();
+				message += "\n\n\n";
+				message += model.journal.Write();
+				email.Send(message);
 			}
 		}
 
@@ -287,6 +290,9 @@ namespace Finegamedesign.Anagram
 			|| "newGame" == buttonDownName)
 			{
 				model.NewGame();
+			}
+			if ("newGame" == model.journal.actionNow)
+			{
 				ResetSelect();
 			}
 			SceneNodeView.SetVisible(view.newGameButton, model.isNewGameVisible);
