@@ -33,7 +33,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public Journal journal = new Journal();
 
 		internal List<int> stationIndexes;
+		internal bool isHelpStateChange;
 		internal string helpState;
+		internal string helpStateBefore;
 		internal int letterMax = 10;
 		internal List<string> inputs = new List<string>();
 		//
@@ -209,6 +211,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.Update(deltaSeconds);
 			journal.Update(deltaSeconds);
 			UpdateCommand(journal.commandNow);
+			isHelpStateChange = helpStateBefore != helpState;
+
+			helpStateBefore = helpState;
 		}
 
 		private void UpdateCommand(string command)
@@ -542,13 +547,15 @@ namespace /*<com>*/Finegamedesign.Anagram
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
 				if (isVerbose)
 				{
-					Toolkit.Log("AnagramModel.doContinue: level " + level);
+					Toolkit.Log("AnagramModel.ContinueGame: level " + level);
 				}
 				progress.SetLevelNormal(level);
 				trialCount++;
 				metrics.StartSession();
 				NextTrial();
 				DataUtil.Clear(inputs);
+				help = "";
+				helpState = null;
 			}
 			journal.Record("continue");
 		}
@@ -653,6 +660,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				isGamePlaying = false;
 				isContinueVisible = true;
 				help = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
+				helpState = "checkpoint";
 				PopulateWord("");
 				//- metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;
@@ -712,6 +720,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					previousSessionLevel = (int)(data["level"]);
 					isContinueVisible = true;
 					help = "WORD GARDEN";
+					helpState = "title";
 					if (isVerbose)
 					{
 						Toolkit.Log("AnagramModel.Load: level " + previousSessionLevel);

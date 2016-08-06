@@ -182,8 +182,16 @@ namespace Finegamedesign.Anagram
 		{
 			string hudState = model.isHudVisible ? "begin" : "end";
 			AnimationView.SetState(view.hud, hudState, false, true);
-			TextView.SetText(view.helpText, model.help);
-			SceneNodeView.SetVisible(view.help, model.help != "");
+			if ("" != model.help)
+			{
+				TextView.SetText(view.helpText, model.help);
+			}
+			if (model.isHelpStateChange)
+			{
+				string helpState = "" == model.help ? "endNow" : "beginNow";
+				AnimationView.SetTrigger(view.help, helpState);
+			}
+			// SceneNodeView.SetVisible(view.help, model.help != "");
 			TextView.SetText(view.score, model.score.ToString());
 			TextView.SetText(view.level, model.progress.level.ToString());
 			TextView.SetText(view.levelMax, model.progress.levelMax.ToString());

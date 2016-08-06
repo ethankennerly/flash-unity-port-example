@@ -30,14 +30,16 @@ namespace Finegamedesign.Anagram
 		public GameObject level;
 		public GameObject levelMax;
 
+		public TextAsset journalHistoryTsv;
+
+		public float timeScale = 1.0f;
+
 		internal List<SceneNodeModel> letterNodes;
 		internal List<GameObject> wordBones;
 		internal List<GameObject> wordLetters;
 		internal TweenSwap tweenSwap = new TweenSwap();
 
 		private AnagramController controller = new AnagramController();
-
-		public TextAsset journalHistoryTsv;
 
 		public void Start()
 		{
@@ -52,6 +54,7 @@ namespace Finegamedesign.Anagram
 
 		public void Update()
 		{
+			Time.timeScale = timeScale;
 			controller.Update(Time.deltaTime);
 		}
 
