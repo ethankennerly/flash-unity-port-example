@@ -188,6 +188,7 @@ FEATURES
 
 TODO
 
+	Deep profile.
 	Pass unit test of example journal and playback animation.
 	Story clarifies rules and stars the player:
 		Word Sword
@@ -227,8 +228,7 @@ TODO
 	Read limit hints.
 	Hints at each checkpoint.
 	Text not aliasing.
-	Profile
-		Optimize view update of letters.
+	Profile. Optimize view update of letters.
 	Animate letters if repeating word.
 	Developer controls:
 		Type user name.
