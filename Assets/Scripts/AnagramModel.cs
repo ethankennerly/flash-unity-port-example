@@ -143,12 +143,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
 			help = "";
+			helpState = null;
 			wordWidthPerSecond = IsTutor() ? -0.005f : -0.01f;
 			if (parameters.ContainsKey("text")) {
 				text = (string)parameters["text"];
 			}
 			if (parameters.ContainsKey("help")) {
 				help = (string)parameters["help"];
+				helpState = "tutor";
 			}
 			if (parameters.ContainsKey("wordWidthPerSecond")) {
 				wordWidthPerSecond = (float)parameters["wordWidthPerSecond"];
