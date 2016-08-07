@@ -93,6 +93,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal float width = 720;
 		internal float scale = 1.0f;
 		private float wordWidthPerSecond;
+		internal bool isSaveNow = false;
 		
 		public void Setup()
 		{
@@ -611,6 +612,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 									+ " " + progress.GetLevelNormal());
 							}
 							state = "complete";
+							isSaveNow = true;
 							trialCount++;
 							if (null != onComplete)
 							{

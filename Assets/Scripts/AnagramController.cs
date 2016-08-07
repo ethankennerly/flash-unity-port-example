@@ -21,8 +21,11 @@ namespace Finegamedesign.Anagram
 			model.ScaleToScreen(9.5f);
 			model.Load(storage.Load());
 			model.SetReadingOrder(view.letterNodes);
-			view.wordLetters = view.GetLetters(view.wordState, "bone_{0}/letter", model.letterMax);
-			view.wordBones = view.GetLetters(view.wordState, "bone_{0}", model.letterMax);
+			view.wordLetters = SceneNodeView.GetChildrenByPattern(view.wordState, "bone_{0}/letter", model.letterMax);
+			view.wordBones = SceneNodeView.GetChildrenByPattern(view.wordState, "bone_{0}", model.letterMax);
+			view.inputLetters = SceneNodeView.GetChildrenByPattern(view.inputState, "Letter_{0}", model.letterMax);
+			view.outputLetters = SceneNodeView.GetChildrenByPattern(view.output, "Letter_{0}", model.letterMax);
+			view.hintLetters = SceneNodeView.GetChildrenByPattern(view.hint, "Letter_{0}", model.letterMax);
 			view.tweenSwap.Setup(view.wordBones);
 			SetupButtonController();
 			ScreenView.AutoRotate();
@@ -82,7 +85,8 @@ namespace Finegamedesign.Anagram
 		public void Update(float deltaSeconds)
 		{
 			model.Update(deltaSeconds);
-			if ("complete" == model.state) {
+			if (model.isSaveNow) {
+				model.isSaveNow = false;
 				storage.SetKeyValue("level", model.progress.GetLevelNormal());
 				storage.Save(storage.data);
 			}
@@ -102,10 +106,10 @@ namespace Finegamedesign.Anagram
 
 		private void UpdateLetters()
 		{
-			view.UpdateLetters(view.wordState, model.word, "bone_{0}/letter", model.letterMax);
-			view.UpdateLetters(view.inputState, model.inputs, "Letter_{0}", model.letterMax);
-			view.UpdateLetters(view.output, model.outputs, "Letter_{0}", model.letterMax);
-			view.UpdateLetters(view.hint, model.hints, "Letter_{0}", model.letterMax);
+			view.UpdateLetters(view.wordLetters, model.word);
+			view.UpdateLetters(view.inputLetters, model.inputs);
+			view.UpdateLetters(view.outputLetters, model.outputs);
+			view.UpdateLetters(view.hintLetters, model.hints);
 		}
 
 		public bool IsLetterKeyDown(string letter)

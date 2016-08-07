@@ -7,6 +7,7 @@ namespace Finegamedesign.Anagram
 	public sealed class AnagramView : MonoBehaviour
 	{
 		// Larger number moves word more.
+		public bool isLogEnabled = true;
 		public float wordPositionScale = 33.0f;
 		public GameObject hint;
 
@@ -37,6 +38,10 @@ namespace Finegamedesign.Anagram
 		internal List<SceneNodeModel> letterNodes;
 		internal List<GameObject> wordBones;
 		internal List<GameObject> wordLetters;
+		internal List<GameObject> inputLetters;
+		internal List<GameObject> outputLetters;
+		internal List<GameObject> hintLetters;
+
 		internal TweenSwap tweenSwap = new TweenSwap();
 
 		private AnagramController controller = new AnagramController();
@@ -55,6 +60,7 @@ namespace Finegamedesign.Anagram
 		public void Update()
 		{
 			Time.timeScale = timeScale;
+			Toolkit.isLogEnabled = isLogEnabled;
 			controller.Update(Time.deltaTime);
 		}
 
@@ -88,32 +94,18 @@ namespace Finegamedesign.Anagram
 				SceneNodeView.GetChildren(wordState));
 		}
 
-		internal List<GameObject> GetLetters(GameObject parent, string namePattern, int letterMax) 
+		internal void UpdateLetters(List<GameObject> views, List<string> letters) 
 		{
-			List<GameObject> letters = new List<GameObject>();
-			for (int i = 0; i < letterMax; i++)
+			for (int i = 0; i < DataUtil.Length(views); i++)
 			{
-				string name = namePattern.Replace("{0}", i.ToString());
-				var letter = SceneNodeView.GetChild(parent, name);
-				letters.Add(letter);
-
-			}
-			return letters;
-		}
-
-		internal void UpdateLetters(GameObject parent, List<string> letters, string namePattern, int letterMax) 
-		{
-			for (int i = 0; i < letterMax; i++)
-			{
-				string name = namePattern.Replace("{0}", i.ToString());
-				var letter = SceneNodeView.GetChild(parent, name);
-				if (null != letter)
+				var letterView = views[i];
+				if (null != letterView)
 				{
 					bool visible = i < letters.Count;
-					SceneNodeView.SetVisible(letter, visible);
+					SceneNodeView.SetVisible(letterView, visible);
 					if (visible) {
-						var text = SceneNodeView.GetChild(letter, "text");
-						TextView.SetText(text, letters[i]);
+						var textView = SceneNodeView.GetChild(letterView, "text");
+						TextView.SetText(textView, letters[i]);
 					}
 				}
 			}
