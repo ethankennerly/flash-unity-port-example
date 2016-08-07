@@ -48,6 +48,7 @@ namespace Finegamedesign.Anagram
 
 		public void Start()
 		{
+			Toolkit.isLogEnabled = isLogEnabled;
 			Setup(this.gameObject);
 			controller.view = this;
 			controller.Setup();
