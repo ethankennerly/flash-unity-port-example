@@ -180,16 +180,17 @@ FEATURES
 	Play one sound on timeline.
 		https://www.raywenderlich.com/116652/introduction-unity-animation-system
 	Fit HUD, buttons, and input to screen sizes.
+		Scale root to 1.0 to match camera and canvas.
 	Landscape layout
 		HUD and buttons on left.
 	Play in landscape or portrait.
 	Trigger HUD animations.
 	Journal and playback input.
+	Match scale.
+	Deep profile.
 
 TODO
 
-	Deep profile.
-	Pass unit test of example journal and playback animation.
 	Story clarifies rules and stars the player:
 		Word Sword
 			RULE	STORY
@@ -208,7 +209,7 @@ TODO
 			Spell	Slide letters up and off
 			LevelUp	Scroll flowers
 	Different scene for each theme.
-	Journal.
+	Pass unit test of example journal and playback animation.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Play to summarize opportunities to be consistent and clear.
