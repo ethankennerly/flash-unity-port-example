@@ -7,6 +7,7 @@ namespace Finegamedesign.Anagram
 	public sealed class AnagramView : MonoBehaviour
 	{
 		// Larger number moves word more.
+		public string title = "WORD GARDEN";
 		public bool isLogEnabled = true;
 		public float wordPositionScale = 33.0f;
 		public GameObject hint;
@@ -49,6 +50,7 @@ namespace Finegamedesign.Anagram
 		public void Start()
 		{
 			Toolkit.isLogEnabled = isLogEnabled;
+			controller.model.title = title;
 			Setup(this.gameObject);
 			controller.view = this;
 			controller.Setup();
@@ -93,23 +95,6 @@ namespace Finegamedesign.Anagram
 			progress = SceneNodeView.GetChild(main, "progress", progress);
 			letterNodes = SceneNodeView.ToSceneNodeList(
 				SceneNodeView.GetChildren(wordState));
-		}
-
-		internal void UpdateLetters(List<GameObject> views, List<string> letters) 
-		{
-			for (int i = 0; i < DataUtil.Length(views); i++)
-			{
-				var letterView = views[i];
-				if (null != letterView)
-				{
-					bool visible = i < letters.Count;
-					SceneNodeView.SetVisible(letterView, visible);
-					if (visible) {
-						var textView = SceneNodeView.GetChild(letterView, "text");
-						TextView.SetText(textView, letters[i]);
-					}
-				}
-			}
 		}
 	}
 }

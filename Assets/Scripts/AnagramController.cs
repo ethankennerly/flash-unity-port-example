@@ -106,10 +106,10 @@ namespace Finegamedesign.Anagram
 
 		private void UpdateLetters()
 		{
-			view.UpdateLetters(view.wordLetters, model.word);
-			view.UpdateLetters(view.inputLetters, model.inputs);
-			view.UpdateLetters(view.outputLetters, model.outputs);
-			view.UpdateLetters(view.hintLetters, model.hints);
+			TextViews.SetChildren(view.wordLetters, model.word);
+			TextViews.SetChildren(view.inputLetters, model.inputs);
+			TextViews.SetChildren(view.outputLetters, model.outputs);
+			TextViews.SetChildren(view.hintLetters, model.hints);
 		}
 
 		public bool IsLetterKeyDown(string letter)

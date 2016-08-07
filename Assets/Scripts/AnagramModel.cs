@@ -32,6 +32,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		
 		public Journal journal = new Journal();
 
+		internal string title;
 		internal List<int> stationIndexes;
 		internal bool isHelpStateChange;
 		internal string helpState;
@@ -723,7 +724,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
 					isContinueVisible = true;
-					help = "WORD GARDEN";
+					help = title;
 					helpState = "title";
 					if (isVerbose)
 					{
