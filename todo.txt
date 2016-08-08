@@ -204,6 +204,8 @@ TODO
 				Letter snake.
 				Centipede crawling closer.
 					http://previews.123rf.com/images/silantiy/silantiy1209/silantiy120900020/15529867-Set-of-amusing-caterpillars-on-a-white-background-Caterpillars-of-different-color-On-one-caterpillar-Stock-Vector.jpg
+				each letter is a monster
+					https://pixabay.com/p-160205/?no_redirect	
 		Word Garden
 			RULE	STORY
 			Anagram	Grid of letters
@@ -251,6 +253,7 @@ TODO
 	Animate various outcomes:  many subwords.  fast.  barely survive.
 	Theme:  
 		WORD SWORD
+			
 		BATTLE OF WORDS
 		WORDS VS ZOMBIES
 			https://itunes.apple.com/us/app/words-vs-zombies/id733299960?mt=8
