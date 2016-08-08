@@ -200,6 +200,10 @@ TODO
 			Shuffle	Letters slide
 			Spell	Slide letters up and off
 			LevelUp	Progress on map
+				Upgrade sword.
+				Letter snake.
+				Centipede crawling closer.
+					http://previews.123rf.com/images/silantiy/silantiy1209/silantiy120900020/15529867-Set-of-amusing-caterpillars-on-a-white-background-Caterpillars-of-different-color-On-one-caterpillar-Stock-Vector.jpg
 		Word Garden
 			RULE	STORY
 			Anagram	Grid of letters
@@ -248,6 +252,9 @@ TODO
 	Theme:  
 		WORD SWORD
 		BATTLE OF WORDS
+		WORDS VS ZOMBIES
+			https://itunes.apple.com/us/app/words-vs-zombies/id733299960?mt=8
+			http://techforteachers.com/wp-content/uploads/2014/01/Words-Vs-Zombies-App-Review.pdf
 		WORDCRAFT
 		WORD GARDEN
 		WORD SHARP
