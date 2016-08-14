@@ -188,9 +188,11 @@ FEATURES
 	Journal and playback input.
 	Match scale.
 	Deep profile.
+	Test case:  2016-08-13 Jennifer Russ expects to recognize marks at bottom of letter.  Got arms.
 
 TODO
 
+	Test case:  2016-08-13 In portrait view, Jennifer expects to see hilt of sword.
 	Story clarifies rules and stars the player:
 		Word Sword
 			RULE	STORY
@@ -218,6 +220,7 @@ TODO
 	Pass unit test of example journal and playback animation.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
+	If tap same letter twice, do not select the other letter.  Example:  SPELL.  Tap first L twice.  Expect second L not selected.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
 	Remove scale from root.
