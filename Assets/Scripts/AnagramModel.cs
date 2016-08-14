@@ -183,6 +183,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			;
 			wordStateNow = "begin";
+			state = "trial";
 			if (isVerbose) 
 			{
 				Toolkit.Log("AnagramModel.StartTrial: word[0]: <" + word[0] + ">" 

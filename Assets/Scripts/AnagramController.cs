@@ -122,7 +122,10 @@ namespace Finegamedesign.Anagram
 			List<string> presses = model.GetPresses(IsLetterKeyDown);
 			model.Press(presses);
 			model.MouseDown(letterIndexMouseDown);
-			UpdateSelect(model.selectsNow, true);
+			if ("complete" != model.state)
+			{
+				UpdateSelect(model.selectsNow, true);
+			}
 			UpdateSubmit();
 			UpdatePosition();
 		}
@@ -182,6 +185,15 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
+		private void SetLetterStates(string state)
+		{
+			for (int i = 0; i < DataUtil.Length(view.wordLetters); i++)
+			{
+				AnimationView.SetState(view.wordLetters[i],
+					state);
+			}
+		}
+
 		private void UpdateHud()
 		{
 			string hudState = model.isHudVisible ? "begin" : "end";
@@ -229,7 +241,11 @@ namespace Finegamedesign.Anagram
 			if ("submit" == model.journal.actionNow && null != model.state) 
 			{
 				AnimationView.SetState(view.input, model.state, true);
-				if ("complete" != model.state)
+				if ("complete" == model.state)
+				{
+					SetLetterStates("complete");
+				}
+				else
 				{
 					ResetSelect();
 				}

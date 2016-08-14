@@ -189,10 +189,15 @@ FEATURES
 	Match scale.
 	Deep profile.
 	Test case:  2016-08-13 Jennifer Russ expects to recognize marks at bottom of letter.  Got arms.
+	Test case:  2016-08-13 In portrait view, Jennifer expects to see hilt of sword.
 
 TODO
 
-	Test case:  2016-08-13 In portrait view, Jennifer expects to see hilt of sword.
+	Test case:  2016-08-13 Jennifer could expect to tell a story.  Got mushrooms.
+		Sword touches.  Hats with letters slide up.  Faces smile and slide down.
+		Sword touches.  Hats with letters slide up.  Gold coin faces smile and slide down.
+		Sword touches toast.  Butter appears.
+		Centipede connected by letters.  Serpent slides up.
 	Story clarifies rules and stars the player:
 		Word Sword
 			RULE	STORY
@@ -204,10 +209,6 @@ TODO
 			LevelUp	Progress on map
 				Upgrade sword.
 				Letter snake.
-				Centipede crawling closer.
-					http://previews.123rf.com/images/silantiy/silantiy1209/silantiy120900020/15529867-Set-of-amusing-caterpillars-on-a-white-background-Caterpillars-of-different-color-On-one-caterpillar-Stock-Vector.jpg
-				each letter is a monster
-					https://pixabay.com/p-160205/?no_redirect	
 		Word Garden
 			RULE	STORY
 			Anagram	Grid of letters
@@ -220,6 +221,10 @@ TODO
 	Pass unit test of example journal and playback animation.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
+	Each letter is a monster
+		https://pixabay.com/p-160205/?no_redirect	
+	Centipede crawling closer.
+		http://previews.123rf.com/images/silantiy/silantiy1209/silantiy120900020/15529867-Set-of-amusing-caterpillars-on-a-white-background-Caterpillars-of-different-color-On-one-caterpillar-Stock-Vector.jpg
 	If tap same letter twice, do not select the other letter.  Example:  SPELL.  Tap first L twice.  Expect second L not selected.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
