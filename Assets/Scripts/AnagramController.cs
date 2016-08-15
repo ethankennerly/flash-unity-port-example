@@ -204,13 +204,14 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
+		internal void Pause(bool isInstant)
+		{
+			model.Pause(isInstant);
+			Update(0.0f);
+		}
+
 		private void UpdateHud()
 		{
-			if (view.isPause)
-			{
-				view.isPause = false;
-				model.Pause(true);
-			}
 			string hudState = model.isHudVisible ? "begin" : "end";
 			AnimationView.SetState(view.hud, hudState, false, true);
 			if ("" != model.help)

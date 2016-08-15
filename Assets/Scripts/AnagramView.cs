@@ -103,6 +103,10 @@ namespace Finegamedesign.Anagram
 		public void OnApplicationPause(bool isPauseNow)
 		{
 			this.isPause = isPauseNow;
+			if (isPauseNow)
+			{
+				controller.Pause(true);
+			}
 		}
 	}
 }
