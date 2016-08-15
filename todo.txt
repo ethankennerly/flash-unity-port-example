@@ -212,14 +212,15 @@ FEATURES
 	Test case:  2016-08-13 In portrait view, Jennifer expects to see hilt of sword.
 	Test case:  2016-08-13 Jennifer could expect to tell a story.  Got mushrooms.
 		Sword touches.  Hats with letters slide up.  Gold coin faces smile and slide down.
-
-TODO
-
 	Test case:  2016-08-13 Jennifer expects to pause.
 		Button to goto menu with Continue and New Game.
 		Continue resumes.
 		On app backgrounded, auto-pause immediately.
 		Do not advance a level.  Remember progress on the word.
+
+TODO
+
+	Test case:  2016-08-14 First word.  Expect to read about 3000 words.  Got 1000 words.
 	At checkpoint goto map.
 		Map shows path with one node per word.
 		Milestones at number of letters.

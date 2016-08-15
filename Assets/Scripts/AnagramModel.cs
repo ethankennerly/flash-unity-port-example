@@ -55,6 +55,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private string hintWord;
 		internal bool isHintVisible = false;
 		internal bool isPaused = false;
+		internal bool isInstant = false;
 		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
 		internal bool isContinueVisible = false;
@@ -297,9 +298,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.EndSession();
 		}
 	
-		internal void Pause()
+		internal void Pause(bool isInstant = false)
 		{
 			isPaused = true;
+			this.isInstant = isInstant;
 			help = "PAUSED";
 			helpState = "paused";
 			isGamePlaying = false;
@@ -310,6 +312,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal void Resume()
 		{
 			isPaused = false;
+			isInstant = false;
 			help = "";
 			helpState = null;
 			isGamePlaying = true;

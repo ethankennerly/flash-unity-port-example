@@ -73,15 +73,6 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
-		private void UpdatePause()
-		{
-			if (view.isPause)
-			{
-				view.isPause = false;
-				model.Pause();
-			}
-		}
-
 		//
 		// * Remember which letter was just clicked on this update.
 		// *
@@ -109,7 +100,6 @@ namespace Finegamedesign.Anagram
 				storage.Save(storage.data);
 			}
 			UpdateExit();
-			UpdatePause();
 			UpdateButtonController();
 			UpdateBackspace();
 			UpdateCheat();
@@ -216,6 +206,11 @@ namespace Finegamedesign.Anagram
 
 		private void UpdateHud()
 		{
+			if (view.isPause)
+			{
+				view.isPause = false;
+				model.Pause(true);
+			}
 			string hudState = model.isHudVisible ? "begin" : "end";
 			AnimationView.SetState(view.hud, hudState, false, true);
 			if ("" != model.help)
@@ -224,7 +219,8 @@ namespace Finegamedesign.Anagram
 			}
 			if (model.isHelpStateChange)
 			{
-				string helpState = "" == model.help ? "endNow" : "beginNow";
+				string helpState = "" == model.help ? "endNow" 
+					: model.isInstant ? "instantNow" : "beginNow";
 				AnimationView.SetTrigger(view.help, helpState);
 			}
 			// SceneNodeView.SetVisible(view.help, model.help != "");
