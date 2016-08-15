@@ -18,6 +18,7 @@ namespace Finegamedesign.Anagram
 		public GameObject input;
 		public GameObject newGameButton;
 		public GameObject continueButton;
+		public GameObject exitButton;
 		public GameObject inputState;
 		public GameObject output;
 		public GameObject deleteButton;
@@ -83,6 +84,7 @@ namespace Finegamedesign.Anagram
 			hintButton = SceneNodeView.GetChild(main, "canvas/hint", hintButton);
 			newGameButton = SceneNodeView.GetChild(main, "canvas/newGame", newGameButton);
 			continueButton = SceneNodeView.GetChild(main, "canvas/continue", continueButton);
+			exitButton = SceneNodeView.GetChild(main, "canvas/exit", exitButton);
 			deleteButton = SceneNodeView.GetChild(main, "canvas/delete", deleteButton);
 			submitButton = SceneNodeView.GetChild(main, "canvas/submit", submitButton);
 			emailButton = SceneNodeView.GetChild(main, "canvas/email", emailButton);

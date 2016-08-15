@@ -188,16 +188,6 @@ FEATURES
 	Journal and playback input.
 	Match scale.
 	Deep profile.
-	Test case:  2016-08-13 Jennifer Russ expects to recognize marks at bottom of letter.  Got arms.
-	Test case:  2016-08-13 In portrait view, Jennifer expects to see hilt of sword.
-
-TODO
-
-	Test case:  2016-08-13 Jennifer could expect to tell a story.  Got mushrooms.
-		Sword touches.  Hats with letters slide up.  Faces smile and slide down.
-		Sword touches.  Hats with letters slide up.  Gold coin faces smile and slide down.
-		Sword touches toast.  Butter appears.
-		Centipede connected by letters.  Serpent slides up.
 	Story clarifies rules and stars the player:
 		Word Sword
 			RULE	STORY
@@ -218,7 +208,23 @@ TODO
 			Spell	Slide letters up and off
 			LevelUp	Scroll flowers
 	Different scene for each theme.
-	Pass unit test of example journal and playback animation.
+	Test case:  2016-08-13 Jennifer Russ expects to recognize marks at bottom of letter.  Got arms.
+	Test case:  2016-08-13 In portrait view, Jennifer expects to see hilt of sword.
+	Test case:  2016-08-13 Jennifer could expect to tell a story.  Got mushrooms.
+		Sword touches.  Hats with letters slide up.  Gold coin faces smile and slide down.
+
+TODO
+
+	Test case:  2016-08-13 Jennifer expects to pause.
+		Button to goto menu with Continue and New Game.
+		Continue resumes.
+		On app backgrounded, auto-pause immediately.
+	At checkpoint goto map.
+		Map shows path with one node per word.
+		Milestones at number of letters.
+		Double frequency of checkpoints.
+		Or checkpoint after 10 words.
+	Experiment with synonym hint for word.  Only accept that word.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Each letter is a monster
@@ -228,6 +234,7 @@ TODO
 	If tap same letter twice, do not select the other letter.  Example:  SPELL.  Tap first L twice.  Expect second L not selected.
 	Play to summarize opportunities to be consistent and clear.
 	Compare to profitable word games for clean look and feel.
+	Pass unit test of example journal and playback animation.
 	Remove scale from root.
 	Repeat.  Different sound.
 	Not accepted.  Different sound.
@@ -245,6 +252,10 @@ TODO
 	Text not aliasing.
 	Profile. Optimize view update of letters.
 	Animate letters if repeating word.
+	Test case:  2016-08-13 Jennifer could expect to tell a story.  Got mushrooms.
+		Sword touches.  Hats with letters slide up.  Faces smile and slide down.
+		Sword touches toast.  Butter appears.
+		Centipede connected by letters.  Serpent slides up.
 	Developer controls:
 		Type user name.
 			http://docs.unity3d.com/Manual/script-InputField.html

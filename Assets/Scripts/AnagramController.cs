@@ -47,6 +47,7 @@ namespace Finegamedesign.Anagram
 			buttonController.view.Listen(view.deleteButton);
 			buttonController.view.Listen(view.submitButton);
 			buttonController.view.Listen(view.emailButton);
+			buttonController.view.Listen(view.exitButton);
 			for (int index = 0; index < DataUtil.Length(view.wordLetters); index++)
 			{
 				var letter = view.wordLetters[index];
@@ -62,6 +63,14 @@ namespace Finegamedesign.Anagram
 				buttonDownName = buttonController.downName;
 			}
 			UpdateLetterButton();
+		}
+
+		private void UpdateExit()
+		{
+			SceneNodeView.SetVisible(view.exitButton, !model.isNewGameVisible);
+			if ("exit" == buttonDownName) {
+				model.GameOver();
+			}
 		}
 
 		//
@@ -90,6 +99,7 @@ namespace Finegamedesign.Anagram
 				storage.SetKeyValue("level", model.progress.GetLevelNormal());
 				storage.Save(storage.data);
 			}
+			UpdateExit();
 			UpdateButtonController();
 			UpdateBackspace();
 			UpdateCheat();

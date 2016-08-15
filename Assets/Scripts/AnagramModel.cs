@@ -273,24 +273,29 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// During tutorial, cannot run out of time.
 		// Test case:  2016-07-23 Tutor.  Neighbor Kristine expects time to enter word.  Got game over.
 		// 
-		private void clampWordPosition()
+		private void ClampWordPosition()
 		{
 			float min = wordWidth - width;
 			if (!IsTutor() && wordPosition <= min)
 			{
-				help = "GAME OVER!";
-				helpState = "gameOver";
-				isGamePlaying = false;
-				isContinueVisible = true;
-				isNewGameVisible = true;
-				metrics.trial_integers["game_over"] = 1;
-				metrics.EndTrial();
-				metrics.EndSession();
+				GameOver();
 			}
 			float max = IsTutor() ? -0.4f * wordWidth : 0.0f;
 			wordPosition = Mathf.Max(min, Mathf.Min(max, wordPosition));
 		}
 	
+		internal void GameOver()
+		{
+			help = "GAME OVER!";
+			helpState = "gameOver";
+			isGamePlaying = false;
+			isContinueVisible = true;
+			isNewGameVisible = true;
+			metrics.trial_integers["game_over"] = 1;
+			metrics.EndTrial();
+			metrics.EndSession();
+		}
+
 		// Do not tween word position.
 		// Test case:  2016-07-23
 		// Continue.
@@ -300,7 +305,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private void UpdatePosition(float deltaSeconds)
 		{
 			wordPosition += (deltaSeconds * width * wordWidthPerSecond);
-			clampWordPosition();
+			ClampWordPosition();
 			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
 			wordPositionScaled = wordPosition * scale;
 			// wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
@@ -344,7 +349,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (complete) {
 				outputKnockback *= 3;
 			}
-			clampWordPosition();
+			ClampWordPosition();
 		}
 		
 		internal bool OnOutputHitsWord()
