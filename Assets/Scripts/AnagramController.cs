@@ -69,7 +69,16 @@ namespace Finegamedesign.Anagram
 		{
 			SceneNodeView.SetVisible(view.exitButton, !model.isNewGameVisible);
 			if ("exit" == buttonDownName) {
-				model.GameOver();
+				model.Pause();
+			}
+		}
+
+		private void UpdatePause()
+		{
+			if (view.isPause)
+			{
+				view.isPause = false;
+				model.Pause();
 			}
 		}
 
@@ -100,6 +109,7 @@ namespace Finegamedesign.Anagram
 				storage.Save(storage.data);
 			}
 			UpdateExit();
+			UpdatePause();
 			UpdateButtonController();
 			UpdateBackspace();
 			UpdateCheat();

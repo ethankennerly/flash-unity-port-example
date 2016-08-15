@@ -219,6 +219,7 @@ TODO
 		Button to goto menu with Continue and New Game.
 		Continue resumes.
 		On app backgrounded, auto-pause immediately.
+		Do not advance a level.  Remember progress on the word.
 	At checkpoint goto map.
 		Map shows path with one node per word.
 		Milestones at number of letters.

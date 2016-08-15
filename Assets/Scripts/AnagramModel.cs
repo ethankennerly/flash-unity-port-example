@@ -54,6 +54,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<string> hints = new List<string>();
 		private string hintWord;
 		internal bool isHintVisible = false;
+		internal bool isPaused = false;
 		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
 		internal bool isContinueVisible = false;
@@ -294,6 +295,26 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.trial_integers["game_over"] = 1;
 			metrics.EndTrial();
 			metrics.EndSession();
+		}
+	
+		internal void Pause()
+		{
+			isPaused = true;
+			help = "PAUSED";
+			helpState = "paused";
+			isGamePlaying = false;
+			isContinueVisible = true;
+			isNewGameVisible = true;
+		}
+
+		internal void Resume()
+		{
+			isPaused = false;
+			help = "";
+			helpState = null;
+			isGamePlaying = true;
+			isContinueVisible = false;
+			isNewGameVisible = false;
 		}
 
 		// Do not tween word position.
@@ -554,6 +575,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal void ContinueGame()
 		{
 			if (isContinueVisible) {
+				if (isPaused)
+				{
+					Resume();
+					return;
+				}
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
 				if (isVerbose)
 				{

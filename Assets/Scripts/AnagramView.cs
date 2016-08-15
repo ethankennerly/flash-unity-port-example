@@ -9,6 +9,7 @@ namespace Finegamedesign.Anagram
 		// Larger number moves word more.
 		public string title = "WORD GARDEN";
 		public bool isLogEnabled = true;
+		public bool isPause = false;
 		public float wordPositionScale = 33.0f;
 		public GameObject hint;
 
@@ -97,6 +98,11 @@ namespace Finegamedesign.Anagram
 			progress = SceneNodeView.GetChild(main, "progress", progress);
 			letterNodes = SceneNodeView.ToSceneNodeList(
 				SceneNodeView.GetChildren(wordState));
+		}
+
+		public void OnApplicationPause(bool isPauseNow)
+		{
+			this.isPause = isPauseNow;
 		}
 	}
 }
