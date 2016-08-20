@@ -136,7 +136,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2016-07-31 Continue. Game over. New game.
 		// Expect HUD goes away.  Got HUD remains.
 		// Complete tutorial trials.  Expect HUD slides into view.
-		// 
+		// At start of trial, set help state to none.  Was null.
+		// Test case:  2016-08-20 Complete tutorial.  Expect help disappears. 
 		internal void StartTrial(Dictionary<string, object> parameters)
 		{
 			isHudVisible = !IsTutor();
@@ -147,7 +148,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
 			help = "";
-			helpState = null;
+			helpState = "none";
 			wordWidthPerSecond = IsTutor() ? -0.005f : -0.01f;
 			if (parameters.ContainsKey("text")) {
 				text = (string)parameters["text"];
@@ -309,12 +310,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			isNewGameVisible = true;
 		}
 
+		// On resume, set help state to "unpaused" instead of null.
+		// Test case:  2016-08-20 Unpause.  Expect help disappears.
 		internal void Resume()
 		{
 			isPaused = false;
 			isInstant = false;
 			help = "";
-			helpState = null;
+			helpState = "unpaused";
 			isGamePlaying = true;
 			isContinueVisible = false;
 			isNewGameVisible = false;
