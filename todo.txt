@@ -217,15 +217,16 @@ FEATURES
 		Continue resumes.
 		On app backgrounded, auto-pause immediately.
 		Do not advance a level.  Remember progress on the word.
+	Test case:  2016-08-14 First word.  Expect to read about 3000 words.  Got 1000 words.
 
 TODO
 
-	Test case:  2016-08-14 First word.  Expect to read about 3000 words.  Got 1000 words.
 	At checkpoint goto map.
 		Map shows path with one node per word.
 		Milestones at number of letters.
 		Double frequency of checkpoints.
 		Or checkpoint after 10 words.
+	After 20 words, goto map.
 	Experiment with synonym hint for word.  Only accept that word.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.

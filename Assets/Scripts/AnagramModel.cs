@@ -724,10 +724,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 		}
 
 		// If next trial starts; otherwise checkpoint.
+		// Update if HUD is visible before selecting the next level.
+		// Test case:  2016-08-14 Continue. First word.  Expect to read about 3000 words.  Got 1000 words.
 		internal void NextTrial()
 		{
 			bool isNow = !UpdateCheckpoint();
 			if (isNow) {
+				isHudVisible = !IsTutor();
 				Dictionary<string, object> level;
 				if (isHudVisible) {
 					level = progress.Pop(levels.parameters, tutorLevel);
