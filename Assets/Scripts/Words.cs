@@ -9,7 +9,7 @@ namespace Finegamedesign.Anagram
 
 		public static Dictionary<string, object> Read()
 		{
-			string text = Toolkit.Read(
+			string text = StringUtil.Read(
 				"text/TWL06.txt"
 			);
 			string[] lines = text.Split('\n');
@@ -31,8 +31,8 @@ namespace Finegamedesign.Anagram
 
 		private static void LoadWords(AnagramModel model)
 		{
-			string text = Toolkit.Read("text/anagram_words.txt");
-			string[] words = Toolkit.Split(text, Toolkit.lineDelimiter);
+			string text = StringUtil.Read("text/anagram_words.txt");
+			string[] words = StringUtil.Split(text, Toolkit.lineDelimiter);
 			AddWords(model.levels.parameters, words);
 			string[] win = new string[]{"YOU", "WIN"};
 			AddWords(model.levels.parameters, win);

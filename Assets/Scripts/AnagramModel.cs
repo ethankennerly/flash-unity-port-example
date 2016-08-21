@@ -255,7 +255,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			else if (command.IndexOf("select_") == 0)
 			{
-				int index = Toolkit.ParseIndex(command);
+				int index = StringUtil.ParseIndex(command);
 				MouseDown(index);
 			}
 			else
@@ -793,7 +793,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			DataUtil.Clear(readingOrder);
 			for (int letter = 0; letter < DataUtil.Length(letterNodes); letter++)
 			{
-				int index = Toolkit.ParseIndex(letterNodes[letter].name);
+				int index = StringUtil.ParseIndex(letterNodes[letter].name);
 				readingOrder.Add(index);
 			}
 		}

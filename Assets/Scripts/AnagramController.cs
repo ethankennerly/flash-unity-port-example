@@ -86,7 +86,7 @@ namespace Finegamedesign.Anagram
 				buttonDownName = TextView.GetText(text).ToLower();
 				string name = SceneNodeView.GetName(
 					SceneNodeView.GetParent(buttonController.view.target));
-				letterIndexMouseDown = Toolkit.ParseIndex(name);
+				letterIndexMouseDown = StringUtil.ParseIndex(name);
 				Toolkit.Log("AnagramController.UpdateLetterButton: " + buttonDownName);
 			}
 		}
