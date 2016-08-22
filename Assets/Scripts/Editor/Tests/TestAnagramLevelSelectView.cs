@@ -7,6 +7,11 @@ namespace Finegamedesign.Utils
 	[TestFixture]
 	public sealed class TestAnagramLevelSelectView
 	{
+		private static void PointerDown(GameObject button)
+		{
+			ButtonBehaviour behaviour = button.GetComponent<ButtonBehaviour>();
+		}
+
 		[Test]
 		public void Select107of109Unlocked()
 		{
@@ -18,15 +23,18 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(3, DataUtil.Length(controller.view.buttons));
 			Assert.AreEqual("chapterSelect", controller.model.menuName);
 			Assert.AreEqual(8, DataUtil.Length(controller.view.buttons[0]));
-			controller.buttons.view.Down(controller.view.buttons[0][0]);
+			// controller.buttons.view.Down(controller.view.buttons[0][0]);
+			PointerDown(controller.view.buttons[0][0]);
 			controller.Update();
 			Assert.AreEqual("levelSelect", controller.model.menuName);
 			Assert.AreEqual(20, DataUtil.Length(controller.view.buttons[1]));
-			controller.buttons.view.Down(controller.view.buttons[1][5]);
+			// controller.buttons.view.Down(controller.view.buttons[1][5]);
+			PointerDown(controller.view.buttons[1][5]);
 			controller.Update();
 			Assert.AreEqual("wordSelect", controller.model.menuName);
 			Assert.AreEqual(20, DataUtil.Length(controller.view.buttons[2]));
-			controller.buttons.view.Down(controller.view.buttons[2][7]);
+			// controller.buttons.view.Down(controller.view.buttons[2][7]);
+			PointerDown(controller.view.buttons[2][7]);
 			controller.Update();
 			Assert.AreEqual("play", controller.model.menuName);
 			Assert.AreEqual(107, controller.model.levelSelected);

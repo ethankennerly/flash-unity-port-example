@@ -7,6 +7,7 @@ namespace Finegamedesign.Anagram
 	public sealed class AnagramController
 	{
 		public AnagramView view;
+		public LevelSelectController levelSelect = new LevelSelectController();
 		internal AnagramModel model = new AnagramModel();
 		private Email email = new Email();
 		private Storage storage = new Storage();
@@ -30,7 +31,19 @@ namespace Finegamedesign.Anagram
 			SetupButtonController();
 			ScreenView.AutoRotate();
 			UpdateScreenOrientation();
+			LevelSelectSetup();
+		}
 
+		private void LevelSelectSetup()
+		{
+			levelSelect.model.menus = new List<int>(){8, 20, 20};
+			levelSelect.model.menuNames = new List<string>(){
+				"chapterSelect",
+				"levelSelect",
+				"wordSelect",
+				"play"
+			};
+			levelSelect.Setup();
 		}
 
 		private void UpdateScreenOrientation()
@@ -70,6 +83,7 @@ namespace Finegamedesign.Anagram
 			SceneNodeView.SetVisible(view.exitButton, !model.isNewGameVisible);
 			if ("exit" == buttonDownName) {
 				model.Pause();
+				levelSelect.model.Exit();
 			}
 		}
 
@@ -112,6 +126,7 @@ namespace Finegamedesign.Anagram
 			UpdateContinue();
 			UpdateNewGame();
 			UpdateScreenOrientation();
+			levelSelect.Update();
 		}
 
 		private void UpdateLetters()
