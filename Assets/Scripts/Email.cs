@@ -1,5 +1,5 @@
 using UnityEngine;
-using Finegamedesign.Utils/*<Toolkit>*/;
+using Finegamedesign.Utils/*<DebugUtil>*/;
 
 public class Email
 {
@@ -13,7 +13,7 @@ public class Email
 
 	public void Send(string body)
 	{
-		Toolkit.Log(body);
+		DebugUtil.Log(body);
 		body = EscapeURL(body);
 		Application.OpenURL("mailto:" + to
 			+ "?subject=" + subject 

@@ -189,7 +189,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			state = "trial";
 			if (isVerbose) 
 			{
-				Toolkit.Log("AnagramModel.StartTrial: word[0]: <" + word[0] + ">" 
+				DebugUtil.Log("AnagramModel.StartTrial: word[0]: <" + word[0] + ">" 
 					+ " level " + progress.GetLevelNormal());
 			}
 			metrics.StartTrial();
@@ -337,7 +337,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPositionScaled = wordPosition * scale;
 			// wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
 			bool isVerbosePosition = false;
-			if (isVerbosePosition) Toolkit.Log("AnagramModel.UpdatePosition: " + wordPosition);
+			if (isVerbosePosition) DebugUtil.Log("AnagramModel.UpdatePosition: " + wordPosition);
 			UpdateProgress(deltaSeconds);
 		}
 
@@ -560,7 +560,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			{
 				if (isVerbose)
 				{
-					Toolkit.Log("AnagramModel.NewGame");
+					DebugUtil.Log("AnagramModel.NewGame");
 				}
 				previousSessionLevel = 0;
 				progress.SetLevelNormal(previousSessionLevel);
@@ -589,7 +589,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
 				if (isVerbose)
 				{
-					Toolkit.Log("AnagramModel.ContinueGame: level " + level);
+					DebugUtil.Log("AnagramModel.ContinueGame: level " + level);
 				}
 				progress.SetLevelNormal(level);
 				trialCount++;
@@ -647,7 +647,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 							LevelUp();
 							if (isVerbose)
 							{
-								Toolkit.Log("AnagramModel.submit: " + submission 
+								DebugUtil.Log("AnagramModel.submit: " + submission 
 									+ " " + progress.GetLevelNormal());
 							}
 							state = "complete";
@@ -671,7 +671,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				float perWordNotAccepted = -0.1f;
 				wordPosition += perWordNotAccepted;
 			}
-			if (isVerbose) Toolkit.Log("AnagramModel.submit: " + submission + ". Accepted " + accepted);
+			if (isVerbose) DebugUtil.Log("AnagramModel.submit: " + submission + ". Accepted " + accepted);
 			DataUtil.Clear(inputs);
 			available = DataUtil.CloneList(word);
 			selects = DataUtil.CloneList(word);
@@ -708,7 +708,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				//- metrics.EndSession();
 				float checkpoint = progressScale * width * progress.normal;
 				if (isVerbose) {
-					Toolkit.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
+					DebugUtil.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
 				}
 			}
 			return progress.isCheckpoint;
@@ -769,11 +769,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 					helpState = "title";
 					if (isVerbose)
 					{
-						Toolkit.Log("AnagramModel.Load: level " + previousSessionLevel);
+						DebugUtil.Log("AnagramModel.Load: level " + previousSessionLevel);
 					}
 				}
 				else {
-					Toolkit.Log("Data does not contain level.");
+					DebugUtil.Log("Data does not contain level.");
 				}
 			}
 		}

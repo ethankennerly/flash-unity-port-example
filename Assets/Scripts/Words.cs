@@ -32,7 +32,7 @@ namespace Finegamedesign.Anagram
 		private static void LoadWords(AnagramModel model)
 		{
 			string text = StringUtil.Read("text/anagram_words.txt");
-			string[] words = StringUtil.Split(text, Toolkit.lineDelimiter);
+			string[] words = StringUtil.Split(text, StringUtil.lineDelimiter);
 			AddWords(model.levels.parameters, words);
 			string[] win = new string[]{"YOU", "WIN"};
 			AddWords(model.levels.parameters, win);

@@ -51,7 +51,7 @@ namespace Finegamedesign.Anagram
 
 		public void Start()
 		{
-			Toolkit.isLogEnabled = isLogEnabled;
+			DebugUtil.isLogEnabled = isLogEnabled;
 			controller.model.title = title;
 			Setup(this.gameObject);
 			controller.view = this;
@@ -65,7 +65,7 @@ namespace Finegamedesign.Anagram
 		public void Update()
 		{
 			Time.timeScale = timeScale;
-			Toolkit.isLogEnabled = isLogEnabled;
+			DebugUtil.isLogEnabled = isLogEnabled;
 			controller.Update(Time.deltaTime);
 		}
 

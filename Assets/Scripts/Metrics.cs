@@ -36,7 +36,7 @@ namespace /*<com>*/Finegamedesign.Utils
 		public void EndSession()
 		{
 			trial_tsv = ToTable();
-			Toolkit.Log(
+			DebugUtil.Log(
 				"Metrics.EndSession: Format to copy and paste into a spreadsheet:"
 				+ "\n" + trial_tsv);
 		}
@@ -93,7 +93,7 @@ namespace /*<com>*/Finegamedesign.Utils
 					}
 					else {
 						// throw new System.Exception
-						Toolkit.Log("Expected " + header + " in " + trials_integers[i] + " or " + trials_strings[i]);
+						DebugUtil.Log("Expected " + header + " in " + trials_integers[i] + " or " + trials_strings[i]);
 						column = "-1";
 					}
 					row += column;
