@@ -36,6 +36,8 @@ namespace Finegamedesign.Anagram
 
 		private void LevelSelectSetup()
 		{
+			levelSelect.model.levelUnlocked = model.progress.level;
+			levelSelect.model.levelCount = model.progress.levelMax;
 			levelSelect.model.menus = new List<int>(){8, 20, 20};
 			levelSelect.model.menuNames = new List<string>(){
 				"chapterSelect",
@@ -107,6 +109,11 @@ namespace Finegamedesign.Anagram
 
 		public void Update(float deltaSeconds)
 		{
+			levelSelect.Update();
+			if (levelSelect.model.IsSelected())
+			{
+				model.ContinueGame(levelSelect.model.levelSelected);
+			}
 			model.Update(deltaSeconds);
 			if (model.isSaveNow) {
 				model.isSaveNow = false;
@@ -126,7 +133,6 @@ namespace Finegamedesign.Anagram
 			UpdateContinue();
 			UpdateNewGame();
 			UpdateScreenOrientation();
-			levelSelect.Update();
 		}
 
 		private void UpdateLetters()

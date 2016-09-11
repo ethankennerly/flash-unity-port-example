@@ -578,7 +578,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// When continue, add trial count.
 		// Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
 		// 
-		internal void ContinueGame()
+		internal void ContinueGame(int level = -1)
 		{
 			if (isContinueVisible) {
 				if (isPaused)
@@ -586,7 +586,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 					Resume();
 					return;
 				}
-				int level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
+				if (level <= -1)
+				{
+					level = Mathf.Max(progress.GetLevelNormal(), previousSessionLevel);
+				}
 				if (isVerbose)
 				{
 					DebugUtil.Log("AnagramModel.ContinueGame: level " + level);
