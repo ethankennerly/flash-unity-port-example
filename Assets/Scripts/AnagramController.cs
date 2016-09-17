@@ -4,11 +4,12 @@ using Finegamedesign.Utils;
 
 namespace Finegamedesign.Anagram 
 {
+	[System.Serializable]
 	public sealed class AnagramController
 	{
 		public AnagramView view;
 		public LevelSelectController levelSelect = new LevelSelectController();
-		internal AnagramModel model = new AnagramModel();
+		public AnagramModel model = new AnagramModel();
 		private Email email = new Email();
 		private Storage storage = new Storage();
 		private string buttonDownName;

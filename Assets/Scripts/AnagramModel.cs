@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using /*<com>*/Finegamedesign.Utils/*<Model>*/;
 namespace /*<com>*/Finegamedesign.Anagram
 {
+	[System.Serializable]
 	public sealed class AnagramModel
 	{
 		private static bool ContainsWord(Dictionary<string, object> wordHash, List<string> letters, List<int> readingOrder)
@@ -31,12 +32,16 @@ namespace /*<com>*/Finegamedesign.Anagram
 		}
 		
 		public Journal journal = new Journal();
+		public bool isHelpStateChange;
+		public bool isNewGameVisible = false;
+		public string help = "";
+		public string helpState;
+		public string helpStateBefore;
+		public string state;
+		public string text;
 
 		internal string title;
 		internal List<int> stationIndexes;
-		internal bool isHelpStateChange;
-		internal string helpState;
-		internal string helpStateBefore;
 		internal int letterMax = 10;
 		internal List<string> inputs = new List<string>();
 		//
@@ -49,7 +54,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal delegate /*<object>*/void ActionDelegate();
 		internal /*<Function>*/ActionDelegate onComplete;
 		internal delegate bool IsJustPressed(string letter);
-		internal string help = "";
 		internal List<string> outputs = new List<string>();
 		internal List<string> hints = new List<string>();
 		private string hintWord;
@@ -60,9 +64,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int submitsUntilHintNow;
 		internal bool isContinueVisible = false;
 		internal bool isGamePlaying = false;
-		public bool isNewGameVisible = false;
 		internal List<string> completes = new List<string>();
-		public string text;
 		internal List<string> word;
 		internal float nextProgress = 0.0f;
 		internal float progressPositionScaled = 0.0f;
@@ -74,7 +76,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int score = 0;
 		internal int tutorLevel = 0;
 		internal bool isHudVisible = false;
-		public string state;
 		internal string wordStateNow;
 		internal Levels levels = new Levels();
 		internal Progress progress = new Progress();
@@ -220,7 +221,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			journal.Update(deltaSeconds);
 			UpdateCommand(journal.commandNow);
 			isHelpStateChange = helpStateBefore != helpState;
-
 			helpStateBefore = helpState;
 		}
 
@@ -564,10 +564,15 @@ namespace /*<com>*/Finegamedesign.Anagram
 				}
 				previousSessionLevel = 0;
 				progress.SetLevelNormal(previousSessionLevel);
-				trialCount = 0;
-				StartTrial(levels.parameters[0]);
+				StartTutorial();
 			}
 			journal.Record("newGame");
+		}
+
+		private void StartTutorial()
+		{
+			trialCount = 0;
+			StartTrial(levels.parameters[0]);
 		}
 
 		//
@@ -597,10 +602,16 @@ namespace /*<com>*/Finegamedesign.Anagram
 				progress.SetLevelNormal(level);
 				trialCount++;
 				metrics.StartSession();
-				NextTrial();
 				DataUtil.Clear(inputs);
 				help = "";
 				helpState = null;
+				if (IsTutor())
+				{
+					StartTutorial();
+				}
+				else {
+					NextTrial();
+				}
 			}
 			journal.Record("continue");
 		}

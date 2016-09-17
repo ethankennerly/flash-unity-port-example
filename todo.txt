@@ -219,6 +219,7 @@ FEATURES
 		Do not advance a level.  Remember progress on the word.
 	Test case:  2016-08-14 First word.  Expect to read about 3000 words.  Got 1000 words.
 	Test case:  2016-08-20 Complete tutorial.  Expect help disappears.  Unpause.  Expect help disappears.
+	Level select.  First word.  Read instruction.
 
 TODO
 

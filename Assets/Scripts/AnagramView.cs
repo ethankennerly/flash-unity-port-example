@@ -38,6 +38,8 @@ namespace Finegamedesign.Anagram
 
 		public float timeScale = 1.0f;
 
+		public AnagramController controller = new AnagramController();
+
 		internal List<SceneNodeModel> letterNodes;
 		internal List<GameObject> wordBones;
 		internal List<GameObject> wordLetters;
@@ -46,8 +48,6 @@ namespace Finegamedesign.Anagram
 		internal List<GameObject> hintLetters;
 
 		internal TweenSwap tweenSwap = new TweenSwap();
-
-		private AnagramController controller = new AnagramController();
 
 		public void Start()
 		{
