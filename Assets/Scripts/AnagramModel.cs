@@ -778,6 +778,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (null != data) {
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
+					progress.level = previousSessionLevel;
 					isContinueVisible = true;
 					help = title;
 					helpState = "title";

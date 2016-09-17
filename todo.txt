@@ -220,9 +220,6 @@ FEATURES
 	Test case:  2016-08-14 First word.  Expect to read about 3000 words.  Got 1000 words.
 	Test case:  2016-08-20 Complete tutorial.  Expect help disappears.  Unpause.  Expect help disappears.
 	Level select.  First word.  Read instruction.
-
-TODO
-
 	Enter from two menus:
 		-1d: 50 levels in a grid.  60 words each in a grid.   
 			Except first two levels only have 30.  
@@ -233,14 +230,28 @@ TODO
 		-3d: Map
 			Example:  AlphaBetty Saga by King has 90 levels until first balloon.
 		Select level up to previous session.
-		Label levels.
+		Label level number (index plus one).
+
+TODO
+
+	Level select:
+		Back button out of submenu.
+		Map level displayed to word.
 		Lock icon if not available.
 		Example: WordBrain.
-		? if not tried but available.
+		Show question mark icon (?) if not tried but available.
 		Highlighted if highest level unlocked.
 		When open, default to highest unlocked.
 		Speed if solved.
-		Back button out of submenu.
+	Unit test toggle change.
+		inMenu = new ToggleChange();
+		inMenu.Setup(isNow);
+		inMenu.Update()
+		inMenu.IsChangeTo(bool isNow)
+		inMenu.SetNow(bool isNow)
+		inMenu.GetNow()
+		Or change watcher of a value.
+		Generic data type template:  bool, int, string.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.
