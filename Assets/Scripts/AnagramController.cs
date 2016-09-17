@@ -111,7 +111,7 @@ namespace Finegamedesign.Anagram
 		public void Update(float deltaSeconds)
 		{
 			levelSelect.Update();
-			if (levelSelect.model.IsSelected())
+			if (levelSelect.model.isExitMenuNow)
 			{
 				model.ContinueGame(levelSelect.model.levelSelected);
 			}
@@ -363,7 +363,6 @@ namespace Finegamedesign.Anagram
 			SceneNodeView.SetVisible(view.continueButton, model.isContinueVisible);
 			SceneNodeView.SetVisible(view.deleteButton, !model.isContinueVisible);
 			SceneNodeView.SetVisible(view.submitButton, !model.isContinueVisible);
-
 		}
 
 		private void ResetSelect()

@@ -232,13 +232,15 @@ TODO
 			Example:  Fuse Clues has progress bar on highest unlocked level.
 		-3d: Map
 			Example:  AlphaBetty Saga by King has 90 levels until first balloon.
+		Select level up to previous session.
+		Label levels.
 		Lock icon if not available.
 		Example: WordBrain.
 		? if not tried but available.
 		Highlighted if highest level unlocked.
 		When open, default to highest unlocked.
 		Speed if solved.
-		Back button
+		Back button out of submenu.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.

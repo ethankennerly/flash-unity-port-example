@@ -51,53 +51,52 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal float wordWidth = 
 									// 160.0f;
 									420.0f; 
-		internal delegate /*<object>*/void ActionDelegate();
 		internal /*<Function>*/ActionDelegate onComplete;
-		internal delegate bool IsJustPressed(string letter);
-		internal List<string> outputs = new List<string>();
+		internal Dictionary<string, object> wordHash;
+		internal Levels levels = new Levels();
+		internal List<string> completes = new List<string>();
 		internal List<string> hints = new List<string>();
-		private string hintWord;
-		internal bool isHintVisible = false;
-		internal bool isPaused = false;
-		internal bool isInstant = false;
-		internal int submitsUntilHint = 1; // 3;
-		internal int submitsUntilHintNow;
+		internal List<string> outputs = new List<string>();
+		internal List<string> word;
+		internal Metrics metrics = new Metrics();
+		internal Progress progress = new Progress();
 		internal bool isContinueVisible = false;
 		internal bool isGamePlaying = false;
-		internal List<string> completes = new List<string>();
-		internal List<string> word;
+		internal bool isHintVisible = false;
+		internal bool isHudVisible = false;
+		internal bool isInstant = false;
+		internal bool isPaused = false;
+		internal bool isSaveNow = false;
+		internal delegate /*<object>*/void ActionDelegate();
+		internal delegate bool IsJustPressed(string letter);
+		internal float checkpointStep = 0.1f;
 		internal float nextProgress = 0.0f;
 		internal float progressPositionScaled = 0.0f;
 		internal float progressPositionTweened = 0.0f;
+		internal float progressScale;
+		internal float scale = 1.0f;
+		internal float width = 720;
 		internal float wordPosition = 0.0f;
 		internal float wordPositionScaled = 0.0f;
-		internal float checkpointStep = 0.1f;
 		internal int points = 0;
 		internal int score = 0;
+		internal int submitsUntilHint = 1; // 3;
+		internal int submitsUntilHintNow;
 		internal int tutorLevel = 0;
-		internal bool isHudVisible = false;
 		internal string wordStateNow;
-		internal Levels levels = new Levels();
-		internal Progress progress = new Progress();
+		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
-		private Dictionary<string, object> repeat = new Dictionary<string, object>(){
-		}
-		;
 		private List<string> selects;
-		internal Dictionary<string, object> wordHash;
 		private bool isVerbose = true;
+		private float checkpointInterval = -16.0f; 
 		private float responseSeconds;
 		private float wordPositionMin;
-		private float checkpointInterval = -16.0f; 
-		internal float progressScale;
-		private int trialCount;
-		internal Metrics metrics = new Metrics();
-		private int previous = 0;
-		private int now = 0;
-		internal float width = 720;
-		internal float scale = 1.0f;
 		private float wordWidthPerSecond;
-		internal bool isSaveNow = false;
+		private int now = 0;
+		private int previous = 0;
+		private int previousSessionLevel;
+		private int trialCount;
+		private string hintWord;
 		
 		public void Setup()
 		{
@@ -720,9 +719,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 				helpState = "checkpoint";
 				PopulateWord("");
 				//- metrics.EndSession();
-				float checkpoint = progressScale * width * progress.normal;
 				if (isVerbose) {
-					DebugUtil.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint + " progress " + progress.normal + " progressPositionScaled " + progressPositionScaled + " checkpoint " + checkpoint);
+					float checkpoint = progressScale * width * progress.normal;
+					DebugUtil.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint 
+						+ " progress " + progress.normal 
+						+ " progressPositionScaled " + progressPositionScaled 
+						+ " checkpoint " + checkpoint);
 				}
 			}
 			return progress.isCheckpoint;
@@ -770,8 +772,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 				metrics.trial_integers["level_up"] = progress.GetLevelNormal() - metrics.trial_integers["level_start"];
 			}
 		}
-
-		private int previousSessionLevel;
 
 		internal void Load(Dictionary<string, object> data)
 		{

@@ -15,7 +15,7 @@ namespace Finegamedesign.Utils
 		[Test]
 		public void Select107of109Unlocked()
 		{
-			TestLevelSelectView.Validate();
+			// TestLevelSelectView.Validate();
 			LevelSelectController controller = new LevelSelectController();
 			TestLevelSelectModel.Configure(controller.model);
 			controller.Setup();
