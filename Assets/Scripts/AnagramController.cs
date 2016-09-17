@@ -18,8 +18,8 @@ namespace Finegamedesign.Anagram
 
 		public void Setup()
 		{
-			model.Setup();
 			Words.Setup(model);
+			model.Setup();
 			model.ScaleToScreen(9.5f);
 			model.Load(storage.Load());
 			model.SetReadingOrder(view.letterNodes);
@@ -110,10 +110,11 @@ namespace Finegamedesign.Anagram
 
 		public void Update(float deltaSeconds)
 		{
+			levelSelect.model.levelUnlocked = model.progress.level;
 			levelSelect.Update();
 			if (levelSelect.model.isExitMenuNow)
 			{
-				model.ContinueGame(levelSelect.model.levelSelected);
+				model.SelectLevel(levelSelect.model.levelSelected);
 			}
 			model.Update(deltaSeconds);
 			if (model.isSaveNow) {
@@ -248,7 +249,8 @@ namespace Finegamedesign.Anagram
 			}
 			// SceneNodeView.SetVisible(view.help, model.help != "");
 			TextView.SetText(view.score, model.score.ToString());
-			TextView.SetText(view.level, model.progress.level.ToString());
+			int levelNumber = model.progress.level + 1;
+			TextView.SetText(view.level, levelNumber.ToString());
 			TextView.SetText(view.levelMax, model.progress.levelMax.ToString());
 		}
 

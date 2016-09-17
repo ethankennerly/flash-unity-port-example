@@ -345,6 +345,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			progressScale = checkpointInterval / checkpointStep / width;
 			progress.SetCheckpointStep(checkpointStep);
+			progress.levelMax = levels.Count();
 		}
 
 		private void UpdateProgress(float deltaSeconds)
@@ -599,20 +600,27 @@ namespace /*<com>*/Finegamedesign.Anagram
 					DebugUtil.Log("AnagramModel.ContinueGame: level " + level);
 				}
 				progress.SetLevelNormal(level);
-				trialCount++;
-				metrics.StartSession();
-				DataUtil.Clear(inputs);
-				help = "";
-				helpState = null;
-				if (IsTutor())
-				{
-					StartTutorial();
-				}
-				else {
-					NextTrial();
-				}
+				SelectLevel(progress.level);
 			}
 			journal.Record("continue");
+		}
+
+		// Not recorded in journal.
+		internal void SelectLevel(int contentIndex)
+		{
+			progress.level = contentIndex;
+			trialCount++;
+			metrics.StartSession();
+			DataUtil.Clear(inputs);
+			help = "";
+			helpState = null;
+			if (IsTutor())
+			{
+				StartTutorial();
+			}
+			else {
+				NextTrial();
+			}
 		}
 
 		//
@@ -778,7 +786,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (null != data) {
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
-					progress.level = previousSessionLevel;
+					progress.SetLevelNormal(previousSessionLevel);
 					isContinueVisible = true;
 					help = title;
 					helpState = "title";

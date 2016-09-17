@@ -231,18 +231,12 @@ FEATURES
 			Example:  AlphaBetty Saga by King has 90 levels until first balloon.
 		Select level up to previous session.
 		Label level number (index plus one).
+		Back button out of submenu.
+		Map level displayed to number of words.
+		Hide buttons above max.
 
 TODO
 
-	Level select:
-		Back button out of submenu.
-		Map level displayed to word.
-		Lock icon if not available.
-		Example: WordBrain.
-		Show question mark icon (?) if not tried but available.
-		Highlighted if highest level unlocked.
-		When open, default to highest unlocked.
-		Speed if solved.
 	Unit test toggle change.
 		inMenu = new ToggleChange();
 		inMenu.Setup(isNow);
@@ -259,6 +253,14 @@ TODO
 		Milestone at number of letters.
 		Double frequency of checkpoints.
 		Or checkpoint after 10 words.
+	Level select:
+		Set chapter and level text.
+		Lock icon if not available.
+		Example: WordBrain.
+		Show question mark icon (?) if not tried but available.
+		Highlighted if highest level unlocked.
+		When open, default to highest unlocked.
+		Speed if solved.
 	Experiment with synonym hint for word.  Only accept that word.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
