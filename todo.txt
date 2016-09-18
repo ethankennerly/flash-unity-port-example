@@ -267,18 +267,18 @@ FEATURES
 		Generic data type template:  bool, string.
 		Use cases:
 				levelSelect.model.isInMenu
+				model.helpState
 
 TODO
 
 	Watcher:
 		Use cases:
-			bool:
-				model.isSave
 			string:
-				model.helpState
 				model.wordState
 				journal.action
 				journal.command
+	Exit.  Select level.  Expect no paused overlay.
+	Select level 1.  Expect level 1.  Got 640.
 	Game over:  Exit button remains.
 	At checkpoint goto grid.
 	At checkpoint goto map.

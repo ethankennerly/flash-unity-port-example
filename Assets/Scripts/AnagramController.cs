@@ -241,7 +241,7 @@ namespace Finegamedesign.Anagram
 			{
 				TextView.SetText(view.helpText, model.help);
 			}
-			if (model.isHelpStateChange)
+			if (model.helpState.IsChange())
 			{
 				string helpState = "" == model.help ? "endNow" 
 					: model.isInstant ? "instantNow" : "beginNow";

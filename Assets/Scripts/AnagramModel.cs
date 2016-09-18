@@ -32,11 +32,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		}
 		
 		public Journal journal = new Journal();
-		public bool isHelpStateChange;
+		public Watcher<string> helpState = Watcher<string>.Create("");
 		public bool isNewGameVisible = false;
 		public string help = "";
-		public string helpState;
-		public string helpStateBefore;
 		public string state;
 		public string text;
 
@@ -148,14 +146,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPosition = 0.0f;
 			wordPositionMin = 0.0f;
 			help = "";
-			helpState = "none";
+			helpState.next = "none";
 			wordWidthPerSecond = IsTutor() ? -0.005f : -0.01f;
 			if (parameters.ContainsKey("text")) {
 				text = (string)parameters["text"];
 			}
 			if (parameters.ContainsKey("help")) {
 				help = (string)parameters["help"];
-				helpState = "tutor";
+				helpState.next = "tutor";
 			}
 			if (parameters.ContainsKey("wordWidthPerSecond")) {
 				wordWidthPerSecond = (float)parameters["wordWidthPerSecond"];
@@ -219,8 +217,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.Update(deltaSeconds);
 			journal.Update(deltaSeconds);
 			UpdateCommand(journal.commandNow);
-			isHelpStateChange = helpStateBefore != helpState;
-			helpStateBefore = helpState;
+			helpState.Update(helpState.next);
 		}
 
 		private void UpdateCommand(string command)
@@ -289,7 +286,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal void GameOver()
 		{
 			help = "GAME OVER!";
-			helpState = "gameOver";
+			helpState.next = "gameOver";
 			isGamePlaying = false;
 			isContinueVisible = true;
 			isNewGameVisible = true;
@@ -303,7 +300,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			isPaused = true;
 			this.isInstant = isInstant;
 			help = "PAUSED";
-			helpState = "paused";
+			helpState.next = "paused";
 			isGamePlaying = false;
 			isContinueVisible = true;
 			isNewGameVisible = true;
@@ -316,7 +313,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			isPaused = false;
 			isInstant = false;
 			help = "";
-			helpState = "unpaused";
+			helpState.next = "unpaused";
 			isGamePlaying = true;
 			isContinueVisible = false;
 			isNewGameVisible = false;
@@ -475,9 +472,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			selectsNow.Add(selected);
 			selects[selected] = letter.ToLower();
-			if ("repeat" == helpState)
+			if ("repeat" == helpState.previous)
 			{
-				helpState = "";
+				helpState.next = "";
 				help = "";
 			}
 			journal.Record("select_" + selected.ToString());
@@ -613,7 +610,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.StartSession();
 			DataUtil.Clear(inputs);
 			help = "";
-			helpState = null;
+			helpState.next = "";
+			Resume();
 			if (IsTutor())
 			{
 				StartTutorial();
@@ -646,14 +644,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 						if (levels.index <= 50 && "" == help)
 						{
 							help = "WORD REPEATED";
-							helpState = "repeat";
+							helpState.next = "repeat";
 						}
 					}
 					else
 					{
-						if ("repeat" == helpState)
+						if ("repeat" == helpState.next)
 						{
-							helpState = "";
+							helpState.next = "";
 							help = "";
 						}
 						repeat[submission] = true;
@@ -724,7 +722,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				isGamePlaying = false;
 				isContinueVisible = true;
 				help = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
-				helpState = "checkpoint";
+				helpState.next = "checkpoint";
 				PopulateWord("");
 				//- metrics.EndSession();
 				if (isVerbose) {
@@ -789,7 +787,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					progress.SetLevelNormal(previousSessionLevel);
 					isContinueVisible = true;
 					help = title;
-					helpState = "title";
+					helpState.next = "title";
 					if (isVerbose)
 					{
 						DebugUtil.Log("AnagramModel.Load: level " + previousSessionLevel);
