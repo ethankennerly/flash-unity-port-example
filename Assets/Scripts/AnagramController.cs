@@ -83,7 +83,6 @@ namespace Finegamedesign.Anagram
 
 		private void UpdateExit()
 		{
-			SceneNodeView.SetVisible(view.exitButton, !model.isNewGameVisible);
 			if ("exit" == buttonDownName) {
 				model.Pause();
 				levelSelect.model.Exit();

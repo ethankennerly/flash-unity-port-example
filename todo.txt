@@ -268,11 +268,11 @@ FEATURES
 		Use cases:
 				levelSelect.model.isInMenu
 				model.helpState
+	Select lower level.  Retain access to higher level.
+	Game over:  Expect exit button remains.
 
 TODO
 
-	Select lower level.  Retain access to higher level.
-	Game over:  Expect exit button remains.
 	Watcher:
 		Use cases:
 			string:
@@ -285,6 +285,7 @@ TODO
 		Mode
 		Letter selection
 		Leveling
+	First screen.  New game or erase levels.  Or developer menu button.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.
