@@ -390,7 +390,6 @@ namespace Finegamedesign.Anagram
 				UpdateOutputHitsWord();
 			}
 			SceneNodeView.SetLocalY(view.word, model.wordPositionScaled * view.wordPositionScale);
-			SceneNodeView.SetLocalY(view.progress, model.progressPositionTweened * SceneNodeView.GetWorldScaleY(view.progress));
 		}
 	}
 }

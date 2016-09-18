@@ -273,6 +273,7 @@ FEATURES
 
 TODO
 
+	No longer refer to ArrayList in progress.
 	Unit test subdivided AnagramModel:
 		Leveling
 		Word transform
@@ -280,6 +281,7 @@ TODO
 		Mode
 		Letter selection
 	First screen.  New game or erase levels.  Or developer menu button.
+	No longer refer to ArrayList.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.

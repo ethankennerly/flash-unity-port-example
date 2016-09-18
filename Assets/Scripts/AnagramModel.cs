@@ -68,12 +68,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal delegate /*<object>*/void ActionDelegate();
 		internal delegate bool IsJustPressed(string letter);
 		internal float checkpointStep = 0.1f;
-		internal float nextProgress = 0.0f;
-		internal float progressPositionScaled = 0.0f;
-		internal float progressPositionTweened = 0.0f;
-		internal float progressScale;
 		internal float scale = 1.0f;
-		internal float width = 720;
+		internal float width = 720.0f;
 		internal float wordPosition = 0.0f;
 		internal float wordPositionScaled = 0.0f;
 		internal int points = 0;
@@ -85,8 +81,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
 		private List<string> selects;
-		private bool isVerbose = true;
-		private float checkpointInterval = -16.0f; 
+		private bool isVerbose = false;
 		private float responseSeconds;
 		private float wordPositionMin;
 		private float wordWidthPerSecond;
@@ -333,7 +328,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			wordPositionScaled = wordPosition * scale;
 			bool isVerbosePosition = false;
 			if (isVerbosePosition) DebugUtil.Log("AnagramModel.UpdatePosition: " + wordPosition);
-			UpdateProgress(deltaSeconds);
 		}
 
 		// Scale scrolling to arrive at each checkpoint in the world on each step of normalized progress.
@@ -342,18 +336,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Load level.  Expect exactly word 267.  Got sometimes rounded to another number.
 		private void SetupProgress()
 		{
-			progressScale = checkpointInterval / checkpointStep / width;
 			progress.SetCheckpointStep(checkpointStep);
 			progress.levelMax = levels.Count();
 			progress.levelNormalMax = 10000;
-		}
-
-		private void UpdateProgress(float deltaSeconds)
-		{
-			nextProgress = progress.NextCreep(Performance());
-			progressPositionScaled = progressScale * width 
-				* nextProgress;
-			progressPositionTweened += (progressPositionScaled - progressPositionTweened) * deltaSeconds;
 		}
 		
 		private float outputKnockback = 0.0f;
@@ -740,11 +725,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 				PopulateWord("");
 				//- metrics.EndSession();
 				if (isVerbose) {
-					float checkpoint = progressScale * width * progress.normal;
 					DebugUtil.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint 
-						+ " progress " + progress.normal 
-						+ " progressPositionScaled " + progressPositionScaled 
-						+ " checkpoint " + checkpoint);
+						+ " progress " + progress.normal );
 				}
 			}
 			return progress.isCheckpoint;
@@ -789,9 +771,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2016-05-21 Jennifer Russ expects to feel challenged.  Got overwhelmed around word 2300 to 2500.
 		internal void LevelUp()
 		{
-			if (IsTutor()) {
-			}
-			else {
+			if (!IsTutor()) {
 				progress.Creep(Performance());
 				metrics.trial_integers["level_up"] = progress.GetLevelNormal() - metrics.trial_integers["level_start"];
 			}
