@@ -273,18 +273,12 @@ FEATURES
 
 TODO
 
-	Watcher:
-		Use cases:
-			string:
-				model.wordState
-				journal.action
-				journal.command
 	Unit test subdivided AnagramModel:
+		Leveling
 		Word transform
 		Progress transform
 		Mode
 		Letter selection
-		Leveling
 	First screen.  New game or erase levels.  Or developer menu button.
 	At checkpoint goto grid.
 	At checkpoint goto map.
@@ -301,6 +295,11 @@ TODO
 		Highlighted if highest level unlocked.
 		When open, default to highest unlocked.
 		Speed if solved.
+	Watcher:
+		Use cases:
+			string:
+				journal.action
+				journal.command
 	Experiment with synonym hint for word.  Only accept that word.
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.

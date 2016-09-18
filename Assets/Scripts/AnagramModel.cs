@@ -81,7 +81,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
 		internal int tutorLevel = 3;
-		internal string wordStateNow;
+		internal Watcher<string> wordState = new Watcher<string>();
 		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
 		private List<string> selects;
@@ -182,7 +182,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			repeat = new Dictionary<string, object>(){
 			}
 			;
-			wordStateNow = "begin";
+			wordState.next = "begin";
 			state = "trial";
 			if (isVerbose) 
 			{
@@ -217,6 +217,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			journal.Update(deltaSeconds);
 			UpdateCommand(journal.commandNow);
 			helpState.Update(helpState.next);
+			wordState.Update(wordState.next);
 		}
 
 		private void UpdateCommand(string command)
@@ -400,7 +401,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					}
 				}
 				outputKnockback = 0;
-				wordStateNow = "complete" == state ? "complete" : "hit";
+				wordState.next = "complete" == state ? "complete" : "hit";
 			}
 			return enabled;
 		}

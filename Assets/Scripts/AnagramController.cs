@@ -266,10 +266,9 @@ namespace Finegamedesign.Anagram
 		// 
 		private void UpdateSubmit()
 		{
-			if (null != model.wordStateNow)
+			if (model.wordState.IsChange())
 			{
-				AnimationView.SetState(view.wordState, model.wordStateNow, true);
-				model.wordStateNow = null;
+				AnimationView.SetState(view.wordState, model.wordState.next, true);
 			}
 			if (KeyView.IsDownNow("space")
 			|| KeyView.IsDownNow("return")

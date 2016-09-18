@@ -92,7 +92,7 @@ namespace Finegamedesign.Anagram
 			model = new AnagramModel();
 			Words.Setup(model);
 			AssertPlaybackActionEqualsCommand(model,
-				"Assets/Scripts/Editor/Tests/ethan_20160731.txt");
+				"Assets/Scripts/Editor/Tests/ethan_20160731_short.txt");
 		}
 
 		private void AssertPlaybackActionEqualsCommand(
