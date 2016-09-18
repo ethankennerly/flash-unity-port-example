@@ -271,7 +271,6 @@ FEATURES
 
 TODO
 
-	Select level 1.  Expect level 1.  Got 640.
 	Select lower level.  Retain access to higher level.
 	Game over:  Expect exit button remains.
 	Watcher:

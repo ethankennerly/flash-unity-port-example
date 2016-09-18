@@ -330,18 +330,21 @@ namespace /*<com>*/Finegamedesign.Anagram
 			ClampWordPosition();
 			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
 			wordPositionScaled = wordPosition * scale;
-			// wordPositionScaled += (nextPosition - wordPositionScaled) * deltaSeconds;
 			bool isVerbosePosition = false;
 			if (isVerbosePosition) DebugUtil.Log("AnagramModel.UpdatePosition: " + wordPosition);
 			UpdateProgress(deltaSeconds);
 		}
 
 		// Scale scrolling to arrive at each checkpoint in the world on each step of normalized progress.
+		// More normalized levels than actual.
+		// Test case:  2016-09-18 Word 267.  Save level.
+		// Load level.  Expect exactly word 267.  Got sometimes rounded to another number.
 		private void SetupProgress()
 		{
 			progressScale = checkpointInterval / checkpointStep / width;
 			progress.SetCheckpointStep(checkpointStep);
 			progress.levelMax = levels.Count();
+			progress.levelNormalMax = 10000;
 		}
 
 		private void UpdateProgress(float deltaSeconds)
@@ -798,7 +801,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (null != data) {
 				if (data.ContainsKey("level")) {
 					previousSessionLevel = (int)(data["level"]);
-					progress.SetLevelNormal(previousSessionLevel);
+					progress.SetLevelNormalUnlocked(previousSessionLevel);
 					isContinueVisible = true;
 					help = title;
 					helpState.next = "title";
