@@ -337,8 +337,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private void SetupProgress()
 		{
 			progress.SetCheckpointStep(checkpointStep);
-			progress.levelMax = levels.Count();
 			progress.levelNormalMax = 10000;
+			progress.SetupIndexes(levels.Count(), tutorLevel);
 		}
 		
 		private float outputKnockback = 0.0f;
@@ -758,7 +758,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 				isHudVisible = !IsTutor();
 				Dictionary<string, object> level;
 				if (isHudVisible) {
-					level = progress.Pop(levels.parameters, tutorLevel);
+					int index = progress.PopIndex();
+					level = levels.parameters[index];
 				}
 				else {
 					level = levels.Up();
