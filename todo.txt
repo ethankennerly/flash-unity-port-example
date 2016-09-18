@@ -234,18 +234,52 @@ FEATURES
 		Back button out of submenu.
 		Map level displayed to number of words.
 		Hide buttons above max.
+	Unit test toggle change.
+		-1d Watcher:
+			isInMenu = true;
+			isInMenuWatcher = Watcher.Factory(isInMenu);
+			isInMenuWatcher.Setup(isInMenu);
+			isInMenuWatcher.Update(isInMenu);
+			isInMenuWatcher.IsChangeTo(false);
+			isInMenuWatcher.IsChange();
+			isInMenu = true;
+			isInMenu
+			+ Can watch external data structures.
+			+ Can also be used to store the state itself.
+		-2d ToggleChange:
+			isInMenu = new ToggleChange();
+			isInMenu.Setup(true);
+			isInMenu.Update();
+			isInMenu.IsChangeTo(false);
+			isInMenu.IsChange();
+			isInMenu.SetNow(true);
+			isInMenu.GetNow();
+			+ One less variable to access.
+		-3d Poll variables:
+			Setup:
+			isInMenuNow = IsInMenu();
+			isInMenuBefore = isInMenuNow;
+			isExitMenuNow = false;
+			Update:
+			isInMenuNow = IsInMenu();
+			isExitMenuNow = isInMenuBefore && !isInMenuNow;
+			isInMenuBefore = isInMenuNow;
+		Generic data type template:  bool, string.
+		Use cases:
+				levelSelect.model.isInMenu
 
 TODO
 
-	Unit test toggle change.
-		inMenu = new ToggleChange();
-		inMenu.Setup(isNow);
-		inMenu.Update()
-		inMenu.IsChangeTo(bool isNow)
-		inMenu.SetNow(bool isNow)
-		inMenu.GetNow()
-		Or change watcher of a value.
-		Generic data type template:  bool, int, string.
+	Watcher:
+		Use cases:
+			bool:
+				model.isSave
+			string:
+				model.helpState
+				model.wordState
+				journal.action
+				journal.command
+	Game over:  Exit button remains.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.

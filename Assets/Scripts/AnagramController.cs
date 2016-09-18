@@ -112,7 +112,7 @@ namespace Finegamedesign.Anagram
 		{
 			levelSelect.model.levelUnlocked = model.progress.level;
 			levelSelect.Update();
-			if (levelSelect.model.isExitMenuNow)
+			if (levelSelect.model.inMenu.IsChangeTo(false))
 			{
 				model.SelectLevel(levelSelect.model.levelSelected);
 			}
