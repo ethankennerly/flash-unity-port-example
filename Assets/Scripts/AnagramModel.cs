@@ -80,7 +80,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int score = 0;
 		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
-		internal int tutorLevel = 0;
+		internal int tutorLevel = 3;
 		internal string wordStateNow;
 		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
@@ -100,7 +100,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			state = null;
 			SetupProgress();
-			tutorLevel = 3;
 			trialCount = 0;
 			isNewGameVisible = true;
 			PopulateWord("");
@@ -617,7 +616,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			progress.level = contentIndex;
 			progress.normal = contentIndex / (float)progress.levelMax;
-			trialCount++;
+			trialCount = 0;
 			metrics.StartSession();
 			DataUtil.Clear(inputs);
 			help = "";
@@ -747,9 +746,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return progress.isCheckpoint;
 		}
 
+		// Check progress index versus tutor level.
+		// Test case:  2016-09-18 Select level 2.
+		// Expect restart level 1 with words and help both legible.
+		// Got level 1 with help overlapping words.
 		private bool IsTutor()
 		{
-			return progress.GetLevelNormal() < tutorLevel 
+			return progress.level < tutorLevel 
 				&& trialCount < tutorLevel;
 		}
 
