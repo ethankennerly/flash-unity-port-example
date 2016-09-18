@@ -566,9 +566,15 @@ namespace /*<com>*/Finegamedesign.Anagram
 			journal.Record("newGame");
 		}
 
+		// When start tutorial, reset level to 0.
+		// Test case:  2016-09-17 Play a session.
+		// Next session.  Select level 1.
+		// Expect word 1.  Got word 640.
 		private void StartTutorial()
 		{
 			trialCount = 0;
+			progress.level = 0;
+			progress.SetLevelNormal(0);
 			StartTrial(levels.parameters[0]);
 		}
 
@@ -603,9 +609,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 		}
 
 		// Not recorded in journal.
+		// Set level and normal to selected content.
+		// Test case:  2016-09-17 Play a session.
+		// Select level 10.
+		// Expect word 10.  Got word 640.
 		internal void SelectLevel(int contentIndex)
 		{
 			progress.level = contentIndex;
+			progress.normal = contentIndex / (float)progress.levelMax;
 			trialCount++;
 			metrics.StartSession();
 			DataUtil.Clear(inputs);
@@ -617,7 +628,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				StartTutorial();
 			}
 			else {
-				NextTrial();
+				StartTrial(levels.parameters[progress.level]);
 			}
 		}
 

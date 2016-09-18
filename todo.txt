@@ -271,15 +271,21 @@ FEATURES
 
 TODO
 
+	Select level 1.  Expect level 1.  Got 640.
+	Select lower level.  Retain access to higher level.
+	Game over:  Expect exit button remains.
 	Watcher:
 		Use cases:
 			string:
 				model.wordState
 				journal.action
 				journal.command
-	Exit.  Select level.  Expect no paused overlay.
-	Select level 1.  Expect level 1.  Got 640.
-	Game over:  Exit button remains.
+	Unit test subdivided AnagramModel:
+		Word transform
+		Progress transform
+		Mode
+		Letter selection
+		Leveling
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.

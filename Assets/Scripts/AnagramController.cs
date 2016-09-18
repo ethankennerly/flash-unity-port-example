@@ -91,8 +91,8 @@ namespace Finegamedesign.Anagram
 		}
 
 		//
-		// * Remember which letter was just clicked on this update.
-		// *
+		// Remember which letter was just clicked on this update.
+		//
 		// http://answers.unity3d.com/questions/20328/onmousedown-to-return-object-name.html
 		// 
 		private void UpdateLetterButton()
@@ -247,7 +247,6 @@ namespace Finegamedesign.Anagram
 					: model.isInstant ? "instantNow" : "beginNow";
 				AnimationView.SetTrigger(view.help, helpState);
 			}
-			// SceneNodeView.SetVisible(view.help, model.help != "");
 			TextView.SetText(view.score, model.score.ToString());
 			int levelNumber = model.progress.level + 1;
 			TextView.SetText(view.level, levelNumber.ToString());
