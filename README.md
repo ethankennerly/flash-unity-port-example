@@ -44,11 +44,12 @@ Unity:
 + Faster graphics rendering.
 + Inspect and edit during play.
 + Powerfully animate nested objects.
-
-
++ Publish WebGL starting as small as 5.5 MB.
 
 Flash:
 
++ Installed in every major browser.
++ Publish SWF starting as small as 4 KB.
 + Rename, reorganize, replace nodes and animations still work.
 + Share a library symbol anywhere and automatically update it.
 + Conveniently preview and customize text, buttons, images, animations.
@@ -73,4 +74,5 @@ Unity Android gotcha:
 Unity 5.3.4f1.  Windows 10.  Android build tools 24.
 Android failed to build.
 After downgrading Android build tools to 23, Android built.
+
 

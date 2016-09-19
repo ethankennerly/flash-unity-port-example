@@ -273,7 +273,8 @@ FEATURES
 
 TODO
 
-	No longer refer to ArrayList in progress.
+	Read limit hints.
+	Hints at each checkpoint.
 	Unit test subdivided AnagramModel:
 		Leveling
 		Word transform
@@ -325,8 +326,6 @@ TODO
 	Cache letter nodes at setup.
 	Obvious buttons.
 	Letter creep animation.
-	Read limit hints.
-	Hints at each checkpoint.
 	Text not aliasing.
 	Profile. Optimize view update of letters.
 	Animate letters if repeating word.
