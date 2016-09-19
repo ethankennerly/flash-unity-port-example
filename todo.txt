@@ -273,7 +273,17 @@ FEATURES
 
 TODO
 
+	2016-09-18 Jennifer Russ:
+		9 letters or more.  Expects to see top letter.  Got behind HUD.
+		Press X.  Select level.  Might expect highest level.
+			Level select.  Return to highest unlocked.
+		Recognize can pause any time.
+			Replace X with Pause lines.
+		Tap letter.  Expects deselects letter.
+		Reach break.  Could expect to see message.
+	Android:  After tutor, help text disappears.
 	Read limit hints.
+	Hints on letter of some milestone words.  Example:  WordBrain Themes.
 	Hints at each checkpoint.
 	Unit test subdivided AnagramModel:
 		Leveling
