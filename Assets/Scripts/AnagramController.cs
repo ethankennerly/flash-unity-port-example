@@ -110,6 +110,7 @@ namespace Finegamedesign.Anagram
 		public void Update(float deltaSeconds)
 		{
 			levelSelect.model.levelUnlocked = model.progress.levelUnlocked;
+			levelSelect.model.levelCurrently = model.progress.level;
 			levelSelect.Update();
 			if (levelSelect.model.inMenu.IsChangeTo(false))
 			{

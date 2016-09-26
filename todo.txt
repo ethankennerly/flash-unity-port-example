@@ -282,9 +282,10 @@ TODO
 
 	2016-09-18 Jennifer Russ:
 		Press X.  Select level.  Might expect highest level.
-			Level select.  Return to highest unlocked.
+			Level select.  Return to highest unlocked. 
 		Tap letter.  Expects deselects letter.
 		Reach break.  Could expect to see message.
+		Could expect break every 10th word (2016-09-23 +Kelsey Kerlan)
 	Android:  After tutor, help text disappears.
 	Read limit hints.
 	Hints on letter of some milestone words.  Example:  WordBrain Themes.
@@ -297,6 +298,7 @@ TODO
 		Letter selection
 	First screen.  New game or erase levels.  Or developer menu button.
 	No longer refer to ArrayList.
+	In middle of levels.  Highlight the current level.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.
