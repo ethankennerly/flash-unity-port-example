@@ -109,19 +109,9 @@ namespace Finegamedesign.Anagram
 
 		public void Update(float deltaSeconds)
 		{
-			levelSelect.model.levelUnlocked = model.progress.levelUnlocked;
-			levelSelect.model.levelCurrently = model.progress.level;
-			levelSelect.Update();
-			if (levelSelect.model.inMenu.IsChangeTo(false))
-			{
-				model.SelectLevel(levelSelect.model.levelSelected);
-			}
+			UpdateLevelSelect();
 			model.Update(deltaSeconds);
-			if (model.isSaveNow) {
-				model.isSaveNow = false;
-				storage.SetKeyValue("level", model.progress.GetLevelNormal());
-				storage.Save(storage.data);
-			}
+			UpdateSave();
 			UpdateExit();
 			UpdateButtonController();
 			UpdateBackspace();
@@ -135,6 +125,27 @@ namespace Finegamedesign.Anagram
 			UpdateContinue();
 			UpdateNewGame();
 			UpdateScreenOrientation();
+		}
+
+		private void UpdateLevelSelect()
+		{
+			levelSelect.model.levelUnlocked = model.progress.levelUnlocked;
+			levelSelect.model.levelCurrently = model.progress.level;
+			levelSelect.Update();
+			if (levelSelect.model.inMenu.IsChangeTo(false))
+			{
+				model.SelectLevel(levelSelect.model.levelSelected);
+			}
+		}
+
+		private void UpdateSave()
+		{
+			if (model.isSaveNow)
+			{
+				model.isSaveNow = false;
+				storage.SetKeyValue("level", model.progress.GetLevelNormal());
+				storage.Save(storage.data);
+			}
 		}
 
 		private void UpdateLetters()

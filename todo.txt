@@ -277,15 +277,16 @@ FEATURES
 		2016-09-18 Jennifer Russ: 9 letters or more.  Expects to see top letter.  Got behind HUD.
 	Replace X with Pause lines. 
 		2016-09-18 Jennifer Russ may expect: Recognize can pause any time.
+	2016-09-18 Jennifer Russ:
+		Press X.  Select level.  Might expect highest level.
+			Level select.  Return to highest unlocked. 
 
 TODO
 
 	2016-09-18 Jennifer Russ:
-		Press X.  Select level.  Might expect highest level.
-			Level select.  Return to highest unlocked. 
-		Tap letter.  Expects deselects letter.
+		Could expect break every 10th word cleared saying ten words cleared. (2016-09-23 +Kelsey Kerlan)
+		Tap letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan)
 		Reach break.  Could expect to see message.
-		Could expect break every 10th word (2016-09-23 +Kelsey Kerlan)
 	Android:  After tutor, help text disappears.
 	Read limit hints.
 	Hints on letter of some milestone words.  Example:  WordBrain Themes.
