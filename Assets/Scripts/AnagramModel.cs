@@ -35,8 +35,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public Watcher<string> helpState = Watcher<string>.Create("");
 		public bool isNewGameVisible = false;
 		public string help = "";
+		public Progress progress = new Progress();
 		public string state;
 		public string text;
+		public int trialCount;
+		public int trialPeriod = 10;
+		public int tutorLevel = 3;
 
 		internal string title;
 		internal List<int> stationIndexes;
@@ -57,7 +61,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<string> outputs = new List<string>();
 		internal List<string> word;
 		internal Metrics metrics = new Metrics();
-		internal Progress progress = new Progress();
 		internal bool isContinueVisible = false;
 		internal bool isGamePlaying = false;
 		internal bool isHintVisible = false;
@@ -76,7 +79,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int score = 0;
 		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
-		internal int tutorLevel = 3;
 		internal Watcher<string> wordState = new Watcher<string>();
 		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
@@ -88,7 +90,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private int now = 0;
 		private int previous = 0;
 		private int previousSessionLevel;
-		private int trialCount;
 		private string hintWord;
 		
 		public void Setup()
@@ -714,6 +715,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return performanceNormal;
 		}
 
+		public bool IsTrialCycleNow()
+		{
+			return 1 < trialCount && 0 == (trialCount % trialPeriod);
+		}
+
 		private bool UpdateCheckpoint()
 		{
 			progress.UpdateCheckpoint();
@@ -736,7 +742,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2016-09-18 Select level 2.
 		// Expect restart level 1 with words and help both legible.
 		// Got level 1 with help overlapping words.
-		private bool IsTutor()
+		public bool IsTutor()
 		{
 			return progress.level < tutorLevel 
 				&& trialCount < tutorLevel;
