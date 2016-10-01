@@ -740,7 +740,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			PopulateWord("");
 			//- metrics.EndSession();
 			if (isVerbose) {
-				DebugUtil.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint 
+				DebugUtil.Log("AnagramModel.ShowCheckpoint: " + progress.checkpoint 
 					+ " progress " + progress.normal );
 			}
 		}
@@ -775,7 +775,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2016-08-14 Continue. First word.  Expect to read about 3000 words.  Got 1000 words.
 		internal void NextTrial()
 		{
-			bool isNow = !UpdateCheckpoint();
+			bool isNow = ! // UpdateCheckpoint();
+					UpdateTrialCycleCheckpoint();
 			if (isNow) {
 				isHudVisible = !IsTutor();
 				Dictionary<string, object> level;
