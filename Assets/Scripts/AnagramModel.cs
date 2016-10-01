@@ -33,6 +33,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		
 		public Journal journal = new Journal();
 		public Watcher<string> helpState = Watcher<string>.Create("");
+		public bool isContinueVisible = false;
 		public bool isNewGameVisible = false;
 		public string help = "";
 		public Progress progress = new Progress();
@@ -61,7 +62,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<string> outputs = new List<string>();
 		internal List<string> word;
 		internal Metrics metrics = new Metrics();
-		internal bool isContinueVisible = false;
 		internal bool isGamePlaying = false;
 		internal bool isHintVisible = false;
 		internal bool isHudVisible = false;
@@ -715,25 +715,41 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return performanceNormal;
 		}
 
+		// 2016-09-18 Jennifer Russ could expect break every 10th word cleared saying ten words cleared. (2016-09-23 +Kelsey Kerlan)
+		public bool UpdateTrialCycleCheckpoint()
+		{
+			bool isNow = IsTrialCycleNow();
+			if (isNow)
+			{
+				ShowCheckpoint();
+			}
+			return isNow;
+		}
+
 		public bool IsTrialCycleNow()
 		{
 			return 1 < trialCount && 0 == (trialCount % trialPeriod);
+		}
+
+		private void ShowCheckpoint()
+		{
+			isGamePlaying = false;
+			isContinueVisible = true;
+			helpState.next = "checkpoint";
+			help = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
+			PopulateWord("");
+			//- metrics.EndSession();
+			if (isVerbose) {
+				DebugUtil.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint 
+					+ " progress " + progress.normal );
+			}
 		}
 
 		private bool UpdateCheckpoint()
 		{
 			progress.UpdateCheckpoint();
 			if (progress.isCheckpoint) {
-				isGamePlaying = false;
-				isContinueVisible = true;
-				help = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
-				helpState.next = "checkpoint";
-				PopulateWord("");
-				//- metrics.EndSession();
-				if (isVerbose) {
-					DebugUtil.Log("AnagramModel.UpdateCheckpoint: " + progress.checkpoint 
-						+ " progress " + progress.normal );
-				}
+				ShowCheckpoint();
 			}
 			return progress.isCheckpoint;
 		}
