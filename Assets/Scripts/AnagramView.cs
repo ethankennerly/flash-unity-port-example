@@ -4,6 +4,11 @@ using Finegamedesign.Utils;
 
 namespace Finegamedesign.Anagram 
 {
+	// help: none: when receive trigger endNow transition back to none.
+	// A portable solution would be to:
+	// set state instead of trigger.
+	// Or, not trigger endNow when in none state in the model or controller.
+	// Test case:  2016-09-18 Jennifer Russ: Reach break.  Could expect to see message.
 	public sealed class AnagramView : MonoBehaviour
 	{
 		// Larger number moves word more.

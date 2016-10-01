@@ -175,9 +175,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				wordWidthPerSecond *= Mathf.Pow(baseRate, power);
 			}
 			selects = DataUtil.CloneList(word);
-			repeat = new Dictionary<string, object>(){
-			}
-			;
+			repeat = new Dictionary<string, object>(){};
 			wordState.next = "begin";
 			state = "trial";
 			if (isVerbose) 
