@@ -285,25 +285,32 @@ FEATURES
 		Could expect break every 10th word. (2016-09-23 +Kelsey Kerlan)
 		Reach break.  Could expect to see message.
 	Repeat word.  Read word repeated.
-
-TODO
-
 	2016-09-18 Jennifer Russ:
 		Tap selected letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan).
 			Example:  City of Words.
-	Android:  After tutor, help text disappears.
-	Read limit hints.
-	Hints on letter of some milestone words.  Example:  WordBrain Themes.
-	Hints at each checkpoint.
+
+TODO
+
+	Hint:
+		Read hints remaining.
+		Hint button always available.  Costs 1 hint.
+		Save and load hints.
+		If tap hint button with no hints, or from start/pause screen button: Get more hints.
+		Hints on random letter of some milestone words.  Example:  WordBrain Themes.
+			Spell with the letter to get a hint.
+		Progress to a hint on some milestone words.  Example:  WordBrain Themes.
 	Unit test subdivided AnagramModel:
+		Letter selection
+		Hints
 		Leveling
 		Word transform
 		Progress transform
 		Mode
-		Letter selection
-	First screen.  New game or erase levels.  Or developer menu button.
+	Select level.  No flicker of paused screen.
+	Android:  After tutor, help text disappears.
+	Android:  Developer menu button to reset levels.
 	No longer refer to ArrayList.
-	In middle of levels.  Highlight the current level.
+	Level select menu.  In middle of levels.  Highlight the current level.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.
