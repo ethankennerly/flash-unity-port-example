@@ -77,5 +77,54 @@ namespace Finegamedesign.Anagram
 			Assert.AreEqual(false, model.UpdateTrialCycleCheckpoint(), DescribeTrialCycle(model));
 			Assert.AreEqual(false, model.isContinueVisible, "Is continue visible");
 		}
+
+		[Test]
+		public void UpdateHelpStateNowRepeat()
+		{
+			AnagramModel model = new AnagramModel();
+			model.Update(0.0f);
+			Assert.AreEqual(null, model.helpStateNow);
+			model.helpTextNow.next = "WORD REPEATED";
+			model.helpState.next = "repeat";
+			model.Update(0.0f);
+			Assert.AreEqual("beginNow", model.helpStateNow);
+			model.Update(0.0f);
+			Assert.AreEqual(null, model.helpStateNow);
+			model.helpTextNow.next = "";
+			model.helpState.next = "";
+			model.Update(0.0f);
+			Assert.AreEqual("endNow", model.helpStateNow);
+			model.Update(0.0f);
+			Assert.AreEqual(null, model.helpStateNow);
+		}
+
+		[Test]
+		public void IsHelpRepeatWhenHelpTextNull()
+		{
+			AnagramModel model = new AnagramModel();
+			model.helpTextNow.next = null;
+			Assert.AreEqual(true, model.IsHelpRepeat());
+			model.levels.index = 100;
+			Assert.AreEqual(false, model.IsHelpRepeat());
+			model.levels.index = 10;
+			Assert.AreEqual(true, model.IsHelpRepeat());
+		}
+
+		[Test]
+		public void UpdateHelpStateNowEndOnce()
+		{
+			AnagramModel model = new AnagramModel();
+			model.helpTextNow.next = "WORD REPEATED";
+			model.helpState.next = "repeat";
+			model.Update(0.0f);
+			model.helpTextNow.next = "";
+			model.helpState.next = "";
+			model.Update(0.0f);
+			Assert.AreEqual("endNow", model.helpStateNow);
+			model.helpTextNow.next = "";
+			model.helpState.next = "none";
+			model.Update(0.0f);
+			Assert.AreEqual(null, model.helpStateNow, "state from '' to 'none' but no text.");
+		}
 	}
 }

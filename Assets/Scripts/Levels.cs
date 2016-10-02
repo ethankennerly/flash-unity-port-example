@@ -6,7 +6,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 {
 	public class Levels
 	{
-		internal int index = 0;
+		public int index = 0;
 
 		//
 		// Words by estimated difficulty will be appended.

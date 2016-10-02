@@ -110,7 +110,6 @@ namespace Finegamedesign.Anagram
 		public void Update(float deltaSeconds)
 		{
 			UpdateLevelSelect();
-			model.Update(deltaSeconds);
 			UpdateSave();
 			UpdateExit();
 			UpdateButtonController();
@@ -119,12 +118,14 @@ namespace Finegamedesign.Anagram
 			if (model.isGamePlaying) {
 				UpdatePlay();
 			}
+			UpdateContinue();
+			UpdateNewGame();
+			model.Update(deltaSeconds);
 			UpdateLetters();
 			UpdateHud();
 			UpdateHint();
-			UpdateContinue();
-			UpdateNewGame();
 			UpdateScreenOrientation();
+			UpdatePosition();
 		}
 
 		private void UpdateLevelSelect()
@@ -171,7 +172,6 @@ namespace Finegamedesign.Anagram
 				UpdateSelect(model.selectsNow, true);
 			}
 			UpdateSubmit();
-			UpdatePosition();
 		}
 
 		//
@@ -248,15 +248,13 @@ namespace Finegamedesign.Anagram
 		{
 			string hudState = model.isHudVisible ? "begin" : "end";
 			AnimationView.SetState(view.hud, hudState, false, true);
-			if ("" != model.help)
+			if (null != model.helpTextNow.next)
 			{
-				TextView.SetText(view.helpText, model.help);
+				TextView.SetText(view.helpText, model.helpTextNow.next);
 			}
-			if (model.helpState.IsChange())
+			if (null != model.helpStateNow)
 			{
-				string helpState = "" == model.help ? "endNow" 
-					: model.isInstant ? "instantNow" : "beginNow";
-				AnimationView.SetTrigger(view.help, helpState);
+				AnimationView.SetTrigger(view.help, model.helpStateNow);
 			}
 			TextView.SetText(view.score, model.score.ToString());
 			int levelNumber = model.progress.level + 1;

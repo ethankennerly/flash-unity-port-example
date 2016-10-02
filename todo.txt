@@ -17,6 +17,7 @@ FEATURES
 	If word gets to bottom of screen, game over.
 	Letters scatter on submit and then crawl.
 	If repeat word, read help and shake sword.
+		Test case:  2015-04 Jennifer Russ expects to realize word was entered.
 	Cheat to level up.
 	Mouse down to select a letter.
 	Button to delete last letter.
@@ -283,12 +284,14 @@ FEATURES
 	2016-09-18 Jennifer Russ:
 		Could expect break every 10th word. (2016-09-23 +Kelsey Kerlan)
 		Reach break.  Could expect to see message.
+	Repeat word.  Read word repeated.
 
 TODO
 
-	Android:  After tutor, help text disappears.
 	2016-09-18 Jennifer Russ:
-		Tap selected letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan)
+		Tap selected letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan).
+			Example:  City of Words.
+	Android:  After tutor, help text disappears.
 	Read limit hints.
 	Hints on letter of some milestone words.  Example:  WordBrain Themes.
 	Hints at each checkpoint.
