@@ -342,6 +342,7 @@ namespace Finegamedesign.Anagram
 				model.Hint();
 			}
 			SceneNodeView.SetVisible(view.hintButton, model.isHintVisible);
+			TextView.SetText(view.hintText, model.hint.GetText());
 
 		}
 

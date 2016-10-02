@@ -62,6 +62,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<string> hints = new List<string>();
 		internal List<string> outputs = new List<string>();
 		internal List<string> word;
+		internal Hint hint = new Hint();
 		internal Metrics metrics = new Metrics();
 		internal bool isGamePlaying = false;
 		internal bool isHintVisible = false;

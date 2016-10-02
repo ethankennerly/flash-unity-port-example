@@ -12,7 +12,7 @@ namespace Finegamedesign.Anagram
 	public sealed class AnagramView : MonoBehaviour
 	{
 		// Larger number moves word more.
-		public string title = "WORD GARDEN";
+		public string title = "WORD SWORD";
 		public bool isLogEnabled = true;
 		public bool isPause = false;
 		public float wordPositionScale = 33.0f;
@@ -31,6 +31,7 @@ namespace Finegamedesign.Anagram
 		public GameObject submitButton;
 		public GameObject emailButton;
 		public GameObject hintButton;
+		public GameObject hintText;
 		public GameObject hud;
 		public GameObject help;
 		public GameObject helpText;
@@ -74,10 +75,8 @@ namespace Finegamedesign.Anagram
 			controller.Update(Time.deltaTime);
 		}
 
-		//
 		// Cache found game objects.
 		// http://gamedev.stackexchange.com/questions/15601/find-all-game-objects-with-an-input-string-name-not-tag/15617#15617
-		// 
 		internal void Setup(GameObject rootObject)
 		{
 			main = rootObject;
@@ -88,6 +87,7 @@ namespace Finegamedesign.Anagram
 			output = SceneNodeView.GetChild(main, "input/output", output);
 			hint = SceneNodeView.GetChild(main, "canvas/hints", hint);
 			hintButton = SceneNodeView.GetChild(main, "canvas/hint", hintButton);
+			hintText = SceneNodeView.GetChild(hintButton, "text", hintText);
 			newGameButton = SceneNodeView.GetChild(main, "canvas/newGame", newGameButton);
 			continueButton = SceneNodeView.GetChild(main, "canvas/continue", continueButton);
 			exitButton = SceneNodeView.GetChild(main, "canvas/exit", exitButton);
