@@ -81,6 +81,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal int submitsUntilHint = 1; // 3;
 		internal int submitsUntilHintNow;
 		internal Watcher<string> wordState = new Watcher<string>();
+		internal List<int> backspacesNow = new List<int>();
+		internal List<int> selectsNow = new List<int>();
+
 		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
 		private List<string> selects;
@@ -97,6 +100,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public void Setup()
 		{
 			state = null;
+			selectsNow = selectedIndexes.selectsNow;
+			backspacesNow = selectedIndexes.removesNow;
 			SetupProgress();
 			trialCount = 0;
 			isNewGameVisible = true;
@@ -470,12 +475,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return selectsNow;
 		}
 
-		internal List<int> selectsNow = new List<int>();
-
 		private void Select(int selected, string letter)
 		{
 			selectedIndexes.Toggle(selected);
-			selectsNow.Add(selected);
+			//- selectsNow.Add(selected);
 			selects[selected] = letter.ToLower();
 			if ("repeat" == helpState.previous)
 			{
@@ -483,6 +486,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 				helpTextNow.next = "";
 			}
 			journal.Record("select_" + selected.ToString());
+			if (isVerbose)
+			{
+				DebugUtil.Log("AnagramModel.Select: " + selected + " " 
+					+ letter + " " + DataUtil.Length(selectedIndexes.selectsNow));
+			}
 		}
 
 		internal List<int> MouseDown(int selected)
@@ -490,17 +498,25 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (0 <= selected && selected < DataUtil.Length(word)) {
 				string letter = word[selected];
 				int index = available.IndexOf(letter);
+				Select(selected, letter);
 				if (0 <= index) {
 					available.RemoveRange(index, 1);
 					inputs.Add(letter);
-					Select(selected, letter);
+				}
+				else
+				{
+					int length = DataUtil.Length(selectedIndexes.selects);
+					for (int i = length; i < DataUtil.Length(inputs); i++)
+					{
+						string inputLetter = inputs[i];
+						available.Add(inputLetter);
+					}
+					DataUtil.Clear(inputs, length);
 				}
 			}
 			return selectsNow;
 		}
 	
-		internal List<int> backspacesNow = new List<int>();
-
 		internal List<int> Backspace()
 		{
 			if (1 <= DataUtil.Length(inputs))
@@ -512,6 +528,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				{
 					backspacesNow.Add(selected);
 					selects[selected] = letter;
+					DataUtil.Clear(selectedIndexes.selects, DataUtil.Length(inputs));
 				}
 			}
 			journal.Record("delete");
@@ -650,6 +667,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			string submission = DataUtil.Join(inputs, "");
 			bool accepted = false;
 			state = "wrong";
+			DataUtil.Clear(selectedIndexes.selects);
 			if (1 <= DataUtil.Length(submission))
 			{
 				if (wordHash.ContainsKey(submission))

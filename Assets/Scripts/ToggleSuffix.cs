@@ -6,19 +6,19 @@ namespace Finegamedesign.Utils
 	{
 		public List<int> selects = new List<int>();
 		public List<int> selectsNow = new List<int>();
-		public List<int> deselectsNow = new List<int>();
+		public List<int> removesNow = new List<int>();
 
 		public void Toggle(int itemIndex)
 		{
 			int indexInSelected = DataUtil.IndexOf(selects, itemIndex);
 			DataUtil.Clear(selectsNow);
-			DataUtil.Clear(deselectsNow);
+			DataUtil.Clear(removesNow);
 			if (0 <= indexInSelected)
 			{
 				for (int index = indexInSelected; index < DataUtil.Length(selects); index++)
 				{
 					int item = selects[index];
-					deselectsNow.Add(item);
+					removesNow.Add(item);
 				}
 				DataUtil.Clear(selects, indexInSelected);
 			}

@@ -10,6 +10,7 @@ namespace Finegamedesign.Anagram
 		public AnagramView view;
 		public LevelSelectController levelSelect = new LevelSelectController();
 		public AnagramModel model = new AnagramModel();
+		public bool isVerbose = true;
 		private Email email = new Email();
 		private Storage storage = new Storage();
 		private string buttonDownName;
@@ -113,11 +114,11 @@ namespace Finegamedesign.Anagram
 			UpdateSave();
 			UpdateExit();
 			UpdateButtonController();
-			UpdateBackspace();
 			UpdateCheat();
 			if (model.isGamePlaying) {
 				UpdatePlay();
 			}
+			UpdateBackspace();
 			UpdateContinue();
 			UpdateNewGame();
 			model.Update(deltaSeconds);
@@ -213,11 +214,8 @@ namespace Finegamedesign.Anagram
 			UpdateSelect(model.backspacesNow, false);
 		}
 
-		//
 		// Each selected letter in word plays animation "selected".
 		// Select, submit: Anders sees reticle and sword. Test case:  2015-04-18 Anders sees word is a weapon.
-		// Could cache finds.
-		// 
 		private void UpdateSelect(List<int> selects, bool selected)
 		{
 			string state = selected ? "selected" : "none";
@@ -226,6 +224,10 @@ namespace Finegamedesign.Anagram
 				int index = (int) selects[s];
 				AnimationView.SetState(view.wordLetters[index],
 					state);
+				if (isVerbose)
+				{
+					DebugUtil.Log("AnagramController.UpdateSelect: " + index + ": " + state);
+				}
 			}
 		}
 

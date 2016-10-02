@@ -13,7 +13,7 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(2, DataUtil.Length(list.selects));
 			Assert.AreEqual(20, list.selects[0]);
 			Assert.AreEqual(40, list.selects[1]);
-			Assert.AreEqual(0, DataUtil.Length(list.deselectsNow));
+			Assert.AreEqual(0, DataUtil.Length(list.removesNow));
 			Assert.AreEqual(1, DataUtil.Length(list.selectsNow));
 			Assert.AreEqual(40, list.selectsNow[0]);
 		}
@@ -30,8 +30,8 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(20, list.selects[0]);
 			Assert.AreEqual(40, list.selects[1]);
 			Assert.AreEqual(0, DataUtil.Length(list.selectsNow));
-			Assert.AreEqual(1, DataUtil.Length(list.deselectsNow));
-			Assert.AreEqual(10, list.deselectsNow[0]);
+			Assert.AreEqual(1, DataUtil.Length(list.removesNow));
+			Assert.AreEqual(10, list.removesNow[0]);
 		}
 
 		[Test]
@@ -44,10 +44,10 @@ namespace Finegamedesign.Utils
 			list.Toggle(40);
 			Assert.AreEqual(0, DataUtil.Length(list.selects));
 			Assert.AreEqual(0, DataUtil.Length(list.selectsNow));
-			Assert.AreEqual(3, DataUtil.Length(list.deselectsNow));
-			Assert.AreEqual(40, list.deselectsNow[0]);
-			Assert.AreEqual(10, list.deselectsNow[1]);
-			Assert.AreEqual(20, list.deselectsNow[2]);
+			Assert.AreEqual(3, DataUtil.Length(list.removesNow));
+			Assert.AreEqual(40, list.removesNow[0]);
+			Assert.AreEqual(10, list.removesNow[1]);
+			Assert.AreEqual(20, list.removesNow[2]);
 		}
 
 		[Test]
@@ -63,9 +63,9 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(40, list.selects[0]);
 			Assert.AreEqual(20, list.selects[1]);
 			Assert.AreEqual(0, DataUtil.Length(list.selectsNow));
-			Assert.AreEqual(2, DataUtil.Length(list.deselectsNow));
-			Assert.AreEqual(30, list.deselectsNow[0]);
-			Assert.AreEqual(70, list.deselectsNow[1]);
+			Assert.AreEqual(2, DataUtil.Length(list.removesNow));
+			Assert.AreEqual(30, list.removesNow[0]);
+			Assert.AreEqual(70, list.removesNow[1]);
 		}
 	}
 }
