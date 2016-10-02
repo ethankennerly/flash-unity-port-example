@@ -84,6 +84,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
 		private List<string> selects;
+		private ToggleSuffix selectedIndexes = new ToggleSuffix();
 		private bool isVerbose = true;
 		private float responseSeconds;
 		private float wordPositionMin;
@@ -473,6 +474,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		private void Select(int selected, string letter)
 		{
+			selectedIndexes.Toggle(selected);
 			selectsNow.Add(selected);
 			selects[selected] = letter.ToLower();
 			if ("repeat" == helpState.previous)
