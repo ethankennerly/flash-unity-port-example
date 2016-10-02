@@ -11,8 +11,6 @@ namespace Finegamedesign.Utils
 		public void Toggle(int itemIndex)
 		{
 			int indexInSelected = DataUtil.IndexOf(selects, itemIndex);
-			DataUtil.Clear(selectsNow);
-			DataUtil.Clear(removesNow);
 			if (0 <= indexInSelected)
 			{
 				for (int index = indexInSelected; index < DataUtil.Length(selects); index++)
@@ -27,6 +25,12 @@ namespace Finegamedesign.Utils
 				selects.Add(itemIndex);
 				selectsNow.Add(itemIndex);
 			}
+		}
+
+		public void Update()
+		{
+			DataUtil.Clear(selectsNow);
+			DataUtil.Clear(removesNow);
 		}
 	}
 }

@@ -211,8 +211,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				responseSeconds += deltaSeconds;
 				UpdatePosition(deltaSeconds);
 			}
-			DataUtil.Clear(selectsNow);
-			DataUtil.Clear(backspacesNow);
+			selectedIndexes.Update();
 			UpdateHintVisible();
 			metrics.Update(deltaSeconds);
 			journal.Update(deltaSeconds);
@@ -403,7 +402,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					int selected = selects.IndexOf(letter);
 					if (0 <= selected)
 					{
-						selects[selected] = letter.ToLower();
+						selects[selected] = letter.ToUpper();
 					}
 				}
 				outputKnockback = 0;
@@ -440,10 +439,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return presses;
 		}
 		
-		//
 		// If letter not available, disable typing it.
-		// @return Vector of word indexes.
-		// 
+		// @return word indexes.
 		internal List<int> Press(List<string> presses)
 		{
 			Dictionary<string, object> letters = new Dictionary<string, object>(){
@@ -451,7 +448,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			;
 			for (int i = 0; i < DataUtil.Length(presses); i++)
 			{
-				string letter = presses[i];
+				string letter = presses[i].ToUpper();
 				if (letters.ContainsKey(letter))
 				{
 					continue;
@@ -461,11 +458,17 @@ namespace /*<com>*/Finegamedesign.Anagram
 					letters[letter] = true;
 				}
 				int index = available.IndexOf(letter);
+				int selected = selects.IndexOf(letter);
+				if (isVerbose)
+				{
+					DebugUtil.Log("AnagramModel.Press: " + letter 
+						+ " available at " + index 
+						+ " selected at " + selected);
+				}
 				if (0 <= index)
 				{
 					available.RemoveRange(index, 1);
 					inputs.Add(letter);
-					int selected = selects.IndexOf(letter);
 					if (0 <= selected)
 					{
 						Select(selected, letter);
@@ -475,11 +478,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return selectsNow;
 		}
 
+		// Test case:  2016-09-18 Jennifer Russ:
+		// Tap selected letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan).
+		// 	Example:  City of Words.
+		// Level 106:  LIDE.  Tap I, D, E, D.  Expect only "I" is selected.
 		private void Select(int selected, string letter)
 		{
 			selectedIndexes.Toggle(selected);
-			//- selectsNow.Add(selected);
-			selects[selected] = letter.ToLower();
+			selects[selected] = letter.ToUpper();
 			if ("repeat" == helpState.previous)
 			{
 				helpState.next = "";
@@ -496,7 +502,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<int> MouseDown(int selected)
 		{
 			if (0 <= selected && selected < DataUtil.Length(word)) {
-				string letter = word[selected];
+				string letter = word[selected].ToUpper();
 				int index = available.IndexOf(letter);
 				Select(selected, letter);
 				if (0 <= index) {
@@ -509,7 +515,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 					for (int i = length; i < DataUtil.Length(inputs); i++)
 					{
 						string inputLetter = inputs[i];
-						available.Add(inputLetter);
+						available.Add(inputLetter.ToUpper());
 					}
 					DataUtil.Clear(inputs, length);
 				}
@@ -522,8 +528,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (1 <= DataUtil.Length(inputs))
 			{
 				string letter = DataUtil.Pop(inputs);
-				available.Add(letter);
-				int selected = selects.LastIndexOf(letter.ToLower());
+				available.Add(letter.ToUpper());
+				int selected = selects.LastIndexOf(letter.ToUpper());
 				if (0 <= selected)
 				{
 					backspacesNow.Add(selected);
