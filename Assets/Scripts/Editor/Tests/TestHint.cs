@@ -56,6 +56,31 @@ namespace Finegamedesign.Utils
 		}
 
 		[Test]
+		public void StorePurchaseAndClose()
+		{
+			Hint hint = new Hint();
+			hint.count = 1;
+			hint.cents = 200;
+			hint.countCents[0][0] = 10;
+			hint.countCents[0][1] = 99;
+			hint.countCents[1][0] = 45;
+			hint.countCents[1][1] = 399;
+			Assert.AreEqual(null, hint.state);
+			hint.Store();
+			Assert.AreEqual("store", hint.state);
+			Assert.AreEqual("10 HINTS", hint.GetCountText(0));
+			Assert.AreEqual("0.99 USD", hint.GetPriceText(0));
+			Assert.AreEqual("45 HINTS", hint.GetCountText(1));
+			Assert.AreEqual("3.99 USD", hint.GetPriceText(1));
+			hint.Purchase(0);
+			Assert.AreEqual(11, hint.count);
+			Assert.AreEqual(101, hint.cents);
+			Assert.AreEqual("purchased", hint.state);
+			hint.Close();
+			Assert.AreEqual("close", hint.state);
+		}
+
+		[Test]
 		public void TODO_SaveAndLoad()
 		{
 		}
