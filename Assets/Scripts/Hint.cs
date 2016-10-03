@@ -50,6 +50,7 @@ namespace Finegamedesign.Utils
 			state = "store";
 		}
 
+		// Example: Editor/Tests/TestHint.cs
 		public void Purchase(int productIndex)
 		{
 			state = "purchased";

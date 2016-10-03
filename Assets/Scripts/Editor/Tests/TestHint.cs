@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Finegamedesign.Anagram;
 
 namespace Finegamedesign.Utils
 {
@@ -81,8 +82,18 @@ namespace Finegamedesign.Utils
 		}
 
 		[Test]
-		public void TODO_SaveAndLoad()
+		public void SaveAndLoad()
 		{
+			AnagramController controller = new AnagramController();
+			controller.storage.name = "test_hint";
+			controller.model.hint.count = 11;
+			controller.model.hint.cents = 101;
+			controller.Save();
+			controller = new AnagramController();
+			controller.storage.name = "test_hint";
+			controller.Setup();
+			Assert.AreEqual(11, controller.model.hint.count);
+			Assert.AreEqual(101, controller.model.hint.cents);
 		}
 	}
 }

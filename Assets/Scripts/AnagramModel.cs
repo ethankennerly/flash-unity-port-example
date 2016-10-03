@@ -31,6 +31,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 		
+		public Hint hint = new Hint();
 		public Journal journal = new Journal();
 		public bool isContinueVisible = false;
 		public bool isNewGameVisible = false;
@@ -62,7 +63,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal List<string> hints = new List<string>();
 		internal List<string> outputs = new List<string>();
 		internal List<string> word;
-		internal Hint hint = new Hint();
 		internal Metrics metrics = new Metrics();
 		internal bool isGamePlaying = false;
 		internal bool isHintVisible = false;
@@ -854,20 +854,36 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal void Load(Dictionary<string, object> data)
 		{
 			if (null != data) {
-				if (data.ContainsKey("level")) {
-					previousSessionLevel = (int)(data["level"]);
-					progress.SetLevelNormalUnlocked(previousSessionLevel);
-					isContinueVisible = true;
-					helpTextNow.next = title;
-					helpState.next = "title";
-					if (isVerbose)
-					{
-						DebugUtil.Log("AnagramModel.Load: level " + previousSessionLevel);
-					}
+				LoadLevel(data);
+				LoadHint(data);
+			}
+		}
+
+		internal void LoadLevel(Dictionary<string, object> data)
+		{
+			if (data.ContainsKey("level")) {
+				previousSessionLevel = (int)(data["level"]);
+				progress.SetLevelNormalUnlocked(previousSessionLevel);
+				isContinueVisible = true;
+				helpTextNow.next = title;
+				helpState.next = "title";
+				if (isVerbose)
+				{
+					DebugUtil.Log("AnagramModel.Load: level " + previousSessionLevel);
 				}
-				else {
-					DebugUtil.Log("Data does not contain level.");
-				}
+			}
+			else {
+				DebugUtil.Log("Data does not contain level.");
+			}
+		}
+
+		internal void LoadHint(Dictionary<string, object> data)
+		{
+			if (data.ContainsKey("hint")) {
+				hint.count = (int)(data["hint"]);
+			}
+			if (data.ContainsKey("cents")) {
+				hint.cents = (int)(data["cents"]);
 			}
 		}
 

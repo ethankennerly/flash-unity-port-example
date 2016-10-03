@@ -11,8 +11,8 @@ namespace Finegamedesign.Anagram
 		public LevelSelectController levelSelect = new LevelSelectController();
 		public AnagramModel model = new AnagramModel();
 		public bool isVerbose = true;
+		public Storage storage = new Storage();
 		private Email email = new Email();
-		private Storage storage = new Storage();
 		private string buttonDownName;
 		private int letterIndexMouseDown;
 		private ButtonController buttonController = new ButtonController();
@@ -23,6 +23,10 @@ namespace Finegamedesign.Anagram
 			model.Setup();
 			model.ScaleToScreen(9.5f);
 			model.Load(storage.Load());
+			if (null == view)
+			{
+				return;
+			}
 			model.SetReadingOrder(view.letterNodes);
 			view.wordLetters = SceneNodeView.GetChildrenByPattern(view.wordState, "bone_{0}/letter", model.letterMax);
 			view.wordBones = SceneNodeView.GetChildrenByPattern(view.wordState, "bone_{0}", model.letterMax);
@@ -140,13 +144,20 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
+		public void Save()
+		{
+			storage.SetKeyValue("level", model.progress.GetLevelNormal());
+			storage.SetKeyValue("hint", model.hint.count);
+			storage.SetKeyValue("cents", model.hint.cents);
+			storage.Save(storage.data);
+		}
+
 		private void UpdateSave()
 		{
 			if (model.isSaveNow)
 			{
 				model.isSaveNow = false;
-				storage.SetKeyValue("level", model.progress.GetLevelNormal());
-				storage.Save(storage.data);
+				Save();
 			}
 		}
 
