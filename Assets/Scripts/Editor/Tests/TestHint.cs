@@ -82,7 +82,7 @@ namespace Finegamedesign.Utils
 		}
 
 		[Test]
-		public void SaveAndLoad()
+		public void AnagramControllerSaveAndLoad()
 		{
 			AnagramController controller = new AnagramController();
 			controller.storage.name = "test_hint";
