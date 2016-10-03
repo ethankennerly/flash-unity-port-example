@@ -13,10 +13,12 @@ namespace Finegamedesign.Utils
 	//	Progress to a hint on some milestone words.  Example:  WordBrain Themes.
 	public sealed class Hint
 	{
+		public bool isVisible = true;
 		public int cents = 0;
 		public int count = 0;
+		public int countPerCheckpoint = 10;
 		public string answer = null;
-		public string state = null;
+		public string state = "none";
 		public List<string> reveals = new List<string>();
 		// After WordBrain Themes.
 		public List<List<int>> countCents = new List<List<int>>(){
@@ -53,7 +55,7 @@ namespace Finegamedesign.Utils
 		// Example: Editor/Tests/TestHint.cs
 		public void Purchase(int productIndex)
 		{
-			state = "purchased";
+			state = "close";
 			var product = countCents[productIndex];
 			count += product[countIndex];
 			cents -= product[centsIndex];
@@ -80,9 +82,10 @@ namespace Finegamedesign.Utils
 		}
 
 		// Example: Editor/Tests/TestHint.cs
-		public void Select()
+		public bool Select()
 		{
-			if (1 <= count && null != answer)
+			bool isReveal = false;
+			if (isVisible && 1 <= count && null != answer)
 			{
 				int revealsLength = DataUtil.Length(reveals);
 				int answerLength = DataUtil.Length(answer);
@@ -91,8 +94,14 @@ namespace Finegamedesign.Utils
 					count--;
 					string letter = answer.Substring(revealsLength, 1);
 					reveals.Add(letter);
+					isReveal = true;
 				}
 			}
+			else if (isVisible && count <= 0)
+			{
+				state = "store";
+			}
+			return isReveal;
 		}
 	}
 }

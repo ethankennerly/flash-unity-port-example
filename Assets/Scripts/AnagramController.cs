@@ -166,7 +166,7 @@ namespace Finegamedesign.Anagram
 			TextViews.SetChildren(view.wordLetters, model.word);
 			TextViews.SetChildren(view.inputLetters, model.inputs);
 			TextViews.SetChildren(view.outputLetters, model.outputs);
-			TextViews.SetChildren(view.hintLetters, model.hints);
+			TextViews.SetChildren(view.hintLetters, model.hint.reveals);
 		}
 
 		public bool IsLetterKeyDown(string letter)
@@ -352,7 +352,7 @@ namespace Finegamedesign.Anagram
 			{
 				model.Hint();
 			}
-			SceneNodeView.SetVisible(view.hintButton, model.isHintVisible);
+			SceneNodeView.SetVisible(view.hintButton, model.hint.isVisible);
 			TextView.SetText(view.hintText, model.hint.GetText());
 
 		}

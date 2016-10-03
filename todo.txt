@@ -288,13 +288,15 @@ FEATURES
 	2016-09-18 Jennifer Russ:
 		Tap selected letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan).
 			Example:  City of Words.
-
-TODO
-
 	Hint:
 		Read hints remaining.
 		Hint button always available.  Costs 1 hint.
 		Save and load hints.
+
+TODO
+
+	Type second letter of a pair, such as word 506:  "teens".  Expect select letter.  Got some letters skipped.  Backspace.  Crash.
+	Hint:
 		If tap hint button with no hints, or from start/pause screen button: Get more hints.
 		Hints on random letter of some milestone words.  Example:  WordBrain Themes.
 			Spell with the letter to get a hint.

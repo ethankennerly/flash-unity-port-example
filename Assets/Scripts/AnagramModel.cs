@@ -211,9 +211,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (isGamePlaying) {
 				responseSeconds += deltaSeconds;
 				UpdatePosition(deltaSeconds);
+				UpdateCheckpoint();
 			}
 			selectedIndexes.Update();
-			UpdateHintVisible();
+			//- UpdateHintVisible();
+			hint.isVisible = isGamePlaying;
 			metrics.Update(deltaSeconds);
 			journal.Update(deltaSeconds);
 			UpdateCommand(journal.commandNow);
@@ -544,6 +546,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 	
 		private void PopulateHint(string text)
 		{
+			DataUtil.Clear(hint.reveals);
+			hint.answer = text;
+		}
+
+		private void PopulateHintDeprecated(string text)
+		{
 			hints.Clear();
 			isHintVisible = false;
 			submitsUntilHintNow = 0;
@@ -569,6 +577,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 		}
 
 		internal void Hint()
+		{
+			if (hint.Select()) {
+				metrics.trial_integers["hint_count"]++;
+			}
+			journal.Record("hint");
+		}
+
+		internal void HintDeprecated()
 		{
 			if (isHintVisible && hints.Count < word.Count) {
 				submitsUntilHintNow = submitsUntilHint;
@@ -771,7 +787,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			bool isNow = IsTrialCycleNow();
 			if (isNow)
 			{
-				ShowCheckpoint();
+				string text = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
+				ShowCheckpoint(text);
 			}
 			return isNow;
 		}
@@ -781,12 +798,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 			return 1 < trialCount && 0 == (trialCount % trialPeriod);
 		}
 
-		private void ShowCheckpoint()
+		private void ShowCheckpoint(string text)
 		{
 			isGamePlaying = false;
 			isContinueVisible = true;
 			helpState.next = "checkpoint";
-			helpTextNow.next = "BRILLIANT! YOU REACHED WORD " + progress.level + " OF " + progress.levelMax;
+			helpTextNow.next = text;
 			PopulateWord("");
 			//- metrics.EndSession();
 			if (isVerbose) {
@@ -799,7 +816,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			progress.UpdateCheckpoint();
 			if (progress.isCheckpoint) {
-				ShowCheckpoint();
+				hint.count += hint.countPerCheckpoint;
+				string text = "OUTSTANDING! YOU EARNED " 
+					+ hint.countPerCheckpoint + " HINTS!";
+				ShowCheckpoint(text);
 			}
 			return progress.isCheckpoint;
 		}
