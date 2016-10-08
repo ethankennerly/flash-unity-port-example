@@ -13,7 +13,7 @@ namespace Finegamedesign.Utils
 				"Expected update clears selects now");
 		}
 
-		public ToggleSuffix Add()
+		public ToggleSuffix ToggleDifferent()
 		{
 			ToggleSuffix list = new ToggleSuffix();
 			list.Toggle(20);
@@ -26,12 +26,28 @@ namespace Finegamedesign.Utils
 		}
 
 		[Test]
-		public void AddUpdate()
+		public void TwoUpdate()
 		{
-			ToggleSuffix list = Add();
+			ToggleSuffix list = ToggleDifferent();
 			Assert.AreEqual(0, DataUtil.Length(list.removesNow));
 			Assert.AreEqual(1, DataUtil.Length(list.selectsNow));
 			Assert.AreEqual(40, list.selectsNow[0]);
+			AssertUpdateClear(list);
+		}
+
+		[Test]
+		public void AddDuplicate()
+		{
+			ToggleSuffix list = new ToggleSuffix();
+			list.Add(100);
+			list.Add(100);
+			Assert.AreEqual(0, DataUtil.Length(list.removesNow));
+			Assert.AreEqual(2, DataUtil.Length(list.selectsNow));
+			Assert.AreEqual(100, list.selectsNow[0]);
+			Assert.AreEqual(100, list.selectsNow[1]);
+			Assert.AreEqual(2, DataUtil.Length(list.selects));
+			Assert.AreEqual(100, list.selects[0]);
+			Assert.AreEqual(100, list.selects[1]);
 			AssertUpdateClear(list);
 		}
 

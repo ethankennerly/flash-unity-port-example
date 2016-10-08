@@ -45,6 +45,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public int trialCount;
 		public int trialPeriod = 10;
 		public int tutorLevel = 3;
+		public ToggleSuffix selectedIndexes = new ToggleSuffix();
 
 		internal string title;
 		internal List<int> stationIndexes;
@@ -88,7 +89,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private Dictionary<string, object> repeat = new Dictionary<string, object>(){ } ;
 		private List<string> available;
 		private List<string> selects;
-		private ToggleSuffix selectedIndexes = new ToggleSuffix();
 		private bool isVerbose = true;
 		private float responseSeconds;
 		private float wordPositionMin;
@@ -118,11 +118,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.StartSession();
 		}
 		
-		private void PopulateWord(string text)
+		public void PopulateWord(string text)
 		{
 			this.text = text;
 			available = DataUtil.Split(text, "");
 			word = DataUtil.CloneList(available);
+			selects = DataUtil.CloneList(word);
 			PopulateHint(text);
 			stationIndexes = new List<int>();
 			for (int index = 0; index < DataUtil.Length(word); index++)
@@ -182,7 +183,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 				int baseRate = Mathf.Max(1, letterMax - DataUtil.Length(text));
 				wordWidthPerSecond *= Mathf.Pow(baseRate, power);
 			}
-			selects = DataUtil.CloneList(word);
 			repeat = new Dictionary<string, object>(){};
 			wordState.next = "begin";
 			state = "trial";
@@ -441,7 +441,55 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			return presses;
 		}
-		
+	
+		// Select first unselected letter.
+		// Test case:  2016-10-02 Type second letter of a pair, 
+		// such as word 1: "start" or word 506:  "teens".  
+		// Expect select letter.  
+		// Got some letters skipped.  Backspace.  Crash.
+		// Example: Editor/Tests/TestAnagramModel.cs
+		public void PressLetter(string letter)
+		{
+			letter = letter.ToUpper();
+			int index = available.IndexOf(letter);
+			int length = DataUtil.Length(selectedIndexes.selects);
+			int selected = -1;
+			if (length <= 0)
+			{
+				selected = selects.IndexOf(letter);
+			}
+			else
+			{
+				for (int s = 0; s < DataUtil.Length(selects); s++)
+				{
+					if (letter == selects[s])
+					{
+						if (selectedIndexes.selects.IndexOf(s) <= -1)
+						{
+							selected = s;
+							break;
+						}
+					}
+				}
+			}
+			if (isVerbose)
+			{
+				DebugUtil.Log("AnagramModel.PressLetter: " + letter 
+					+ " available at " + index 
+					+ " selected at " + selected);
+			}
+			if (0 <= index)
+			{
+				available.RemoveRange(index, 1);
+				inputs.Add(letter);
+				if (0 <= selected)
+				{
+					selectedIndexes.Add(selected);
+					Select(selected, letter);
+				}
+			}
+		}
+
 		// If letter not available, disable typing it.
 		// @return word indexes.
 		internal List<int> Press(List<string> presses)
@@ -460,23 +508,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				{
 					letters[letter] = true;
 				}
-				int index = available.IndexOf(letter);
-				int selected = selects.IndexOf(letter);
-				if (isVerbose)
-				{
-					DebugUtil.Log("AnagramModel.Press: " + letter 
-						+ " available at " + index 
-						+ " selected at " + selected);
-				}
-				if (0 <= index)
-				{
-					available.RemoveRange(index, 1);
-					inputs.Add(letter);
-					if (0 <= selected)
-					{
-						Select(selected, letter);
-					}
-				}
+				PressLetter(letter);
 			}
 			return selectsNow;
 		}
@@ -487,7 +519,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Level 106:  LIDE.  Tap I, D, E, D.  Expect only "I" is selected.
 		private void Select(int selected, string letter)
 		{
-			selectedIndexes.Toggle(selected);
 			selects[selected] = letter.ToUpper();
 			if ("repeat" == helpState.previous)
 			{
@@ -507,6 +538,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (0 <= selected && selected < DataUtil.Length(word)) {
 				string letter = word[selected].ToUpper();
 				int index = available.IndexOf(letter);
+				selectedIndexes.Toggle(selected);
 				Select(selected, letter);
 				if (0 <= index) {
 					available.RemoveRange(index, 1);

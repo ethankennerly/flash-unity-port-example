@@ -292,10 +292,10 @@ FEATURES
 		Read hints remaining.
 		Hint button always available.  Costs 1 hint.
 		Save and load hints.
+	Type second letter of a pair, such as word 1: "start" or word 506:  "teens".  Expect select letter.  Got some letters skipped.  Backspace.  Crash.
 
 TODO
 
-	Type second letter of a pair, such as word 506:  "teens".  Expect select letter.  Got some letters skipped.  Backspace.  Crash.
 	Hint:
 		If tap hint button with no hints, or from start/pause screen button: Get more hints.
 		Hints on random letter of some milestone words.  Example:  WordBrain Themes.

@@ -8,6 +8,12 @@ namespace Finegamedesign.Utils
 		public List<int> selectsNow = new List<int>();
 		public List<int> removesNow = new List<int>();
 
+		public void Add(int itemIndex)
+		{
+			selects.Add(itemIndex);
+			selectsNow.Add(itemIndex);
+		}
+
 		public void Toggle(int itemIndex)
 		{
 			int indexInSelected = DataUtil.IndexOf(selects, itemIndex);
@@ -22,8 +28,7 @@ namespace Finegamedesign.Utils
 			}
 			else
 			{
-				selects.Add(itemIndex);
-				selectsNow.Add(itemIndex);
+				Add(itemIndex);
 			}
 		}
 
