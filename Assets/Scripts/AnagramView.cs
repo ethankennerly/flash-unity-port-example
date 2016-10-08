@@ -30,8 +30,6 @@ namespace Finegamedesign.Anagram
 		public GameObject deleteButton;
 		public GameObject submitButton;
 		public GameObject emailButton;
-		public GameObject hintButton;
-		public GameObject hintText;
 		public GameObject hud;
 		public GameObject help;
 		public GameObject helpText;
@@ -39,6 +37,9 @@ namespace Finegamedesign.Anagram
 		public GameObject progress;
 		public GameObject level;
 		public GameObject levelMax;
+		public HintView hintView;
+		public GameObject hintButton;
+		public GameObject hintText;
 
 		public TextAsset journalHistoryTsv;
 
@@ -103,6 +104,8 @@ namespace Finegamedesign.Anagram
 			progress = SceneNodeView.GetChild(main, "progress", progress);
 			letterNodes = SceneNodeView.ToSceneNodeList(
 				SceneNodeView.GetChildren(wordState));
+			controller.hint = hintView.controller;
+			controller.hint.view = hintView;
 		}
 
 		public void OnApplicationPause(bool isPauseNow)

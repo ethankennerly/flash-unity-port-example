@@ -12,6 +12,7 @@ namespace Finegamedesign.Anagram
 		public AnagramModel model = new AnagramModel();
 		public bool isVerbose = true;
 		public Storage storage = new Storage();
+		public HintController hint;
 		private Email email = new Email();
 		private string buttonDownName;
 		private int letterIndexMouseDown;
@@ -38,6 +39,8 @@ namespace Finegamedesign.Anagram
 			ScreenView.AutoRotate();
 			UpdateScreenOrientation();
 			LevelSelectSetup();
+			hint.Setup();
+			hint.model = model.hint;
 		}
 
 		private void LevelSelectSetup()
@@ -114,6 +117,9 @@ namespace Finegamedesign.Anagram
 
 		public void Update(float deltaSeconds)
 		{
+			if ("store" == hint.model.state) {
+				deltaSeconds = 0.0f;
+			}
 			UpdateLevelSelect();
 			UpdateSave();
 			UpdateExit();
@@ -346,6 +352,8 @@ namespace Finegamedesign.Anagram
 		// 
 		private void UpdateHint()
 		{
+			hint.model = model.hint;
+			hint.Update();
 			if (KeyView.IsDownNow("?")
 			|| KeyView.IsDownNow("/")
 			|| "hint" == buttonDownName)
