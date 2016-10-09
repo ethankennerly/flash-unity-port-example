@@ -70,8 +70,9 @@ namespace Finegamedesign.Anagram
 			buttonController.view.Listen(view.continueButton);
 			buttonController.view.Listen(view.deleteButton);
 			buttonController.view.Listen(view.submitButton);
-			buttonController.view.Listen(view.emailButton);
 			buttonController.view.Listen(view.exitButton);
+			buttonController.view.Listen(view.emailButton);
+			buttonController.view.Listen(view.deleteStorageButton);
 			for (int index = 0; index < DataUtil.Length(view.wordLetters); index++)
 			{
 				var letter = view.wordLetters[index];
@@ -150,6 +151,15 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
+		public void UpdateDeleteStorage()
+		{
+			if (view.deleteStorageButton == buttonController.view.target)
+			{
+				DebugUtil.Log("AnagramController.Deleting storage.");
+				storage.Delete();
+			}
+		}
+
 		public void Save()
 		{
 			storage.SetKeyValue("level", model.progress.GetLevelNormal());
@@ -214,6 +224,7 @@ namespace Finegamedesign.Anagram
 				message += model.journal.Write();
 				email.Send(message);
 			}
+			UpdateDeleteStorage();
 		}
 
 		//

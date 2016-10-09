@@ -29,7 +29,6 @@ namespace Finegamedesign.Anagram
 		public GameObject output;
 		public GameObject deleteButton;
 		public GameObject submitButton;
-		public GameObject emailButton;
 		public GameObject hud;
 		public GameObject help;
 		public GameObject helpText;
@@ -40,6 +39,8 @@ namespace Finegamedesign.Anagram
 		public HintView hintView;
 		public GameObject hintButton;
 		public GameObject hintText;
+		public GameObject emailButton;
+		public GameObject deleteStorageButton;
 
 		public TextAsset journalHistoryTsv;
 
@@ -95,6 +96,7 @@ namespace Finegamedesign.Anagram
 			deleteButton = SceneNodeView.GetChild(main, "canvas/delete", deleteButton);
 			submitButton = SceneNodeView.GetChild(main, "canvas/submit", submitButton);
 			emailButton = SceneNodeView.GetChild(main, "canvas/email", emailButton);
+			deleteStorageButton = SceneNodeView.GetChild(main, "canvas/deleteStorage", deleteStorageButton);
 			help = SceneNodeView.GetChild(main, "canvas/help", help);
 			helpText = SceneNodeView.GetChild(main, "canvas/help/helpText", helpText);
 			hud = SceneNodeView.GetChild(main, "canvas/hud", hud);

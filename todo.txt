@@ -304,12 +304,7 @@ FEATURES
 TODO
 
 	Developer button to reset storage to no hints, no level, and reload.
-	Hint:
-		Hint menu.  Select.  Expect always selects.
-		Hints on random letter of some milestone words.  Example:  WordBrain Themes.
-			Spell with the letter to get a hint.
-		Progress to a hint on some milestone words.  Example:  WordBrain Themes.
-		From pause screen button: Get more hints.
+	Tutor.  Pause.  Back to chapter.  Select 1.  Expect tutor.  Got second trial is not tutorial but no HUD.
 	Unit test subdivided AnagramModel:
 		Letter selection
 		Hints
@@ -317,6 +312,12 @@ TODO
 		Word transform
 		Progress transform
 		Mode
+	Hint:
+		Hint menu.  Select.  Expect always selects.
+		Hints on random letter of some milestone words.  Example:  WordBrain Themes.
+			Spell with the letter to get a hint.
+		Progress to a hint on some milestone words.  Example:  WordBrain Themes.
+		From pause screen button: Get more hints.
 	Toggle developer panel.
 	Scale word position to screen top and bottom.
 	Select level.  No flicker of paused screen.
