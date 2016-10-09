@@ -1,0 +1,137 @@
+http://www.newyorker.com/tech/elements/brain-games-are-bogus
+J Exp Psychol Gen. 2013 May;142(2):359-79. doi: 10.1037/a0029082. Epub 2012 Jun 18.
+No evidence of intelligence improvement after working memory training: a randomized, placebo-controlled study.
+https://www.ncbi.nlm.nih.gov/pubmed/22708717
+
+
+"""
+Linguistic Effects on Anagram Solution:   The Case of a Transparent Language  Menelaos E. Sarris1,* & Chris T. Panagiotakopoulos1 1 Dept. of Primary Education, University of Patras, Patras, Greece *Corresponding author: Dept. of Primary Education, University of Patras, University Campus 26504, Patras, Greece. Tel: 30-2610-997-907. E-mail: m.sarris@upatras.gr  Received: July 12, 2013        Accepted: July 22, 2013        Online Published: August 4, 2013 doi:10.5430/wje.v3n4p41       URL: http://dx.doi.org/10.5430/wje.v3n4p41  Abstract Anagram solution tasks have been frequently used to assess word recognition processes and relevant research suggests that anagram solution ability is closely related to reading. Recently, the anagram paradigm was utilized to compare reading performance in the Greek language and was found to share significant positive correlation to reading fluency. The aim of the present study is to explore theoretical views with regard to the linguistic effects on solving anagrams in a transparent language with a simple syllabic structure, using custom made software. Results from 76 children illustrate that anagram solution difﬁculty is influenced by both syllable complexity and grapheme frequency. These variables also explain much of the variation in terms of the number of moves required for solution and the time spent working on anagrams.
+"""
+https://www.researchgate.net/publication/258218644_Linguistic_Effects_on_Anagram_Solution_The_Case_of_a_Transparent_Language
+
+
+"""
+P~ychological Reports, 1969,24, 671-674. @ Psychological Reports 1969
+A MULTI-SOLUTION ANAGRAM TASK
+ROBERT A. HICKS MARALEE J. HICKS HAROLD MANSFIELD
+San Jose Stat8 College Cupertino School District Regis College
+Sirmmary.-A series of multi-solution anagrams, designed to improve on
+previously used anagram tasks, were standardized on 870 college srudena. A
+table of solution-word frequencies is presented. Correlational data pertinent to
+the use of these anagrams are also given. 
+"""
+http://prx.sagepub.com/content/24/2/671.full.pdf+html
+
+
+"""
+Results showed that Scrabble players were better and faster at the task, which came as no surprise. But the researchers also learned that Scrabble players use a different part of the brain for the exercise. Study co-author Sophia Van Hees summarized the finding to CBC reporter Sarah Lawrynuik:
+
+So typically, for non-experts, we’re recruiting the language area of our brain. Whereas when we do the task with Scrabble experts, they’re not really using the language network like average people. They’re actually recruiting areas that are more associated with visual processing and working memory. So they’re doing the task quite differently.
+Here’s how the researchers described the finding in their study:
+
+Results showed that when engaged in the lexical decision task (LDT), Scrabble experts made use of brain regions not generally associated with meaning retrieval in visual word recognition, but rather those associated with working memory and visual perception. The analysis of resting-state data also showed group differences, such that a different network of brain regions was associated with higher levels of Scrabble-related skill in experts than in controls [i.e. non-Scrabble players].
+Van Hees says that this finding points to the brain’s flexibility, and suggests that we can use different areas of the brain to do similar tasks. The researchers are hopeful that their research can be used to help people with neurodegenerative disorders, such as Alzheimer’s. By using brain training exercises—Scrabble included—alternative parts of a person’s brain could conceivably be leveraged.
+"""
+http://gizmodo.com/playing-scrabble-changes-the-way-you-use-your-brain-1734003624
+
+
+"""
+Subjects are presented, either visually or auditorily, with a mixture of words and logatomes or pseudowords (nonsense strings that respect the phonotactic rules of a language, like trud in English). Their task is to indicate, usually with a button-press, whether the presented stimulus is a word or not.
+
+The analysis is based on the reaction times (and, secondarily, the error rates) for the various conditions for which the words (or the pseudowords) differ
+"""
+https://en.wikipedia.org/wiki/Lexical_decision_task
+
+
+
+"""
+Superiority of variable to repeated practice
+in transfer on anagram solution
+Michael K. Goode
+Washington University, St. Louis, Missouri
+Lisa Geraci
+Texas A&M University, College Station, Texas
+and
+Henry L. Roediger III
+Washington University, St. Louis, Missouri
+Previous research in motor learning shows that practicing variations of a task (variable practice) leads to better
+transfer than does repeatedly practicing the exact same task (repeated practice). In contrast, research on priming
+using verbal materials shows that performance on a test improves to the extent that the material at learning and test
+overlap. We tested whether variability in practice conditions can lead to improved performance with the verbal priming
+task of anagram solution. Participants practiced solving anagrams, either repeatedly solving the same anagram
+that was later tested, repeatedly solving a different anagram from the one that was later tested, or solving different
+variations of the anagram that was later tested. We found that this last condition—variable practice on different versions
+of an anagram—led to improved test performance in relation to repeated practice, even when the test anagram
+was the one that had been repeatedly practiced. This finding aligns results from the motor learning literature with a
+higher level cognitive task: anagram solution. Shea and Kohl’s (1991) hypothesis, arguing that varied practice may
+lead to greater elaborative processing than does repeated practice, provides one account of the results
+"""
+http://agingandcognition.tamu.edu/files/2012/01/GoodeGeraciRoedigerPBR_2008.pdf
+
+
+"""
+SKILLS TARGETED:
+
+-Verbal expression & vocabulary building
+-Letter identification and Reading comprehension
+-Strategy & Mental Flexibility
+-Concentration & Sustained Attention
+-Motor speech @ word level
+-Social interaction
+"""
+https://ozarkspeechie.wordpress.com/2013/11/13/bananagrams/
+
+
+"""
+Reading and Phonological Awareness
+
+The Bananagrams game invites children to spell, read and sound out the words they have just created. They are also encouraged to read and check the other players words. Thus, this game enables children to practice and self-correct their own reading and writing, and add to their vocabulary by learning from their fellow players.
+"""
+https://teachingtalking.com/bananagrams-game/
+
+
+"""
+Bananagrams Visual attention to detail,
+speed of processing, mental
+flexibility for problem solving,
+word-finding, spelling
+"""
+http://www.asha.org/Events/convention/handouts/2011/Vijayan
+
+
+
+"""
+While it’s possible to find brain training games at your local toy store, specialty shops have a wider selection of games. Marbles: the Brain Store has shops nationwide, from San Francisco to northern New Jersey, and offers a wide selection of games on its website. Marbles is unique because the games it sells are reviewed by brain health experts, including neurologists, cognitive therapists, and scientists. Marble also boast a formidable research section, which cites more than 40 different studies and articles that inform the game choices the company makes. The games they stock run the gamut from Marbles MindSpring Software ($99.95 with free shipping), a battery of 22 cognitive exercises, to Bananagrams ($16.99 with free shipping), a crossword tile game where players compete to play their tiles the fastest.
+"""
+http://dealnews.com/features/Affordable-Fun-Brainy-Games-Boost-Cognitive-Functions-in-Adults-Kids/995265.html
+
+
+
+"""
+Scrabble, Chess, Banagrams, or Boggle
+"""
+Healing a Friend or Loved One's Grieving Heart After a Cancer Diagnosis: 100 ...
+By Alan D. Wolfelt, Kirby J. Duvall
+https://books.google.com/books?id=HvAXBAAAQBAJ&pg=PA65&lpg=PA65&dq=bananagrams+cognition&source=bl&ots=TQyI3EYlnI&sig=QezlTdaL-dgSUtY1QRaoBd9wZOg&hl=en&sa=X&ved=0ahUKEwjMqvqs0M7PAhVQ-mMKHY78AGcQ6AEIVzAJ#v=onepage&q=bananagrams%20cognition&f=false
+
+
+"""
+6. Play some games. Word games that challenge you and help you discover new meanings and new words are a great and fun tool in your quest for expanding your vocabulary. Examples include crossword puzzles, anagrams, word jumble, Scrabble, and Boggle. (Find some word-game Websites at the end of this article.)
+
+"""
+http://www.enhancemyvocabulary.com/improve-expand-vocabulary.html
+
+Link includes:
+
+Text Twist
+Beat the clock to make words from letters and get on the high score list. Shuffle letters to find more words!
+http://www.wordplays.com/help/text-twist-help/
+
+
+
+Letter Verbal fluency:
+Select letters to spell words in time.
+http://www.memory-improvement-tips.com/spiderman-flash-game.html
+
+
+

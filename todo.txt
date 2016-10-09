@@ -304,7 +304,7 @@ FEATURES
 
 TODO
 
-	Unit test subdivided AnagramModel:
+	Test subdivided AnagramModel:
 		Letter selection
 		Hints
 		Leveling
@@ -320,7 +320,6 @@ TODO
 	Toggle developer panel.
 	Scale word position to screen top and bottom.
 	Select level.  No flicker of paused screen.
-	Android:  After tutor, help text disappears.
 	No longer refer to ArrayList.
 	Level select menu.  In middle of levels.  Highlight the current level.
 	At checkpoint goto grid.

@@ -127,7 +127,7 @@ namespace Finegamedesign.Anagram
 			UpdateButtonController();
 			UpdateCheat();
 			if (model.isGamePlaying) {
-				UpdatePlay();
+				UpdateSelectLetter();
 			}
 			UpdateBackspace();
 			UpdateContinue();
@@ -177,31 +177,6 @@ namespace Finegamedesign.Anagram
 			}
 		}
 
-		private void UpdateLetters()
-		{
-			TextViews.SetChildren(view.wordLetters, model.word);
-			TextViews.SetChildren(view.inputLetters, model.inputs);
-			TextViews.SetChildren(view.outputLetters, model.outputs);
-			TextViews.SetChildren(view.hintLetters, model.hint.reveals);
-		}
-
-		public bool IsLetterKeyDown(string letter)
-		{
-			return KeyView.IsDownNow(letter.ToLower());
-		}
-
-		private void UpdatePlay()
-		{
-			List<string> presses = model.GetPresses(IsLetterKeyDown);
-			model.Press(presses);
-			model.MouseDown(letterIndexMouseDown);
-			if ("complete" != model.state)
-			{
-				UpdateSelect(model.selectsNow, true);
-			}
-			UpdateSubmit();
-		}
-
 		//
 		// http://answers.unity3d.com/questions/762073/c-list-of-string-name-for-inputgetkeystring-name.html
 		// 
@@ -227,6 +202,31 @@ namespace Finegamedesign.Anagram
 			UpdateDeleteStorage();
 		}
 
+		private void UpdateLetters()
+		{
+			TextViews.SetChildren(view.wordLetters, model.word);
+			TextViews.SetChildren(view.inputLetters, model.inputs);
+			TextViews.SetChildren(view.outputLetters, model.outputs);
+			TextViews.SetChildren(view.hintLetters, model.hint.reveals);
+		}
+
+		public bool IsLetterKeyDown(string letter)
+		{
+			return KeyView.IsDownNow(letter.ToLower());
+		}
+
+		private void UpdateSelectLetter()
+		{
+			List<string> presses = model.GetPresses(IsLetterKeyDown);
+			model.Press(presses);
+			model.MouseDown(letterIndexMouseDown);
+			if ("complete" != model.state)
+			{
+				UpdateSelect(model.selectsNow, true);
+			}
+			UpdateSubmit();
+		}
+
 		//
 		// Delete or backspace:  Remove last letter.
 		// 
@@ -250,12 +250,20 @@ namespace Finegamedesign.Anagram
 			for (int s = 0; s < selects.Count; s++)
 			{
 				int index = (int) selects[s];
-				AnimationView.SetState(view.wordLetters[index],
-					state);
+				AnimationView.SetState(view.wordLetters[index], state);
 				if (isVerbose)
 				{
-					DebugUtil.Log("AnagramController.UpdateSelect: " + index + ": " + state);
+					DebugUtil.Log("AnagramController.UpdateSelect: " 
+						+ index + ": " + state);
 				}
+			}
+		}
+
+		private void ResetSelect()
+		{
+			for (int index = 0; index < model.letterMax; index++)
+			{
+				AnimationView.SetState(view.wordLetters[index], "none");
 			}
 		}
 
@@ -405,17 +413,6 @@ namespace Finegamedesign.Anagram
 			SceneNodeView.SetVisible(view.continueButton, model.isContinueVisible);
 			SceneNodeView.SetVisible(view.deleteButton, !model.isContinueVisible);
 			SceneNodeView.SetVisible(view.submitButton, !model.isContinueVisible);
-		}
-
-		private void ResetSelect()
-		{
-			int max = model.word.Count;
-			for (int index = 0; index < max; index++)
-			{
-				string name = "bone_" + index + "/letter";
-				AnimationView.SetState(
-					SceneNodeView.GetChild(view.wordState, name), "none");
-			}
 		}
 
 		//
