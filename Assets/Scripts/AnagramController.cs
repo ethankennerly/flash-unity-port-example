@@ -14,9 +14,11 @@ namespace Finegamedesign.Anagram
 		public Storage storage = new Storage();
 		public HintController hint;
 		private Email email = new Email();
-		private string buttonDownName;
-		private int letterIndexMouseDown;
+
 		private ButtonController buttonController = new ButtonController();
+		private string buttonDownName;
+		// Select letter:
+		private int letterIndexMouseDown;
 
 		public void Setup()
 		{
