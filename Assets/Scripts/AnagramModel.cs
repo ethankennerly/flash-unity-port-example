@@ -647,10 +647,19 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2016-09-17 Play a session.
 		// Next session.  Select level 1.
 		// Expect word 1.  Got word 640.
+		// When start tutorial reset available words.
+		//
+		// Reset tutorial levels back to 0.
+		// XXX Would be cleaner to consolidate level indexes.
+		// Test case:  2016-10-09 Select level 1.  Complete 2 words.  Pause.  Select 1.  
+		// Complete 1 word. Expect 2nd tutorial word.  
+		// Got second trial is not tutorial but no HUD.
 		private void StartTutorial()
 		{
+			SetupProgress();
 			trialCount = 0;
 			progress.level = 0;
+			levels.index = 0;
 			progress.SetLevelNormal(0);
 			StartTrial(levels.parameters[0]);
 		}

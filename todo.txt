@@ -300,11 +300,10 @@ FEATURES
 		If tap hint button with no hints, 
 		From start screen button: Get more hints.
 	Type second letter of a pair, such as word 1: "start" or word 506:  "teens".  Expect select letter.  Got some letters skipped.  Backspace.  Crash.
+	Developer button to reset storage to no hints, no level, and reload.
 
 TODO
 
-	Developer button to reset storage to no hints, no level, and reload.
-	Tutor.  Pause.  Back to chapter.  Select 1.  Expect tutor.  Got second trial is not tutorial but no HUD.
 	Unit test subdivided AnagramModel:
 		Letter selection
 		Hints
