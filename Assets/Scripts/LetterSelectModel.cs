@@ -5,6 +5,7 @@ namespace Finegamedesign.Utils
 	public sealed class LetterSelectModel
 	{
 		public bool isVerbose = false;
+		public List<string> inputs = new List<string>();
 		public ToggleSuffix selectedIndexes = new ToggleSuffix();
 		// Data type "char" would be more runtime-efficient in C#.
 		// However "string" speeds up reusing algorithms.
@@ -15,6 +16,7 @@ namespace Finegamedesign.Utils
 		{
 			word = DataUtil.Split(text, "");
 			letters = DataUtil.CloneList(word);
+			DataUtil.Clear(inputs);
 		}
 
 		// Select first unselected letter.
@@ -55,6 +57,7 @@ namespace Finegamedesign.Utils
 			if (isNow)
 			{
 				selectedIndexes.Add(selected);
+				inputs.Add(letters[selected]);
 			}
 			return isNow;
 		}
@@ -67,6 +70,13 @@ namespace Finegamedesign.Utils
 			if (isInRange)
 			{
 				selectedIndexes.Toggle(selected);
+				DataUtil.Clear(inputs);
+				int length = DataUtil.Length(selectedIndexes.selects);
+				for (int index = 0; index < length; index++)
+				{
+					int selectedIndex = selectedIndexes.selects[index];
+					inputs.Add(letters[selectedIndex]);
+				}
 			}
 			return isInRange;
 		}
@@ -81,6 +91,7 @@ namespace Finegamedesign.Utils
 			{
 				int index = DataUtil.Pop(selectedIndexes.selects);
 				letter = letters[index];
+				DataUtil.Pop(inputs);
 			}
 			return letter;
 		}

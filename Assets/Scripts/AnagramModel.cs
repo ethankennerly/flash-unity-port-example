@@ -47,6 +47,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public int tutorLevel = 3;
 
 		// Select letters:
+		public LetterSelectModel select = new LetterSelectModel();
 		public ToggleSuffix selectedIndexes = new ToggleSuffix();
 		internal int letterMax = 10;
 		internal delegate bool IsJustPressed(string letter);
