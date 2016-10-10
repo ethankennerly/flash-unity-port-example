@@ -215,15 +215,7 @@ namespace Finegamedesign.Anagram
 		private void UpdateSelectLetter()
 		{
 			string input = KeyView.InputString();
-			if ("" != input)
-			{
-				model.select.Add(input);
-			}
-			model.select.Toggle(letterIndexMouseDown);
-			for (int index = 0; index < DataUtil.Length(model.select.selectedIndexes.selectsNow); index++)
-			{
-				model.Select(model.select.selectedIndexes.selectsNow[index]);
-			}
+			model.UpdateSelect(input, letterIndexMouseDown);
 			if ("complete" != model.state)
 			{
 				UpdateSelect(model.select.selectedIndexes.selectsNow, true);
@@ -240,8 +232,8 @@ namespace Finegamedesign.Anagram
 			{
 				model.select.Pop();
 				model.Backspace();
-				UpdateSelect(model.select.selectedIndexes.removesNow, false);
 			}
+			UpdateSelect(model.select.selectedIndexes.removesNow, false);
 		}
 
 		// Each selected letter in word plays animation "selected".

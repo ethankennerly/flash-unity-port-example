@@ -5,13 +5,18 @@ namespace Finegamedesign.Utils
 	public sealed class ToggleSuffix
 	{
 		public List<int> selects = new List<int>();
+		// When only one can be selected between updates,
+		// then this can be simplified to a single integer.
 		public List<int> selectsNow = new List<int>();
 		public List<int> removesNow = new List<int>();
+		public int selectNow = -1;
+		public int removeNow = -1;
 
 		public void Add(int itemIndex)
 		{
 			selects.Add(itemIndex);
 			selectsNow.Add(itemIndex);
+			selectNow = itemIndex;
 		}
 
 		public void Toggle(int itemIndex)
@@ -23,6 +28,7 @@ namespace Finegamedesign.Utils
 				{
 					int item = selects[index];
 					removesNow.Add(item);
+					removeNow = item;
 				}
 				DataUtil.Clear(selects, indexInSelected);
 			}
@@ -41,6 +47,7 @@ namespace Finegamedesign.Utils
 			}
 			int item = DataUtil.Pop(selects);
 			removesNow.Add(item);
+			removeNow = item;
 			return item;
 		}
 
@@ -49,6 +56,8 @@ namespace Finegamedesign.Utils
 		{
 			DataUtil.Clear(selectsNow);
 			DataUtil.Clear(removesNow);
+			removeNow = -1;
+			selectNow = -1;
 		}
 	}
 }

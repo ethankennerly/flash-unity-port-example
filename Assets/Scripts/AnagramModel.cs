@@ -767,8 +767,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Tap selected letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan).
 		// 	Example:  City of Words.
 		// Level 106:  LIDE.  Tap I, D, E, D.  Expect only "I" is selected.
-		public void Select(int selected)
+		private void Select(int selected)
 		{
+			if (selected <= -1)
+			{
+				return;
+			}
 			if ("repeat" == helpState.previous)
 			{
 				helpState.next = "";
@@ -778,6 +782,16 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (isVerbose)
 			{
 				DebugUtil.Log("AnagramModel.Select: " + selected);
+			}
+		}
+
+		public void UpdateSelect(string addInput, int toggleIndex)
+		{
+			select.Add(addInput);
+			select.Toggle(toggleIndex);
+			for (int index = 0; index < DataUtil.Length(select.selectedIndexes.selectsNow); index++)
+			{
+				Select(select.selectedIndexes.selectsNow[index]);
 			}
 		}
 	

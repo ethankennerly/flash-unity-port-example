@@ -11,6 +11,8 @@ namespace Finegamedesign.Utils
 				"Expected update clears removes now");
 			Assert.AreEqual(0, DataUtil.Length(list.selectsNow),
 				"Expected update clears selects now");
+			Assert.AreEqual(-1, list.removeNow);
+			Assert.AreEqual(-1, list.selectNow);
 		}
 
 		public ToggleSuffix ToggleDifferent()
@@ -30,7 +32,9 @@ namespace Finegamedesign.Utils
 		{
 			ToggleSuffix list = ToggleDifferent();
 			Assert.AreEqual(0, DataUtil.Length(list.removesNow));
+			Assert.AreEqual(-1, list.removeNow);
 			Assert.AreEqual(1, DataUtil.Length(list.selectsNow));
+			Assert.AreEqual(40, list.selectNow);
 			Assert.AreEqual(40, list.selectsNow[0]);
 			AssertUpdateClear(list);
 		}
@@ -70,8 +74,10 @@ namespace Finegamedesign.Utils
 		{
 			ToggleSuffix list = ToggleLast();
 			Assert.AreEqual(0, DataUtil.Length(list.selectsNow));
+			Assert.AreEqual(-1, list.selectNow);
 			Assert.AreEqual(1, DataUtil.Length(list.removesNow));
 			Assert.AreEqual(10, list.removesNow[0]);
+			Assert.AreEqual(10, list.removeNow);
 			AssertUpdateClear(list);
 		}
 
@@ -96,6 +102,7 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(40, list.removesNow[0]);
 			Assert.AreEqual(10, list.removesNow[1]);
 			Assert.AreEqual(20, list.removesNow[2]);
+			Assert.AreEqual(20, list.removeNow);
 		}
 
 		public ToggleSuffix ToggleMiddle()
@@ -121,6 +128,7 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(2, DataUtil.Length(list.removesNow));
 			Assert.AreEqual(30, list.removesNow[0]);
 			Assert.AreEqual(70, list.removesNow[1]);
+			Assert.AreEqual(70, list.removeNow);
 			AssertUpdateClear(list);
 		}
 
