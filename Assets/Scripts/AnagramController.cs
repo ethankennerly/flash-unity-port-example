@@ -212,21 +212,12 @@ namespace Finegamedesign.Anagram
 			TextViews.SetChildren(view.hintLetters, model.hint.reveals);
 		}
 
-		public bool IsLetterKeyDown(string letter)
-		{
-			return KeyView.IsDownNow(letter.ToLower());
-		}
-
 		private void UpdateSelectLetter()
 		{
-			int length = DataUtil.Length(model.select.letters);
-			for (int index = 0; index < length; index++)
+			string input = KeyView.InputString();
+			if ("" != input)
 			{
-				string letter = model.select.letters[index];
-				if (IsLetterKeyDown(letter))
-				{
-					model.select.Add(letter);
-				}
+				model.select.Add(input);
 			}
 			model.select.Toggle(letterIndexMouseDown);
 			for (int index = 0; index < DataUtil.Length(model.select.selectedIndexes.selectsNow); index++)

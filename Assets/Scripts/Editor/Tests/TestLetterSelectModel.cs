@@ -36,6 +36,15 @@ namespace Finegamedesign.Utils
 		}
 
 		[Test]
+		public void AddIgnoredLetter()
+		{
+			LetterSelectModel model = new LetterSelectModel();
+			model.PopulateWord("START");
+			Assert.AreEqual(false, model.Add("Q"));
+			Assert.AreEqual(0, DataUtil.Length(model.selectedIndexes.selects));
+		}
+
+		[Test]
 		public void ToggleSuffix()
 		{
 			LetterSelectModel model = new LetterSelectModel();
