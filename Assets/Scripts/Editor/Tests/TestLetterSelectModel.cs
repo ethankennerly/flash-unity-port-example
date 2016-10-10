@@ -5,6 +5,16 @@ namespace Finegamedesign.Utils
 	public sealed class TestLetterSelectModel
 	{
 		[Test]
+		public void PopulateWordNothingSelected()
+		{
+			LetterSelectModel model = new LetterSelectModel();
+			model.PopulateWord("START");
+			Assert.AreEqual(true, model.Add("t"));
+			model.PopulateWord("SPELL");
+			Assert.AreEqual(0, DataUtil.Length(model.selectedIndexes.selects));
+		}
+
+		[Test]
 		public void AddTwoTs()
 		{
 			LetterSelectModel model = new LetterSelectModel();

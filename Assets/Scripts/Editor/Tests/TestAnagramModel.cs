@@ -127,19 +127,5 @@ namespace Finegamedesign.Anagram
 			model.Update(0.0f);
 			Assert.AreEqual(null, model.helpStateNow, "state from '' to 'none' but no text.");
 		}
-
-		[Test]
-		public void PressLetterTwoTs()
-		{
-			AnagramModel model = new AnagramModel();
-			model.PopulateWord("START");
-			model.PressLetter("t");
-			Assert.AreEqual(1, DataUtil.Length(model.selectedIndexes.selects));
-			Assert.AreEqual(1, model.selectedIndexes.selects[0]);
-			model.PressLetter("T");
-			Assert.AreEqual(2, DataUtil.Length(model.selectedIndexes.selects));
-			Assert.AreEqual(1, model.selectedIndexes.selects[0]);
-			Assert.AreEqual(4, model.selectedIndexes.selects[1]);
-		}
 	}
 }

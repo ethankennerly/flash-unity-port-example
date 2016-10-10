@@ -123,5 +123,20 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(70, list.removesNow[1]);
 			AssertUpdateClear(list);
 		}
+
+		[Test]
+		public void PopTwo()
+		{
+			ToggleSuffix list = new ToggleSuffix();
+			list.Toggle(40);
+			Assert.AreEqual(1, DataUtil.Length(list.selects));
+			list.Toggle(20);
+			Assert.AreEqual(2, DataUtil.Length(list.selects));
+			Assert.AreEqual(20, list.Pop());
+			Assert.AreEqual(1, DataUtil.Length(list.selects));
+			Assert.AreEqual(40, list.Pop());
+			Assert.AreEqual(0, DataUtil.Length(list.selects));
+			Assert.AreEqual(-1, list.Pop());
+		}
 	}
 }

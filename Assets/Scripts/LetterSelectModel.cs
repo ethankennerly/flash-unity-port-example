@@ -9,14 +9,15 @@ namespace Finegamedesign.Utils
 		public ToggleSuffix selectedIndexes = new ToggleSuffix();
 		// Data type "char" would be more runtime-efficient in C#.
 		// However "string" speeds up reusing algorithms.
-		private List<string> word;
-		private List<string> letters;
+		public List<string> letters;
+		public List<string> word;
 		
 		public void PopulateWord(string text)
 		{
 			word = DataUtil.Split(text, "");
 			letters = DataUtil.CloneList(word);
 			DataUtil.Clear(inputs);
+			DataUtil.Clear(selectedIndexes.selects);
 		}
 
 		// Select first unselected letter.
@@ -86,10 +87,9 @@ namespace Finegamedesign.Utils
 		public string Pop()
 		{
 			string letter = null;
-			
-			if (1 <= DataUtil.Length(selectedIndexes.selects))
+			int index = selectedIndexes.Pop();
+			if (0 <= index)
 			{
-				int index = DataUtil.Pop(selectedIndexes.selects);
 				letter = letters[index];
 				DataUtil.Pop(inputs);
 			}

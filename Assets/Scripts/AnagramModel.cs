@@ -48,19 +48,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		// Select letters:
 		public LetterSelectModel select = new LetterSelectModel();
-		public ToggleSuffix selectedIndexes = new ToggleSuffix();
 		internal int letterMax = 10;
 		internal delegate bool IsJustPressed(string letter);
-		internal List<int> backspacesNow = new List<int>();
-		internal List<int> selectsNow = new List<int>();
-		private List<string> available;
-		private List<string> selects;
 
-		internal List<string> inputs = new List<string>();
 		internal List<string> completes = new List<string>();
 		internal List<string> hints = new List<string>();
 		internal List<string> outputs = new List<string>();
-		internal List<string> word;
 
 		internal string title;
 		internal List<int> stationIndexes;
@@ -102,8 +95,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public void Setup()
 		{
 			state = null;
-			selectsNow = selectedIndexes.selectsNow;
-			backspacesNow = selectedIndexes.removesNow;
 			SetupProgress();
 			trialCount = 0;
 			isNewGameVisible = true;
@@ -121,13 +112,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 		
 		public void PopulateWord(string text)
 		{
+			select.PopulateWord(text);
 			this.text = text;
-			available = DataUtil.Split(text, "");
-			word = DataUtil.CloneList(available);
-			selects = DataUtil.CloneList(word);
 			PopulateHint(text);
 			stationIndexes = new List<int>();
-			for (int index = 0; index < DataUtil.Length(word); index++)
+			for (int index = 0; index < DataUtil.Length(select.word); index++)
 			{
 				stationIndexes.Add(index);
 			}
@@ -188,7 +177,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			state = "trial";
 			if (isVerbose) 
 			{
-				DebugUtil.Log("AnagramModel.StartTrial: word[0]: <" + word[0] + ">" 
+				DebugUtil.Log("AnagramModel.StartTrial: word[0]: <" + select.word[0] + ">" 
 					+ " level " + progress.GetLevelNormal());
 			}
 			metrics.StartTrial();
@@ -213,7 +202,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				UpdatePosition(deltaSeconds);
 				UpdateCheckpoint();
 			}
-			selectedIndexes.Update();
+			select.selectedIndexes.Update();
 			hint.isVisible = isGamePlaying;
 			metrics.Update(deltaSeconds);
 			journal.Update(deltaSeconds);
@@ -254,7 +243,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			else if (command.IndexOf("select_") == 0)
 			{
 				int index = StringUtil.ParseIndex(command);
-				MouseDown(index);
+				select.Toggle(index);
+				Select(index);
 			}
 			else
 			{
@@ -395,16 +385,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 					//? ShuffleNotWord(wordHash, word, readingOrder);
 					Deck.ShuffleList(stationIndexes);
 				}
-				selects = DataUtil.CloneList(word);
-				for (int i = 0; i < DataUtil.Length(inputs); i++)
-				{
-					string letter = inputs[i];
-					int selected = selects.IndexOf(letter);
-					if (0 <= selected)
-					{
-						selects[selected] = letter.ToUpper();
-					}
-				}
 				outputKnockback = 0;
 				wordState.next = "complete" == state ? "complete" : "hit";
 			}
@@ -417,14 +397,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			hint.answer = text;
 		}
 
-		private void PopulateHintDeprecated(string text)
-		{
-			hints.Clear();
-			isHintVisible = false;
-			submitsUntilHintNow = 0;
-			hintWord = text;
-		}
-		
 		private void UpdateHintVisible()
 		{
 			if (!isGamePlaying) {
@@ -446,18 +418,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal void Hint()
 		{
 			if (hint.Select()) {
-				metrics.trial_integers["hint_count"]++;
-			}
-			journal.Record("hint");
-		}
-
-		internal void HintDeprecated()
-		{
-			if (isHintVisible && hints.Count < word.Count) {
-				submitsUntilHintNow = submitsUntilHint;
-				isHintVisible = false;
-				string letter = hintWord.Substring(hints.Count, 1);
-				hints.Add(letter);
 				metrics.trial_integers["hint_count"]++;
 			}
 			journal.Record("hint");
@@ -540,7 +500,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			progress.normal = contentIndex / (float)progress.levelMax;
 			trialCount = 0;
 			metrics.StartSession();
-			DataUtil.Clear(inputs);
+			DataUtil.Clear(select.inputs);
 			helpTextNow.next = "";
 			helpState.next = "";
 			Resume();
@@ -563,10 +523,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// 
 		public string Submit()
 		{
-			string submission = DataUtil.Join(inputs, "");
+			string submission = DataUtil.Join(select.inputs, "");
 			bool accepted = false;
 			state = "wrong";
-			DataUtil.Clear(selectedIndexes.selects);
+			DataUtil.Clear(select.selectedIndexes.selects);
 			if (1 <= DataUtil.Length(submission))
 			{
 				if (wordHash.ContainsKey(submission))
@@ -598,7 +558,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 						PrepareKnockback(DataUtil.Length(submission), complete);
 						if (complete)
 						{
-							completes = DataUtil.CloneList(word);
+							completes = DataUtil.CloneList(select.word);
 							metrics.EndTrial();
 							LevelUp();
 							if (isVerbose)
@@ -622,15 +582,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 					}
 				}
 			}
-			outputs = DataUtil.CloneList(inputs);
+			outputs = DataUtil.CloneList(select.inputs);
 			if (!accepted) {
 				float perWordNotAccepted = -0.1f;
 				wordPosition += perWordNotAccepted;
 			}
 			if (isVerbose) DebugUtil.Log("AnagramModel.submit: " + submission + ". Accepted " + accepted);
-			DataUtil.Clear(inputs);
-			available = DataUtil.CloneList(word);
-			selects = DataUtil.CloneList(word);
+			DataUtil.Clear(select.inputs);
 			journal.Record("submit");
 			return state;
 		}
@@ -648,7 +606,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		private float Performance()
 		{
-			float bestResponseSeconds = 0.75f * word.Count;
+			float bestResponseSeconds = 0.75f * select.word.Count;
 			float worstResponseSeconds = 4.0f * bestResponseSeconds;
 			float positionNormal = (width + wordPositionMin) / width;
 			float responseRate = (responseSeconds - worstResponseSeconds) / (bestResponseSeconds - worstResponseSeconds);
@@ -805,110 +763,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		// Select letters:
 
-		// @param   justPressed	 Filter signature justPressed(letter):Boolean.
-		internal List<string> GetPresses(/*<Function>*/IsJustPressed justPressed)
-		{
-			List<string> presses = new List<string>();
-			Dictionary<string, object> letters = new Dictionary<string, object>(){
-			}
-			;
-			for (int i = 0; i < DataUtil.Length(available); i++)
-			{
-				string letter = available[i];
-				if (letters.ContainsKey(letter))
-				{
-					continue;
-				}
-				else
-				{
-					letters[letter] = true;
-				}
-				if (justPressed(letter))
-				{
-					presses.Add(letter);
-				}
-			}
-			return presses;
-		}
-	
-		// Select first unselected letter.
-		// Test case:  2016-10-02 Type second letter of a pair, 
-		// such as word 1: "start" or word 506:  "teens".  
-		// Expect select letter.  
-		// Got some letters skipped.  Backspace.  Crash.
-		// Example: Editor/Tests/TestAnagramModel.cs
-		public void PressLetter(string letter)
-		{
-			letter = letter.ToUpper();
-			int index = available.IndexOf(letter);
-			int length = DataUtil.Length(selectedIndexes.selects);
-			int selected = -1;
-			if (length <= 0)
-			{
-				selected = selects.IndexOf(letter);
-			}
-			else
-			{
-				for (int s = 0; s < DataUtil.Length(selects); s++)
-				{
-					if (letter == selects[s])
-					{
-						if (selectedIndexes.selects.IndexOf(s) <= -1)
-						{
-							selected = s;
-							break;
-						}
-					}
-				}
-			}
-			if (isVerbose)
-			{
-				DebugUtil.Log("AnagramModel.PressLetter: " + letter 
-					+ " available at " + index 
-					+ " selected at " + selected);
-			}
-			if (0 <= index)
-			{
-				available.RemoveRange(index, 1);
-				inputs.Add(letter);
-				if (0 <= selected)
-				{
-					selectedIndexes.Add(selected);
-					Select(selected, letter);
-				}
-			}
-		}
-
-		// If letter not available, disable typing it.
-		// @return word indexes.
-		internal List<int> Press(List<string> presses)
-		{
-			Dictionary<string, object> letters = new Dictionary<string, object>(){
-			}
-			;
-			for (int i = 0; i < DataUtil.Length(presses); i++)
-			{
-				string letter = presses[i].ToUpper();
-				if (letters.ContainsKey(letter))
-				{
-					continue;
-				}
-				else
-				{
-					letters[letter] = true;
-				}
-				PressLetter(letter);
-			}
-			return selectsNow;
-		}
-
 		// Test case:  2016-09-18 Jennifer Russ:
 		// Tap selected letter.  Expects deselects letter. (2016-09-23 +Kelsey Kerlan).
 		// 	Example:  City of Words.
 		// Level 106:  LIDE.  Tap I, D, E, D.  Expect only "I" is selected.
-		private void Select(int selected, string letter)
+		public void Select(int selected)
 		{
-			selects[selected] = letter.ToUpper();
 			if ("repeat" == helpState.previous)
 			{
 				helpState.next = "";
@@ -917,52 +777,13 @@ namespace /*<com>*/Finegamedesign.Anagram
 			journal.Record("select_" + selected.ToString());
 			if (isVerbose)
 			{
-				DebugUtil.Log("AnagramModel.Select: " + selected + " " 
-					+ letter + " " + DataUtil.Length(selectedIndexes.selectsNow));
+				DebugUtil.Log("AnagramModel.Select: " + selected);
 			}
-		}
-
-		internal List<int> MouseDown(int selected)
-		{
-			if (0 <= selected && selected < DataUtil.Length(word)) {
-				string letter = word[selected].ToUpper();
-				int index = available.IndexOf(letter);
-				selectedIndexes.Toggle(selected);
-				Select(selected, letter);
-				if (0 <= index) {
-					available.RemoveRange(index, 1);
-					inputs.Add(letter);
-				}
-				else
-				{
-					int length = DataUtil.Length(selectedIndexes.selects);
-					for (int i = length; i < DataUtil.Length(inputs); i++)
-					{
-						string inputLetter = inputs[i];
-						available.Add(inputLetter.ToUpper());
-					}
-					DataUtil.Clear(inputs, length);
-				}
-			}
-			return selectsNow;
 		}
 	
-		internal List<int> Backspace()
+		internal void Backspace()
 		{
-			if (1 <= DataUtil.Length(inputs))
-			{
-				string letter = DataUtil.Pop(inputs);
-				available.Add(letter.ToUpper());
-				int selected = selects.LastIndexOf(letter.ToUpper());
-				if (0 <= selected)
-				{
-					backspacesNow.Add(selected);
-					selects[selected] = letter;
-					DataUtil.Clear(selectedIndexes.selects, DataUtil.Length(inputs));
-				}
-			}
 			journal.Record("delete");
-			return backspacesNow;
 		}
 	}
 }

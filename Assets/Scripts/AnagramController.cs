@@ -186,7 +186,7 @@ namespace Finegamedesign.Anagram
 		{
 			if (KeyView.IsDownNow("page up"))
 			{
-				model.inputs = DataUtil.Split(model.text, "");
+				model.select.inputs = DataUtil.Split(model.text, "");
 				buttonDownName = "submit";
 			}
 			else if (KeyView.IsDownNow("page down"))
@@ -206,8 +206,8 @@ namespace Finegamedesign.Anagram
 
 		private void UpdateLetters()
 		{
-			TextViews.SetChildren(view.wordLetters, model.word);
-			TextViews.SetChildren(view.inputLetters, model.inputs);
+			TextViews.SetChildren(view.wordLetters, model.select.word);
+			TextViews.SetChildren(view.inputLetters, model.select.inputs);
 			TextViews.SetChildren(view.outputLetters, model.outputs);
 			TextViews.SetChildren(view.hintLetters, model.hint.reveals);
 		}
@@ -219,29 +219,38 @@ namespace Finegamedesign.Anagram
 
 		private void UpdateSelectLetter()
 		{
-			List<string> presses = model.GetPresses(IsLetterKeyDown);
-			model.Press(presses);
-			model.MouseDown(letterIndexMouseDown);
+			int length = DataUtil.Length(model.select.letters);
+			for (int index = 0; index < length; index++)
+			{
+				string letter = model.select.letters[index];
+				if (IsLetterKeyDown(letter))
+				{
+					model.select.Add(letter);
+				}
+			}
+			model.select.Toggle(letterIndexMouseDown);
+			for (int index = 0; index < DataUtil.Length(model.select.selectedIndexes.selectsNow); index++)
+			{
+				model.Select(model.select.selectedIndexes.selectsNow[index]);
+			}
 			if ("complete" != model.state)
 			{
-				UpdateSelect(model.selectsNow, true);
+				UpdateSelect(model.select.selectedIndexes.selectsNow, true);
 			}
 			UpdateSubmit();
 		}
 
-		//
 		// Delete or backspace:  Remove last letter.
-		// 
 		private void UpdateBackspace()
 		{
 			if (KeyView.IsDownNow("delete")
 			|| KeyView.IsDownNow("backspace")
 			|| "delete" == buttonDownName)
 			{
+				model.select.Pop();
 				model.Backspace();
-				buttonDownName = null;
+				UpdateSelect(model.select.selectedIndexes.removesNow, false);
 			}
-			UpdateSelect(model.backspacesNow, false);
 		}
 
 		// Each selected letter in word plays animation "selected".
@@ -263,18 +272,14 @@ namespace Finegamedesign.Anagram
 
 		private void ResetSelect()
 		{
-			for (int index = 0; index < model.letterMax; index++)
-			{
-				AnimationView.SetState(view.wordLetters[index], "none");
-			}
+			SetLetterStates("none");
 		}
 
 		private void SetLetterStates(string state)
 		{
 			for (int i = 0; i < DataUtil.Length(view.wordLetters); i++)
 			{
-				AnimationView.SetState(view.wordLetters[i],
-					state);
+				AnimationView.SetState(view.wordLetters[i], state);
 			}
 		}
 

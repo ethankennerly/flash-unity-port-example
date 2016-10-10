@@ -32,6 +32,19 @@ namespace Finegamedesign.Utils
 			}
 		}
 
+		public int Pop()
+		{
+			int length = DataUtil.Length(selects);
+			if (length <= 0)
+			{
+				return -1;
+			}
+			int item = DataUtil.Pop(selects);
+			removesNow.Add(item);
+			return item;
+		}
+
+		// Each update clears items selected now and removed now.
 		public void Update()
 		{
 			DataUtil.Clear(selectsNow);
