@@ -6,13 +6,15 @@ namespace Finegamedesign.Utils
 	{
 		public bool isVerbose = false;
 		public ToggleSuffix selectedIndexes = new ToggleSuffix();
-		private List<string> available;
-		private List<string> selects;
+		// Data type "char" would be more runtime-efficient in C#.
+		// However "string" speeds up reusing algorithms.
+		private List<string> word;
+		private List<string> letters;
 		
-		public void Populate(string text)
+		public void PopulateWord(string text)
 		{
-			available = DataUtil.Split(text, "");
-			selects = DataUtil.CloneList(available);
+			word = DataUtil.Split(text, "");
+			letters = DataUtil.CloneList(word);
 		}
 
 		// Select first unselected letter.
@@ -20,22 +22,21 @@ namespace Finegamedesign.Utils
 		// such as word 1: "start" or word 506:  "teens".  
 		// Expect select letter.  
 		// Got some letters skipped.  Backspace.  Crash.
-		// Example: Editor/Tests/TestAnagramModel.cs
-		public void PressLetter(string letter)
+		// Example: Editor/Tests/TestLetterSelectModel.cs
+		public bool Add(string letter)
 		{
 			letter = letter.ToUpper();
-			int index = available.IndexOf(letter);
 			int length = DataUtil.Length(selectedIndexes.selects);
 			int selected = -1;
 			if (length <= 0)
 			{
-				selected = selects.IndexOf(letter);
+				selected = letters.IndexOf(letter);
 			}
 			else
 			{
-				for (int s = 0; s < DataUtil.Length(selects); s++)
+				for (int s = 0; s < DataUtil.Length(letters); s++)
 				{
-					if (letter == selects[s])
+					if (letter == letters[s])
 					{
 						if (selectedIndexes.selects.IndexOf(s) <= -1)
 						{
@@ -47,21 +48,41 @@ namespace Finegamedesign.Utils
 			}
 			if (isVerbose)
 			{
-				DebugUtil.Log("AnagramModel.PressLetter: " + letter 
-					+ " available at " + index 
+				DebugUtil.Log("LetterSelectModel.Add: " + letter 
 					+ " selected at " + selected);
 			}
-			if (0 <= index)
+			bool isNow = 0 <= selected;
+			if (isNow)
 			{
-				available.RemoveRange(index, 1);
-				if (0 <= selected)
-				{
-					selectedIndexes.Add(selected);
-					// Select(selected, letter);
-					// inputs.Add(letter);
-				}
+				selectedIndexes.Add(selected);
 			}
+			return isNow;
 		}
 
+		// Return if in range.
+		// Example: Editor/Tests/TestLetterSelectModel.cs
+		public bool Toggle(int selected)
+		{
+			bool isInRange = 0 <= selected && selected < DataUtil.Length(word);
+			if (isInRange)
+			{
+				selectedIndexes.Toggle(selected);
+			}
+			return isInRange;
+		}
+
+		// Return last selected letter if any to remove.
+		// Example: Editor/Tests/TestLetterSelectModel.cs
+		public string Pop()
+		{
+			string letter = null;
+			
+			if (1 <= DataUtil.Length(selectedIndexes.selects))
+			{
+				int index = DataUtil.Pop(selectedIndexes.selects);
+				letter = letters[index];
+			}
+			return letter;
+		}
 	}
 }
