@@ -32,6 +32,23 @@ namespace Finegamedesign.Utils
 		private int centsPerDollar = 100;
 
 		// Example: Editor/Tests/TestHint.cs
+		public void Load(Dictionary<string, object> data)
+		{
+			if (null == data)
+			{
+				return;
+			}
+			if (data.ContainsKey("hint"))
+			{
+				count = (int)data["hint"];
+			}
+			if (data.ContainsKey("cents"))
+			{
+				cents = (int)data["cents"];
+			}
+		}
+
+		// Example: Editor/Tests/TestHint.cs
 		public string GetCountText(int productIndex)
 		{
 			return countCents[productIndex][countIndex] + " HINTS";

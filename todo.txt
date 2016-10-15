@@ -304,11 +304,11 @@ FEATURES
 	Test subdivided AnagramModel:
 		Letter selection
 		Hints
+		Leveling
 
 TODO
 
 	Test subdivided AnagramModel:
-		Leveling
 		Word transform
 		Progress transform
 		Mode

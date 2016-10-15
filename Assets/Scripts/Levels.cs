@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using /*<com>*/Finegamedesign.Utils/*<DataUtil>*/;
 namespace /*<com>*/Finegamedesign.Anagram
 {
 	public class Levels

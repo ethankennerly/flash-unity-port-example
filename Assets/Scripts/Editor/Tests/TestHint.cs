@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Finegamedesign.Anagram;
+using System.Collections.Generic;
 
 namespace Finegamedesign.Utils
 {
@@ -70,7 +71,7 @@ namespace Finegamedesign.Utils
 		}
 
 		[Test]
-		public void SelectCount0GotoStore()
+		public void SelectCountZeroGotoStore()
 		{
 			Hint hint = new Hint();
 			hint.count = 0;
@@ -78,6 +79,23 @@ namespace Finegamedesign.Utils
 			Assert.AreEqual(false, hint.Select());
 			Assert.AreEqual(0, hint.count);
 			Assert.AreEqual("store", hint.state);
+		}
+
+		[Test]
+		public void Load()
+		{
+			Hint hint = new Hint();
+			hint.Load(null);
+			Assert.AreEqual(0, hint.count);
+			Dictionary<string, object> data = new Dictionary<string, object>();
+			data["hint"] = 20;
+			Assert.AreEqual(0, hint.count);
+			hint.Load(data);
+			Assert.AreEqual(20, hint.count);
+			data["cents"] = 99;
+			Assert.AreEqual(0, hint.cents);
+			hint.Load(data);
+			Assert.AreEqual(99, hint.cents);
 		}
 
 		[Test]

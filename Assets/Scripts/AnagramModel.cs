@@ -690,7 +690,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			if (null != data) {
 				LoadLevel(data);
-				LoadHint(data);
+				hint.Load(data);
 			}
 		}
 
@@ -709,16 +709,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			else {
 				DebugUtil.Log("Data does not contain level.");
-			}
-		}
-
-		internal void LoadHint(Dictionary<string, object> data)
-		{
-			if (data.ContainsKey("hint")) {
-				hint.count = (int)(data["hint"]);
-			}
-			if (data.ContainsKey("cents")) {
-				hint.cents = (int)(data["cents"]);
 			}
 		}
 
