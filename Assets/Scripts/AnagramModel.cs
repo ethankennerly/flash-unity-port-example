@@ -90,7 +90,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private int now = 0;
 		private int previous = 0;
 		private int previousSessionLevel;
-		private string hintWord;
 		
 		public void Setup()
 		{
@@ -395,24 +394,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			DataUtil.Clear(hint.reveals);
 			hint.answer = text;
-		}
-
-		private void UpdateHintVisible()
-		{
-			if (!isGamePlaying) {
-				isHintVisible = false;
-			}
-			else {
-				float hintPerformanceMax = // 0.25f;
-											// 0.375f;
-											0.5f;
-				if (Performance() <= hintPerformanceMax) {
-					isHintVisible = submitsUntilHintNow <= 0;
-				}
-				else {
-					isHintVisible = false;
-				}
-			}
 		}
 
 		internal void Hint()

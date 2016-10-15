@@ -301,27 +301,28 @@ FEATURES
 		From start screen button: Get more hints.
 	Type second letter of a pair, such as word 1: "start" or word 506:  "teens".  Expect select letter.  Got some letters skipped.  Backspace.  Crash.
 	Developer button to reset storage to no hints, no level, and reload.
+	Test subdivided AnagramModel:
+		Letter selection
 
 TODO
 
 	Test subdivided AnagramModel:
-		Letter selection
 		Hints
 		Leveling
 		Word transform
 		Progress transform
 		Mode
+	Toggle developer panel.
+	Scale word position to screen top and bottom.
+	Select level.  No flicker of paused screen.
+	No longer refer to ArrayList.
+	Level select menu.  In middle of levels.  Highlight the current level.
 	Hint:
 		Hint menu.  Select.  Expect always selects.
 		Hints on random letter of some milestone words.  Example:  WordBrain Themes.
 			Spell with the letter to get a hint.
 		Progress to a hint on some milestone words.  Example:  WordBrain Themes.
 		From pause screen button: Get more hints.
-	Toggle developer panel.
-	Scale word position to screen top and bottom.
-	Select level.  No flicker of paused screen.
-	No longer refer to ArrayList.
-	Level select menu.  In middle of levels.  Highlight the current level.
 	At checkpoint goto grid.
 	At checkpoint goto map.
 		Map shows path with one button per word.
