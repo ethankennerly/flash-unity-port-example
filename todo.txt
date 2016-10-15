@@ -305,9 +305,15 @@ FEATURES
 		Letter selection
 		Hints
 		Leveling
+	Test case:  2016-10-15 Level 1. Second word. Neighbor Kristine expects to read instruction.  Got instruction for START.
+	Test case:  2016-10-15 Level 1. Second word. Neighbor Kristine spells the word SPELL.  Expects new word.  Got repeats.
 
 TODO
 
+	Test case:  2016-10-15 Finish 3 tutor trials.  Expect no text dialog.  Got empty text dialog.
+	Test case:  2016-10-15 Next word.  Neighbor Kristine could expect next instruction.  Got no instruction.
+	Test case:  2016-10-15 First screen.  Kristine could expect callout to select level 1.
+	Test case:  2016-10-15 Word.  Kristine could expect instruction to enter shorter words.
 	Test subdivided AnagramModel:
 		Word transform
 		Progress transform
@@ -317,6 +323,7 @@ TODO
 	Scale word position to screen top and bottom.
 	Select level.  No flicker of paused screen.
 	No longer refer to ArrayList.
+	Words do not appear in reading order.
 	Level select menu.  In middle of levels.  Highlight the current level.
 	Hint:
 		Hint menu.  Select.  Expect always selects.

@@ -255,7 +255,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			helpState.Update(helpState.next);
 			helpTextNow.Update(helpTextNow.next);
-			if (helpState.IsChange() && helpTextNow.IsChange()) {
+			if (helpState.IsChange() || helpTextNow.IsChange()) {
 				helpStateNow = "" == helpTextNow.next ? "endNow" 
 					: isInstant ? "instantNow" : "beginNow";
 			}
@@ -434,8 +434,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			SetupProgress();
 			trialCount = 0;
-			progress.level = 0;
 			progress.SetLevelNormal(0);
+			progress.level = 0;
 			StartTrial(levels.parameters[progress.level]);
 		}
 

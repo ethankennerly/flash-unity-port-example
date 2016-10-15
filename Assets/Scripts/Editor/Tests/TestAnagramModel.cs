@@ -125,7 +125,7 @@ namespace Finegamedesign.Anagram
 			model.helpTextNow.next = "";
 			model.helpState.next = "none";
 			model.Update(0.0f);
-			Assert.AreEqual(null, model.helpStateNow, "state from '' to 'none' but no text.");
+			Assert.AreEqual("endNow", model.helpStateNow, "state from '' to 'none'");
 		}
 	}
 }
