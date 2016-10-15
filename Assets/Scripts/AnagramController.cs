@@ -361,7 +361,6 @@ namespace Finegamedesign.Anagram
 		// 
 		private void UpdateHint()
 		{
-			hint.model = model.hint;
 			hint.Update();
 			if (KeyView.IsDownNow("?")
 			|| KeyView.IsDownNow("/")

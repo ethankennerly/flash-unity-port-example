@@ -105,9 +105,9 @@ namespace Finegamedesign.Anagram
 			AnagramModel model = new AnagramModel();
 			model.helpTextNow.next = null;
 			Assert.AreEqual(true, model.IsHelpRepeat());
-			model.levels.index = 100;
+			model.progress.level = 100;
 			Assert.AreEqual(false, model.IsHelpRepeat());
-			model.levels.index = 10;
+			model.progress.level = 10;
 			Assert.AreEqual(true, model.IsHelpRepeat());
 		}
 

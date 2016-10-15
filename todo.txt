@@ -303,15 +303,16 @@ FEATURES
 	Developer button to reset storage to no hints, no level, and reload.
 	Test subdivided AnagramModel:
 		Letter selection
+		Hints
 
 TODO
 
 	Test subdivided AnagramModel:
-		Hints
 		Leveling
 		Word transform
 		Progress transform
 		Mode
+		Words:  Contains word.
 	Toggle developer panel.
 	Scale word position to screen top and bottom.
 	Select level.  No flicker of paused screen.

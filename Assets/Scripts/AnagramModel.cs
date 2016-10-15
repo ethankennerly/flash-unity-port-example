@@ -347,7 +347,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			progress.SetCheckpointStep(checkpointStep);
 			progress.levelNormalMax = 10000;
-			progress.SetupIndexes(levels.Count(), tutorLevel);
+			progress.SetupIndexes(DataUtil.Length(levels.parameters), tutorLevel);
 		}
 		
 		private float outputKnockback = 0.0f;
@@ -435,9 +435,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 			SetupProgress();
 			trialCount = 0;
 			progress.level = 0;
-			levels.index = 0;
 			progress.SetLevelNormal(0);
-			StartTrial(levels.parameters[0]);
+			StartTrial(levels.parameters[progress.level]);
 		}
 
 		//
@@ -576,7 +575,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 	
 		public bool IsHelpRepeat()
 		{
-			return levels.index <= 50;
+			return progress.level <= 50;
 		}
 		
 		private void ScoreUp(string submission)
@@ -665,13 +664,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			if (isNow) {
 				isHudVisible = !IsTutor();
 				Dictionary<string, object> level;
+				int index;
 				if (isHudVisible) {
-					int index = progress.PopIndex();
-					level = levels.parameters[index];
+					index = progress.PopIndex();
 				}
 				else {
-					level = levels.Up();
+					index = progress.Add();
 				}
+				level = levels.parameters[index];
 				StartTrial(level);
 			}
 		}
