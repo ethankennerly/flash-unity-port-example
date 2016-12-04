@@ -52,7 +52,7 @@ FEATURES
 	Hint button.  Outline next letter of most popular word behind input area.
 		Test case:  2016-05-21 Jennifer Russ demands a hint (+2016-05-22, 2016-05-28)
 		Hint button appears after next level would be lower.
-		Then each 2 subwords after.  
+		Then each 2 subwords after.
 	Background scrolls indicating time and next word.
 		Tall image.
 		Show next position if completing word now.
@@ -65,24 +65,24 @@ FEATURES
 	Press button to Continue from last level.
 	Game over.  Continue button.
 	Checkpoint at each big flower.
-	Performance analytics:  
+	Performance analytics:
 		Scatter plot:
-			start level vs level up.  
-			start level vs response time.  
-			start level vs hint count.  
-			start level vs game over.  
+			start level vs level up.
+			start level vs response time.
+			start level vs hint count.
+			start level vs game over.
 		Log TSV:  response time, start level, level up, hint count, game over, word.
 	Continue.  No letters selected or partially typed.
 	Hint.  No mismatch between letters selected or partially typed.
 	If attempt 5 shuffles until word not order of a word in dictionary, from left-to-right.
 		Scene node model portable GameObject name x, y.
-		Dictionary of string keys and dynamic values.  
+		Dictionary of string keys and dynamic values.
 			Unity 5.3 MonoDevelop-Unity debugger crashes.
 		Sort by delegate.
 			http://stackoverflow.com/a/3309397/1417849
 			No LINQ to be portable syntax.
 		Index reading order.
-			sort x, name. 
+			sort x, name.
 			Name reading order.
 		Lookup word.
 	Extract AnagramController from AnagramView
@@ -151,7 +151,7 @@ FEATURES
 	Hint at top.  Can see hint when word is near.
 	Next word.  Tween intro word.
 	Test case:  2016-07-23 Neighbor Kristine expects time to enter word.  Got word already near bottom of screen.
-	Tutor:  TO ADD TIME, SPELL A SHORT WORD. 
+	Tutor:  TO ADD TIME, SPELL A SHORT WORD.
 		Test case:  2016-07-23 Read "knock back letter".  Neighbor Kristine expects to realize can enter shorter word.
 	AnagramView:  Expose wired game objects in editor.  Can overwrite.  If not found, throw error.
 	Inspect letter button.  Select animation transition.  Delete triggers.  Select color tint transition.
@@ -222,8 +222,8 @@ FEATURES
 	Test case:  2016-08-20 Complete tutorial.  Expect help disappears.  Unpause.  Expect help disappears.
 	Level select.  First word.  Read instruction.
 	Enter from two menus:
-		-1d: 50 levels in a grid.  60 words each in a grid.   
-			Except first two levels only have 30.  
+		-1d: 50 levels in a grid.  60 words each in a grid.
+			Except first two levels only have 30.
 			Example:  WordBrain by MAG Interactive has 10 levels in first 2.  20 in next.
 			But WordBrain has vertical layout group, not a grid.
 		-2d: Progress on button on grid.
@@ -276,11 +276,11 @@ FEATURES
 			Hint.  Expect to read first letter.  Got hint behind exit button.
 	Lower letters to below HUD.
 		2016-09-18 Jennifer Russ: 9 letters or more.  Expects to see top letter.  Got behind HUD.
-	Replace X with Pause lines. 
+	Replace X with Pause lines.
 		2016-09-18 Jennifer Russ may expect: Recognize can pause any time.
 	2016-09-18 Jennifer Russ:
 		Press X.  Select level.  Might expect highest level.
-			Level select.  Return to highest unlocked. 
+			Level select.  Return to highest unlocked.
 	2016-09-18 Jennifer Russ:
 		Could expect break every 10th word. (2016-09-23 +Kelsey Kerlan)
 		Reach break.  Could expect to see message.
@@ -297,7 +297,7 @@ FEATURES
 			Read hints.
 			Pause game.
 			Tap item.  Add hints.
-		If tap hint button with no hints, 
+		If tap hint button with no hints,
 		From start screen button: Get more hints.
 	Type second letter of a pair, such as word 1: "start" or word 506:  "teens".  Expect select letter.  Got some letters skipped.  Backspace.  Crash.
 	Developer button to reset storage to no hints, no level, and reload.
@@ -355,7 +355,7 @@ TODO
 	Synchronize complete animation on word state and letters.
 	Submit.  Always all letters selected.
 	Each letter is a monster
-		https://pixabay.com/p-160205/?no_redirect	
+		https://pixabay.com/p-160205/?no_redirect
 	Centipede crawling closer.
 		http://previews.123rf.com/images/silantiy/silantiy1209/silantiy120900020/15529867-Set-of-amusing-caterpillars-on-a-white-background-Caterpillars-of-different-color-On-one-caterpillar-Stock-Vector.jpg
 	If tap same letter twice, do not select the other letter.  Example:  SPELL.  Tap first L twice.  Expect second L not selected.
@@ -395,9 +395,9 @@ TODO
 	Google Play Store.
 	Mouse down to select that letter when there are 2 copies.
 	Animate various outcomes:  many subwords.  fast.  barely survive.
-	Theme:  
+	Theme:
 		WORD SWORD
-			
+
 		BATTLE OF WORDS
 		WORDS VS ZOMBIES
 			https://itunes.apple.com/us/app/words-vs-zombies/id733299960?mt=8

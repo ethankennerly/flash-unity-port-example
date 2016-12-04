@@ -30,7 +30,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				}
 			}
 		}
-		
+
 		public Hint hint = new Hint();
 		public Journal journal = new Journal();
 		public bool isContinueVisible = false;
@@ -58,9 +58,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal string title;
 		internal List<int> stationIndexes;
 		// From letter graphic.
-		internal float wordWidth = 
+		internal float wordWidth =
 									// 160.0f;
-									420.0f; 
+									420.0f;
 		internal delegate /*<object>*/void ActionDelegate();
 		internal /*<Function>*/ActionDelegate onComplete;
 		internal Dictionary<string, object> wordHash;
@@ -90,7 +90,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private int now = 0;
 		private int previous = 0;
 		private int previousSessionLevel;
-		
+
 		public void Setup()
 		{
 			state = null;
@@ -99,16 +99,16 @@ namespace /*<com>*/Finegamedesign.Anagram
 			isNewGameVisible = true;
 			PopulateWord("");
 			metrics.trial_headers = new string[]{
-				"level_start", 
-				"level_up", 
-				"response_time", 
-				"game_over", 
-				"hint_count", 
-				"word" 
+				"level_start",
+				"level_up",
+				"response_time",
+				"game_over",
+				"hint_count",
+				"word"
 			};
 			metrics.StartSession();
 		}
-		
+
 		public void PopulateWord(string text)
 		{
 			select.PopulateWord(text);
@@ -127,7 +127,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Expect HUD goes away.  Got HUD remains.
 		// Complete tutorial trials.  Expect HUD slides into view.
 		// At start of trial, set help state to none.  Was null.
-		// Test case:  2016-08-20 Complete tutorial.  Expect help disappears. 
+		// Test case:  2016-08-20 Complete tutorial.  Expect help disappears.
 		internal void StartTrial(Dictionary<string, object> parameters)
 		{
 			isHudVisible = !IsTutor();
@@ -174,9 +174,9 @@ namespace /*<com>*/Finegamedesign.Anagram
 			repeat = new Dictionary<string, object>(){};
 			wordState.next = "begin";
 			state = "trial";
-			if (isVerbose) 
+			if (isVerbose)
 			{
-				DebugUtil.Log("AnagramModel.StartTrial: word[0]: <" + select.word[0] + ">" 
+				DebugUtil.Log("AnagramModel.StartTrial: word[0]: <" + select.word[0] + ">"
 					+ " level " + progress.GetLevelNormal());
 			}
 			metrics.StartTrial();
@@ -186,14 +186,14 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.trial_integers["level_up"] = 0;
 			metrics.trial_strings["word"] = text;
 		}
-		
+
 		internal void UpdateNow(int cumulativeMilliseconds)
 		{
 			float deltaSeconds = (now - previous) / 1000.0f;
 			Update(deltaSeconds);
 			previous = now;
 		}
-		
+
 		public void Update(float deltaSeconds)
 		{
 			if (isGamePlaying) {
@@ -250,13 +250,19 @@ namespace /*<com>*/Finegamedesign.Anagram
 				throw new System.InvalidOperationException("Did not expect command <" + command + ">");
 			}
 		}
-		
+
+		/**
+		 * If help text will be null, do not animate.
+		 * Test case:  2016-10-15 Finish 3 tutor trials.
+		 * Expect no text dialog.  Got empty text dialog.
+		 */
 		private void UpdateHelp()
 		{
 			helpState.Update(helpState.next);
 			helpTextNow.Update(helpTextNow.next);
-			if (helpState.IsChange() || helpTextNow.IsChange()) {
-				helpStateNow = "" == helpTextNow.next ? "endNow" 
+			bool isHelpTextNew = helpTextNow.IsChange() && null != helpTextNow.next;
+			if (isHelpTextNew || helpState.IsChange()) {
+				helpStateNow = "" == helpTextNow.next ? "endNow"
 					: isInstant ? "instantNow" : "beginNow";
 			}
 			else
@@ -270,7 +276,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			scale = screenWidth / width;
 		}
-		
+
 		// Test case:  2015-03 Use Mac. Rosa Zedek expects to read key to change level.
 		// During tutor, clamp word position below help message.
 		// Test case:  2016-06-28 Tutor.  Enter smaller words.  Expect to read letters.  Got overlapped by help.
@@ -286,7 +292,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			float max = IsTutor() ? -0.4f * wordWidth : 0.0f;
 			wordPosition = Mathf.Max(min, Mathf.Min(max, wordPosition));
 		}
-	
+
 		internal void GameOver()
 		{
 			helpTextNow.next = "GAME OVER!";
@@ -298,7 +304,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			metrics.EndTrial();
 			metrics.EndSession();
 		}
-	
+
 		internal void Pause(bool isInstantNow = false)
 		{
 			isPaused = true;
@@ -349,17 +355,17 @@ namespace /*<com>*/Finegamedesign.Anagram
 			progress.levelNormalMax = 10000;
 			progress.SetupIndexes(DataUtil.Length(levels.parameters), tutorLevel);
 		}
-		
+
 		private float outputKnockback = 0.0f;
-		
+
 		internal bool MayKnockback()
 		{
 			return 0 < outputKnockback && 1 <= DataUtil.Length(outputs);
 		}
-		
+
 		//
 		// Clamp word to appear on screen.  Test case:  2015-04-18 Complete word.  See next word slide in.
-		// 
+		//
 		private void PrepareKnockback(int length, bool complete)
 		{
 			float perLength =
@@ -372,7 +378,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			ClampWordPosition();
 		}
-		
+
 		internal bool OnOutputHitsWord()
 		{
 			bool enabled = MayKnockback();
@@ -389,7 +395,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 			return enabled;
 		}
-	
+
 		private void PopulateHint(string text)
 		{
 			DataUtil.Clear(hint.reveals);
@@ -427,8 +433,8 @@ namespace /*<com>*/Finegamedesign.Anagram
 		//
 		// Reset tutorial levels back to 0.
 		// XXX Would be cleaner to consolidate level indexes.
-		// Test case:  2016-10-09 Select level 1.  Complete 2 words.  Pause.  Select 1.  
-		// Complete 1 word. Expect 2nd tutorial word.  
+		// Test case:  2016-10-09 Select level 1.  Complete 2 words.  Pause.  Select 1.
+		// Complete 1 word. Expect 2nd tutorial word.
 		// Got second trial is not tutorial but no HUD.
 		private void StartTutorial()
 		{
@@ -441,12 +447,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 
 		//
 		// When tapping Continue, but not at every next trial, clear inputs.  Animation displays inputs.
-		// Test case:  2016-06-19 Some letters selected.  Game over.  Continue.  Expect no letter selected.  
+		// Test case:  2016-06-19 Some letters selected.  Game over.  Continue.  Expect no letter selected.
 		// + Submit full word.  Expect animation.  Got nothing.
-		// 
+		//
 		// When continue, add trial count.
 		// Test case:  2016-07-23 Tutor.  Game over.  Continue.  Finish tutor trial.  Neighbor Kristine could expect word near top.  Got word near bottom.
-		// 
+		//
 		internal void ContinueGame(int level = -1)
 		{
 			if (isContinueVisible) {
@@ -500,7 +506,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Test case:  2015-04-19 Backspace. Deselect. Submit. Type. Select.
 		// Copy outputs from inputs, even if no submission length.
 		// Test case:  2016-06-25 Submit word.  Submit again.  Expect to see no output.  Saw output.
-		// 
+		//
 		public string Submit()
 		{
 			string submission = DataUtil.Join(select.inputs, "");
@@ -543,7 +549,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 							LevelUp();
 							if (isVerbose)
 							{
-								DebugUtil.Log("AnagramModel.submit: " + submission 
+								DebugUtil.Log("AnagramModel.submit: " + submission
 									+ " " + progress.GetLevelNormal());
 							}
 							state = "complete";
@@ -572,12 +578,12 @@ namespace /*<com>*/Finegamedesign.Anagram
 			journal.Record("submit");
 			return state;
 		}
-	
+
 		public bool IsHelpRepeat()
 		{
 			return progress.level <= 50;
 		}
-		
+
 		private void ScoreUp(string submission)
 		{
 			points = DataUtil.Length(submission);
@@ -621,7 +627,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			PopulateWord("");
 			//- metrics.EndSession();
 			if (isVerbose) {
-				DebugUtil.Log("AnagramModel.ShowCheckpoint: " + progress.checkpoint 
+				DebugUtil.Log("AnagramModel.ShowCheckpoint: " + progress.checkpoint
 					+ " progress " + progress.normal );
 			}
 		}
@@ -631,7 +637,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 			progress.UpdateCheckpoint();
 			if (progress.isCheckpoint) {
 				hint.count += hint.countPerCheckpoint;
-				string text = "OUTSTANDING! YOU EARNED " 
+				string text = "OUTSTANDING! YOU EARNED "
 					+ hint.countPerCheckpoint + " HINTS!";
 				ShowCheckpoint(text);
 			}
@@ -644,7 +650,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Got level 1 with help overlapping words.
 		public bool IsTutor()
 		{
-			return progress.level < tutorLevel 
+			return progress.level < tutorLevel
 				&& trialCount < tutorLevel;
 		}
 
@@ -719,11 +725,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 			NextTrial();
 			wordPosition = 0.0f;
 		}
-	
+
 		private List<int> readingOrder = new List<int>();
 
 		internal void SetReadingOrder(List<SceneNodeModel> letterNodes)
-		{	
+		{
 			DataUtil.Clear(readingOrder);
 			for (int letter = 0; letter < DataUtil.Length(letterNodes); letter++)
 			{
@@ -765,7 +771,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 				Select(select.selectedIndexes.selectsNow[index]);
 			}
 		}
-	
+
 		internal void Backspace()
 		{
 			journal.Record("delete");
