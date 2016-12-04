@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Finegamedesign.Utils;
 
-namespace Finegamedesign.Anagram 
+namespace Finegamedesign.Anagram
 {
 	// help: none: when receive trigger endNow transition back to none.
 	// Reusable software would be to:

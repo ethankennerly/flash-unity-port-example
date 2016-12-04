@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Finegamedesign.Utils;
 
-namespace Finegamedesign.Anagram 
+namespace Finegamedesign.Anagram
 {
 	[System.Serializable]
 	public sealed class AnagramController
@@ -104,7 +104,7 @@ namespace Finegamedesign.Anagram
 		// Remember which letter was just clicked on this update.
 		//
 		// http://answers.unity3d.com/questions/20328/onmousedown-to-return-object-name.html
-		// 
+		//
 		private void UpdateLetterButton()
 		{
 			letterIndexMouseDown = -1;
@@ -181,7 +181,7 @@ namespace Finegamedesign.Anagram
 
 		//
 		// http://answers.unity3d.com/questions/762073/c-list-of-string-name-for-inputgetkeystring-name.html
-		// 
+		//
 		private void UpdateCheat()
 		{
 			if (KeyView.IsDownNow("page up"))
@@ -247,7 +247,7 @@ namespace Finegamedesign.Anagram
 				AnimationView.SetState(view.wordLetters[index], state);
 				if (isVerbose)
 				{
-					DebugUtil.Log("AnagramController.UpdateSelect: " 
+					DebugUtil.Log("AnagramController.UpdateSelect: "
 						+ index + ": " + state);
 				}
 			}
@@ -301,7 +301,7 @@ namespace Finegamedesign.Anagram
 		// 			 output
 		// 			 state
 		// Play "complete" animation on word, so that letters are off-screen when populating next word.
-		// 
+		//
 		private void UpdateSubmit()
 		{
 			if (model.wordState.IsChange())
@@ -314,7 +314,7 @@ namespace Finegamedesign.Anagram
 			{
 				Submit();
 			}
-			if ("submit" == model.journal.actionNow && null != model.state) 
+			if ("submit" == model.journal.actionNow && null != model.state)
 			{
 				AnimationView.SetState(view.input, model.state, true);
 				if ("complete" == model.state)
@@ -358,7 +358,7 @@ namespace Finegamedesign.Anagram
 		//
 		// Hint does not reset letters selected.
 		// Test case:  2016-06-19 Hint.  Expect no mismatch between letters typed and letters selected.
-		// 
+		//
 		private void UpdateHint()
 		{
 			hint.Update();
@@ -406,12 +406,12 @@ namespace Finegamedesign.Anagram
 
 		//
 		// Multiply progress position by world scale on progress.
-		// An ancestor is scaled.  The checkpoints are placed in 
+		// An ancestor is scaled.  The checkpoints are placed in
 		// the editor at the model's checkpoint interval (which at this time is 16).
-		// Test case:  2016-06-26 Reach two checkpoints.  
+		// Test case:  2016-06-26 Reach two checkpoints.
 		// Expect checkpoint line near bottom of screen each time.
 		// Got checkpoint lines had gone down off the screen.
-		// 
+		//
 		private void UpdatePosition()
 		{
 			if (model.MayKnockback())
