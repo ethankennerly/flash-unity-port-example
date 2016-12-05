@@ -42,9 +42,15 @@ namespace /*<com>*/Finegamedesign.Anagram
 		public Progress progress = new Progress();
 		public string state;
 		public string text;
+		public string shorterWordHelp = "TO ADD TIME, SPELL ANY SHORTER WORD.";
 		public int trialCount;
 		public int trialPeriod = 10;
 		public int tutorLevel = 3;
+		public float helpPosition = 0.9f;
+		// 1.0f;
+		// 0.75f;
+		public int helpLevel = 200;
+		public float width = 720.0f;
 
 		// Select letters:
 		public LetterSelectModel select = new LetterSelectModel();
@@ -73,7 +79,6 @@ namespace /*<com>*/Finegamedesign.Anagram
 		internal bool isSaveNow = false;
 		internal float checkpointStep = 0.1f;
 		internal float scale = 1.0f;
-		internal float width = 720.0f;
 		internal float wordPosition = 0.0f;
 		internal float wordPositionScaled = 0.0f;
 		internal int points = 0;
@@ -87,6 +92,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		private float responseSeconds;
 		private float wordPositionMin;
 		private float wordWidthPerSecond;
+		public float wordPositionMinNormal;
 		private int now = 0;
 		private int previous = 0;
 		private int previousSessionLevel;
@@ -128,7 +134,7 @@ namespace /*<com>*/Finegamedesign.Anagram
 		// Complete tutorial trials.  Expect HUD slides into view.
 		// At start of trial, set help state to none.  Was null.
 		// Test case:  2016-08-20 Complete tutorial.  Expect help disappears.
-		internal void StartTrial(Dictionary<string, object> parameters)
+		public void StartTrial(Dictionary<string, object> parameters)
 		{
 			isHudVisible = !IsTutor();
 			isGamePlaying = true;
@@ -272,6 +278,19 @@ namespace /*<com>*/Finegamedesign.Anagram
 			}
 		}
 
+		/**
+		 * If no help state now, and word position halfway, and level normal under 50,
+		 * then show help to spell shorter words to add time.
+		 * Test case:  2016-10-15 Word near bottom.
+		 * Neighbor Kristine could expect instruction to enter shorter words.
+		 * Example:  Editor/Tests/TestAnagramModel.cs
+		 */
+		public static bool IsHelpByState(string currentState, bool isWordLow, bool isLevelLow)
+		{
+			bool isNotHelping = "none" == currentState || "" == currentState || "endNow" == currentState || null == currentState;
+			return isLevelLow && isWordLow && isNotHelping;
+		}
+
 		internal void ScaleToScreen(float screenWidth)
 		{
 			scale = screenWidth / width;
@@ -341,8 +360,11 @@ namespace /*<com>*/Finegamedesign.Anagram
 			ClampWordPosition();
 			wordPositionMin = Mathf.Min(wordPosition, wordPositionMin);
 			wordPositionScaled = wordPosition * scale;
-			bool isVerbosePosition = false;
-			if (isVerbosePosition) DebugUtil.Log("AnagramModel.UpdatePosition: " + wordPosition);
+			wordPositionMinNormal = (width + wordPositionMin) / width;
+			if (IsHelpByState(helpState.previous, wordPositionMinNormal <= helpPosition, progress.level <= helpLevel))
+			{
+				helpTextNow.next = shorterWordHelp;
+			}
 		}
 
 		// Scale scrolling to arrive at each checkpoint in the world on each step of normalized progress.
@@ -594,10 +616,10 @@ namespace /*<com>*/Finegamedesign.Anagram
 		{
 			float bestResponseSeconds = 0.75f * select.word.Count;
 			float worstResponseSeconds = 4.0f * bestResponseSeconds;
-			float positionNormal = (width + wordPositionMin) / width;
+			wordPositionMinNormal = (width + wordPositionMin) / width;
 			float responseRate = (responseSeconds - worstResponseSeconds) / (bestResponseSeconds - worstResponseSeconds);
 			responseRate = Mathf.Max(0.0f, Mathf.Min(1.0f, responseRate));
-			float performanceNormal = 0.5f * positionNormal + 0.5f * responseRate;
+			float performanceNormal = 0.5f * wordPositionMinNormal + 0.5f * responseRate;
 			return performanceNormal;
 		}
 

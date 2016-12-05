@@ -1,5 +1,6 @@
 using NUnit.Framework/*<Assert, Test>*/;
 using Finegamedesign.Utils;
+using System.Collections.Generic;
 
 namespace Finegamedesign.Anagram
 {
@@ -7,7 +8,7 @@ namespace Finegamedesign.Anagram
 	{
 		private static string DescribeTrialCycle(AnagramModel model)
 		{
-			return "trial count " + model.trialCount 
+			return "trial count " + model.trialCount
 				+ " in trial period " + model.trialPeriod;
 		}
 
@@ -126,6 +127,43 @@ namespace Finegamedesign.Anagram
 			model.helpState.next = "none";
 			model.Update(0.0f);
 			Assert.AreEqual("endNow", model.helpStateNow, "state from '' to 'none'");
+		}
+
+		[Test]
+		public void IsHelpByState()
+		{
+			Assert.AreEqual(false, AnagramModel.IsHelpByState("none", false, true));
+			Assert.AreEqual(true, AnagramModel.IsHelpByState("none", true, true));
+			Assert.AreEqual(false, AnagramModel.IsHelpByState("none", true, false));
+			Assert.AreEqual(false, AnagramModel.IsHelpByState("help", false, true));
+			Assert.AreEqual(false, AnagramModel.IsHelpByState("help", true, true));
+			Assert.AreEqual(false, AnagramModel.IsHelpByState("help", true, false));
+			Assert.AreEqual(true, AnagramModel.IsHelpByState("", true, true));
+			Assert.AreEqual(true, AnagramModel.IsHelpByState(null, true, true));
+			Assert.AreEqual(false, AnagramModel.IsHelpByState(null, false, true));
+			Assert.AreEqual(true, AnagramModel.IsHelpByState("endNow", true, true));
+		}
+
+		[Test]
+		public void UpdateIsHelpByPosition()
+		{
+			AnagramModel model = new AnagramModel();
+			model.helpLevel = 100;
+			model.helpPosition = 0.9f;
+			model.width = 720.0f;
+			model.Setup();
+			model.progress.level = model.tutorLevel + 1;
+			var parameters = new Dictionary<string, object>();
+			parameters["text"] = "TALE";
+			model.StartTrial(parameters);
+			model.Update(0.5f);
+			Assert.AreEqual("", model.helpTextNow.next);
+			model.Update(0.5f);
+			Assert.AreEqual(null, model.helpTextNow.next);
+			model.Update(16.0f);
+			string message = model.wordPositionMinNormal.ToString();
+			Assert.AreEqual(model.shorterWordHelp, model.helpTextNow.next,
+				message);
 		}
 	}
 }
