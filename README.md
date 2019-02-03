@@ -1,3 +1,11 @@
+Play latest Unity:
+
+http://finegamedesign.com/anagram/unity/
+
+Play weekend game jam in Flash:
+
+http://finegamedesign.com/anagram/
+
 Line port Anagram Attack from Flash ActionScript 3 to Unity 5.
 
 A literal port of data types, so used ArrayList and Hashtable, instead of List and Dictionary.  Then used my repo as2cs to convert model and levels.
